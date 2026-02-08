@@ -1,11 +1,11 @@
 import { ClassValue } from "clsx";
 import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 
-import { AiIcon } from "@ai-ui/components/icon";
 import { NgTemplateOutlet } from "@angular/common";
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, model, output, signal, ViewEncapsulation } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { FormValueControl } from "@angular/forms/signals";
+import { AiIcon } from "../../icon/icon.component";
 
 import { AiNormalizeConfig, AiNormalizeDirective, AiNormalizeType, mergeClasses } from "../../../core";
 import { AiButton } from "../../button";

@@ -1,6 +1,6 @@
 {
     "name": "@aiandra-team/ai-ui",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "sideEffects": false,
     "peerDependencies": {
         "@angular/common": "21.1.1",
