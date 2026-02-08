@@ -7,6 +7,7 @@ import {
     BUTTON,
     BUTTON_TOGGLE,
     CARD,
+    CHECKBOX,
     COMMAND,
     DIALOG,
     EMPTY,
@@ -56,6 +57,6 @@ const dataComponents: ComponentData[] = [
     TOAST,
     TOOLTIP,
 ];
-const formComponents: ComponentData[] = [INPUT, SELECT];
+const formComponents: ComponentData[] = [CHECKBOX, INPUT, SELECT];
 
 export const components = [...dataComponents, ...formComponents];

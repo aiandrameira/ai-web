@@ -1,0 +1,14 @@
+<div tabindex="0" class="flex items-center gap-2"
+    [class]="disabled() ? 'cursor-not-allowed' : 'cursor-pointer'"
+    (click)="onCheckboxChange()"
+    (keyup)="onKeyboardEvent($event)">
+    <main class="flex relative">
+        <input #input [id]="id()" type="checkbox" [class]="classes()" [checked]="checked" [disabled]="disabled()" (blur)="onCheckboxBlur()" name="checkbox" />
+        <ai-icon [icon]="checked ? 'check' : ''" 
+            [size]="size()"
+            [class]="`${checked ? 'opacity-100' : 'opacity-0'} absolute flex items-center justify-center text-primary-foreground top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity`" />
+    </main>
+    <label [class]="labelClasses()" for="checkbox">
+        <ng-content />
+    </label>
+</div>

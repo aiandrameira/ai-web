@@ -1,9 +1,11 @@
+import { ClassValue } from "clsx";
+
 import { NgClass } from "@angular/common";
 import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
-import { ClassValue } from "clsx";
+
 import { mergeClasses, transform } from "../../core";
 import { iconVariants, IconVariants } from "./icon.variants";
-import { AiIconType, AI_ICON_NO_TYPE } from "./icons";
+import { AI_ICON_NO_TYPE, AiIconType } from "./icons";
 
 const AI_ICON_NO_TYPE_SET = new Set(AI_ICON_NO_TYPE);
 
@@ -16,7 +18,7 @@ const AI_ICON_NO_TYPE_SET = new Set(AI_ICON_NO_TYPE);
     template: ` <i [ngClass]="[iconClass(), classes(), disabled() ? 'opacity-50 cursor-not-allowed' : '']"></i> `,
 })
 export class AiIcon {
-    readonly icon = input.required<AiIconType>();
+    readonly icon = input.required<AiIconType | "">();
     readonly size = input<IconVariants["size"]>("default");
     readonly type = input<IconVariants["type"]>("line");
 
@@ -26,6 +28,8 @@ export class AiIcon {
     protected readonly iconClass = computed(() => {
         const iconName = this.icon();
         const iconType = this.type();
+
+        if (!iconName) return "";
 
         if (iconName.endsWith("-line") || iconName.endsWith("-fill") || AI_ICON_NO_TYPE_SET.has(iconName as any)) {
             return `ri-${iconName}`;
