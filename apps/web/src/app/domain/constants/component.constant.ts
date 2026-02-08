@@ -1,4 +1,24 @@
-import { AVATAR, BADGE, BUTTON, EMPTY, ICON, SEPARATOR, TOAST } from "@ai-ui/components";
+import {
+    ALERT,
+    ALERT_DIALOG,
+    AVATAR,
+    BADGE,
+    BREADCRUMB,
+    BUTTON,
+    CARD,
+    COMMAND,
+    DIALOG,
+    EMPTY,
+    FLOAT_BUTTON,
+    ICON,
+    INPUT,
+    LOADER,
+    MARKDOWN,
+    SELECT,
+    SEPARATOR,
+    TOAST,
+    TOOLTIP,
+} from "@ai-ui/components";
 import { ComponentType } from "@angular/cdk/overlay";
 
 export interface ExampleData {
@@ -15,7 +35,25 @@ export interface ComponentData {
     fullWidth?: boolean;
 }
 
-const dataComponents: ComponentData[] = [AVATAR, BADGE, BUTTON, EMPTY, ICON, SEPARATOR, TOAST];
-const formComponents: ComponentData[] = [];
+const dataComponents: ComponentData[] = [
+    ALERT,
+    ALERT_DIALOG,
+    AVATAR,
+    BADGE,
+    BREADCRUMB,
+    BUTTON,
+    CARD,
+    COMMAND,
+    DIALOG,
+    EMPTY,
+    FLOAT_BUTTON,
+    ICON,
+    LOADER,
+    MARKDOWN,
+    SEPARATOR,
+    TOAST,
+    TOOLTIP,
+];
+const formComponents: ComponentData[] = [INPUT, SELECT];
 
 export const components = [...dataComponents, ...formComponents];
