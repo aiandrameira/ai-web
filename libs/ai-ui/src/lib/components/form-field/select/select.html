@@ -1,0 +1,46 @@
+<button [id]="id()" 
+    type="button"
+    role="combobox"
+    aria-controls="dropdown"
+    [class]="triggerClasses()"
+    [disabled]="disabled()"
+    [attr.aria-expanded]="isOpen()"
+    [attr.aria-haspopup]="'listbox'"
+    [attr.data-placeholder]="!value() ? '' : null"
+    (blur)="!isOpen() && isFocus.set(false)"
+    (click)="toggle()"
+    (focus)="onFocus()"
+>
+    <span class="flex flex-1 flex-wrap items-center gap-2">
+        @let labels = selectedLabels(); @for (label of labels; track index; let index = $index) {
+        <ng-container *ngTemplateOutlet="labelsTemplate; context: { $implicit: label }" />
+        } @empty {
+        <span class="text-muted-foreground truncate">{{ placeholder() }}</span>
+        }
+    </span>
+    <ai-icon icon="arrow-down-s" size="default" [class]="isOpen() ? 'rotate-180' : ''" />
+</button>
+
+<ng-template #labelsTemplate let-label>
+    @if (multiple()) {
+    <ai-badge variant="default">
+        <span class="truncate">{{ label }}</span>
+    </ai-badge>
+    } @else {
+    <span class="truncate">{{ label }}</span>
+    }
+</ng-template>
+
+<ng-template #dropdownTemplate>
+    <div
+        id="dropdown"
+        [class]="contentClasses()"
+        role="listbox"
+        [attr.data-state]="'open'"
+        tabindex="-1"
+    >
+        <div class="p-1">
+            <ng-content />
+        </div>
+    </div>
+</ng-template>
