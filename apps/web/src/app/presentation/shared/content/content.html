@@ -1,0 +1,12 @@
+<main class="relative flex items-stretch text-sm sm:text-base xl:w-full pt-12">
+    <section class="flex min-w-0 flex-1 flex-col">
+        <div class="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-12 px-4 text-muted-foreground md:px-0">
+            <ng-content />
+        </div>
+    </section>
+
+    @let navigation = navigationConfig();
+    @if (navigation) {
+        <ai-summary [navigation]="navigation" [activeSummary]="activeSummary() || ''" />
+    }
+</main>

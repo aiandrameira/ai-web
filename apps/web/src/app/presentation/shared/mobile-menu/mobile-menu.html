@@ -1,0 +1,38 @@
+@if (openMenu()) {
+    <div class="fixed inset-0 z-50 lg:hidden">
+        <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" (click)="close()"></div>
+        
+        <aside class="fixed top-14 left-0 bottom-0 w-[16rem] bg-background border-r border-r-border px-3 py-4 overflow-y-auto no-scrollbar">
+            <nav class="flex min-h-0 flex-1 flex-col gap-2">
+                @for (path of sidenavPaths; track $index) {
+                    <div class="relative flex w-full min-w-0 flex-col p-2">
+                        <ul class="flex w-full min-w-0 flex-col gap-0.5">
+                            <h1 class="flex shrink-0 items-center h-8 px-2 text-[0.8rem] font-text outline-hidden text-muted-foreground font-medium">
+                                {{ path.title }}
+                            </h1>
+    
+                            @for (item of path.data; track $index) {
+                                <li class="relative">
+                                    <a ai-button class="justify-between px-2 py-1 font-normal max-w-48"
+                                        size="sm"
+                                        variant="ghost"
+                                        full
+                                        [routerLink]="item.path"
+                                        routerLinkActive="bg-primary/15 text-primary font-semibold"
+                                        [routerLinkActiveOptions]="{ exact: true }"
+                                        (click)="close()">
+                                        {{ item.name }}
+    
+                                        @if (!item.available) {
+                                            <ai-badge variant="default" class="px-1 py-0">soon</ai-badge>
+                                        }
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </nav>
+        </aside>
+    </div>
+}

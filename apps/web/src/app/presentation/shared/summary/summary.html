@@ -1,0 +1,31 @@
+<section class="sticky top-14 z-30 ml-auto hidden w-72 flex-col gap-4 overscroll-none pb-8 xl:flex">
+    <aside class="hidden xl:block no-scrollbar overflow-y-auto px-8">
+        <ul class="flex flex-col gap-2 p-2 text-sm">
+            <li class="flex shrink-0 items-center h-8 text-[0.8rem] outline-hidden text-muted-foreground font-medium">
+                <p class="text-muted-foreground bg-background sticky top-0 h-6 text-xs">Nesta página</p>
+            </li>
+
+            @for (item of navigation().items; track item.id) {
+                <li>
+                    <button 
+                        [class]="'text-muted-foreground hover:text-primary text-[0.8rem] no-underline transition-colors cursor-pointer ' + (activeSummary() === item.id ? 'text-primary font-semibold' : '')"
+                        (click)="scrollToSummary(item.id)">
+                        {{ item.label | hyphenToSpace }}
+                    </button>
+
+                    @if (item.children && item.children.length > 0) {
+                        @for (child of item.children; track child.id) {
+                            <div class="ml-4 mt-1">
+                                <button
+                                    [class]="'text-muted-foreground hover:text-primary text-[0.8rem] no-underline transition-colors cursor-pointer block py-0.5 ' + (activeSummary() === child.id ? 'text-primary font-semibold' : '')"
+                                    (click)="scrollToSummary(child.id)">
+                                    {{ child.label | hyphenToSpace | titlecase }}
+                                </button>
+                            </div>
+                        }
+                    }
+                </li>
+            }
+        </ul>
+    </aside>
+</section>
