@@ -1,0 +1,39 @@
+<section class="mb-10">
+    @if (component()) {
+        <h3 class="mb-6 scroll-m-28 text-xl font-bold text-primary tracking-tight first-letter:uppercase">
+            {{ component()! | hyphenToSpace }}
+        </h3>
+    }
+
+    <main class="overflow-hidden transition-all duration-200 ease-in-out">
+        <nav class="flex gap-4 mb-4">
+            <button class="text-base py-1 cursor-pointer"
+                (click)="activeTab.set('preview')"
+                [class]="activeTab() === 'preview' ? 'text-primary font-bold border-b-2 border-primary w-16 text-left' : 'text-muted-foreground'">
+                Preview
+            </button>
+
+            @if (!demo()) {
+                <button class="text-base py-1 cursor-pointer" 
+                    (click)="activeTab.set('code')" 
+                    [class]="activeTab() === 'code' ? 'text-primary font-bold border-b-2 border-primary w-12 text-left' : 'text-muted-foreground'">
+                    Code
+                </button>
+            }
+        </nav>
+
+        <section class="transition-all" [class]="activeTab() === 'preview' ? 'translate-x-0' : ['-translate-x-full', 'sr-only']">
+            <ai-card default="default" class="min-h-87.5 max-w-full p-10 w-full flex justify-center items-center gap-4 [&_ng-component]:min-w-80 [&_ng-component]:gap-4 [&_ng-component]:items-center [&_ng-component]:justify-center"
+                [class]="cardClasses()">
+                @if (componentType()) {
+                    <ng-container *ngComponentOutlet="componentType() ?? null" />
+                }
+            </ai-card>
+        </section>
+        <section class="transition-all" [class]="activeTab() === 'code' ? 'translate-x-0' : ['translate-x-full', 'sr-only']">
+            @if (markdownUrl()) {
+                <ai-markdown [markdownUrl]="markdownUrl()" />
+            }
+        </section>
+    </main>
+</section>
