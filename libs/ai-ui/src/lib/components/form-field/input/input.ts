@@ -1,10 +1,12 @@
+import { ClassValue } from "clsx";
+import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
+
+import { AiIcon } from "@ai-ui/components/icon";
 import { NgTemplateOutlet } from "@angular/common";
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, model, output, signal, ViewEncapsulation } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import type { ValidationError } from "@angular/forms/signals";
 import { FormValueControl } from "@angular/forms/signals";
-import { ClassValue } from "clsx";
-import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
+
 import { AiNormalizeConfig, AiNormalizeDirective, AiNormalizeType, mergeClasses } from "../../../core";
 import { AiButton } from "../../button";
 import { AiIconType } from "../../icon/icons";
@@ -14,12 +16,13 @@ import { feedbackErrors, IFeedback } from "./interfaces/feedback.interface";
 import { AiMaskConfig } from "./interfaces/mask-config.interface";
 import { buildStrengthRules } from "./interfaces/password-strength";
 
+import type { ValidationError } from "@angular/forms/signals";
 type InputType = "text" | "email" | "number" | "password";
 
 @Component({
     selector: "ai-input",
     exportAs: "aiInput",
-    imports: [FormsModule, AiNormalizeDirective, NgxMaskDirective, NgTemplateOutlet, AiButton],
+    imports: [FormsModule, AiNormalizeDirective, NgxMaskDirective, NgTemplateOutlet, AiButton, AiIcon],
     providers: [provideNgxMask()],
     templateUrl: "./input.html",
     encapsulation: ViewEncapsulation.None,
