@@ -6,6 +6,7 @@ export * from "./breadcrumb";
 export * from "./button";
 export * from "./card";
 export * from "./command";
+export * from "./dialog";
 export * from "./empty";
 export * from "./icon";
 export * from "./loader";
