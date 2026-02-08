@@ -1,0 +1,94 @@
+# API
+
+## `[ai-breadcrumb]` - Component
+
+> `ai-breadcrumb` é um componente flexível e acessível que encapsula todos os outros componentes do breadcrumb, é através dele que conseguimos configurar os items através do roteamento.
+
+### Propriedades
+
+| Propriedade       | Descrição                    | Tipo                                                  | Default   |
+| ----------------- | ---------------------------- | ----------------------------------------------------- | --------- |
+| `size`            | define o tamanho             | `sm \| default \| lg \| xl`                           | `default` |
+| `customSeparator` | customiza o ícone do divisor | `AiIconType` [**Remix Icon**](https://remixicon.com/) | `""`      |
+| `class`           | classes CSS adicionais       | `ClassValue`                                          | `""`      |
+
+---
+
+## `[ai-breadcrumb-content]` - Component
+
+> `ai-breadcrumb-content` é um componente flexível e acessível que renderiza uma trilha de navegação e envolve sua lista de itens.
+
+### Propriedades
+
+| Propriedade | Descrição              | Tipo                        | Default   |
+| ----------- | ---------------------- | --------------------------- | --------- |
+| `size`      | define o tamanho       | `sm \| default \| lg \| xl` | `default` |
+| `class`     | classes CSS adicionais | `ClassValue`                | `""`      |
+
+---
+
+## `[ai-breadcrumb-list]` - Component
+
+> `ai-breadcrumb-list` renderiza o contêiner para itens de trilha de navegação. Normalmente usado dentro do `ai-breadcrumb-content` para controlar o layout e o espaçamento.
+
+### Propriedades
+
+| Propriedade | Descrição                      | Tipo                     | Default |
+| ----------- | ------------------------------ | ------------------------ | ------- |
+| `align`     | define o alinhamento           | `start \| center \| end` | `start` |
+| `wrap`      | comportamento de empacotamento | `wrap \| nowrap`         | `wrap`  |
+| `class`     | classes CSS adicionais         | `ClassValue`             | `""`    |
+
+---
+
+## `[ai-breadcrumb-item]` - Component
+
+> `ai-breadcrumb-item` representa um único item na trilha de navegação e, opcionalmente, inclui um separador.
+
+### Propriedades
+
+| Propriedade | Descrição              | Tipo                                 | Default   |
+| ----------- | ---------------------- | ------------------------------------ | --------- |
+| `variant`   | define o estilo        | `default \| muted \| bold \| subtle` | `default` |
+| `shape`     | define o formato       | `default \| default \| rounded`      | `default` |
+| `class`     | classes CSS adicionais | `ClassValue`                         | `""`      |
+
+---
+
+## `[ai-breadcrumb-link]` - Component
+
+> `ai-breadcrumb-link` é uma âncora estilizada usada dentro de `ai-breadcrumb-item` para navegar entre níveis.
+
+### Propriedades
+
+| Propriedade | Descrição                         | Tipo                             | Default   |
+| ----------- | --------------------------------- | -------------------------------- | --------- |
+| `variant`   | define o estilo                   | `default \| underline \| subtle` | `default` |
+| `link`      | define o link de redirecionamento | `default \| underline \| subtle` | `default` |
+| `class`     | classes CSS adicionais            | `ClassValue`                     | `""`      |
+
+---
+
+## `[ai-breadcrumb-page]` - Component
+
+> `ai-breadcrumb-page` indica a página atual na trilha de navegação e renderiza com aria-current="page" para acessibilidade.
+
+### Propriedades
+
+| Propriedade | Descrição              | Tipo                                        | Default   |
+| ----------- | ---------------------- | ------------------------------------------- | --------- |
+| `variant`   | define o estilo        | `default \| underline \| subtle \| current` | `default` |
+| `class`     | classes CSS adicionais | `ClassValue`                                | `""`      |
+
+---
+
+## `[ai-breadcrumb-separator]` - Component
+
+> `ai-breadcrumb-separator` exibe um separador visual entre itens de trilha de navegação e suporta entradas de string e modelo.
+
+### Propriedades
+
+| Propriedade | Descrição              | Tipo                           | Default   |
+| ----------- | ---------------------- | ------------------------------ | --------- |
+| `variant`   | define o estilo        | `default \| strong \| primary` | `default` |
+| `class`     | classes CSS adicionais | `ClassValue`                   | `""`      |

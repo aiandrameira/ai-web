@@ -12,8 +12,8 @@ export class MarkdownRendererService {
     async loadFromUrl(url: string): Promise<string> {
         try {
             return await firstValueFrom(this.#client.get(url, { responseType: "text" }));
-        } catch (error) {
-            throw new Error(`Could not load file: ${url} - ${(error as Error).message || error}`);
+        } catch {
+            throw new Error(url);
         }
     }
 }

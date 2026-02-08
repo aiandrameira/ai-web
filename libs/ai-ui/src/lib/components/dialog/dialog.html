@@ -1,0 +1,56 @@
+@if (config.closable || config.closable === undefined) {
+<ai-button icon="close"
+    type="button"
+    variant="ghost"
+    size="xs"
+    class="absolute top-2 right-2"
+    (click)="onCancel()" />
+}
+
+@if (config.title || config.description) {
+    <header class="flex flex-col space-y-1.5 text-center sm:text-left">
+        @if (config.title) {
+            <h4 class="text-lg leading-none font-semibold font-title tracking-tight">{{ config.title }}</h4>
+
+            @if (config.description) {
+                <p class="text-muted-foreground font-text text-sm">{{ config.description }}</p>
+            }
+        }
+    </header>
+}
+
+<main class="flex flex-col space-y-4">
+    <ng-template cdkPortalOutlet />
+
+    @if (hasStringContent) {
+        <div [innerHTML]="config.component"></div>
+    }
+</main>
+
+@if (!config.hideFooter) {
+    <footer class="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end sm:gap-0 sm:space-x-2">
+        @if (config.cancelText !== null) {
+            <button ai-button type="button" variant="default" (click)="onCancel()">
+                @if (config.cancelIcon) {
+                    <ai-icon [icon]="config.cancelIcon" />
+                }
+
+                {{ config.cancelText ?? "Cancelar" }}
+            </button>
+        }
+
+        @if (config.confirmText !== null) {
+            <button ai-button
+                type="button"
+                [variant]="config.confirmDestructive ? 'destructive' : 'primary'"
+                [disabled]="config.confirmDisabled || false"
+                (click)="onConfirm()">
+                @if (config.confirmIcon) {
+                    <ai-icon [icon]="config.confirmIcon" />
+                }
+
+                {{ config.confirmText ?? 'OK' }}
+            </button>
+        }
+    </footer>
+}

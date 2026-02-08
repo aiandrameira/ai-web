@@ -1,0 +1,99 @@
+@if (mode() === "viewer") {
+    <div class="rounded-lg border border-border w-full">
+        <ng-container *ngTemplateOutlet="codeHeader; context: { showThemeToggle: true }" />
+        <ng-container *ngTemplateOutlet="previewContent" />
+    </div>
+} @else {
+    <main class="overflow-hidden transition-all duration-200 ease-in-out w-full flex flex-col gap-y-4">
+        <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center gap-x-2">
+                 <div class="flex items-center gap-x-1.5 w-max rounded p-1 bg-default/90 shadow-sm">
+                    <button class="text-xs py-1 px-2 rounded cursor-pointer"
+                        [class]="tab() === 'code' ? 'bg-primary text-primary-foreground font-semibold' : 'text-muted-foreground font-medium'" (click)="setTab('code')">
+                        Code
+                    </button>
+                    <button class="text-xs py-1 px-2 rounded cursor-pointer"
+                        [class]="tab() === 'preview' ? 'bg-primary text-primary-foreground font-semibold' : 'text-muted-foreground font-medium'" (click)="setTab('preview')">
+                        Preview
+                    </button>
+                </div>
+    
+                @let event = codeLanguage();
+                <ai-select (selectedValueChange)="setLanguage(event)" [(value)]="codeLanguage" class="w-40" placeholder="Selecionar linguagem">
+                    @for (item of languages(); track item) {
+                        <ai-select-item [value]="item">
+                            {{ item }}
+                        </ai-select-item>
+                    }
+                </ai-select>
+            </div>
+    
+            <div class="flex items-center gap-x-2">
+                <ai-button type="button" 
+                    variant="default" 
+                    size="xs" 
+                    (click)="setTheme()" 
+                    [icon]="codeTheme() === 'dark' ? 'sun' : 'moon'" 
+                    [aiTooltip]="codeTheme() === 'light' ? 'Dark' : 'Light'" />
+    
+                <ai-button type="button" variant="default" size="xs" icon="brush-3" (click)="clearCode()" aiTooltip="Limpar" />
+            </div>
+        </div>
+    
+        <div class="py-2 border-t border-border">
+            <section class="transition-all" [class.hidden]="tab() !== 'code'">
+                <div class="rounded-lg border border-border w-full my-2">
+                    <ng-container *ngTemplateOutlet="codeHeader; context: { showThemeToggle: false }" />
+                    <div #editorContainer class="w-full rounded-b-lg overflow-hidden"></div>
+                </div>
+            </section>
+
+            <section class="transition-all" [class.hidden]="tab() !== 'preview'">
+                @if (tab() === 'preview') {
+                    <div [ngClass]="['rounded-lg border border-border w-full overflow-hidden', codeLanguage() === 'markdown' ? 'px-2' : '', codeTheme() === 'dark' ? 'bg-[#0d1117]' : 'bg-[#f6f8fa]']">
+                        <ng-container *ngTemplateOutlet="previewContent" />
+                    </div>
+                }
+            </section>
+        </div>
+    </main>
+}
+
+<ng-template #codeHeader let-showThemeToggle="showThemeToggle">
+    <div class="flex justify-between items-center px-3 py-2 border-b border-border bg-muted text-sm">
+        <div class="flex items-center gap-2">
+            <div [innerHTML]="languageIconSvg()" class="w-3 h-3"></div>
+            <span class="font-medium text-xs font-text text-muted-foreground">{{ codeLanguage() }}</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+            @if (showThemeToggle) {
+                <ai-button type="button" variant="default" (click)="setTheme()" size="xs" class="h-6 w-6 leading-6">
+                    <ai-icon [icon]="codeTheme() === 'dark' ? 'moon' : 'sun'" variant="default" size="sm" />
+                </ai-button>
+                <ai-button variant="default" class="h-6 w-6 leading-6" size="xs" (click)="copyCode()">
+                    <ai-icon 
+                        [icon]="!copied() ? 'file-copy' : 'check-double'"  
+                        size="sm"
+                        [aiTooltip]="!copied() ? 'Copiar' : 'Copiado'" />
+                </ai-button>
+            } @else {
+                <span class="flex items-center gap-1 text-xs text-muted-foreground">
+                    <ai-icon [icon]="codeTheme() === 'dark' ? 'moon' : 'sun'" variant="default" size="sm" />
+                    {{ codeTheme() }}
+                </span>
+            }
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #previewContent>
+    @if (loading()) {
+        <div class="flex items-center justify-center p-8 bg-muted/50">
+            <ai-loader size="sm" type="spinner" />
+            <span class="ml-2 text-muted-foreground text-sm font-semibold">Carregando preview...</span>
+        </div>
+    } @else {
+        <div class="ai-markdown-preview w-full overflow-hidden" [class.ai-md-theme-dark]="codeTheme() === 'dark'" [class.ai-md-theme-light]="codeTheme() === 'light'" [innerHTML]="compiledHtml()"></div>
+    }
+</ng-template>

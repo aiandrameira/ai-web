@@ -7,6 +7,7 @@ export const iconVariants = cva("flex items-center justify-center font-normal", 
             fill: "fill",
         },
         size: {
+            xs: "text-xs",
             sm: "text-sm",
             default: "text-base",
             lg: "text-lg",

@@ -1,0 +1,42 @@
+<div class="flex flex-col justify-center items-center rounded-2xl gap-y-4 p-6" cdkTrapFocus [cdkTrapFocusAutoCapture]="true" aiId="alert-dialog" #ai="aiId">
+    @if (config.icon) {
+        <header class="pt-4 flex items-center justify-center">
+            <ai-icon [icon]="config.icon.name" [class]="`text-${config.icon.color} text-3xl md:text-5xl xl:text-6xl`" />
+        </header>
+    }
+
+    @if (config.title || config.description) {
+        <section class="px-4">
+            <h1 [id]="titleId()" class="pb-4 mx-6 leading-6 text-xl font-bold text-primary font-title text-center">
+                {{ config.title }}
+            </h1>
+            <p [id]="descriptionId()" class="text-center text-base font-semibold text-muted-foreground font-text max-w-100">
+                {{ config.description }}
+            </p>
+        </section>
+    }
+
+    @if (config.component) {
+        <main>
+            <ng-template cdkPortalOutlet />
+
+            @if (hasStringContent()) {
+                <div [innerHTML]="config.component"></div>
+            }
+        </main>
+    }
+
+    <div class="flex items-center gap-x-2 py-4">
+        @if (config.cancelText !== null) {
+            <ai-button type="button" variant="outline" (click)="onCancel()">
+                {{ config.cancelText || "Cancelar" }}
+            </ai-button>
+        }
+        
+        @if (config.confirmText !== null) {
+            <ai-button type="button" [variant]="config.confirmDestructive ? 'destructive' : 'primary'" [disabled]="config.confirmDisabled || false" (click)="onConfirm()">
+                {{ config.confirmText || "Confirmar" }}
+            </ai-button>
+        }
+    </div>
+</div>

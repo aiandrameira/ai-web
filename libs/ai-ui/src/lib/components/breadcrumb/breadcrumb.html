@@ -1,0 +1,37 @@
+<ai-breadcrumb-content [size]="size()">
+    <ai-breadcrumb-list wrap="wrap" [align]="'start'">
+        @for (breadcrumb of breadcrumbs(); track breadcrumb.path; let last = $last) {
+            <ai-breadcrumb-item>
+                @if (!last) {
+                    <ai-breadcrumb-link [link]="breadcrumb.path">
+                        @if (breadcrumb.icon) {
+                            <ai-icon [icon]="breadcrumb.icon" />
+                        }
+                        {{ breadcrumb.label }}
+                    </ai-breadcrumb-link>
+                } @else {
+                    <ai-breadcrumb-page>
+                        @if (breadcrumb.icon) {
+                            <ai-icon [icon]="breadcrumb.icon" />
+                        }
+                        {{ breadcrumb.label }}
+                    </ai-breadcrumb-page>
+                }
+            </ai-breadcrumb-item>
+      
+            @if (!last) {
+                @let custom = customSeparator();
+                @if (custom) {
+                    <ai-breadcrumb-separator>
+                        <ai-icon [icon]="custom" />
+                    </ai-breadcrumb-separator>
+                } @else {
+                    <ai-breadcrumb-separator />
+                }
+            }
+        }
+    </ai-breadcrumb-list>
+    <div>
+        <ng-container *ngTemplateOutlet="actions()" />
+    </div>
+</ai-breadcrumb-content>

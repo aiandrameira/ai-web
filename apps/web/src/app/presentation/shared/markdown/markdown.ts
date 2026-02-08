@@ -1,6 +1,6 @@
 import { merge } from "rxjs";
 
-import { AiLoader } from "@ai-ui/components";
+import { AiEmpty, AiIcon, AiLoader } from "@ai-ui/components";
 import { Component, DestroyRef, inject, input, OnInit, signal } from "@angular/core";
 import { takeUntilDestroyed, toObservable } from "@angular/core/rxjs-interop";
 import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
@@ -8,7 +8,7 @@ import { MarkdownRendererService, MarkdownService } from "@infra/services";
 
 @Component({
     selector: "ai-markdown",
-    imports: [AiLoader],
+    imports: [AiLoader, AiEmpty, AiIcon],
     templateUrl: "./markdown.html",
 })
 export class Markdown implements OnInit {
