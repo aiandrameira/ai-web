@@ -6,9 +6,11 @@
                 <img [ngSrc]="src" width="64" height="64" alt="Empty" class="mx-auto" />
             </ng-container>
         </div>
-    } @else if (icon()) {
-        <div [class]="iconClasses()" data-testid="icon">
-            <ai-icon [icon]="icon()" size="xl" />
+    } 
+    @let nameIcon = icon();
+    @if (nameIcon) {
+        <div [class]="iconClasses()">
+            <ai-icon [icon]="nameIcon" size="xl" />
         </div>
     }
 

@@ -1,6 +1,8 @@
+import { ClassValue } from "class-variance-authority/types";
+
 import { NgOptimizedImage } from "@angular/common";
 import { ChangeDetectionStrategy, Component, computed, input, TemplateRef, ViewEncapsulation } from "@angular/core";
-import { ClassValue } from "class-variance-authority/types";
+
 import { mergeClasses, StringTemplateRefDirective } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiIconType } from "../icon/icons";
@@ -19,7 +21,7 @@ import { emptyActionsVariants, emptyDescriptionVariants, emptyHeaderVariants, em
 })
 export class AiEmpty {
     readonly actions = input<TemplateRef<void>[]>([]);
-    readonly icon = input<AiIconType>("code-block");
+    readonly icon = input<AiIconType>();
     readonly image = input<string | TemplateRef<void>>();
     readonly title = input<string | TemplateRef<void>>();
     readonly description = input<string | TemplateRef<void>>();
