@@ -1,0 +1,24 @@
+@let variant = toast()! | aiToast;
+<div [class]="`${variant.container} p-4 flex flex-col gap-2 relative rounded-lg shadow-lg`">
+    <div class="flex items-center gap-x-2 w-full">
+        @let icon = variant.icon;
+        @if (icon) {
+            <ai-icon [icon]="icon" size="default" type="fill" [class]="variant.color" />
+        }
+        <div class="flex items-center w-full justify-between">
+            <h4 [class]="`${variant.color} text-sm font-semibold`">
+                {{ toast()?.message }}
+            </h4>
+
+            <button [class]="`${variant.bgButton} ms-auto cursor-pointer -mx-1.5 -my-1.5 rounded-lg p-1.5 inline-flex items-center justify-center h-8 w-8`"
+                (click)="undo.emit(toast()!.id)">
+                <ai-icon icon="close" size="default" />
+            </button>
+        </div>
+    </div>
+    @if (toast()?.description) {
+        <span [class]="`${variant.color} text-sm font-medium`">
+            {{ toast()?.description }}
+        </span>
+    }
+</div>
