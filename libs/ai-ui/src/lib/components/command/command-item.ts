@@ -15,26 +15,27 @@ import { CommandItemVariants, commandItemVariants, commandShortcutVariants } fro
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         @if (visibledItem()) {
-        <div
-            [class]="classes()"
-            [attr.role]="'item'"
-            [attr.disabled]="disabled()"
-            [attr.aria-selected]="selected()"
-            [attr.data-selected]="selected()"
-            [attr.data-disabled]="disabled()"
-            [attr.tabindex]="0"
-            (click)="onChange()"
-            (keydown.{enter,space}.prevent)="onChange()"
-            (mouseenter)="onMouseEnter()"
-        >
-            @let nameIcon = icon(); @if (nameIcon) {
-            <ai-icon [icon]="nameIcon!" class="mr-2 flex shrink-0 items-center justify-center" />
-            }
-            <span class="flex-1">{{ label() }}</span>
-            @if (shortcut()) {
-            <span [class]="shortcutClasses()">{{ shortcut() }}</span>
-            }
-        </div>
+            <div
+                [class]="classes()"
+                [attr.role]="'item'"
+                [attr.disabled]="disabled()"
+                [attr.aria-selected]="selected()"
+                [attr.data-selected]="selected()"
+                [attr.data-disabled]="disabled()"
+                [attr.tabindex]="0"
+                (click)="onChange()"
+                (keydown.{enter,space}.prevent)="onChange()"
+                (mouseenter)="onMouseEnter()"
+            >
+                @let nameIcon = icon();
+                @if (nameIcon) {
+                    <ai-icon [icon]="nameIcon!" class="mr-2 flex shrink-0 items-center justify-center" />
+                }
+                <span class="flex-1">{{ label() }}</span>
+                @if (shortcut()) {
+                    <span [class]="shortcutClasses()">{{ shortcut() }}</span>
+                }
+            </div>
         }
     `,
 })
@@ -56,7 +57,7 @@ export class AiCommandItem {
     readonly selected = signal<boolean>(false);
 
     protected readonly classes = computed(() =>
-        mergeClasses(commandItemVariants({ variant: this.variant() }), this.selected() ? "bg-default text-default-foreground" : "", this.class())
+        mergeClasses(commandItemVariants({ variant: this.variant() }), this.selected() ? "bg-default text-default-foreground" : "", this.class()),
     );
     protected readonly shortcutClasses = computed(() => mergeClasses(commandShortcutVariants()));
 

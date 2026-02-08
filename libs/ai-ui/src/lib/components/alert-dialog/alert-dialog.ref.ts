@@ -11,7 +11,11 @@ export class AiAlertDialogRef<T = unknown> {
 
     componentInstance?: T;
 
-    constructor(private overlayRef: OverlayRef, private config: AiAlertDialogConfig<T>, private instance: AiAlertDialog<T>) {
+    constructor(
+        private overlayRef: OverlayRef,
+        private config: AiAlertDialogConfig<T>,
+        private instance: AiAlertDialog<T>,
+    ) {
         instance.cancelTriggered.subscribe(() => this._handleCancel());
         instance.confirmTriggered.subscribe(() => this._handleConfirm());
 
@@ -62,7 +66,7 @@ export class AiAlertDialogRef<T = unknown> {
             .outsidePointerEvents()
             .pipe(
                 filter(() => this.config.maskClosable ?? true),
-                takeUntil(this.#destroy)
+                takeUntil(this.#destroy),
             )
             .subscribe(() => this.close());
     }
@@ -72,7 +76,7 @@ export class AiAlertDialogRef<T = unknown> {
             .keydownEvents()
             .pipe(
                 filter(e => e.key === "Escape"),
-                takeUntil(this.#destroy)
+                takeUntil(this.#destroy),
             )
             .subscribe(() => this.close());
     }

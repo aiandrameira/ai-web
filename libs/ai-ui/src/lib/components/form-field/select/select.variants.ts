@@ -5,8 +5,8 @@ export const selectVariants = cva(
     mergeClasses(
         "relative inline-block w-full rounded-lg group",
         "data-active:border data-active:border-ring data-active:ring-ring/50 data-active:ring-[3px]",
-        "[&_button]:focus-visible:border [&_button]:focus-visible:border-ring [&_button]:focus-visible:ring-ring/50 [&_button]:focus-visible:ring-[3px]"
-    )
+        "[&_button]:focus-visible:border [&_button]:focus-visible:border-ring [&_button]:focus-visible:ring-ring/50 [&_button]:focus-visible:ring-[3px]",
+    ),
 );
 
 export const selectTriggerVariants = cva(
@@ -15,7 +15,7 @@ export const selectTriggerVariants = cva(
         "shadow-xs transition-[color,box-shadow] outline-none cursor-pointer disabled:cursor-not-allowed",
         'disabled:opacity-50 data-placeholder:text-muted-foreground [&_svg:not([class*="text-"])]:text-muted-foreground',
         "dark:bg-input/30 dark:hover:bg-input/50 aria-invalid:ring-destructive/20",
-        'aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4'
+        'aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*="size-"])]:size-4',
     ),
     {
         variants: {
@@ -28,11 +28,11 @@ export const selectTriggerVariants = cva(
         defaultVariants: {
             size: "default",
         },
-    }
+    },
 );
 
 export const selectContentVariants = cva(
-    mergeClasses("z-9999 min-w-full scrollbar-hide overflow-y-auto rounded-md border border-border bg-background text-muted-foreground shadow-lg animate-in fade-in-0 zoom-in-95")
+    mergeClasses("z-9999 min-w-full scrollbar-hide overflow-y-auto rounded-md border border-border bg-background text-muted-foreground shadow-lg animate-in fade-in-0 zoom-in-95"),
 );
 
 export const selectItemVariants = cva(
@@ -43,7 +43,7 @@ export const selectItemVariants = cva(
         "data-selected:bg-default data-selected:text-default-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50 data-disabled:cursor-not-allowed data-disabled:hover:bg-transparent data-disabled:hover:text-current",
         "focus:bg-default focus:text-default-foreground",
-        "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_.material-symbols-outlined]:text-current"
+        "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_.material-symbols-outlined]:text-current",
     ),
     {
         variants: {
@@ -64,7 +64,7 @@ export const selectItemVariants = cva(
                 class: "pl-5 pr-2",
             },
         ],
-    }
+    },
 );
 
 export const selectItemIconVariants = cva("absolute flex size-3.5 items-center justify-center", {

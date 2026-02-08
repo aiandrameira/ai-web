@@ -14,11 +14,7 @@ async function fetchFromGitHubAPI(filePath: string): Promise<string> {
     try {
         const apiUrl = `${GITHUB_API}/${filePath}`;
 
-        const headers = [
-            "-H", "Accept: application/vnd.github.v3+json",
-            "-H", "User-Agent: ai-cli",
-            ...(GITHUB_TOKEN ? ["-H", `Authorization: token ${GITHUB_TOKEN}`] : [])
-        ];
+        const headers = ["-H", "Accept: application/vnd.github.v3+json", "-H", "User-Agent: ai-cli", ...(GITHUB_TOKEN ? ["-H", `Authorization: token ${GITHUB_TOKEN}`] : [])];
         const { stdout } = await execa("curl", ["-s", ...headers, apiUrl]);
 
         const response = JSON.parse(stdout);
@@ -37,10 +33,7 @@ async function fetchFromGitHubAPI(filePath: string): Promise<string> {
 
         const rawUrl = `${GITHUB_RAW}/${filePath}`;
 
-        const rawHeaders = [
-            "-H", `User-Agent: ai-cli`,
-            ...(GITHUB_TOKEN ? ["-H", `Authorization: token ${GITHUB_TOKEN}`] : [])
-        ];
+        const rawHeaders = ["-H", `User-Agent: ai-cli`, ...(GITHUB_TOKEN ? ["-H", `Authorization: token ${GITHUB_TOKEN}`] : [])];
         const { stdout } = await execa("curl", ["-s", "-L", ...rawHeaders, rawUrl]);
 
         if (!stdout || stdout.includes("429: Too Many Requests") || stdout.includes("404: Not Found")) {
@@ -51,7 +44,6 @@ async function fetchFromGitHubAPI(filePath: string): Promise<string> {
         return stdout;
     }
 }
-
 
 export async function fetchComponentFromGithub({ pathName, fileName }: FetchComponent): Promise<string> {
     try {

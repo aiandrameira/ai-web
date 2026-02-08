@@ -17,16 +17,16 @@ export abstract class AiCommandItemGroupRepository {
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         @if (visibledGroup()) {
-        <div [class]="classes()" role="group">
-            @if (label()) {
-            <div [class]="headingClasses()" role="presentation">
-                {{ label() }}
+            <div [class]="classes()" role="group">
+                @if (label()) {
+                    <div [class]="headingClasses()" role="presentation">
+                        {{ label() }}
+                    </div>
+                }
+                <div role="group">
+                    <ng-content />
+                </div>
             </div>
-            }
-            <div role="group">
-                <ng-content />
-            </div>
-        </div>
         }
     `,
 })

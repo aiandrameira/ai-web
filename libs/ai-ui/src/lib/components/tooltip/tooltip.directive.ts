@@ -82,7 +82,7 @@ export class AiTooltipDirective implements OnInit, OnDestroy {
                         filter(() => !!this.#overlayRef),
                         switchMap(() => (this.#overlayRef as OverlayRef).outsidePointerEvents()),
                         filter(event => !this.#elementRef.nativeElement.contains(event.target)),
-                        takeUntilDestroyed(this.#destroyRef)
+                        takeUntilDestroyed(this.#destroyRef),
                     )
                     .subscribe(() => this._delay(false, 0));
             });
@@ -126,7 +126,7 @@ export class AiTooltipDirective implements OnInit, OnDestroy {
             this.#renderer.listen(
                 this.#document.defaultView,
                 "scroll",
-                throttle(() => this._delay(false, 0), 100)
+                throttle(() => this._delay(false, 0), 100),
             ),
         ];
     }
@@ -149,7 +149,7 @@ export class AiTooltipDirective implements OnInit, OnDestroy {
         this.#delaySubject
             .pipe(
                 switchMap(config => (config.delay < 0 ? of(config) : timer(config.delay).pipe(map(() => config)))),
-                takeUntilDestroyed(this.#destroyRef)
+                takeUntilDestroyed(this.#destroyRef),
             )
             .subscribe(config => {
                 if (config.show) this._show();

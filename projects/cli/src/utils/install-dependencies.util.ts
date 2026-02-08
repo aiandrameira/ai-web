@@ -24,14 +24,10 @@ export async function installDependencies(cwd: string) {
 
 async function installPackages(cwd: string, packages: string[], dev = false) {
     const args = dev ? ["install", "-D", ...packages] : ["install", ...packages];
-    
+
     try {
         await execa("npm", args, { cwd });
     } catch {
-        await execa("npm", 
-            dev ? 
-            ["install", "-D", "--legacy-peer-deps", ...packages] : 
-            ["install", "--legacy-peer-deps", ...packages], { cwd }
-        );
+        await execa("npm", dev ? ["install", "-D", "--legacy-peer-deps", ...packages] : ["install", "--legacy-peer-deps", ...packages], { cwd });
     }
 }

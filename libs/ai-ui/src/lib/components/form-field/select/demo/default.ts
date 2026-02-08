@@ -7,9 +7,9 @@ import { AiSelectImports } from "../select.imports";
     template: `
         <div class="flex flex-col gap-y-4">
             @if (selectValue) {
-            <ai-badge variant="primary" class="w-max">
-                {{ selectValue }}
-            </ai-badge>
+                <ai-badge variant="primary" class="w-max">
+                    {{ selectValue }}
+                </ai-badge>
             }
 
             <ai-select class="w-75" placeholder="selected options" [(value)]="selectValue">

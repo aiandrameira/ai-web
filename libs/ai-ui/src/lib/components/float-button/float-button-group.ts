@@ -14,17 +14,19 @@ import { FloatButtonVariants, floatButtonVariants } from "./float-button.variant
     template: `
         <div class="flex items-center justify-center" [class]="containerClasses()" (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
             <button type="button" [class]="classes()" (click)="onToggle()">
-                @let nameIcon = icon(); @if (nameIcon) {
-                <ai-icon [icon]="opened() ? 'close' : nameIcon" size="sm" type="fill" />
-                } @if (label()) {
-                <span class="pl-2 text-sm">{{ label() }}</span>
+                @let nameIcon = icon();
+                @if (nameIcon) {
+                    <ai-icon [icon]="opened() ? 'close' : nameIcon" size="sm" type="fill" />
+                }
+                @if (label()) {
+                    <span class="pl-2 text-sm">{{ label() }}</span>
                 }
             </button>
 
             @if (opened()) {
-            <div class="absolute flex gap-2 transition-all duration-400" [class]="childrenClasses()">
-                <ng-content />
-            </div>
+                <div class="absolute flex gap-2 transition-all duration-400" [class]="childrenClasses()">
+                    <ng-content />
+                </div>
             }
         </div>
     `,

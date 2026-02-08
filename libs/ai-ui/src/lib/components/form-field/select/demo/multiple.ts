@@ -8,9 +8,9 @@ import { AiSelectImports } from "../select.imports";
         <div class="flex flex-col gap-y-4">
             <div class="flex items-center gap-x-2">
                 @for (item of selectedItems(); track $index) {
-                <ai-badge variant="primary" class="w-max">
-                    {{ item }}
-                </ai-badge>
+                    <ai-badge variant="primary" class="w-max">
+                        {{ item }}
+                    </ai-badge>
                 }
             </div>
 

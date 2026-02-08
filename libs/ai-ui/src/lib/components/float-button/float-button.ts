@@ -12,10 +12,12 @@ import { FloatButtonVariants, floatButtonVariants } from "./float-button.variant
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     template: `
-        @let nameIcon = icon(); @if (nameIcon) {
-        <ai-icon [icon]="nameIcon" />
-        } @if (label()) {
-        <span class="pl-2 text-sm">{{ label() }}</span>
+        @let nameIcon = icon();
+        @if (nameIcon) {
+            <ai-icon [icon]="nameIcon" />
+        }
+        @if (label()) {
+            <span class="pl-2 text-sm">{{ label() }}</span>
         }
 
         <ng-content />
@@ -43,6 +45,6 @@ export class AiFloatButton {
     protected readonly containerPosition = computed(() => this.positionMap[this.position() as keyof typeof this.positionMap]);
 
     protected readonly classes = computed(() =>
-        mergeClasses(floatButtonVariants({ variant: this.variant(), size: this.size(), shape: this.shape() }), this.position() ? this.containerPosition() : "", this.class())
+        mergeClasses(floatButtonVariants({ variant: this.variant(), size: this.size(), shape: this.shape() }), this.position() ? this.containerPosition() : "", this.class()),
     );
 }

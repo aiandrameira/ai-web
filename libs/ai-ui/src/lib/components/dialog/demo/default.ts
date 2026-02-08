@@ -22,9 +22,9 @@ export type UserDto = z.infer<typeof userSchema>;
 
             <ai-select class="w-full" placeholder="selected skills" [formField]="userForm.skill">
                 @for (item of skills(); track item) {
-                <ng-container>
-                    <ai-select-item [value]="item">{{ item }}</ai-select-item>
-                </ng-container>
+                    <ng-container>
+                        <ai-select-item [value]="item">{{ item }}</ai-select-item>
+                    </ng-container>
                 }
             </ai-select>
 

@@ -11,7 +11,7 @@ import { commandSeparatorVariants } from "./command.variants";
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
         @if (shouldShow()) {
-        <div [class]="classes()" role="separator"></div>
+            <div [class]="classes()" role="separator"></div>
         }
     `,
 })

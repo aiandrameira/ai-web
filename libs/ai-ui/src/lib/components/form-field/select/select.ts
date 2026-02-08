@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { NgTemplateOutlet } from "@angular/common";
 import {
     type AfterContentInit,

@@ -13,10 +13,12 @@ import { FloatButtonVariants, floatButtonVariants } from "./float-button.variant
     encapsulation: ViewEncapsulation.None,
     template: `
         <button type="button" [class]="classes()" (click)="scrollToTop()">
-            @let nameIcon = icon(); @if (nameIcon) {
-            <ai-icon [icon]="nameIcon" size="sm" type="fill" />
-            } @if (label()) {
-            <span class="pl-2 text-sm font-text">{{ label() }}</span>
+            @let nameIcon = icon();
+            @if (nameIcon) {
+                <ai-icon [icon]="nameIcon" size="sm" type="fill" />
+            }
+            @if (label()) {
+                <span class="pl-2 text-sm font-text">{{ label() }}</span>
             }
         </button>
     `,
@@ -47,8 +49,8 @@ export class AiFloatButtonTop implements OnInit, OnDestroy {
             "fixed m-4 z-[999] transition-opacity duration-300",
             this.containerPosition(),
             floatButtonVariants({ variant: this.variant(), size: this.size(), shape: this.shape() }),
-            this.class()
-        )
+            this.class(),
+        ),
     );
 
     protected visible = signal<boolean>(false);

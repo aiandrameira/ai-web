@@ -14,9 +14,9 @@ interface SelectHost {
     imports: [AiIcon],
     template: `
         @if (isSelected()) {
-        <span [class]="iconClasses()">
-            <ai-icon icon="check-double" size="default" />
-        </span>
+            <span [class]="iconClasses()">
+                <ai-icon icon="check-double" size="default" />
+            </span>
         }
         <span class="truncate flex-1">
             <ng-content />

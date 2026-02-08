@@ -6,11 +6,11 @@ import path from "path";
 import { fetchComponentFromGithub } from "./feth-component.util";
 
 type ComponentType = {
-    component: ComponentDto; 
-    targetDir: string; 
-    config: Config & { resolvedPaths: unknown }; 
+    component: ComponentDto;
+    targetDir: string;
+    config: Config & { resolvedPaths: unknown };
     overwrite: boolean;
-}
+};
 
 export async function installComponent({ component, targetDir, config, overwrite }: ComponentType) {
     if (!overwrite && existsSync(targetDir)) {

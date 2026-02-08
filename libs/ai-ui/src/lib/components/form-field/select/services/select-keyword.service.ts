@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { Injectable } from "@angular/core";
 
 export interface AiSelectKeyboardContext {

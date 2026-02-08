@@ -37,7 +37,7 @@ export function makeConfig(): Config {
         },
         aliases: {
             components: "src/app/core/ui/components",
-            utils: "src/app/core/ui/helpers", 
+            utils: "src/app/core/ui/helpers",
         },
     };
 }

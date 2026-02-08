@@ -19,7 +19,12 @@ export class AiDialogRef<T = any, R = any, U = any> {
 
     #getContentComponent = (): T => this.componentInstance as T;
 
-    constructor(private overlayRef: OverlayRef, private config: AiDialogConfig<T, U>, private instance: AiDialog<T, U>, @Inject(PLATFORM_ID) private platformId: object) {
+    constructor(
+        private overlayRef: OverlayRef,
+        private config: AiDialogConfig<T, U>,
+        private instance: AiDialog<T, U>,
+        @Inject(PLATFORM_ID) private platformId: object,
+    ) {
         this.instance.cancelTriggered.subscribe(() => this._trigger(triggerActionEnum.CANCEL));
         this.instance.confirmTriggered.subscribe(() => this._trigger(triggerActionEnum.CONFIRM));
 
@@ -34,7 +39,7 @@ export class AiDialogRef<T = any, R = any, U = any> {
             fromEvent<KeyboardEvent>(document, "keydown")
                 .pipe(
                     filter(event => event.key === "Escape"),
-                    takeUntil(this.#destroyed)
+                    takeUntil(this.#destroyed),
                 )
                 .subscribe(() => this.close());
         }

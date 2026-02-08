@@ -12,10 +12,7 @@ export async function getPackage(): Promise<PackageDto> {
             path.resolve(__dirname, "../package.json"),
             path.resolve(__dirname, "../../package.json"),
             path.resolve(__dirname, "../../../package.json"),
-            path.resolve(
-                __dirname,
-                "../../../../node_modules/@aiandra-team/ai-ui/package.json"
-            ),
+            path.resolve(__dirname, "../../../../node_modules/@aiandra-team/ai-ui/package.json"),
         ];
 
         for (const path of possiblePaths) {

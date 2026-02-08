@@ -10,11 +10,11 @@ import { AiCommand } from "./command";
     imports: [AiEmpty],
     template: `
         @if (shouldShow()) {
-        <div [class]="class()">
-            <ai-empty [icon]="icon()" [title]="title()" [description]="description()">
-                <ng-content />
-            </ai-empty>
-        </div>
+            <div [class]="class()">
+                <ai-empty [icon]="icon()" [title]="title()" [description]="description()">
+                    <ng-content />
+                </ai-empty>
+            </div>
         }
     `,
     changeDetection: ChangeDetectionStrategy.OnPush,

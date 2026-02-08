@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 import { ChangeDetectionStrategy, Component, computed, contentChild, contentChildren, forwardRef, input, output, signal, ViewEncapsulation } from "@angular/core";
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { ClassValue } from "clsx";

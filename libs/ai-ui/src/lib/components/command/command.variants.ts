@@ -19,7 +19,7 @@ export const commandInputVariants = cva(
     {
         variants: {},
         defaultVariants: {},
-    }
+    },
 );
 
 export const commandListVariants = cva("max-h-75 overflow-y-auto overflow-x-hidden p-1", {
@@ -49,7 +49,7 @@ export const commandItemVariants = cva(
         defaultVariants: {
             variant: "default",
         },
-    }
+    },
 );
 
 export const commandSeparatorVariants = cva("-mx-1 my-1 h-px bg-border", {
