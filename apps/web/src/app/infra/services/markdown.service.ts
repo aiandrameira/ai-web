@@ -88,7 +88,7 @@ export class MarkdownService {
                         node.properties = {
                             ...node.properties,
                             style: [],
-                            class: ["text-sm", "md:text-base", "leading-7", "font-text", "text-muted-foreground", "[&:not(:first-child)]:mt-6", "text-justify"],
+                            class: ["text-sm", "leading-7", "font-text", "text-muted-foreground", "mb-2", "[&:not(:first-child)]:mt-6", "text-justify"],
                         };
                     }
 
@@ -98,9 +98,16 @@ export class MarkdownService {
                         if (!isInPre) {
                             node.properties = {
                                 ...node.properties,
-                                class: ["relative", "rounded", "font-code", "bg-muted", "px-[0.3rem]", "py-[0.2rem]", "text-base", "font-bold"],
+                                class: ["relative", "rounded", "font-code", "bg-muted", "px-[0.3rem]", "py-[0.2rem]", "text-sm", "font-bold"],
                             };
                         }
+                    }
+
+                    if (node.tagName === "hr") {
+                        node.properties = {
+                            ...node.properties,
+                            class: ["border-t", "border-border", "my-4"],
+                        };
                     }
 
                     if (node.tagName === "figcaption") {
