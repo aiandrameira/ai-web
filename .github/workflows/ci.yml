@@ -2,8 +2,10 @@ name: 🕵🏽‍♀️ Check project
 run-name: 🔎 Checking CLI of ${{ github.head_ref || github.ref_name }}
 
 on:
+    push:
+        branches: [main]
     pull_request:
-        branches: [main, develop]
+        branches: [main]
 
 jobs:
     checking_code:

@@ -1,0 +1,36 @@
+<div [class]="headerClasses()">
+    @let src = image();
+    @if (src) {
+        <div [class]="imageClasses()">
+            <ng-container *stringTemplateRef="src">
+                <img [ngSrc]="src" width="64" height="64" alt="Empty" class="mx-auto" />
+            </ng-container>
+        </div>
+    } @else if (icon()) {
+        <div [class]="iconClasses()" data-testid="icon">
+            <ai-icon [icon]="icon()" size="xl" />
+        </div>
+    }
+
+    @if (title()) {
+        <div [class]="titleClasses()">
+            <ng-container *stringTemplateRef="title()">{{ title() }}</ng-container>
+        </div>
+    }
+
+    @if (description()) {
+        <div [class]="descriptionClasses()">
+            <ng-container *stringTemplateRef="description()">{{ description() }}</ng-container>
+        </div>
+    }
+</div>
+
+@if (actions().length) {
+    <div [class]="actionsClasses()">
+        @for (action of actions(); track $index) {
+            <ng-container *stringTemplateRef="action" />
+        }
+    </div>
+}
+
+<ng-content />
