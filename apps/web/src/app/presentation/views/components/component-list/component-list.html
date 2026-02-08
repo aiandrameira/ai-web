@@ -1,0 +1,11 @@
+<ai-content>
+    <ai-heading title="Components" description="List of available components" />
+    
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-x-8 lg:gap-x-16 xl:gap-x-20 gap-4">
+        @for (component of components; track component.name) {
+            <a [routerLink]="[component.path]" class="inline-flex items-center gap-2 text-lg font-semibold underline-offset-4 hover:underline md:text-base">
+                {{ component.name }}
+            </a>
+        }
+    </section>
+</ai-content>

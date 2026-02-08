@@ -1,0 +1,29 @@
+@if (dataComponent()) {
+    @let componentName = dataComponent()?.componentName;
+
+    <ai-content [title]="componentName" [navigationConfig]="navigations()" [activeSummary]="activeSummary" scrolling (changeScroll)="activeSummary = $event">
+        <div class="flex flex-col gap-5" scrollSpyItem="overview" id="overview">
+            <ai-markdown mode="viewer" [markdownUrl]="`./docs/components/${componentName}/doc/overview.md`" />
+        </div>
+
+        <div class="flex flex-col gap-12" scrollingItem="examples" id="examples">
+            <section class="flex flex-col gap-4">
+                <h2 class="text-2xl font-semibold font-title mb-5">Exemplos</h2>
+
+                @for (item of dataComponent()?.examples; track $index) {
+                    <ai-code-preview [scrollingItem]="item.name"
+                        [attr.id]="item.name"
+                        [component]="item.name"
+                        [path]="`${componentName}/demo/${item.name}`"
+                        [componentType]="item.component"
+                        [demo]="item.demo"
+                        [column]="item.column" />
+                }
+            </section>
+        </div>
+
+        <footer scrollingItem="api" id="api" class="pb-6">
+            <ai-markdown mode="viewer" [markdownUrl]="`./docs/components/${componentName}/doc/api.md`" />
+        </footer>
+    </ai-content>
+}
