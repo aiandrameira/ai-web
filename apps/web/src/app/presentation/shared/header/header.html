@@ -1,0 +1,38 @@
+<div class="z-60 fixed top-0 flex items-center bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 w-full border-b border-b-border px-4 md:px-6">
+    <div class="relative flex justify-between h-14 mx-auto w-full lg:container lg:px-12">
+        <div class="flex items-center gap-x-2">
+            <ai-button variant="ghost" 
+                size="sm" 
+                shape="circle" 
+                class="flex lg:hidden"
+                [icon]="openMenu() ? 'close' : 'menu'"
+                (click)="toggleMenu()" />
+
+            <h2 class="font-semibold font-title text-primary">@ai-ui</h2>
+
+            <div class="hidden md:flex items-center gap-x-2 ml-4">
+                @for (item of items; track item.name) {
+                    <ai-button variant="ghost" size="sm" shape="circle" [routerLink]="item.path">
+                        {{ item.name }}
+                    </ai-button>
+                }
+            </div>
+        </div>
+
+        <div class="flex ml-auto items-center gap-x-2.5">
+            <div class="hidden lg:flex items-center gap-x-2.5">
+                <ai-input-search />
+
+                <ai-separator orientation="vertical" class="h-4 bg-border" />
+            </div>
+
+            <ai-button [icon]="theme() === 'dark' ? 'sun' : 'moon'" (click)="change()" size="xs" variant="ghost" />
+
+            <ai-separator orientation="vertical" class="h-4 bg-border" />
+
+            <button type="button" class="w-8 h-8 leading-8 text-ghost-foreground hover:bg-ghost hover:text-primary flex items-center justify-center rounded-md cursor-pointer text-lg font-normal">
+                <i class="ri-github-line"></i>
+            </button>
+        </div>
+    </div>
+</div>
