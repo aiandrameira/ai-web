@@ -1,0 +1,128 @@
+@use "apps/web/public/theme/app.css";
+
+.ai-markdown-preview {
+    &.ai-md-theme-light {
+        pre {
+            background-color: #f6f8fa !important;
+        }
+
+        pre code span {
+            color: var(--shiki-light) !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h4,
+        h5,
+        h6,
+        strong,
+        b {
+            @apply text-primary;
+        }
+        h1,
+        h2,
+        hr,
+        tr {
+            @apply border-border;
+        }
+        p,
+        span,
+        a,
+        li,
+        th,
+        td,
+        caption {
+            @apply text-muted-foreground;
+        }
+        a {
+            @apply hover:text-primary underline;
+        }
+        blockquote {
+            @apply border-l-primary bg-default;
+        }
+
+        table {
+            @apply rounded-md border border-border;
+        }
+        thead,
+        tbody,
+        tr {
+            @apply border-border;
+        }
+        tfoot,
+        tbody,
+        tr {
+            @apply bg-transparent;
+        }
+        tr {
+            @apply hover:bg-default;
+        }
+        th {
+            @apply text-primary bg-default;
+        }
+    }
+
+    &.ai-md-theme-dark {
+        pre {
+            background-color: #0d1117 !important;
+        }
+        pre code span {
+            color: var(--shiki-dark) !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h4,
+        h5,
+        h6,
+        strong,
+        b {
+            @apply text-white;
+        }
+        h1,
+        h2,
+        hr,
+        tr {
+            @apply border-[#262626];
+        }
+        p,
+        span,
+        a,
+        li,
+        th,
+        td,
+        caption {
+            color: oklch(0.708 0 0);
+        }
+        a {
+            @apply hover:text-white underline;
+        }
+        blockquote {
+            @apply border-l-accent bg-[#262626];
+        }
+
+        table {
+            @apply rounded-md border border-[#262626];
+        }
+        thead,
+        tbody,
+        tr {
+            @apply border-b border-[#262626];
+        }
+        tfoot,
+        tbody,
+        tr {
+            @apply bg-[#0d1117];
+        }
+        tr {
+            @apply hover:bg-[#262626];
+        }
+        th {
+            @apply text-white bg-[#0d1117];
+        }
+    }
+}
