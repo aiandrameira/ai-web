@@ -1,3 +1,4 @@
+import { AiFloatButtonTop } from "@ai-ui/components";
 import { ViewportScroller } from "@angular/common";
 import { Component, inject, input, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
@@ -7,7 +8,7 @@ import { Summary } from "../summary/summary";
 
 @Component({
     selector: "ai-content",
-    imports: [Summary],
+    imports: [Summary, AiFloatButtonTop],
     templateUrl: "./content.html",
 })
 export class Content implements OnInit {
