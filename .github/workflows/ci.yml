@@ -3,7 +3,7 @@ run-name: 🔎 Checking CLI of ${{ github.head_ref || github.ref_name }}
 
 on:
     pull_request:
-        branches: [main]
+        branches: [main, develop]
 
 jobs:
     checking_code:
@@ -25,7 +25,7 @@ jobs:
             - name: ⚙️ Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20.x
+                  node-version: 24.x
                   registry-url: "https://npm.pkg.github.com"
                   scope: "@aiandra-team"
                   always-auth: true
@@ -33,14 +33,12 @@ jobs:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
             - name: ⚒️ Install dependencies
-              run: npm install
+              run: npm install --force
               env:
                   NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
             - name: 📦 Build project
-              run: |
-                  npm run build
-                  npm run build:ui
+              run: npm run build
               continue-on-error: false
 
             - name: 🧹 Linting
