@@ -1,45 +1,22 @@
-import nx from '@nx/eslint-plugin';
+import nx from "@nx/eslint-plugin";
+import eslintPluginPrettier from "eslint-plugin-prettier";
 
 export default [
-    ...nx.configs['flat/base'],
-    ...nx.configs['flat/typescript'],
-    ...nx.configs['flat/javascript'],
+    ...nx.configs["flat/base"],
+    ...nx.configs["flat/typescript"],
+    ...nx.configs["flat/javascript"],
     {
-        ignores: ['**/dist', '**/vite.config.*.timestamp*', '**/vitest.config.*.timestamp*'],
+        ignores: ["**/dist", "node_modules/**", ".nx/**", "**/vite.config.*.timestamp*", ".angular/**", "**/vitest.config.*.timestamp*"],
     },
     {
-        files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
-        rules: {
-            '@nx/enforce-module-boundaries': [
-                'error',
-                {
-                    enforceBuildableLibDependency: true,
-                    allow: ['^.*/eslint(\\.base)?\\.config\\.[cm]?[jt]s$'],
-                    depConstraints: [
-                        {
-                            sourceTag: 'scope:shared',
-                            onlyDependOnLibsWithTags: ['scope:shared'],
-                        },
-                        {
-                            sourceTag: 'scope:shop',
-                            onlyDependOnLibsWithTags: ['scope:shop', 'scope:shared'],
-                        },
-                        {
-                            sourceTag: 'scope:api',
-                            onlyDependOnLibsWithTags: ['scope:api', 'scope:shared'],
-                        },
-                        {
-                            sourceTag: 'type:data',
-                            onlyDependOnLibsWithTags: ['type:data'],
-                        },
-                    ],
-                },
-            ],
+        files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+        plugins: {
+            prettier: eslintPluginPrettier,
         },
-    },
-    {
-        files: ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts', '**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
-        // Override or add rules here
-        rules: {},
+        rules: {
+            "no-useless-constructor": "off",
+            "no-void": "off",
+            "prettier/prettier": "error",
+        },
     },
 ];
