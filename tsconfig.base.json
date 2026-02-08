@@ -18,9 +18,30 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@package": [
+                "./package.json"
+            ],
             "@ai-ui/*": [
-                "libs/ai-ui/src/index.ts"
-            ]
+                "libs/ai-ui/src/lib/*"
+            ],
+            "@public/*": [
+                "apps/web/public/*"
+            ],
+            "@env/*": [
+                "apps/web/src/environments/*"
+            ],
+            "@core/*": [
+                "apps/web/src/app/core/*"
+            ],
+            "@domain/*": [
+                "apps/web/src/app/domain/*"
+            ],
+            "@infra/*": [
+                "apps/web/src/app/infra/*"
+            ],
+            "@views/*": [
+                "apps/web/src/app/presentation/*"
+            ],
         }
     },
     "exclude": [
