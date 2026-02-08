@@ -1,0 +1,23 @@
+@if (title()) {
+    <div [class]="headerClasses()">
+        <div class="flex items-center space-x-2 mb-4">
+            @let nameIcon = icon();
+            @if (nameIcon) {
+                <ai-icon [icon]="nameIcon" size="default" />
+            }
+            <div class="font-bold text-base font-title">
+                <ng-container *stringTemplateRef="title()">{{ title() }}</ng-container>
+            </div>
+        </div>
+
+        @if (description()) {
+            <div class="text-sm font-semibold text-justify text-muted-foreground font-text">
+                <ng-container *stringTemplateRef="description()">{{ description() }}</ng-container>
+            </div>
+        }
+    </div>
+}
+
+<div [class]="bodyClasses()">
+    <ng-content />
+</div>
