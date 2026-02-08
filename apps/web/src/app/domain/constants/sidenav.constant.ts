@@ -36,6 +36,7 @@ export const componentsPath: IComponent = {
         { name: "Badge", path: "/component/badge", available: true },
         { name: "Breadcrumb", path: "/component/breadcrumb", available: true },
         { name: "Button", path: "/component/button", available: true },
+        { name: "Button Toggle", path: "/component/button-toggle", available: true },
         { name: "Card", path: "/component/card", available: true },
         { name: "Command", path: "/component/command", available: true },
         { name: "Dialog", path: "/component/dialog", available: true },
