@@ -8,6 +8,7 @@ export * from "./card";
 export * from "./command";
 export * from "./dialog";
 export * from "./empty";
+export * from "./float-button";
 export * from "./icon";
 export * from "./loader";
 export * from "./separator";
