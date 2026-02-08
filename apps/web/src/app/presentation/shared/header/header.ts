@@ -1,4 +1,4 @@
-import { AiButton, AiSeparator } from "@ai-ui/components";
+import { AiBadge, AiButton, AiSeparator } from "@ai-ui/components";
 import { ThemeStore } from "@ai-ui/infra";
 import { Component, inject, signal } from "@angular/core";
 import { RouterLink } from "@angular/router";
@@ -9,7 +9,7 @@ import { InputSearch } from "../input-search/input-search";
 
 @Component({
     selector: "ai-header",
-    imports: [AiButton, InputSearch, AiSeparator, RouterLink],
+    imports: [AiButton, InputSearch, AiSeparator, AiBadge, RouterLink],
     templateUrl: "./header.html",
 })
 export class Header {
