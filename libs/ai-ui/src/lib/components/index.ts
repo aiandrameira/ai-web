@@ -14,3 +14,4 @@ export * from "./loader";
 export * from "./markdown";
 export * from "./separator";
 export * from "./toast";
+export * from "./tooltip";
