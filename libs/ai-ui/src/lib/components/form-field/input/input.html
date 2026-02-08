@@ -1,0 +1,125 @@
+<ng-template #inputTemplate let.inputClass>
+    <input 
+        [class]="inputClass()"
+        [attr.placeholder]="variant() === 'filled' ? placeholder() : ' '"
+        [attr.id]="id()"
+        [(ngModel)]="value"
+        (blur)="onBlur()"
+        (input)="onChange($event)"
+        [attr.maxlength]="maxlength()"
+        [attr.minlength]="minlength()"
+        [attr.type]="type() === 'password' ? (hide() ? 'text' : 'password') : type()"
+        [attr.disabled]="disabled() ? '' : null"
+        [normalize]="normalize()"
+        [normalizeConfig]="normalizeConfig()"
+        [mask]="mask()"
+        [patterns]="maskConfig()?.patterns" />
+</ng-template>
+
+<ng-template #actionsTemplate>
+    @let nameIcon = icon();
+    @if (type() === "password") {
+        <ai-button 
+            class="absolute top-2/4 -translate-y-2/4 right-2" 
+            size="xs" 
+            shape="circle" 
+            fill="line"
+            [icon]="hide() ? 'eye' : 'eye-off'" 
+            (click)="onToggleHide()"
+            [variant]="feedback().error ? 'destructive' : 'ghost'" />
+    }
+
+    @if (nameIcon) {
+        <ai-button 
+            class="absolute top-2/4 -translate-y-2/4 right-2" 
+            size="xs" 
+            shape="circle" 
+            [icon]="nameIcon" 
+            (click)="changeIcon.emit()"
+            [variant]="feedback().error ? 'destructive' : 'ghost'" />
+    }
+</ng-template>
+
+<ng-template #errorMessagesTemplate>
+    @if (feedback().error && feedback().errorMessages.length > 0) {
+            <div class="flex flex-col gap-y-1 pt-1">
+                @for (error of feedback().errorMessages; track $index) {
+                    @if (error.message) {
+                    <div class="flex items-center gap-x-1 text-xs text-destructive" role="alert">
+                        <span class="material-symbols-outlined text-xs w-3 h-3 leading-3.5">warning</span>
+                        <span>{{ error.message }}</span>
+                    </div>
+                }
+            }
+        </div>
+    }
+    
+    @if (feedback().strength && feedback().strengthRules.length > 0) {
+            <div class="grid grid-cols-2 items-center justify-between pt-1">
+                @for (rule of feedback().strengthRules; track $index) {
+                @let passed = rule.passed;
+                <div class="flex items-center gap-x-1 text-xs pt-1" [class]="passed ? 'text-success' : 'text-destructive'">
+                    <span class="material-symbols-outlined text-xs w-3 h-3 leading-none">
+                        {{ passed ? "check_circle" : "warning" }}
+                    </span>
+                    <span>{{ rule.message }}</span>
+                </div>
+            }
+        </div>
+    }
+</ng-template>
+
+@switch (variant()) {
+    @case ("filled") {
+        <div class="w-full">
+            <div class="relative">
+                <label [class]="filledLabelClass()" [attr.for]="id()">
+                    {{ label() }}
+                    @if (required()) {
+                        <span class="text-destructive">*</span>
+                    }
+                </label>
+
+                <ng-container [ngTemplateOutlet]="actionsTemplate" />
+
+                <ng-container [ngTemplateOutlet]="inputTemplate" [ngTemplateOutletContext]="{ inputClass: filledClass }" />
+            </div>
+
+            <ng-container [ngTemplateOutlet]="errorMessagesTemplate" />
+        </div>
+    }
+
+    @case ("outlined") {
+        <div class="relative w-full">
+            <ng-container [ngTemplateOutlet]="inputTemplate" [ngTemplateOutletContext]="{ inputClass: inputClass }" />
+
+            <ng-container [ngTemplateOutlet]="actionsTemplate" />
+
+            <label [attr.for]="id()" [class]="labelClass()">
+                {{ label() }}
+                @if (required()) {
+                    <span class="text-destructive">*</span>
+                }
+            </label>
+        </div>
+
+        <ng-container [ngTemplateOutlet]="errorMessagesTemplate" />
+    }
+
+    @case ("standard") {
+        <div class="relative w-full">
+            <ng-container [ngTemplateOutlet]="inputTemplate" [ngTemplateOutletContext]="{ inputClass: inputClass }" />
+
+            <ng-container [ngTemplateOutlet]="actionsTemplate" />
+
+            <label [attr.for]="id()" [class]="standardLabelClass()">
+                {{ label() }}
+                @if (required()) {
+                    <span class="text-destructive">*</span>
+                }
+            </label>
+        </div>
+
+        <ng-container [ngTemplateOutlet]="errorMessagesTemplate" />
+    }
+}
