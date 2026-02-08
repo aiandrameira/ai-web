@@ -116,6 +116,6 @@ export const badgeVariants = cva(
                 class: "text-primary border border-primary",
             },
         ],
-    }
+    },
 );
 export type BadgeVariants = VariantProps<typeof badgeVariants>;

@@ -20,7 +20,7 @@ export class ScrollDirective {
         const scrollTop = scrollingElement.scrollTop;
         const parentOffset = 0;
 
-        this.items?.forEach((item) => {
+        this.items?.forEach(item => {
             if (item.elementRef.nativeElement.offsetTop - parentOffset <= scrollTop) {
                 currentSection = item.scrollingItem();
             }

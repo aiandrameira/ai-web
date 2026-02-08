@@ -12,11 +12,11 @@ import { toastVariants } from "./toast.variants";
     encapsulation: ViewEncapsulation.None,
     template: `
         @for (position of positions; track position) {
-        <div [class]="positionContainer(position)">
-            @for (toast of toasts()[position]; track toast.id) {
-            <ai-toast-content class="w-full" [toast]="toast" (undo)="remove(toast.id)" />
-            }
-        </div>
+            <div [class]="positionContainer(position)">
+                @for (toast of toasts()[position]; track toast.id) {
+                    <ai-toast-content class="w-full" [toast]="toast" (undo)="remove(toast.id)" />
+                }
+            </div>
         }
     `,
 })

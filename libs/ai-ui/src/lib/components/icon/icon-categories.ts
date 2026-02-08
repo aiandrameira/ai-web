@@ -727,10 +727,13 @@ const CATEGORY_KEYWORDS: Record<IconCategory, readonly string[]> = {
 
 const iconNames = Object.keys(AI_ICONS);
 
-const categories: Record<IconCategory, string[]> = ICON_CATEGORY_ORDER.reduce((acc, category) => {
-    acc[category] = [];
-    return acc;
-}, {} as Record<IconCategory, string[]>);
+const categories: Record<IconCategory, string[]> = ICON_CATEGORY_ORDER.reduce(
+    (acc, category) => {
+        acc[category] = [];
+        return acc;
+    },
+    {} as Record<IconCategory, string[]>,
+);
 
 for (const icon of iconNames) {
     let matchedCategory: IconCategory | undefined;

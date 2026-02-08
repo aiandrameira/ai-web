@@ -101,6 +101,6 @@ export const buttonVariants = cva(
                 class: "bg-default/90 text-default-foreground/80 hover:bg-default hover:text-primary",
             },
         ],
-    }
+    },
 );
 export type ButtonVariants = VariantProps<typeof buttonVariants>;

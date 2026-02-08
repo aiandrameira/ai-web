@@ -21,7 +21,7 @@ import { AiLoaderService } from "../loader.service";
                     {{ loaderService.isLoading() ? "loading..." : "start progress loader" }}
                 </ai-button>
                 @if (loaderService.isLoading()) {
-                <ai-button size="sm" variant="destructive" (click)="stopLoading()"> stop </ai-button>
+                    <ai-button size="sm" variant="destructive" (click)="stopLoading()"> stop </ai-button>
                 }
             </div>
 

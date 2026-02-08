@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, EmbeddedViewRef, inject, Input, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, Directive, EmbeddedViewRef, inject, Input, OnChanges, SimpleChange, SimpleChanges, TemplateRef, ViewContainerRef } from "@angular/core";
 
 export class StringTemplateRefContext {
     public $implicit: unknown;
@@ -10,7 +10,7 @@ export function isTemplateRef<T>(value: TemplateRef<T> | unknown): value is Temp
 
 @Directive({
     selector: "[stringTemplateRef]",
-    exportAs: "stringTemplateRef"
+    exportAs: "stringTemplateRef",
 })
 export class StringTemplateRefDirective<_T = unknown> implements OnChanges {
     #viewContainer = inject(ViewContainerRef);
@@ -34,9 +34,7 @@ export class StringTemplateRefDirective<_T = unknown> implements OnChanges {
         if (!templateChange) return;
         this.#context.$implicit = templateChange.currentValue;
 
-        const recreateView =
-            (templateChange && this._hasTemplateChanged(templateChange)) ||
-            (contextChange && this._hasContextShapeChanged(contextChange));
+        const recreateView = (templateChange && this._hasTemplateChanged(templateChange)) || (contextChange && this._hasContextShapeChanged(contextChange));
 
         return recreateView ? this._recreateView() : this._updateContext();
     }
@@ -55,10 +53,7 @@ export class StringTemplateRefDirective<_T = unknown> implements OnChanges {
         this.#viewContainer.clear();
 
         if (isTemplateRef(this.stringTemplateRef)) {
-            this.#embeddedViewRef = this.#viewContainer.createEmbeddedView(
-                this.stringTemplateRef,
-                this.stringTemplateRefContext
-            );
+            this.#embeddedViewRef = this.#viewContainer.createEmbeddedView(this.stringTemplateRef, this.stringTemplateRefContext);
         } else {
             this.#embeddedViewRef = this.#viewContainer.createEmbeddedView(this.#templateRef, this.#context);
         }

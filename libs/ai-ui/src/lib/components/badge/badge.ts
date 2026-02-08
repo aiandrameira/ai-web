@@ -12,15 +12,16 @@ import { badgeVariants, BadgeVariants } from "./badge.variants";
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     template: `
-        @let nameIcon = icon(); @if (nameIcon) {
-        <ai-icon [icon]="nameIcon" size="sm" />
+        @let nameIcon = icon();
+        @if (nameIcon) {
+            <ai-icon [icon]="nameIcon" size="sm" />
         }
         <ng-content />
 
         @if (variant() === "default" && close()) {
-        <button class="h-4 cursor-pointer" (click)="closed.emit()">
-            <ai-icon [icon]="'close-circle'" size="sm" />
-        </button>
+            <button class="h-4 cursor-pointer" (click)="closed.emit()">
+                <ai-icon [icon]="'close-circle'" size="sm" />
+            </button>
         }
     `,
     host: {

@@ -27,11 +27,7 @@ export class AiIcon {
         const iconName = this.icon();
         const iconType = this.type();
 
-        if (
-            iconName.endsWith("-line") ||
-            iconName.endsWith("-fill") ||
-            AI_ICON_NO_TYPE_SET.has(iconName as any)
-        ) {
+        if (iconName.endsWith("-line") || iconName.endsWith("-fill") || AI_ICON_NO_TYPE_SET.has(iconName as any)) {
             return `ri-${iconName}`;
         }
 

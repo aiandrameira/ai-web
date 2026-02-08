@@ -8,9 +8,9 @@ import { AiLoaderService } from "./loader.service";
     encapsulation: ViewEncapsulation.None,
     template: `
         @if (visible()) {
-        <div class="pointer-events-none fixed left-0 top-0 z-9999 h-1 w-full overflow-hidden bg-transparent">
-            <div class="h-full bg-primary" [style.width.%]="progress()" [style.opacity]="opacity()" [style.transition]="'width 0.3s ease-out, opacity 0.3s ease-out'"></div>
-        </div>
+            <div class="pointer-events-none fixed left-0 top-0 z-9999 h-1 w-full overflow-hidden bg-transparent">
+                <div class="h-full bg-primary" [style.width.%]="progress()" [style.opacity]="opacity()" [style.transition]="'width 0.3s ease-out, opacity 0.3s ease-out'"></div>
+            </div>
         }
     `,
 })

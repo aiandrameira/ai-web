@@ -17,7 +17,7 @@ export class ClipboardUtil {
             return navigator.clipboard
                 .writeText(code)
                 .then(() => console.log("📋 Copiado:", code))
-                .catch((err) => {
+                .catch(err => {
                     console.error("❌ Falha ao copiar com Clipboard API:", err);
                     return this.fallbackCopy(code);
                 });

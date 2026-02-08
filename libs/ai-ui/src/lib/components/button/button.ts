@@ -12,10 +12,12 @@ import { buttonVariants, ButtonVariants } from "./button.variants";
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     template: `
-        @let nameIcon = icon(); @if (loading()) {
-        <ai-icon [icon]="'loader'" size="sm" class="animate-spin" />
-        } @if (nameIcon) {
-        <ai-icon [icon]="nameIcon" size="sm" />
+        @let nameIcon = icon();
+        @if (loading()) {
+            <ai-icon [icon]="'loader'" size="sm" class="animate-spin" />
+        }
+        @if (nameIcon) {
+            <ai-icon [icon]="nameIcon" size="sm" />
         }
 
         <ng-content />
@@ -52,7 +54,7 @@ export class AiButton {
                 loading: this.loading(),
                 disabled: this.disabled(),
             }),
-            this.class()
-        )
+            this.class(),
+        ),
     );
 }

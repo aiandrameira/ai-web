@@ -40,41 +40,42 @@ import { AI_ICONS } from "../icons";
                 </button>
 
                 @for (category of categories; track category) {
-                <button
-                    type="button"
-                    class="rounded-full border border-border px-3 py-1 text-xs transition-colors"
-                    [class.bg-primary]="selectedCategory() === category"
-                    [class.text-primary-foreground]="selectedCategory() === category"
-                    (click)="selectCategory(category)"
-                >
-                    {{ category }} ({{ getCategoryCount(category) }})
-                </button>
+                    <button
+                        type="button"
+                        class="rounded-full border border-border px-3 py-1 text-xs transition-colors"
+                        [class.bg-primary]="selectedCategory() === category"
+                        [class.text-primary-foreground]="selectedCategory() === category"
+                        (click)="selectCategory(category)"
+                    >
+                        {{ category }} ({{ getCategoryCount(category) }})
+                    </button>
                 }
             </div>
 
             <div class="text-muted-foreground text-sm">
-                {{ filteredIcons().length }} of {{ totalIcons }} icons @if (selectedCategory() !== 'All') {
-                <span>em {{ selectedCategory() }}</span>
+                {{ filteredIcons().length }} of {{ totalIcons }} icons
+                @if (selectedCategory() !== "All") {
+                    <span>em {{ selectedCategory() }}</span>
                 }
             </div>
 
             <div class="grid max-h-150 grid-cols-2 gap-4 overflow-y-auto pr-4 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4">
                 @for (iconName of filteredIcons(); track iconName) {
-                <button
-                    shape="default"
-                    class="group border border-border rounded-lg cursor-pointer flex h-auto min-h-17.5 w-full flex-col items-center justify-center gap-2 px-3 py-2"
-                    (click)="onCopy(iconName)"
-                >
-                    <ai-icon [icon]="iconName" class="shrink-0 transition-transform group-hover:scale-110" />
-                    <span class="group-hover:text-foreground w-full text-center text-xs leading-relaxed wrap-break-word hyphens-auto transition-colors">
-                        {{ iconName }}
-                    </span>
-                </button>
+                    <button
+                        shape="default"
+                        class="group border border-border rounded-lg cursor-pointer flex h-auto min-h-17.5 w-full flex-col items-center justify-center gap-2 px-3 py-2"
+                        (click)="onCopy(iconName)"
+                    >
+                        <ai-icon [icon]="iconName" class="shrink-0 transition-transform group-hover:scale-110" />
+                        <span class="group-hover:text-foreground w-full text-center text-xs leading-relaxed wrap-break-word hyphens-auto transition-colors">
+                            {{ iconName }}
+                        </span>
+                    </button>
                 }
             </div>
 
             @if (filteredIcons().length === 0) {
-            <ai-empty icon="code-block" title="Nenhum ícone encontrado" description="Tente ajustar sua consulta de pesquisa ou verifique a ortografia." />
+                <ai-empty icon="code-block" title="Nenhum ícone encontrado" description="Tente ajustar sua consulta de pesquisa ou verifique a ortografia." />
             }
         </div>
     `,
