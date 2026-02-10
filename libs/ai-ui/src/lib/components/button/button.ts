@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
 import { ClassValue } from "clsx";
+
+import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
+
 import { mergeClasses, transform } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiIconType } from "../icon/icons";
@@ -12,6 +14,7 @@ import { buttonVariants, ButtonVariants } from "./button.variants";
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     template: `
+        <ng-content />
         @let nameIcon = icon();
         @if (loading()) {
             <ai-icon [icon]="'loader'" size="sm" class="animate-spin" />
@@ -19,8 +22,6 @@ import { buttonVariants, ButtonVariants } from "./button.variants";
         @if (nameIcon) {
             <ai-icon [icon]="nameIcon" size="sm" />
         }
-
-        <ng-content />
     `,
     host: {
         "[class]": "classes()",
