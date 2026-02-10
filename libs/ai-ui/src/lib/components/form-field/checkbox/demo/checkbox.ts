@@ -1,4 +1,5 @@
 import { DemoCheckboxDefaultComponent } from "./default";
+import { DemoCheckboxDestructiveComponent } from "./destructive";
 import { DemoCheckboxDisabledComponent } from "./disabled";
 import { DemoCheckboxShapeComponent } from "./shape";
 import { DemoCheckboxSizeComponent } from "./size";
@@ -11,6 +12,10 @@ export const CHECKBOX = {
         {
             name: "default",
             component: DemoCheckboxDefaultComponent,
+        },
+        {
+            name: "destructive",
+            component: DemoCheckboxDestructiveComponent,
         },
         {
             name: "size",

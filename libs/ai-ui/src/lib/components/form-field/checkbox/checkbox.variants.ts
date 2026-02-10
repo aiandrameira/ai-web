@@ -6,7 +6,6 @@ export const checkboxVariants = cva(
         variants: {
             variant: {
                 primary: "border-primary checked:bg-primary",
-                accent: "border-accent checked:bg-accent",
                 destructive: "border-destructive checked:bg-destructive",
             },
             size: {
@@ -26,14 +25,19 @@ export const checkboxVariants = cva(
     },
 );
 
-export const checkboxLabelVariants = cva("cursor-[unset] text-current empty:hidden", {
+export const checkboxLabelVariants = cva("cursor-[unset] empty:hidden", {
     variants: {
+        variant: {
+            primary: "text-muted-foreground",
+            destructive: "text-destructive",
+        },
         size: {
             default: "text-sm",
             lg: "text-base",
         },
     },
     defaultVariants: {
+        variant: "primary",
         size: "default",
     },
 });

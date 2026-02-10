@@ -1,17 +1,19 @@
-import { Component } from "@angular/core";
-import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { Component, signal } from "@angular/core";
+import { disabled, form, FormField } from "@angular/forms/signals";
 
 import { AiCheckbox } from "../checkbox";
 
 @Component({
-    imports: [AiCheckbox, ReactiveFormsModule],
+    imports: [AiCheckbox, FormField],
     template: `
-        <div class="flex flex-col gap-y-4">
-            <ai-checkbox>Checkbox</ai-checkbox>
-            <ai-checkbox [formControl]="control">Checkbox disabled</ai-checkbox>
+        <div class="flex items-center justify-center gap-x-4 w-full max-w-sm">
+            <ai-checkbox [disabled]="true">Disabled</ai-checkbox>
+            <ai-checkbox [formField]="form">Disabled</ai-checkbox>
         </div>
     `,
 })
 export class DemoCheckboxDisabledComponent {
-    control = new FormControl({ value: true, disabled: true });
+    state = signal(true);
+
+    form = form(this.state, schema => disabled(schema));
 }

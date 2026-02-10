@@ -5,9 +5,9 @@ import { AiCheckbox } from "../checkbox";
 @Component({
     imports: [AiCheckbox],
     template: `
-        <div class="flex flex-col gap-y-4">
-            <ai-checkbox size="default">Checkbox padrão</ai-checkbox>
-            <ai-checkbox size="lg">Checkbox large</ai-checkbox>
+        <div class="flex items-center justify-center gap-x-4 w-full max-w-sm">
+            <ai-checkbox size="default">Default</ai-checkbox>
+            <ai-checkbox size="lg" [checked]="true">Large</ai-checkbox>
         </div>
     `,
 })

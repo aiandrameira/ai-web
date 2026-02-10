@@ -7,11 +7,11 @@ import { AiCheckbox } from "../checkbox";
     imports: [AiCheckbox, FormsModule],
     template: `
         <div class="flex items-center justify-center gap-x-4 w-full max-w-sm">
-            <ai-checkbox />
-            <ai-checkbox [checked]="state">Checkbox</ai-checkbox>
+            <ai-checkbox variant="destructive" />
+            <ai-checkbox variant="destructive" [checked]="state">Checkbox</ai-checkbox>
         </div>
     `,
 })
-export class DemoCheckboxDefaultComponent {
+export class DemoCheckboxDestructiveComponent {
     state = true;
 }

@@ -1,7 +1,7 @@
 import { ClassValue } from "clsx";
 
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, forwardRef, inject, Injector, input, OnInit, output, signal, ViewEncapsulation } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from "@angular/forms";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, effect, inject, input, model, output, signal, ViewEncapsulation } from "@angular/core";
+import { FormCheckboxControl } from "@angular/forms/signals";
 
 import { ChangeFn, mergeClasses, noopFn, TouchFn } from "../../../core";
 import { AiIcon } from "../../icon";
@@ -12,21 +12,11 @@ import { checkboxLabelVariants, checkboxVariants, CheckboxVariants } from "./che
     exportAs: "aiCheckbox",
     imports: [AiIcon],
     templateUrl: "./checkbox.html",
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => AiCheckbox),
-            multi: true,
-        },
-    ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
 })
-export class AiCheckbox<T = unknown> implements ControlValueAccessor, OnInit {
+export class AiCheckbox implements FormCheckboxControl {
     #cdr = inject(ChangeDetectorRef);
-    #injector = inject(Injector);
-    #ngControl: NgControl | null = null;
-    #controlStateVersion = signal(0);
 
     variant = input<CheckboxVariants["variant"]>("primary");
     size = input<CheckboxVariants["size"]>("default");
@@ -34,66 +24,28 @@ export class AiCheckbox<T = unknown> implements ControlValueAccessor, OnInit {
 
     class = input<ClassValue>("");
     id = input<string>("");
-    disabled = signal<boolean>(false);
+    disabled = input<boolean>(false);
+    value = undefined;
+    touched = model<boolean>(false);
+    checked = model<boolean>(false);
 
     changeCheck = output<boolean>();
 
-    protected _change: ChangeFn<T> = () => noopFn;
+    protected _change: ChangeFn<boolean> = () => noopFn;
     protected _touched: TouchFn = () => noopFn;
 
     protected _internalVariant = signal<CheckboxVariants["variant"] | null>(null);
 
     protected hasError = computed(() => {
-        this.#controlStateVersion();
-
-        if (!this.#ngControl) {
-            try {
-                this.#ngControl = this.#injector.get(NgControl, null, { optional: true, self: true });
-            } catch {
-                return false;
-            }
-        }
-        const control = this.#ngControl?.control;
-        return control && control.invalid && (control.dirty || control.touched);
+        return !this.checked() && this.touched();
     });
 
     protected effectiveVariant = computed(() => this._internalVariant() ?? this.variant());
-
     protected classes = computed(() => mergeClasses(checkboxVariants({ variant: this.effectiveVariant(), size: this.size(), shape: this.shape() }), this.class()));
+    protected labelClasses = computed(() => mergeClasses(checkboxLabelVariants({ size: this.size(), variant: this.effectiveVariant() }), this.class()));
 
-    protected labelClasses = computed(() => mergeClasses(checkboxLabelVariants({ size: this.size() }), this.class()));
-
-    checked = false;
-
-    ngOnInit(): void {
-        if (!this.#ngControl) {
-            this.#ngControl = this.#injector.get(NgControl, null, { optional: true, self: true });
-        }
-
-        if (this.#ngControl?.control) {
-            this.#ngControl.control.statusChanges?.subscribe(() => {
-                this.#controlStateVersion.update(v => v + 1);
-                this._updateVariant();
-                this.#cdr.markForCheck();
-            });
-        }
-    }
-
-    writeValue(val: boolean): void {
-        this.checked = val;
-        this.#cdr.markForCheck();
-    }
-
-    registerOnChange(fn: ChangeFn<T>): void {
-        this._change = fn;
-    }
-
-    registerOnTouched(fn: TouchFn): void {
-        this._touched = fn;
-    }
-
-    setDisabledState(isDisabled: boolean): void {
-        this.disabled.set(isDisabled);
+    constructor() {
+        effect(() => this._updateVariant());
     }
 
     onCheckboxBlur() {
@@ -104,21 +56,20 @@ export class AiCheckbox<T = unknown> implements ControlValueAccessor, OnInit {
     onCheckboxChange() {
         if (this.disabled()) return;
 
-        this.checked = !this.checked;
-        this._change(this.checked as boolean as unknown as T);
-        this.changeCheck.emit(this.checked);
+        this.checked.set(!this.checked());
+        this._change(this.checked() as boolean);
+        this.changeCheck.emit(this.checked());
         this.#cdr.markForCheck();
     }
 
-    onKeyboardEvent(event: KeyboardEvent): void {
+    onKeyboardEvent(event: KeyboardEvent) {
         if (event.key === " " || event.key === "Enter") {
             event.preventDefault();
             this.onCheckboxChange();
         }
     }
 
-    private _updateVariant(): void {
-        const shouldShowError = this.hasError();
-        this._internalVariant.set(shouldShowError ? "destructive" : null);
+    private _updateVariant() {
+        this._internalVariant.set(this.hasError() ? "destructive" : null);
     }
 }
