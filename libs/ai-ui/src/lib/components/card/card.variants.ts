@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const cardVariants = cva("block cursor-pointer border border-border rounded-lg w-full max-w-sm transition-colors duration-500", {
+export const cardVariants = cva("block cursor-default border border-border rounded-lg w-full max-w-sm transition-colors duration-500", {
     variants: {
         disabled: {
             true: "cursor-not-allowed pointer-events-none opacity-50",
