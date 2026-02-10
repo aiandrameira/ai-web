@@ -20,7 +20,7 @@
     @let nameIcon = icon();
     @if (type() === "password") {
         <ai-button 
-            class="absolute top-2/4 -translate-y-2/4 right-2" 
+            [class]="`${variant() === 'filled' ? 'top-[calc(50%+0.75rem)]' : 'top-2/4'} absolute -translate-y-2/4 right-2`" 
             size="xs" 
             shape="circle" 
             fill="line"
@@ -31,7 +31,7 @@
 
     @if (nameIcon) {
         <ai-button 
-            class="absolute top-2/4 -translate-y-2/4 right-2" 
+            [class]="`${variant() === 'filled' ? 'top-[calc(50%+0.75rem)]' : 'top-2/4'} absolute -translate-y-2/4 right-2`" 
             size="xs" 
             shape="circle" 
             [icon]="nameIcon" 
