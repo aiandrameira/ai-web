@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from "@angular/core";
+
 import { AiIconType } from "../icon/icons";
 import { AiToastConfig } from "./toast.config";
 
@@ -35,9 +36,9 @@ const variantMap: Record<string, ToastVariant> = {
         color: "text-destructive-foreground",
     },
     default: {
-        container: "bg-background text-primary",
+        container: "bg-background text-foreground dark:bg-default dark:text-default-foreground",
         icon: "bell",
-        bgButton: "bg-background text-primary hover:bg-primary/15",
+        bgButton: "bg-background dark:bg-default text-foreground dark:text-default-foreground hover:bg-primary/15 dark:hover:bg-primary/15",
         color: "text-primary",
     },
 };
