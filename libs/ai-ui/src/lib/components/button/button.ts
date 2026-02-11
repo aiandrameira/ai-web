@@ -17,7 +17,7 @@ import { buttonVariants, ButtonVariants } from "./button.variants";
         <ng-content />
         @let nameIcon = icon();
         @if (loading()) {
-            <ai-icon [icon]="'loader'" size="sm" class="animate-spin" />
+            <ai-icon [icon]="'loader-4'" size="sm" class="animate-spin" />
         }
         @if (nameIcon) {
             <ai-icon [icon]="nameIcon" size="sm" />

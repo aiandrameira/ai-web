@@ -1,8 +1,8 @@
-import { AiToastService } from "@ai-ui/components/toast";
 import { Component, inject, signal } from "@angular/core";
 import { form, FormField, required, submit } from "@angular/forms/signals";
 
 import { AiButton } from "../../../button";
+import { AiToastService } from "../../../toast";
 import { AiCheckbox } from "../checkbox";
 
 @Component({
