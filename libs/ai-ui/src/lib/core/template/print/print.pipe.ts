@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-    name: "prettyprint",
+    name: "aiPrint",
 })
-export class PrettyPrintPipe<T> implements PipeTransform {
+export class AiPrintPipe<T> implements PipeTransform {
     transform(value: T): string {
         const json = JSON.stringify(value, null, 4);
 
