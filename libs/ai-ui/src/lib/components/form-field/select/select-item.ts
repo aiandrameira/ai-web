@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, input, linkedSignal, signal } from "@angular/core";
+
 import { mergeClasses, noopFn, transform } from "../../../core";
 import { AiIcon } from "../../icon/icon.component";
 import { selectItemIconVariants, SelectItemModeVariants, selectItemVariants, SelectSizeVariants } from "./select.variants";
 
-interface SelectHost {
-    selectedValue(): string[];
-    selectItem(value: string, label: string): void;
+interface SelectHost<T = unknown> {
+    selectedValue(): T[];
+    selectItem(value: T, label: string): void;
     navigateTo(): void;
 }
 
@@ -36,10 +37,10 @@ interface SelectHost {
         "(keydown.{tab}.prevent)": "noopFn",
     },
 })
-export class AiSelectItem {
+export class AiSelectItem<T = unknown> {
     readonly elementRef = inject(ElementRef<HTMLElement>);
 
-    readonly value = input.required<string>();
+    readonly value = input.required<T>();
     readonly disabled = input(false, { transform });
     readonly class = input<string>("");
 

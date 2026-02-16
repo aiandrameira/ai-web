@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
+
 import { AiSelectItem } from "../select-item";
 
-interface AiLabelConfig {
-    value: string | string[] | undefined;
+interface AiLabelConfig<T = unknown> {
+    value: T | T[] | undefined;
     multiple: boolean;
     maxLabelCount: number;
     manualLabel: string;

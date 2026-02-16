@@ -1,6 +1,8 @@
+import { ClassValue } from "clsx";
+
 import { NgTemplateOutlet } from "@angular/common";
 import {
-    type AfterContentInit,
+    AfterContentInit,
     afterNextRender,
     ChangeDetectionStrategy,
     Component,
@@ -12,22 +14,22 @@ import {
     Injector,
     input,
     model,
-    type OnDestroy,
+    OnDestroy,
     output,
     runInInjectionContext,
-    type TemplateRef,
+    TemplateRef,
     viewChild,
     ViewContainerRef,
 } from "@angular/core";
 import { FormValueControl } from "@angular/forms/signals";
-import type { ClassValue } from "clsx";
+
 import { mergeClasses } from "../../../core";
 import { AiBadge } from "../../badge";
 import { AiIcon } from "../../icon/icon.component";
 import { AiSelectItem } from "./select-item";
 import { AiSelectFacade } from "./select.facade";
 import { selectContentVariants, SelectSizeVariants, selectTriggerVariants, selectVariants } from "./select.variants";
-import { AiSelectDomService, type AiSelectKeyboardContext, AiSelectKeyboardService, AiSelectLabelsService, AiSelectOverlayService, AiSelectStore } from "./services";
+import { AiSelectDomService, AiSelectKeyboardContext, AiSelectKeyboardService, AiSelectLabelsService, AiSelectOverlayService, AiSelectStore } from "./services";
 
 const COMPACT_MODE_WIDTH_THRESHOLD = 100;
 
@@ -46,7 +48,7 @@ const COMPACT_MODE_WIDTH_THRESHOLD = 100;
         "(keydown.{enter,space,arrowdown,arrowup,escape}.prevent)": "onTriggerKeydown($event)",
     },
 })
-export class AiSelect implements FormValueControl<string | string[]>, AfterContentInit, OnDestroy {
+export class AiSelect<T> implements FormValueControl<T | T[]>, AfterContentInit, OnDestroy {
     #elementRef = inject(ElementRef<HTMLElement>);
     #injector = inject(Injector);
     #viewContainerRef = inject(ViewContainerRef);
@@ -58,7 +60,7 @@ export class AiSelect implements FormValueControl<string | string[]>, AfterConte
     readonly maxLabelCount = input<number>(1);
     readonly multiple = input<boolean>(false);
 
-    readonly value = model<string | string[]>("");
+    readonly value = model<T | T[]>("" as unknown as T | T[]);
     readonly disabled = input<boolean>(false);
     readonly invalid = input<boolean>(false);
     readonly readonly = input<boolean>(false);
@@ -74,9 +76,9 @@ export class AiSelect implements FormValueControl<string | string[]>, AfterConte
     readonly class = input<ClassValue>("");
 
     readonly size = input<SelectSizeVariants>("default");
-    readonly selectedValue = model<string | string[]>(this.multiple() ? [] : "");
+    readonly selectedValue = model<T | T[]>(this.multiple() ? [] : ("" as unknown as T));
 
-    readonly selectionChange = output<string | string[]>();
+    readonly selectionChange = output<T | T[]>();
 
     readonly isOpen = this.#store.isOpen;
     readonly focusedIndex = this.#store.focusedIndex;
@@ -114,8 +116,8 @@ export class AiSelect implements FormValueControl<string | string[]>, AfterConte
         let i = 0;
         for (const item of this.selectItems()) {
             item.setSelectHost({
-                selectedValue: () => (this.multiple() ? (this.value() as string[]) : [this.value() as string]),
-                selectItem: (value: string, label: string) => this.selectItem(value, label),
+                selectedValue: () => (this.multiple() ? (this.value() as T[]) : [this.value() as T]),
+                selectItem: (value: T, label: string) => this.selectItem(value, label),
                 navigateTo: () => this._navigateTo(item, i),
             });
             item.size.set(this.size());
@@ -128,15 +130,15 @@ export class AiSelect implements FormValueControl<string | string[]>, AfterConte
         }
     }
 
-    writeValue(value: string | string[]) {
+    writeValue(value: T | T[]) {
         if (this.multiple() && Array.isArray(value)) {
             this.selectedValue.set(value);
         } else {
-            this.selectedValue.set(value ?? "");
+            this.selectedValue.set(value ?? ("" as unknown as T));
         }
     }
 
-    onChange(value: string | string[]) {
+    onChange(value: T | T[]) {
         this.value.set(value);
     }
 
@@ -173,7 +175,7 @@ export class AiSelect implements FormValueControl<string | string[]>, AfterConte
         return this.isOpen() ? this._close() : this._open();
     }
 
-    selectItem(value: string, label: string) {
+    selectItem(value: T, label: string) {
         if (value === undefined || value === null || value === "") {
             console.warn("Attempted to select item with invalid value:", { value, label });
             return;
@@ -186,7 +188,7 @@ export class AiSelect implements FormValueControl<string | string[]>, AfterConte
             return value;
         });
 
-        const updatedValue = this.value() as string | string[];
+        const updatedValue = this.value() as T | T[];
         this.onChange(updatedValue);
         this.selectionChange.emit(updatedValue);
 
@@ -325,7 +327,7 @@ export class AiSelect implements FormValueControl<string | string[]>, AfterConte
                     return;
                 }
 
-                this.selectItem(value, label);
+                this.selectItem(value as T, label);
             },
             onClose: () => this._close(),
             onFocusFirst: () => this._focusFirstItem(items),

@@ -1,6 +1,8 @@
-import { ElementRef, inject, Injectable, TemplateRef, ViewContainerRef } from "@angular/core";
 import { Subscription } from "rxjs";
-import { AiSelectKeyboardService, AiSelectOverlayService, AiSelectStore, type AiSelectKeyboardContext } from "./services";
+
+import { ElementRef, inject, Injectable, TemplateRef, ViewContainerRef } from "@angular/core";
+
+import { AiSelectKeyboardContext, AiSelectKeyboardService, AiSelectOverlayService, AiSelectStore } from "./services";
 
 export interface AiSelectOpenConfig {
     elementRef: ElementRef<HTMLElement>;
@@ -33,12 +35,12 @@ export class AiSelectFacade {
         this.#store.open();
 
         this.#keydownSub?.unsubscribe();
-        this.#keydownSub = this.#overlay.keydownEvents().subscribe(event => {
+        this.#keydownSub = this.#overlay.keydownEvents().subscribe((event: KeyboardEvent) => {
             this.#keyboard.handleDropdownKeydown(event, config.keyboardContext());
         });
 
         this.#outsideSub?.unsubscribe();
-        this.#outsideSub = this.#overlay.outsidePointerEvents().subscribe(event => {
+        this.#outsideSub = this.#overlay.outsidePointerEvents().subscribe((event: any) => {
             const target = event.target as Node | null;
             if (!target || !config.elementRef.nativeElement.contains(target)) {
                 config.onOutsideClick();
