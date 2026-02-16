@@ -25,6 +25,7 @@ export const formPaths: IComponent = {
         { name: "Checkbox", path: "/component/checkbox", available: true },
         { name: "Input", path: "/component/input", available: true },
         { name: "Select", path: "/component/select", available: true },
+        { name: "Textarea", path: "/component/textarea", available: true },
     ].sort((a, b) => a.name.localeCompare(b.name)),
 };
 

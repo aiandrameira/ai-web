@@ -18,6 +18,7 @@ import {
     MARKDOWN,
     SELECT,
     SEPARATOR,
+    TEXTAREA,
     TOAST,
     TOOLTIP,
 } from "@ai-ui/components";
@@ -57,6 +58,6 @@ const dataComponents: ComponentData[] = [
     TOAST,
     TOOLTIP,
 ];
-const formComponents: ComponentData[] = [CHECKBOX, INPUT, SELECT];
+const formComponents: ComponentData[] = [CHECKBOX, INPUT, SELECT, TEXTAREA];
 
 export const components = [...dataComponents, ...formComponents];
