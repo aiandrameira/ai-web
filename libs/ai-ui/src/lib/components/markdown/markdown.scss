@@ -3,7 +3,7 @@
 .ai-markdown-preview {
     &.ai-md-theme-light {
         pre {
-            background-color: #f6f8fa !important;
+            @apply bg-muted rounded-md;
         }
 
         pre code span {
