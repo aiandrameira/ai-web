@@ -11,7 +11,7 @@
     "[javascript]": {
         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
-    "tailwindCSS.experimental.configFile": "apps/blog/public/theme/app.css",
+    "tailwindCSS.experimental.configFile": "apps/web/public/theme/app.css",
     "editor.rulers": [
         180
     ],
