@@ -1,6 +1,8 @@
+import { ClassValue } from "clsx";
+
 import { BooleanInput } from "@angular/cdk/coercion";
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, TemplateRef, ViewEncapsulation } from "@angular/core";
-import { ClassValue } from "clsx";
+
 import { mergeClasses, StringTemplateRefDirective } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiIconType } from "../icon/icons";
@@ -14,6 +16,7 @@ import { cardBodyVariants, cardHeaderVariants, cardVariants } from "./card.varia
     encapsulation: ViewEncapsulation.None,
     templateUrl: "./card.html",
     host: {
+        "data-slot": "card",
         "[class]": "classes()",
     },
 })

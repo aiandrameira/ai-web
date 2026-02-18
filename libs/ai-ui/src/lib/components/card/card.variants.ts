@@ -14,7 +14,7 @@ export const cardHeaderVariants = cva("w-full flex flex-col text-left pt-6 px-6"
 });
 export type CardHeaderVariants = VariantProps<typeof cardHeaderVariants>;
 
-export const cardBodyVariants = cva("block mt-6 px-6 pb-6", {
+export const cardBodyVariants = cva("px-6", {
     variants: {},
 });
 export type CardBodyVariants = VariantProps<typeof cardBodyVariants>;
