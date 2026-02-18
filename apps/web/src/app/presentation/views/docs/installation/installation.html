@@ -1,0 +1,14 @@
+<ai-content [navigationConfig]="navigations()" [activeSummary]="activeSummary" scrolling (changeScroll)="activeSummary = $event">
+    <ai-heading title="Instalação" description="Como instalar dependências e estruturar seu aplicativo." />
+
+    <div class="flex flex-col gap-y-4 w-full web-container">
+        <h2>Escolha o seu ambiente</h2>
+
+        <p>
+            Comece selecionando o ambiente de sua preferência. Em seguida, siga as instruções para instalar as dependências e 
+            estruturar seu aplicativo. O <strong>AiUI</strong> foi projetado para funcionar perfeitamente com projetos Angular.
+        </p>
+
+        <ai-card-installation />
+    </div>
+</ai-content>

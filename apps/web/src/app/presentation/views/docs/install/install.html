@@ -1,0 +1,12 @@
+@let guide = installation();
+@if (guide) {
+    <ai-content [title]="guide.title" [navigationConfig]="navigations()" [activeSummary]="activeSummary">
+        <ai-heading [title]="guide.title" [description]="guide.description" scrollingItem="overview" id="overview" />
+
+        <main class="overflow-hidden transition-all duration-200 ease-in-out web-container">
+            @for (step of guide.steps; track step.title; let i = $index) {
+                <ai-step [stepProps]="step" [position]="i + 1" />
+            }
+        </main>
+    </ai-content>
+}
