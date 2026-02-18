@@ -1,37 +1,52 @@
-import { visit } from "unist-util-visit";
-
 interface FileIconMapping {
     [key: string]: string;
 }
 
-export const languageIcons: FileIconMapping = {
-    typescript: "./img/icons/typescript.svg",
-    javascript: "./img/icons/javascript.svg",
-    html: "./img/icons/html.svg",
-    css: "./img/icons/css.svg",
-    json: "./img/icons/json.svg",
-    bash: "./img/icons/terminal.svg",
-    shell: "./img/icons/terminal.svg",
-    sh: "./img/icons/terminal.svg",
-    angular: "./img/icons/angular.svg",
-    ts: "./img/icons/typescript.svg",
-    js: "./img/icons/javascript.svg",
-    mardown: "./img/icons/markdown.svg",
-    md: "./img/icons/markdown.svg",
+const fileIcons: FileIconMapping = {
+    "component.ts": "/img/icons/angular.svg",
+    "service.ts": "/img/icons/angular.svg",
+    "directive.ts": "/img/icons/angular.svg",
+    "guard.ts": "/img/icons/angular.svg",
+    "pipe.ts": "/img/icons/angular.svg",
+    "module.ts": "/img/icons/angular.svg",
+
+    ts: "/img/icons/typescript.svg",
+    html: "/img/icons/html.svg",
+    css: "/img/icons/css.svg",
+    json: "/img/icons/braces.svg",
+    md: "/img/icons/html.svg",
+    bash: "/img/icons/terminal.svg",
+    terminal: "/img/icons/terminal.svg",
+};
+
+const languageIcons: FileIconMapping = {
+    typescript: "/img/icons/typescript.svg",
+    javascript: "/img/icons/javascript.svg",
+    html: "/img/icons/html.svg",
+    css: "/img/icons/css.svg",
+    json: "/img/icons/json.svg",
+    bash: "/img/icons/terminal.svg",
+    shell: "/img/icons/terminal.svg",
+    sh: "/img/icons/terminal.svg",
+    angular: "/img/icons/angular.svg",
+    ts: "/img/icons/typescript.svg",
+    js: "/img/icons/javascript.svg",
+    markdown: "/img/icons/markdown.svg",
+    md: "/img/icons/markdown.svg",
 };
 
 export function getIconForFile(filename: string): string | null {
     if (!filename) return null;
 
-    for (const [pattern, icon] of Object.entries(languageIcons)) {
+    for (const [pattern, icon] of Object.entries(fileIcons)) {
         if (pattern.includes(".") && filename.endsWith(pattern)) {
             return icon;
         }
     }
 
     const extension = filename.split(".").pop()?.toLowerCase();
-    if (extension && languageIcons[extension]) {
-        return languageIcons[extension];
+    if (extension && fileIcons[extension]) {
+        return fileIcons[extension];
     }
 
     return null;
@@ -79,23 +94,73 @@ export function createCopyButton(codeContent: string, hasTitle = false) {
         children: [
             {
                 type: "element",
-                tagName: "i",
+                tagName: "img",
                 properties: {
-                    class: [
-                        "ri-file-copy-line",
-                        "font-normal",
-                        "text-muted-foreground",
-                        "hover:text-primary",
-                        "cursor-pointer",
-                        "hover:bg-zinc-200",
-                        "dark:hover:bg-zinc-800",
-                        "h-6",
-                        "w-6",
-                        "leading-6",
-                        "rounded-full",
-                    ],
+                    src: "/img/icons/clipboard.svg",
+                    alt: "Copy",
+                    class: ["size-4 cursor-pointer invert-0 dark:invert group-hover:scale-110 transition-transform duration-200"],
                 },
                 children: [],
+            },
+        ],
+    };
+}
+
+export function createExpandableOverlay(title: string) {
+    return {
+        type: "element",
+        tagName: "div",
+        properties: {
+            class: [
+                "absolute",
+                "top-10",
+                "inset-0",
+                "z-10",
+                "flex",
+                "items-end",
+                "justify-center",
+                "pb-8",
+                "bg-gradient-to-t",
+                "from-background",
+                "via-background/95",
+                "to-background/30",
+                "expandable-overlay",
+            ],
+        },
+        children: [
+            {
+                type: "element",
+                tagName: "button",
+                properties: {
+                    class: [
+                        "flex",
+                        "cursor-pointer",
+                        "items-center",
+                        "gap-2",
+                        "rounded-lg",
+                        "border",
+                        "border-border",
+                        "bg-default",
+                        "px-4",
+                        "py-2",
+                        "text-sm",
+                        "font-medium",
+                        "shadow-lg",
+                        "hover:bg-muted",
+                        "focus-visible:outline-none",
+                        "focus-visible:ring-2",
+                        "focus-visible:ring-ring",
+                        "focus-visible:ring-offset-2",
+                    ],
+                    onClick: "toggleExpandableCode(this)",
+                    "aria-label": `Expand ${title}`,
+                },
+                children: [
+                    {
+                        type: "text",
+                        value: title,
+                    },
+                ],
             },
         ],
     };
@@ -167,128 +232,168 @@ export function createCodeTitle(filename: string, icon: string | null, copyButto
     };
 }
 
-export function rehypeEnhancedCode() {
-    return (tree: any) => {
-        visit(tree, "element", (node: any, index: number | undefined, parent: any) => {
-            if (index === undefined || !parent) return;
-            if (node.tagName === "pre" && node.children && node.children[0]?.tagName === "code") {
-                const codeNode = node.children[0];
-                const codeContent = extractCodeContent(codeNode);
+export function extractCodeContent(node: any): string {
+    if (node.type === "text") return node.value ?? "";
+    return node.children && Array.isArray(node.children) ? node.children.map((child: any) => extractCodeContent(child)).join("") : "";
+}
 
-                const codeClasses = codeNode.properties?.className || [];
-                const languageClass = codeClasses.find((cls: string) => cls.startsWith("language-"));
-                const language = languageClass ? languageClass.replace("language-", "") : null;
+export function createTabsWrapper(codeBlocks: any[], tabLabels: string[], hasCopyButton: boolean, icon: string | null): any {
+    const tabCodeContents = codeBlocks.map(block => {
+        const codeNode = block.children?.find((child: any) => child.tagName === "pre")?.children?.[0];
+        return codeNode ? extractCodeContent(codeNode) : "";
+    });
 
-                let filename = null;
+    const tabButtons = tabLabels.map((label, tabIndex) => ({
+        type: "element",
+        tagName: "button",
+        properties: {
+            class: [
+                "px-2",
+                "py-0.5",
+                "text-sm",
+                "transition-colors",
+                "focus-visible:outline-none",
+                "focus-visible:ring-2",
+                "focus-visible:ring-ring",
+                "rounded-md",
+                tabIndex === 0 ? "bg-code-tab border border-border" : "",
+                tabIndex === 0 ? "text-foreground" : "text-muted-foreground",
+            ].filter(Boolean),
+            "data-tab": tabIndex.toString(),
+            "data-code": tabCodeContents[tabIndex],
+            onClick: `switchCodeTab(event, ${tabIndex})`,
+        },
+        children: [
+            {
+                type: "element",
+                tagName: "span",
+                properties: {
+                    class: ["inline-block"],
+                },
+                children: [
+                    {
+                        type: "text",
+                        value: label,
+                    },
+                ],
+            },
+        ],
+    }));
 
-                if (parent && index > 0) {
-                    const prevSibling = parent.children[index - 1];
-                    if (prevSibling?.tagName === "div" && prevSibling.properties?.className?.includes("rehype-code-title")) {
-                        filename = extractCodeContent(prevSibling);
-                        parent.children.splice(index - 1, 1);
-                        index = index - 1;
-                    }
-                }
+    const headerChildren = [];
 
-                if (!filename) {
-                    const meta = codeNode.data?.meta || "";
-                    const titleMatch = meta.match(/title="([^"]+)"/);
-                    filename = titleMatch ? titleMatch[1] : null;
-                }
+    if (icon?.includes("/")) {
+        headerChildren.push({
+            type: "element",
+            tagName: "img",
+            properties: {
+                src: icon,
+                alt: "",
+                class: ["h-4", "w-4", "shrink-0", "invert-0", "dark:invert"],
+            },
+            children: [],
+        });
+    }
 
-                const originalMeta = codeNode.data?.meta || "";
-                const hasShowLineNumbers = originalMeta.includes("showLineNumbers");
-                const hasCopyButton = originalMeta.includes("copyButton");
-                const hasTitle = originalMeta.includes("title");
+    headerChildren.push({
+        type: "element",
+        tagName: "div",
+        properties: {
+            class: ["flex", "items-center", "gap-1", "flex-1"],
+        },
+        children: tabButtons,
+    });
 
-                if (hasShowLineNumbers && !codeNode.properties?.["data-line-numbers"]) {
-                    const codeContent = extractCodeContent(codeNode);
-                    const lineCount = codeContent.split("\n").length;
-                    const maxDigits = lineCount.toString().length;
-
-                    codeNode.properties = {
-                        ...codeNode.properties,
-                        "data-line-numbers": "",
-                        "data-line-numbers-max-digits": maxDigits.toString(),
-                    };
-                }
-
-                let icon = null;
-                if (filename) {
-                    icon = getIconForFile(filename);
-                } else if (language) {
-                    icon = getIconForLanguage(language);
-                }
-
-                const wrapper: any = {
+    if (hasCopyButton) {
+        headerChildren.push({
+            type: "element",
+            tagName: "button",
+            properties: {
+                class: [
+                    "ml-auto",
+                    "flex",
+                    "h-6",
+                    "w-6",
+                    "items-center",
+                    "justify-center",
+                    "rounded-md",
+                    "bg-transparent",
+                    "text-muted-foreground",
+                    "transition-all",
+                    "duration-200",
+                    "ease-in-out",
+                    "hover:bg-muted",
+                    "focus-visible:outline-none",
+                    "focus-visible:ring-2",
+                    "focus-visible:ring-ring",
+                    "focus-visible:ring-offset-2",
+                    "text-[14px]",
+                ],
+                onClick: `copyTabCode(this)`,
+                "aria-label": "Copy code",
+                title: "Copy code",
+            },
+            children: [
+                {
                     type: "element",
-                    tagName: "div",
+                    tagName: "img",
                     properties: {
-                        class: [
-                            "group",
-                            "relative",
-                            "my-6",
-                            "font-code",
-                            "overflow-hidden",
-                            "rounded-lg",
-                            "border",
-                            "border-border",
-                            "bg-neutral-200/30",
-                            "dark:bg-neutral-900/40",
-                        ],
+                        src: "/img/icons/clipboard.svg",
+                        alt: "Copy",
+                        class: ["size-4 invert-0 dark:invert group-hover:scale-110 transition-transform duration-200"],
                     },
                     children: [],
-                };
-
-                if (filename || (language && icon)) {
-                    const displayTitle = filename || language;
-                    wrapper.children.push(createCodeTitle(displayTitle, icon, hasCopyButton, codeContent));
-                }
-
-                const existingPreClasses = node.properties?.class || [];
-                const existingPreProps = node.properties || {};
-
-                node.properties = {
-                    ...existingPreProps,
-                    class: [
-                        ...existingPreClasses,
-                        "relative",
-                        "overflow-x-auto",
-                        "scrollbar-hide",
-                        "bg-muted/30",
-                        "font-code",
-                        "p-4",
-                        "text-sm",
-                        "[&>code]:bg-transparent",
-                        filename || (language && icon) ? "" : "rounded-lg",
-                    ].filter(Boolean),
-                };
-
-                wrapper.children.push(node);
-
-                if (hasCopyButton && !hasTitle) {
-                    const hasTitle = !!(filename || (language && icon));
-                    wrapper.children.push(createCopyButton(codeContent, hasTitle));
-                }
-
-                parent.children[index] = wrapper;
-            }
+                },
+            ],
         });
+    }
+
+    const tabContents = codeBlocks.map((figureBlock, tabIndex) => {
+        const preNode = figureBlock.children?.find((child: any) => child.tagName === "pre");
+        if (preNode && preNode.properties) {
+            preNode.properties["data-in-tab-group"] = "true";
+            const existingClasses = preNode.properties.class || [];
+            preNode.properties.class = [...existingClasses, "rounded-none!"];
+        }
+
+        return {
+            type: "element",
+            tagName: "div",
+            properties: {
+                class: [
+                    "code-tab-content",
+                    "group",
+                    "relative",
+                    "overflow-hidden",
+                    "rounded-b-lg",
+                    "[&>figure]:rounded-none",
+                    "[&>figure]:border-none",
+                    "[&>figure]:my-0",
+                    "border",
+                    "border-border",
+                    tabIndex === 0 ? "block" : "hidden",
+                ],
+            },
+            children: figureBlock.children,
+        };
+    });
+
+    return {
+        type: "element",
+        tagName: "div",
+        properties: {
+            class: ["code-tabs-wrapper", "my-6", "[&>div:first-child]:px-4", "[&>div:first-child]:py-2", "bg-muted/50", "rounded-lg"],
+        },
+        children: [
+            {
+                type: "element",
+                tagName: "div",
+                properties: {
+                    class: ["flex", "items-center", "gap-2", "border", "border-border", "border-b-0", "bg-muted/50", "rounded-t-lg"],
+                },
+                children: headerChildren,
+            },
+            ...tabContents,
+        ],
     };
-}
-
-export function rehypeCodeTabs() {
-    return (_tree: any) => {
-        // For now, let's disable automatic tab grouping and keep it simple
-        // Users can use individual code blocks which work well with titles and copy buttons
-        // If needed later, we can add explicit tab markup support
-    };
-}
-
-function extractCodeContent(node: any): string {
-    if (node.type === "text") return node.value || "";
-
-    if (node.children && Array.isArray(node.children)) return node.children.map((child: any) => extractCodeContent(child)).join("");
-
-    return "";
 }
