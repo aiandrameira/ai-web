@@ -18,6 +18,7 @@ import {
     MARKDOWN,
     SELECT,
     SEPARATOR,
+    TABLE,
     TEXTAREA,
     TOAST,
     TOOLTIP,
@@ -55,6 +56,7 @@ const dataComponents: ComponentData[] = [
     LOADER,
     MARKDOWN,
     SEPARATOR,
+    TABLE,
     TOAST,
     TOOLTIP,
 ];

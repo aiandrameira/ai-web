@@ -1,0 +1,59 @@
+@let columns = config().columns;
+@let data = config().data;
+
+<div [class]="wrapperClass()">
+    <table class="w-full text-sm border-collapse">
+        <thead>
+            <tr [class]="headRowClass()">
+                @if (selectable()) {
+                    <th scope="col" [class]="checkboxCellClass()">
+                        <ai-checkbox [checked]="isAllSelected()" [indeterminate]="isIndeterminate()" (change)="toggleAll()" />
+                    </th>
+                }
+                @for (column of columns; track column.key) {
+                    <th
+                        scope="col"
+                        [attr.data-test]="'table-header-' + column.key"
+                        [style.width]="column.width"
+                        [class]="headCellClass(column.align)"
+                    >
+                        {{ column.label }}
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of data; track $index) {
+                <tr [class]="bodyRowClass()">
+                    @if (selectable()) {
+                        <td [class]="checkboxCellClass()">
+                            <ai-checkbox [checked]="isSelected(row)" (change)="toggleRow(row)" />
+                        </td>
+                    }
+                    @for (column of columns; track column.key) {
+                        @let template = templateMap.get(column.key);
+                        @let value = getCellValue(row, column);
+                        <td
+                            [attr.data-test]="'table-cell-' + column.key"
+                            [style.width]="column.width"
+                            [class]="bodyCellClass(column.align)"
+                        >
+                            @if (template) {
+                                <ng-container
+                                    [ngTemplateOutlet]="template"
+                                    [ngTemplateOutletContext]="{ $implicit: row }"
+                                />
+                            } @else {
+                                @if (value !== null && value !== undefined && value !== "") {
+                                    {{ value }}
+                                } @else {
+                                    <ai-badge size="sm" shape="circle" variant="default" />
+                                }
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

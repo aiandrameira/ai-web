@@ -48,6 +48,7 @@ export const componentsPath: IComponent = {
         { name: "Loader", path: "/component/loader", available: true },
         { name: "Markdown", path: "/component/markdown", available: true },
         { name: "Separator", path: "/component/separator", available: true },
+        { name: "Table", path: "/component/table", available: true },
         { name: "Toast", path: "/component/toast", available: true },
         { name: "Tooltip", path: "/component/tooltip", available: true },
     ].sort((a, b) => a.name.localeCompare(b.name)),

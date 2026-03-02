@@ -15,5 +15,6 @@ export * from "./icon";
 export * from "./loader";
 export * from "./markdown";
 export * from "./separator";
+export * from "./table";
 export * from "./toast";
 export * from "./tooltip";

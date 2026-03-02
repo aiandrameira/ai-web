@@ -28,6 +28,7 @@ export class AiCheckbox implements FormCheckboxControl {
     value = undefined;
     touched = model<boolean>(false);
     checked = model<boolean>(false);
+    indeterminate = input<boolean>(false);
 
     changeCheck = output<boolean>();
 
