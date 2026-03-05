@@ -40,8 +40,3 @@ code[data-theme*=" "] span {
 .dark code[data-theme*=" "] span {
     color: var(--shiki-dark);
 }
-
-.dark pre,
-.dark code {
-    background: var(--background, #18181b);
-}
