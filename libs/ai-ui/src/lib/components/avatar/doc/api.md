@@ -1,6 +1,8 @@
 # API
 
-## `[ai-avatar]` - Component
+[AiAvatar] - Component
+
+> O `[ai-avatar]` é um componente de avatar que exibe uma imagem, texto ou ícone para representar um usuário ou entidade.
 
 ### Propriedades
 

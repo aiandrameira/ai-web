@@ -1,6 +1,8 @@
 # API
 
-## `[ai-icon]` - Component
+[AiIcon] - Component
+
+> O `[ai-icon]` é um componente de ícone versátil que integra a biblioteca Remix Icon com suporte a variações de cor, tamanho e tipos de preenchimento.
 
 ### Propriedades
 

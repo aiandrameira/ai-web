@@ -1,6 +1,8 @@
 # API
 
-## `[ai-button-toggle]` - Component
+[AiButtonToggle] - Component
+
+> O `[ai-button-toggle]` é um componente de alternância de botões que permite selecionar um ou múltiplos valores em um grupo de opções.
 
 ### Propriedades
 

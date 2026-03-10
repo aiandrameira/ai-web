@@ -1,8 +1,8 @@
 # API
 
-## [ai-float-button] - Component/Directive
+[AiFloatButton] - Directive
 
-> `[ai-float-button]` é um componente/diretiva de botão flutuante personalizável, usado para ações rápidas na tela.
+> O `[ai-float-button]` é um componente/diretiva de botão flutuante personalizável, usado para ações rápidas na tela.
 
 ### Propriedades
 

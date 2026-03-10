@@ -1,6 +1,8 @@
 # API
 
-## `[ai-pagination]` - Component
+[AiPagination] - Component
+
+> O `[ai-pagination]` é um componente de paginação que gerencia navegação entre páginas com suporte a seleção de tamanho de página e informações detalhadas.
 
 ### Propriedades
 

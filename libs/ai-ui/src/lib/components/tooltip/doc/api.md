@@ -1,6 +1,8 @@
 # API
 
-## [`ai-tooltip`] - Directive
+[AiTooltip] - Directive
+
+> O `[ai-tooltip]` é uma diretiva que adiciona um tooltip a um elemento com suporte a múltiplas posições, triggers e delays personalizáveis.
 
 ### Propriedades
 

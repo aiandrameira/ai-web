@@ -1,6 +1,8 @@
 # API
 
-## `[ai-toast]` - Component
+[AiToast] - Component
+
+> O `[ai-toast]` é um componente de notificação que exibe mensagens temporárias em diferentes posições do ecrã com estilos variados.
 
 ### Propriedades
 

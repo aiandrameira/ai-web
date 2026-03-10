@@ -1,8 +1,8 @@
 # API
 
-## `[ai-breadcrumb]` - Component
+[AiBreadcrumb] - Component
 
-> `ai-breadcrumb` é um componente flexível e acessível que encapsula todos os outros componentes do breadcrumb, é através dele que conseguimos configurar os items através do roteamento.
+> O `[ai-breadcrumb]` é um componente flexível e acessível que encapsula todos os outros componentes do breadcrumb, é através dele que conseguimos configurar os items através do roteamento.
 
 ### Propriedades
 
@@ -14,9 +14,9 @@
 
 ---
 
-## `[ai-breadcrumb-content]` - Component
+[AiBreadcrumbContent] - Component
 
-> `ai-breadcrumb-content` é um componente flexível e acessível que renderiza uma trilha de navegação e envolve sua lista de itens.
+> `[ai-breadcrumb-content]` é um componente flexível e acessível que renderiza uma trilha de navegação e envolve sua lista de itens.
 
 ### Propriedades
 
@@ -27,9 +27,9 @@
 
 ---
 
-## `[ai-breadcrumb-list]` - Component
+[AiBreadcrumbList] - Component
 
-> `ai-breadcrumb-list` renderiza o contêiner para itens de trilha de navegação. Normalmente usado dentro do `ai-breadcrumb-content` para controlar o layout e o espaçamento.
+> `[ai-breadcrumb-list]` renderiza o contêiner para itens de trilha de navegação. Normalmente usado dentro do `[ai-breadcrumb-content]` para controlar o layout e o espaçamento.
 
 ### Propriedades
 
@@ -41,9 +41,9 @@
 
 ---
 
-## `[ai-breadcrumb-item]` - Component
+[AiBreadcrumbItem] - Component
 
-> `ai-breadcrumb-item` representa um único item na trilha de navegação e, opcionalmente, inclui um separador.
+> `[ai-breadcrumb-item]` representa um único item na trilha de navegação e, opcionalmente, inclui um separador.
 
 ### Propriedades
 
@@ -55,9 +55,9 @@
 
 ---
 
-## `[ai-breadcrumb-link]` - Component
+[AiBreadcrumbLink] - Component
 
-> `ai-breadcrumb-link` é uma âncora estilizada usada dentro de `ai-breadcrumb-item` para navegar entre níveis.
+> `[ai-breadcrumb-link]` é uma âncora estilizada usada dentro de `[ai-breadcrumb-item]` para navegar entre níveis.
 
 ### Propriedades
 
@@ -69,9 +69,9 @@
 
 ---
 
-## `[ai-breadcrumb-page]` - Component
+[AiBreadcrumbPage] - Component
 
-> `ai-breadcrumb-page` indica a página atual na trilha de navegação e renderiza com aria-current="page" para acessibilidade.
+> `[ai-breadcrumb-page]` indica a página atual na trilha de navegação e renderiza com aria-current="page" para acessibilidade.
 
 ### Propriedades
 
@@ -82,9 +82,9 @@
 
 ---
 
-## `[ai-breadcrumb-separator]` - Component
+[AiBreadcrumbSeparator] - Component
 
-> `ai-breadcrumb-separator` exibe um separador visual entre itens de trilha de navegação e suporta entradas de string e modelo.
+> `[ai-breadcrumb-separator]` exibe um separador visual entre itens de trilha de navegação e suporta entradas de string e modelo.
 
 ### Propriedades
 

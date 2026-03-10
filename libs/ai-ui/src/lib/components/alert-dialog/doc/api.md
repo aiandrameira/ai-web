@@ -1,6 +1,8 @@
 # API
 
-## `AlertDialogService` - Service
+[AlertDialogService] - Service
+
+> O `AlertDialogService` é um serviço utilizado para criar e controlar diálogos de alerta.
 
 ### Propriedades
 

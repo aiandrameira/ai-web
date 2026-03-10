@@ -1,8 +1,8 @@
 # API
 
-## `[ai-command]` - Component
+[AiCommand] - Component
 
-> `ai-command` é um componente flexível e acessível que encapsula todos os outros componentes do command, gerenciando o estado da busca, filtro e navegação de itens.
+> O `[ai-command]` é um componente flexível e acessível que encapsula todos os outros componentes do command, gerenciando o estado da busca, filtro e navegação de itens.
 
 ### Propriedades
 
@@ -20,9 +20,9 @@
 
 ---
 
-## `[ai-command-input]` - Component
+[AiCommandInput] - Component
 
-> `ai-command-input` é um componente que fornece o campo de entrada para busca de comandos e implementa ControlValueAccessor para integração com formulários.
+> `[ai-command-input]` é um componente que fornece o campo de entrada para busca de comandos e implementa ControlValueAccessor para integração com formulários.
 
 ### Propriedades
 
@@ -39,9 +39,9 @@
 
 ---
 
-## `[ai-command-list]` - Component
+[AiCommandList] - Component
 
-> `ai-command-list` renderiza o contêiner para itens e grupos de comandos. Normalmente usado dentro de `ai-command` para controlar o layout da lista.
+> `[ai-command-list]` renderiza o contêiner para itens e grupos de comandos. Normalmente usado dentro de `[ai-command]` para controlar o layout da lista.
 
 ### Propriedades
 
@@ -51,9 +51,9 @@
 
 ---
 
-## `[ai-command-item]` - Component
+[AiCommandItem] - Component
 
-> `ai-command-item` representa um único comando na paleta e pode conter ícones, labels, atalhos e estados desabilitados.
+> `[ai-command-item]` representa um único comando na paleta e pode conter ícones, labels, atalhos e estados desabilitados.
 
 ### Propriedades
 
@@ -70,9 +70,9 @@
 
 ---
 
-## `[ai-command-item-group]` - Component
+[AiCommandItemGroup] - Component
 
-> `ai-command-item-group` agrupa itens de comando com um rótulo e gerencia a visibilidade dos itens baseado na busca.
+> `[ai-command-item-group]` agrupa itens de comando com um rótulo e gerencia a visibilidade dos itens baseado na busca.
 
 ### Propriedades
 
@@ -83,9 +83,9 @@
 
 ---
 
-## `[ai-command-separator]` - Component
+[AiCommandSeparator] - Component
 
-> `ai-command-separator` exibe um separador visual entre grupos de comandos.
+> O `[ai-command-separator]` exibe um separador visual entre grupos de comandos.
 
 ### Propriedades
 
@@ -95,9 +95,9 @@
 
 ---
 
-## `[ai-command-empty]` - Component
+[AiCommandEmpty] - Component
 
-> `ai-command-empty` exibe uma mensagem quando nenhum comando é encontrado na busca.
+> `[ai-command-empty]` exibe uma mensagem quando nenhum comando é encontrado na busca.
 
 ### Propriedades
 

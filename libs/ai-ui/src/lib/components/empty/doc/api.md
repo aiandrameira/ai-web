@@ -1,6 +1,8 @@
 # API
 
-## `[ai-empty]` - Component
+[AiEmpty] - Component
+
+> O `[ai-empty]` é um componente que exibe um estado vazio com ícone, título, descrição e ações personalizáveis para indicar quando não há conteúdo disponível.
 
 ### Propriedades
 

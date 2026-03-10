@@ -1,6 +1,8 @@
 # API
 
-## `[ai-table]` - Component
+[AiTable] - Component
+
+> O `[ai-table]` é um componente de tabela avançado que gerencia dados tabulares com suporte a paginação, seleção de linhas, sorting e configuração flexível de colunas.
 
 ### Propriedades
 

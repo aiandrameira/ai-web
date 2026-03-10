@@ -1,6 +1,8 @@
 # API
 
-## `[ai-badge]` - Component
+[AiBadge] - Component
+
+> O `[ai-badge]` é um componente de badge que exibe uma pequena quantidade de informação, como um número ou um status, para destacar ou identificar algo.
 
 ### Propriedades
 
