@@ -14,6 +14,7 @@ export * from "./form-field";
 export * from "./icon";
 export * from "./loader";
 export * from "./markdown";
+export * from "./pagination";
 export * from "./separator";
 export * from "./table";
 export * from "./toast";
