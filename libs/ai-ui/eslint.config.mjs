@@ -20,7 +20,7 @@ export default [
                 "error",
                 {
                     type: "element",
-                    prefix: "ai",
+                    prefix: ["ai", "app", "demo", "ul", "li", "button", "a"],
                     style: "kebab-case",
                 },
             ],

@@ -5,9 +5,12 @@ import { ChangeDetectionStrategy, Component, computed, contentChildren, effect, 
 
 import { mergeClasses, transform } from "../../core";
 import { AiBadge } from "../badge";
+import { AiEmpty } from "../empty";
 import { AiCheckbox } from "../form-field";
+import { AiIcon } from "../icon";
+import { AiPaginationImports } from "../pagination/pagination.imports";
 import { AiCellTemplateDirective } from "./cell-template.directive";
-import { AiTableBorder, AiTableColumn, AiTableConfig, AiTableSize } from "./table.config";
+import { AiTableBorder, AiTableColumn, AiTableConfig, AiTablePagination, AiTableSize, AiTableSort } from "./table.config";
 import { tableBodyCellVariants, tableBodyRowVariants, tableCheckboxCellVariants, tableHeadCellVariants, tableHeadRowVariants, tableWrapperVariants } from "./table.variants";
 
 function alignClass(align?: "left" | "center" | "right"): string {
@@ -19,7 +22,7 @@ function alignClass(align?: "left" | "center" | "right"): string {
 @Component({
     selector: "ai-table",
     exportAs: "aiTable",
-    imports: [NgTemplateOutlet, AiBadge, AiCheckbox],
+    imports: [NgTemplateOutlet, AiBadge, AiCheckbox, AiEmpty, AiIcon, AiPaginationImports],
     templateUrl: "./table.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
@@ -28,12 +31,27 @@ export class AiTable<T = unknown> {
     readonly config = input.required<AiTableConfig<T>>();
     readonly size = input<AiTableSize>("default");
     readonly border = input<AiTableBorder>("simple");
-    readonly selectable = input<boolean, boolean | string>(false, { transform });
     readonly class = input<ClassValue>("");
+    readonly selectable = input<boolean, boolean | string>(false, { transform });
+    readonly pagination = input<AiTablePagination>();
+
     readonly selectionChange = output<T[]>();
+    readonly rowClick = output<T>();
+    readonly pageChange = output<number>();
+    readonly pageSizeChange = output<number>();
+    readonly sortChange = output<AiTableSort>();
 
     protected readonly cellTemplates = contentChildren<AiCellTemplateDirective<T>>(AiCellTemplateDirective);
     readonly templateMap = new Map<string, TemplateRef<{ $implicit: T }>>();
+
+    private readonly _sortField = signal<string | null>(null);
+    private readonly _sortDirection = signal<"asc" | "desc">("asc");
+    readonly sort = computed<AiTableSort | null>(() => {
+        const field = this._sortField();
+        return field ? { field, direction: this._sortDirection() } : null;
+    });
+
+    readonly Math = Math;
 
     private readonly _selection = signal<Set<T>>(new Set<T>());
 
@@ -94,5 +112,27 @@ export class AiTable<T = unknown> {
         const next = this.isAllSelected() ? new Set<T>() : new Set<T>(data);
         this._selection.set(next);
         this.selectionChange.emit([...next]);
+    }
+
+    toggleSort(column: AiTableColumn<T>): void {
+        if (!column.sortable) return;
+        const currentField = this._sortField();
+        if (currentField === column.key) {
+            const next = this._sortDirection() === "asc" ? "desc" : "asc";
+            this._sortDirection.set(next);
+        } else {
+            this._sortField.set(column.key);
+            this._sortDirection.set("asc");
+        }
+        this.sortChange.emit({ field: column.key, direction: this._sortDirection() });
+    }
+
+    isSortActive(column: AiTableColumn<T>): boolean {
+        return this._sortField() === column.key;
+    }
+
+    sortIcon(column: AiTableColumn<T>): "arrow-up-down" | "arrow-up" | "arrow-down" {
+        if (!this.isSortActive(column)) return "arrow-up-down";
+        return this._sortDirection() === "asc" ? "arrow-up" : "arrow-down";
     }
 }

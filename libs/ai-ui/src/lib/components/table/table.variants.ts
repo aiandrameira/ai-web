@@ -24,7 +24,7 @@ export const tableHeadRowVariants = cva("bg-muted/40 text-muted-foreground", {
     },
 });
 
-export const tableHeadCellVariants = cva("text-xs font-semibold uppercase font-title text-muted-foreground", {
+export const tableHeadCellVariants = cva("text-[10px] font-bold uppercase font-title text-primary", {
     variants: {
         size: {
             compact: "px-3 py-2",
@@ -42,7 +42,7 @@ export const tableHeadCellVariants = cva("text-xs font-semibold uppercase font-t
     },
 });
 
-export const tableBodyRowVariants = cva("transition-colors hover:bg-muted/50", {
+export const tableBodyRowVariants = cva("transition-colors hover:bg-muted/50 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed", {
     variants: {
         border: {
             simple: "border-b border-border last:border-b-0",

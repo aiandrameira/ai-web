@@ -13,9 +13,21 @@ export interface AiTableColumn<T> {
 export interface AiTableConfig<T> {
     columns: AiTableColumn<T>[];
     data: T[];
-    pageSize?: number;
+}
+
+export interface AiTableSort {
+    field: string;
+    direction: "asc" | "desc";
+}
+
+export interface AiTablePagination {
     pageIndex?: number;
+    pageSize?: number;
     totalItems?: number;
-    onPageChange?: (pageIndex: number) => void;
-    onSortChange?: (field: string, direction: "asc" | "desc") => void;
+    pageSizeOptions?: number[];
+    showInfo?: boolean;
+    showPageSize?: boolean;
+    siblingCount?: number;
+    size?: "default" | "lg" | "sm" | "xs";
+    disabled?: boolean;
 }
