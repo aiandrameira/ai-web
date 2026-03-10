@@ -1,3 +1,5 @@
+import { filter, map, of, Subject, switchMap, tap, timer } from "rxjs";
+
 import { Overlay, OverlayPositionBuilder, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal } from "@angular/cdk/portal";
 import { isPlatformBrowser } from "@angular/common";
@@ -22,7 +24,7 @@ import {
     TemplateRef,
 } from "@angular/core";
 import { takeUntilDestroyed, toObservable } from "@angular/core/rxjs-interop";
-import { filter, map, of, Subject, switchMap, tap, timer } from "rxjs";
+
 import { AiTooltip } from "./tooltip";
 import { AiDelayConfig, AiTooltipTriggers, AiTooltipType, throttle, TOOLTIP_POSITIONS_MAP } from "./tooltip.config";
 import { TooltipPositionVariants } from "./tooltip.variants";

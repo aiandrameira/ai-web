@@ -5,10 +5,10 @@ import { NgTemplateOutlet } from "@angular/common";
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, model, output, signal, ViewEncapsulation } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { FormValueControl } from "@angular/forms/signals";
-import { AiIcon } from "../../icon/icon.component";
 
 import { AiNormalizeConfig, AiNormalizeDirective, AiNormalizeType, mergeClasses } from "../../../core";
 import { AiButton } from "../../button";
+import { AiIcon } from "../../icon/icon.component";
 import { AiIconType } from "../../icon/icons";
 import { AiCurrencyMaskService } from "./currency-mask.service";
 import { inputVariants, InputVariants, labelVariants } from "./input.variants";

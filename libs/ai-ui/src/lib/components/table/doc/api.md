@@ -6,18 +6,18 @@
 
 ### Propriedades
 
-| Propriedade  | Descricao                                  | Tipo                            | Default  |
-| ------------ | ------------------------------------------ | ------------------------------- | -------- | ------------ | --------- |
-| `config`     | configuracao das colunas e dados da tabela | `AiTableConfig<T>` _(required)_ | --       |
-| `size`       | define o tamanho das celulas               | `compact                        | default  | comfortable` | `default` |
-| `border`     | define o estilo de borda                   | `simple                         | outline` | `simple`     |
-| `selectable` | define se as linhas sao selecionaveis      | `boolean`                       | `false`  |
-| `pagination` | configuracao de paginacao                  | `AiTablePagination`             | --       |
-| `class`      | classes CSS adicionais                     | `ClassValue`                    | `""`     |
+| Propriedade  | Descricao                                  | Tipo                                | Default   |
+| ------------ | ------------------------------------------ | ----------------------------------- | --------- |
+| `config`     | configuracao das colunas e dados da tabela | `AiTableConfig<T>` _(required)_     | `""`      |
+| `size`       | define o tamanho das celulas               | `compact \| default \| comfortable` | `default` |
+| `border`     | define o estilo de borda                   | `simple \| outline`                 | `simple`  |
+| `selectable` | define se as linhas sao selecionaveis      | `boolean`                           | `false`   |
+| `pagination` | configuracao de paginacao                  | `AiTablePagination`                 | `""`      |
+| `class`      | classes CSS adicionais                     | `ClassValue`                        | `""`      |
 
-### Outputs
+### Eventos
 
-| Output            | Descricao                                      | Tipo          |
+| Evento            | Descricao                                      | Tipo          |
 | ----------------- | ---------------------------------------------- | ------------- |
 | `selectionChange` | emitido quando ha mudanca na selecao de linhas | `T[]`         |
 | `rowClick`        | emitido quando uma linha da tabela e clicada   | `T`           |
@@ -25,20 +25,20 @@
 | `pageSizeChange`  | emitido quando o tamanho da pagina e alterado  | `number`      |
 | `sortChange`      | emitido quando uma coluna ordenavel e clicada  | `AiTableSort` |
 
-### Interfaces
+---
 
-#### `AiTableConfig<T>`
+[AiTableConfig<T>] - Interface
 
-```typescript
+```ts
 interface AiTableConfig<T> {
     columns: AiTableColumn<T>[];
     data: T[];
 }
 ```
 
-#### `AiTableColumn<T>`
+[AiTableColumn<T>] - Interface
 
-```typescript
+```ts
 interface AiTableColumn<T> {
     key: string;
     label: string;
@@ -49,18 +49,18 @@ interface AiTableColumn<T> {
 }
 ```
 
-#### `AiTableSort`
+[AiTableSort] - Interface
 
-```typescript
+```ts
 interface AiTableSort {
     field: string;
     direction: "asc" | "desc";
 }
 ```
 
-#### `AiTablePagination`
+[AiTablePagination] - Interface
 
-```typescript
+```ts
 interface AiTablePagination {
     pageIndex?: number;
     pageSize?: number;

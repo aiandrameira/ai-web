@@ -1,4 +1,5 @@
 import { AfterViewInit, Directive, inject, TemplateRef } from "@angular/core";
+
 import { AiBreadcrumbService } from "./breadcrumb.service";
 
 @Directive({
