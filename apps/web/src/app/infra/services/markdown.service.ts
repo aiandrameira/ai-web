@@ -212,7 +212,7 @@ export class MarkdownService {
                         node.properties = {
                             ...node.properties,
                             style: [],
-                            class: ["border-l-4", "border-primary", "pl-6", "py-2", "my-4", "text-muted-foreground", "italic"],
+                            class: ["border-l-4", "border-primary", "pl-4", "py-2", "my-4", "rounded-md", "text-muted-foreground", "[&>p]:text-sm", "italic"],
                         };
                     }
 
