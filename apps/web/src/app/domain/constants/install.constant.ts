@@ -10,7 +10,7 @@ export const stepsAngular: StepDto[] = [
             external: false,
         },
         file: {
-            path: "/docs/setup/install-angular.md",
+            path: "/docs/setup/angular/install-angular.md",
             lineNumber: false,
         },
     },
@@ -18,23 +18,33 @@ export const stepsAngular: StepDto[] = [
         title: "Instalar AiUI",
         subtitle: "Instale o AiUI usando o npm.",
         file: {
-            path: "/docs/setup/install-aiui.md",
-            lineNumber: false,
-        },
-    },
-    {
-        title: "Adicionando dependências",
-        subtitle: "Instale as dependências necessárias para o projeto.",
-        file: {
-            path: "/docs/setup/config-aiui.md",
+            path: "/docs/setup/angular/install-aiui.md",
             lineNumber: false,
         },
     },
     {
         title: "Configurando o estilo",
-        subtitle: "Configure o estilo do projeto utilizando Tailwind.",
+        subtitle:
+            "Adicione as configurações de estilo necessárias para o AiUI funcionar corretamente. Isso inclui a importação dos estilos do AiUI e a configuração do Tailwind para garantir que os estilos sejam aplicados corretamente.",
         file: {
-            path: "/docs/setup/config-style.md",
+            path: "/docs/setup/angular/config-style.md",
+            lineNumber: false,
+        },
+    },
+    {
+        title: "Adicionando dependências de ícones e fontes",
+        subtitle:
+            "Para utilizar os ícones do AiUI e as fontes personalizadas, é necessário adicionar as dependências do Remix Icon e do Google Fonts no arquivo index.html do projeto.",
+        file: {
+            path: "/docs/setup/angular/config-icon.md",
+            lineNumber: false,
+        },
+    },
+    {
+        title: "Testar a instalação",
+        subtitle: "Verifique se o AiUI está funcionando corretamente no seu projeto Angular.",
+        file: {
+            path: "/docs/setup/angular/config-aiui.md",
             lineNumber: false,
         },
     },
