@@ -1,8 +1,8 @@
 import { ClassValue } from "clsx";
 
-import { mergeClasses } from "@ai-ui/core";
 import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
 
+import { mergeClasses } from "../../core";
 import { paginationContentVariants } from "./pagination.variants";
 
 @Component({

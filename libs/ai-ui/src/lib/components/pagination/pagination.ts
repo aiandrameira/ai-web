@@ -1,9 +1,9 @@
 import { ClassValue } from "clsx";
 
-import { mergeClasses } from "@ai-ui/core";
 import { NgTemplateOutlet } from "@angular/common";
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, inject, input, model, output, TemplateRef, ViewEncapsulation } from "@angular/core";
 
+import { mergeClasses } from "../../core";
 import { ButtonVariants } from "../button/button.variants";
 import { AiSelectImports } from "../form-field";
 import { AiPaginationButton } from "./pagination-button";
