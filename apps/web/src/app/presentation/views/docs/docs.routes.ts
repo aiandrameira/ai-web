@@ -15,6 +15,11 @@ export const docsRoutes: Routes = [
                 title: "Ai • Installation",
             },
             {
+                path: "theming",
+                loadComponent: () => import("./theming/theming").then(m => m.Theming),
+                title: "Ai • Theming",
+            },
+            {
                 path: ":env",
                 loadComponent: () => import("./install/install").then(m => m.Install),
                 title: "Ai • Install",
