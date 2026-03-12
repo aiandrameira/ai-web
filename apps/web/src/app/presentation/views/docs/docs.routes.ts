@@ -5,6 +5,11 @@ export const docsRoutes: Routes = [
         path: "",
         children: [
             {
+                path: "introduction",
+                loadComponent: () => import("./introduction/introduction").then(m => m.Introduction),
+                title: "Ai • Introduction",
+            },
+            {
                 path: "installation",
                 loadComponent: () => import("./installation/installation").then(m => m.Installation),
                 title: "Ai • Installation",

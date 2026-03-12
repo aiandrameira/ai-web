@@ -12,10 +12,9 @@ interface IComponent {
 export const docsPath: IComponent = {
     title: "Começando",
     data: [
-        { name: "Introdução", path: "/docs/introduction", available: false },
+        { name: "Introdução", path: "/docs/introduction", available: true },
         { name: "Instalação", path: "/docs/installation", available: true },
         { name: "Tema", path: "/docs/theming", available: false },
-        { name: "CLI", path: "/cli/installation", available: true },
     ],
 };
 

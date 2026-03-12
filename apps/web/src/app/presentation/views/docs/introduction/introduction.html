@@ -1,0 +1,92 @@
+<ai-content [navigationConfig]="navigations()" [activeSummary]="activeSummary" scrolling (changeScroll)="activeSummary = $event">
+    <ai-heading title="Introdução" description="O AiUI é uma biblioteca de componentes Angular projetada para desenvolvedores que valorizam tanto a estética quanto a funcionalidade." />
+
+    <div class="flex flex-col gap-y-4 w-full web-container">
+        <ai-heading title="Porque AiUI?" description="" scrollingItem="overview" id="overview" />
+
+        <p>
+            o <strong>AiUI</strong> é uma biblioteca de componentes Angular moderna, projetada para unir design elegante e funcionalidade prática. 
+            Ela foi criada para resolver os desafios comuns na construção de interfaces de usuário, oferecendo uma abordagem 
+            flexível que vai além das bibliotecas tradicionais.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+            @for (item of cardWhyAiUI(); track item) {
+                <ai-card class="py-6 max-w-max">
+                    <ai-icon [icon]="item.icon" class="bg-green-600/10 text-green-500 w-8 h-8 leading-8 rounded" />
+                    <div class="flex flex-col gap-y-2 mb-4 pt-6">
+                        <h2 class="mb-0 text-primary font-title text-base">{{ item.title }}</h2>
+                        <p>
+                            {{ item.description }}
+                        </p>
+                    </div>
+                </ai-card>
+            }
+        </div>
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container">
+        <ai-heading title="Pronto para IA" description="" scrollingItem="ai-ready" id="ai-ready" />
+
+        <p>
+            O <strong>AiUI</strong> é projetado para ser totalmente compatível com as necessidades de desenvolvimento de IA, 
+            oferecendo componentes que facilitam a integração de funcionalidades de inteligência artificial 
+            em suas aplicações Angular.  Com o <strong>AiUI</strong>, você pode criar interfaces que aproveitam o poder da IA, 
+            tornando suas aplicações mais inteligentes e responsivas.
+        </p>
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container">
+        <ai-heading title="Código aberto" description="O AiUI é um projeto de código aberto, disponível para a comunidade de desenvolvedores." scrollingItem="open-source" id="open-source" />
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            @for (item of cardOpenSource(); track item) {
+                <ai-card class="py-6 max-w-max">
+                    <ai-icon [icon]="item.icon" class="bg-green-600/10 text-green-500 w-8 h-8 leading-8 rounded" />
+                    <div class="flex flex-col gap-y-2 mb-4 pt-6">
+                        <h2 class="mb-0 text-primary font-title text-base">{{ item.title }}</h2>
+                        <p class="text-left text-sm">
+                            {{ item.description }}
+                        </p>
+                    </div>
+                </ai-card>
+            }
+        </div>
+
+        <div class="py-4 bg-red-600/5 rounded px-4">
+            <div class="flex items-center gap-x-2">
+                <ai-icon icon="prohibited" class="text-red-500" size="xl" />
+                <h2 class="mb-0 text-primary font-title text-base">Não será permitido</h2>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4 mt-4">
+                @for (item of cardProhibited(); track item) {
+                    <div class="flex flex-col gap-0.5">
+                        <div class="flex items-center gap-x-1">
+                            <ai-icon icon="close" class="text-red-500" />
+                            <span class="pt-0.5 text-primary/80 font-semibold">{{ item.title }}</span>
+                        </div>
+                        <span class="pl-5 text-xs text-left">{{ item.description }}</span>
+                    </div>
+                }
+            </div>
+        </div>
+        
+        <ai-separator class="mb-8" />
+
+        <ai-card class="py-6 max-w-full mb-8">
+            <div class="flex flex-col justify-center items-center">
+                <ai-icon icon="github" class="bg-primary/5 text-primary w-10 h-10 leading-10 text-2xl rounded" />
+                <div class="flex flex-col gap-y-2 my-4 text-center">
+                    <h2 class="mb-0 text-primary font-title text-lg">Suporte código aberto</h2>
+                    <p class="max-w-lg text-center">
+                        O <strong>AiUI</strong> é um projeto de código aberto e acolhe contribuições da comunidade. 
+                        Se você tem ideias, sugestões ou melhorias, sinta-se à vontade para contribuir no nosso repositório do GitHub.
+                    </p>
+                </div>
+                <a ai-button variant="outline" size="sm"  href="https://github.com/aiandra-team/ai-web" target="_blank">
+                    Ver no GitHub
+                </a>
+            </div>
+        </ai-card>
+    </div>
+</ai-content>
