@@ -25,6 +25,11 @@ export const docsRoutes: Routes = [
                 title: "Ai • Dark Mode",
             },
             {
+                path: "about",
+                loadComponent: () => import("./about/about").then(m => m.About),
+                title: "Ai • About",
+            },
+            {
                 path: ":env",
                 loadComponent: () => import("./install/install").then(m => m.Install),
                 title: "Ai • Install",

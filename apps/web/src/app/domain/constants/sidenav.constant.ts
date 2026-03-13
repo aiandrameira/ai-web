@@ -16,6 +16,7 @@ export const docsPath: IComponent = {
         { name: "Instalação", path: "/docs/installation", available: true },
         { name: "Tema", path: "/docs/theming", available: true },
         { name: "Modo Escuro", path: "/docs/dark-mode", available: true },
+        { name: "Sobre AiUI", path: "/docs/about", available: true },
     ],
 };
 
