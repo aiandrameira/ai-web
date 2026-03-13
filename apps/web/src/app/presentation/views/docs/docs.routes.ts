@@ -30,6 +30,11 @@ export const docsRoutes: Routes = [
                 title: "Ai • About",
             },
             {
+                path: "support",
+                loadComponent: () => import("./support/support").then(m => m.Support),
+                title: "Ai • Support",
+            },
+            {
                 path: ":env",
                 loadComponent: () => import("./install/install").then(m => m.Install),
                 title: "Ai • Install",

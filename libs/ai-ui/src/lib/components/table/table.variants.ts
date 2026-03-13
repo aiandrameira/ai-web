@@ -24,7 +24,7 @@ export const tableHeadRowVariants = cva("bg-muted/40 text-muted-foreground", {
     },
 });
 
-export const tableHeadCellVariants = cva("text-[10px] font-bold uppercase font-title text-primary", {
+export const tableHeadCellVariants = cva("text-[10px] [&_span]:text-[10px] font-bold uppercase font-title text-primary", {
     variants: {
         size: {
             compact: "px-3 py-2",

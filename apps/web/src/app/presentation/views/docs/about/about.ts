@@ -1,4 +1,4 @@
-import { AiAvatar, AiCard, AiIcon, AiTooltipModule } from "@ai-ui/components";
+import { AiAvatar, AiIcon, AiTooltipModule } from "@ai-ui/components";
 import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { ScrollDirective, ScrollItemDirective } from "@core/directives";
 import { NavigationConfigDto } from "@domain/dtos";
@@ -14,7 +14,7 @@ interface iCredit {
 
 @Component({
     selector: "ai-about",
-    imports: [Heading, Content, ScrollDirective, ScrollItemDirective, AiCard, AiTooltipModule, AiAvatar, AiIcon],
+    imports: [Heading, Content, ScrollDirective, ScrollItemDirective, AiTooltipModule, AiAvatar, AiIcon],
     templateUrl: "./about.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
