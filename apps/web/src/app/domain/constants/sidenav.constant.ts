@@ -15,7 +15,7 @@ export const docsPath: IComponent = {
         { name: "Introdução", path: "/docs/introduction", available: true },
         { name: "Instalação", path: "/docs/installation", available: true },
         { name: "Tema", path: "/docs/theming", available: true },
-        { name: "Modo Escuro", path: "/docs/dark-mode", available: false },
+        { name: "Modo Escuro", path: "/docs/dark-mode", available: true },
     ],
 };
 

@@ -1,0 +1,74 @@
+<ai-content [navigationConfig]="navigations()" [activeSummary]="activeSummary" scrolling (changeScroll)="activeSummary = $event">
+    <ai-heading title="Modo escuro" description="Como ativar e configurar o modo escuro em sua aplicação." />
+
+    <div class="flex flex-col gap-y-4 w-full web-container">
+        <p>
+            O modo escuro é uma opção de tema que pode ser ativada para proporcionar uma experiência visual 
+            mais confortável em ambientes com pouca luz. O <strong>AiUI</strong> oferece suporte completo para o modo escuro, 
+            permitindo que você personalize a aparência da sua aplicação de acordo com suas preferências.
+        </p>
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="implementation" id="implementation">
+        <ai-heading title="Implementação" description="Passo a passo para ativar e configurar o modo escuro em sua aplicação." />
+
+        <p>
+            O sistema atual funciona com base na preferência do usuário, utilizando a classe <code>.dark</code> no elemento 
+            <code>body</code> para ativar o modo escuro. Dessa forma, o tema é automaticamente ajustado de acordo com as 
+            configurações do sistema operacional do usuário. Para garantir que o modo escuro seja aplicado corretamente, 
+            certifique-se de fazer o processo de implementação do <a href="">tema</a> na aplicação.
+        </p>
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="usage-in-application" id="usage-in-application">
+        <ai-heading title="Uso na aplicação" description="Descrição do uso do modo escuro na aplicação." />
+
+        <p>
+            O serviço <code>ThemeStore</code> pode ser utilizado em sua aplicação para permitir que os usuários alternem entre os temas 
+            claro e escuro. Geralmente ele é aplicado no componente <code>header</code>, que é um local comum para incluir 
+            utilizado em toda aplicação.  
+        </p>
+
+        <h3>Componente Header</h3>
+
+        <p>
+            Abaixo está um exemplo de como implementar o serviço de modo escuro no componente <code>header</code> da sua aplicação.
+        </p>
+
+        <ai-markdown mode="viewer" markdownUrl="./docs/dark-mode/usage-in-application.md" />
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container mb-8" scrollingItem="interaction" id="interaction">
+        <ai-heading title="Interação" description="Como os usuários podem interagir com o modo escuro na aplicação." />
+
+        <ai-card class="max-w-full py-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="w-full">
+                    Controle do tema
+                    <ai-badge variant="info" fill="line">
+                        {{ theme() === 'dark' ? 'escuro' : 'claro' }}
+                    </ai-badge>
+                </h2>
+
+                <div class="flex items-center gap-2 w-full justify-end">
+                    <ai-button icon="sun" (click)="onChangeTheme()" size="xs" [variant]="theme() !== 'dark' ? 'primary' : 'default'" />
+                    <ai-button icon="moon" (click)="onChangeTheme()" size="xs" [variant]="theme() === 'dark' ? 'primary' : 'default'" />
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="bg-background rounded-lg border border-border p-4">
+                    <h4 class="mb-2 font-semibold font-title text-primary">Card Example</h4>
+                    <p class="text-muted-foreground text-sm">This card automatically changes with the theme.</p>
+                </div>
+                <div class="bg-muted rounded-lg border border-border p-4">
+                    <h4 class="mb-2 font-semibold font-title text-primary">Card Example</h4>
+                    <p class="text-muted-foreground text-sm">This card automatically changes with the theme.</p>
+                </div>
+                <div class="bg-primary rounded-lg border border-border p-4">
+                    <h4 class="mb-2 font-semibold font-title text-primary-foreground">Card Example</h4>
+                    <p class="text-primary-foreground/70 text-sm">This card automatically changes with the theme.</p>
+                </div>
+            </div>
+        </ai-card>
+    </div>
+</ai-content>

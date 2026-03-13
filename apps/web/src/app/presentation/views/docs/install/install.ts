@@ -1,14 +1,14 @@
 import { Component, DestroyRef, inject, OnInit, signal } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { ActivatedRoute, Router } from "@angular/router";
-import { ScrollDirective, ScrollItemDirective } from "@core/directives";
+import { ScrollItemDirective } from "@core/directives";
 import { installations } from "@domain/constants";
 import { InstallDto, NavigationConfigDto } from "@domain/dtos";
 import { Content, Heading, Step } from "@views/shared";
 
 @Component({
     selector: "ai-install",
-    imports: [Content, Heading, ScrollDirective, Step, ScrollItemDirective],
+    imports: [Content, Heading, Step, ScrollItemDirective],
     templateUrl: "./install.html",
 })
 export class Install implements OnInit {
