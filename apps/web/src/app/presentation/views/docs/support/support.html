@@ -10,7 +10,7 @@
     </div>
 
     <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="policy" id="policy">
-        <ai-heading title="Política" description="" />
+        <ai-heading title="Política" heading="h3" description="" />
 
         <p>
             O <strong>AiUI</strong> mantém compatibilidade com versões anteriores do Angular, 
@@ -20,7 +20,7 @@
     </div>
 
     <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="status" id="status">
-        <ai-heading title="Status" description="Acompanhe o status atual do AiUI e suas atualizações e compatibilidade." />
+        <ai-heading title="Status" heading="h3" description="Acompanhe o status atual do AiUI e suas atualizações e compatibilidade." />
 
         <ai-table [config]="config()">
             <ng-template aiCellTemplate="status" let-item>
@@ -32,7 +32,7 @@
     </div>
     
     <div class="flex flex-col gap-y-4 w-full web-container mb-8" scrollingItem="upgrade" id="upgrade">
-        <ai-heading title="Atualizações" description="Quando uma nova versão do AiUI é lançada, seguimos os seguintes processos:" />
+        <ai-heading title="Atualizações" heading="h3" description="Quando uma nova versão do AiUI é lançada, seguimos os seguintes processos:" />
 
         <ul class="flex flex-col gap-y-4">
             <li class="flex items-start gap-x-2">
