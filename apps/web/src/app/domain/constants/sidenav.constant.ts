@@ -27,7 +27,10 @@ export const formPaths: IComponent = {
         { name: "Autocomplete", path: "/component/autocomplete", available: true },
         { name: "Checkbox", path: "/component/checkbox", available: true },
         { name: "Input", path: "/component/input", available: true },
+        { name: "Radio", path: "/component/radio", available: true },
+        { name: "Segmented", path: "/component/segmented", available: true },
         { name: "Select", path: "/component/select", available: true },
+        { name: "Switch", path: "/component/switch", available: true },
         { name: "Textarea", path: "/component/textarea", available: true },
     ].sort((a, b) => a.name.localeCompare(b.name)),
 };

@@ -18,8 +18,11 @@ import {
     LOADER,
     MARKDOWN,
     PAGINATION,
+    RADIO,
+    SEGMENTED,
     SELECT,
     SEPARATOR,
+    SWITCH,
     TABLE,
     TEXTAREA,
     TOAST,
@@ -63,6 +66,6 @@ const dataComponents: ComponentData[] = [
     TOAST,
     TOOLTIP,
 ];
-const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, INPUT, SELECT, TEXTAREA];
+const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, INPUT, RADIO, SEGMENTED, SELECT, SWITCH, TEXTAREA];
 
 export const components = [...dataComponents, ...formComponents];

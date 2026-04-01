@@ -33,7 +33,13 @@ export class AiAutocompleteConfig<T, Key = unknown> {
     filter(search: string): T[] {
         if (!search) return this.data;
         const lower = search.toLowerCase();
-        return this.data.filter(item => this.keyword.some(key => String(item[key] ?? "").toLowerCase().includes(lower)));
+        return this.data.filter(item =>
+            this.keyword.some(key =>
+                String(item[key] ?? "")
+                    .toLowerCase()
+                    .includes(lower),
+            ),
+        );
     }
 
     findByValue(value: Key | null | undefined): T | undefined {
