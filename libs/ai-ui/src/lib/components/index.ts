@@ -1,3 +1,4 @@
+export * from "./accordion";
 export * from "./alert";
 export * from "./alert-dialog";
 export * from "./avatar";
@@ -18,6 +19,7 @@ export * from "./loader";
 export * from "./markdown";
 export * from "./pagination";
 export * from "./separator";
+export * from "./stepper";
 export * from "./table";
 export * from "./toast";
 export * from "./tooltip";

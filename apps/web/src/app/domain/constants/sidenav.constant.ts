@@ -39,6 +39,7 @@ export const formPaths: IComponent = {
 export const componentsPath: IComponent = {
     title: "Componentes",
     data: [
+        { name: "Accordion", path: "/component/accordion", available: true },
         { name: "Alert", path: "/component/alert", available: true },
         { name: "Alert Dialog", path: "/component/alert-dialog", available: true },
         { name: "Avatar", path: "/component/avatar", available: true },
@@ -58,6 +59,7 @@ export const componentsPath: IComponent = {
         { name: "Markdown", path: "/component/markdown", available: true },
         { name: "Pagination", path: "/component/pagination", available: true },
         { name: "Separator", path: "/component/separator", available: true },
+        { name: "Stepper", path: "/component/stepper", available: true },
         { name: "Table", path: "/component/table", available: true },
         { name: "Toast", path: "/component/toast", available: true },
         { name: "Tooltip", path: "/component/tooltip", available: true },

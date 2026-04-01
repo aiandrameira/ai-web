@@ -1,4 +1,5 @@
 import {
+    ACCORDION,
     ALERT,
     ALERT_DIALOG,
     AUTOCOMPLETE,
@@ -25,6 +26,7 @@ import {
     SEGMENTED,
     SELECT,
     SEPARATOR,
+    STEPPER,
     SWITCH,
     TABLE,
     TEXTAREA,
@@ -48,6 +50,7 @@ export interface ComponentData {
 }
 
 const dataComponents: ComponentData[] = [
+    ACCORDION,
     ALERT,
     ALERT_DIALOG,
     AVATAR,
@@ -67,6 +70,7 @@ const dataComponents: ComponentData[] = [
     MARKDOWN,
     PAGINATION,
     SEPARATOR,
+    STEPPER,
     TABLE,
     TOAST,
     TOOLTIP,

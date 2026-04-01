@@ -1,0 +1,77 @@
+@if (orientation() === 'horizontal') {
+    <div [class]="headerClasses()">
+        @for (step of steps(); track step; let i = $index; let last = $last) {
+            <button
+                type="button"
+                class="flex items-center gap-2 cursor-pointer disabled:cursor-default disabled:opacity-50"
+                (click)="selectStep(i)"
+                [disabled]="isStepDisabled(i)">
+                <div [class]="circleClasses(i)">
+                    @if (step.isCompleted() && i !== selectedIndex()) {
+                        <ai-icon icon="check" size="sm" />
+                    } @else {
+                        {{ i + 1 }}
+                    }
+                </div>
+                <div class="flex flex-col items-start">
+                    <span [class]="labelClasses(i)">{{ step.label() }}</span>
+                    @if (step.optional()) {
+                        <span class="text-xs text-muted-foreground">Opcional</span>
+                    }
+                </div>
+            </button>
+            @if (!last) {
+                <div [class]="connectorClasses(i)"></div>
+            }
+        }
+    </div>
+
+    @for (step of steps(); track step; let i = $index) {
+        <div [style.display]="i === selectedIndex() ? 'block' : 'none'">
+            <ng-container [ngTemplateOutlet]="step.content()" />
+        </div>
+    }
+} @else {
+    @for (step of steps(); track step; let i = $index; let last = $last) {
+        <div class="flex gap-x-3">
+            <div class="flex flex-col items-center">
+                <button
+                    type="button"
+                    class="flex items-center justify-center cursor-pointer disabled:pointer-events-none disabled:opacity-50"
+                    (click)="selectStep(i)"
+                    [disabled]="isStepDisabled(i)">
+                    <div [class]="circleClasses(i)">
+                        @if (step.isCompleted() && i !== selectedIndex()) {
+                            <ai-icon icon="check" size="sm" />
+                        } @else {
+                            {{ i + 1 }}
+                        }
+                    </div>
+                </button>
+                @if (!last) {
+                    <div [class]="connectorClasses(i)"></div>
+                }
+            </div>
+
+            <div class="flex flex-col flex-1 min-w-0" [class.pb-4]="!last">
+                <button
+                    type="button"
+                    class="flex items-center h-8 w-full text-left cursor-pointer disabled:pointer-events-none disabled:opacity-50"
+                    (click)="selectStep(i)"
+                    [disabled]="isStepDisabled(i)">
+                    <div class="flex flex-col items-start">
+                        <span [class]="labelClasses(i)">{{ step.label() }}</span>
+                        @if (step.optional()) {
+                            <span class="text-xs text-muted-foreground">Opcional</span>
+                        }
+                    </div>
+                </button>
+                @if (i === selectedIndex()) {
+                    <div class="pt-1 pb-2">
+                        <ng-container [ngTemplateOutlet]="step.content()" />
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}
