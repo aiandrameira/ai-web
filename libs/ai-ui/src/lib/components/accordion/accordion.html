@@ -1,0 +1,30 @@
+<button
+    type="button"
+    [class]="headerClasses()"
+    (click)="toggle()"
+    [disabled]="disabled()"
+    [attr.aria-expanded]="isExpanded()">
+    <div class="flex items-center gap-2 shrink-0">
+        @let nameIcon = icon();
+        @if (nameIcon) {
+            <ai-icon [icon]="nameIcon" size="sm" class="shrink-0" />
+        }
+        <span class="font-medium text-sm">{{ title() }}</span>
+    </div>
+    @if (description(); as desc) {
+        <span class="flex-1 text-sm text-muted-foreground">{{ desc }}</span>
+    } @else {
+        <span class="flex-1"></span>
+    }
+    @if (!hideToggle()) {
+        <ai-icon icon="arrow-down-s" size="sm" [class]="toggleClasses()" />
+    }
+</button>
+
+<div [class]="contentClasses()">
+    <div class="overflow-hidden">
+        <div class="pb-4 pt-1 px-4">
+            <ng-content />
+        </div>
+    </div>
+</div>
