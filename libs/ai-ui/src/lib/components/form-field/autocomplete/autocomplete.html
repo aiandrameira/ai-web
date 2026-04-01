@@ -28,7 +28,7 @@
             </button>
         }
         <span class="inline-flex items-center justify-center py-0.5 pl-1 pr-2 text-muted-foreground">
-            <ai-icon icon="search" size="sm" />
+            <ai-icon icon="search" size="sm" [class]="hasError() ? 'text-destructive' : 'text-muted-foreground'" />
         </span>
     </div>
 </div>
