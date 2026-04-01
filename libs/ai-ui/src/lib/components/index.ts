@@ -6,6 +6,7 @@ export * from "./breadcrumb";
 export * from "./button";
 export * from "./button-toggle";
 export * from "./card";
+export * from "./carousel";
 export * from "./command";
 export * from "./date-picker";
 export * from "./dialog";
