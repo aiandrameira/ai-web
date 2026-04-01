@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { componentsPath } from "@domain/constants";
+import { componentsPath, formPaths } from "@domain/constants";
 import { Content, Heading } from "@views/shared";
 
 @Component({
@@ -10,5 +10,5 @@ import { Content, Heading } from "@views/shared";
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ComponentList {
-    protected components = [...componentsPath.data];
+    protected components = [...componentsPath.data, ...formPaths.data];
 }
