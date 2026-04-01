@@ -22,16 +22,21 @@ import {
     LOADER,
     MARKDOWN,
     PAGINATION,
+    PROGRESS_BAR,
     RADIO,
     SEGMENTED,
     SELECT,
     SEPARATOR,
+    SKELETON,
     STEPPER,
     SWITCH,
     TABLE,
+    TABS,
     TEXTAREA,
     TOAST,
     TOOLTIP,
+    TREE,
+    UPLOAD,
 } from "@ai-ui/components";
 import { ComponentType } from "@angular/cdk/overlay";
 
@@ -69,11 +74,16 @@ const dataComponents: ComponentData[] = [
     LOADER,
     MARKDOWN,
     PAGINATION,
+    PROGRESS_BAR,
     SEPARATOR,
+    SKELETON,
     STEPPER,
     TABLE,
+    TABS,
     TOAST,
     TOOLTIP,
+    TREE,
+    UPLOAD,
 ];
 const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, DATETIME, INPUT, RADIO, SEGMENTED, SELECT, SWITCH, TEXTAREA];
 

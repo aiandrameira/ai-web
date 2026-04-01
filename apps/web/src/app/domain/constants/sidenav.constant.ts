@@ -58,11 +58,16 @@ export const componentsPath: IComponent = {
         { name: "Loader", path: "/component/loader", available: true },
         { name: "Markdown", path: "/component/markdown", available: true },
         { name: "Pagination", path: "/component/pagination", available: true },
+        { name: "Progress Bar", path: "/component/progress-bar", available: true },
         { name: "Separator", path: "/component/separator", available: true },
+        { name: "Skeleton", path: "/component/skeleton", available: true },
         { name: "Stepper", path: "/component/stepper", available: true },
         { name: "Table", path: "/component/table", available: true },
+        { name: "Tabs", path: "/component/tabs", available: true },
         { name: "Toast", path: "/component/toast", available: true },
         { name: "Tooltip", path: "/component/tooltip", available: true },
+        { name: "Tree", path: "/component/tree", available: true },
+        { name: "Upload", path: "/component/upload", available: true },
     ].sort((a, b) => a.name.localeCompare(b.name)),
 };
 
