@@ -24,6 +24,7 @@ export const docsPath: IComponent = {
 export const formPaths: IComponent = {
     title: "Formulário",
     data: [
+        { name: "Autocomplete", path: "/component/autocomplete", available: true },
         { name: "Checkbox", path: "/component/checkbox", available: true },
         { name: "Input", path: "/component/input", available: true },
         { name: "Select", path: "/component/select", available: true },

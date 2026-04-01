@@ -1,6 +1,7 @@
 import {
     ALERT,
     ALERT_DIALOG,
+    AUTOCOMPLETE,
     AVATAR,
     BADGE,
     BREADCRUMB,
@@ -62,6 +63,6 @@ const dataComponents: ComponentData[] = [
     TOAST,
     TOOLTIP,
 ];
-const formComponents: ComponentData[] = [CHECKBOX, INPUT, SELECT, TEXTAREA];
+const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, INPUT, SELECT, TEXTAREA];
 
 export const components = [...dataComponents, ...formComponents];
