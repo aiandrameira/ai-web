@@ -10,6 +10,8 @@ import {
     CARD,
     CHECKBOX,
     COMMAND,
+    DATE_PICKER,
+    DATETIME,
     DIALOG,
     EMPTY,
     FLOAT_BUTTON,
@@ -54,6 +56,7 @@ const dataComponents: ComponentData[] = [
     BUTTON_TOGGLE,
     CARD,
     COMMAND,
+    DATE_PICKER,
     DIALOG,
     EMPTY,
     FLOAT_BUTTON,
@@ -66,6 +69,6 @@ const dataComponents: ComponentData[] = [
     TOAST,
     TOOLTIP,
 ];
-const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, INPUT, RADIO, SEGMENTED, SELECT, SWITCH, TEXTAREA];
+const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, DATETIME, INPUT, RADIO, SEGMENTED, SELECT, SWITCH, TEXTAREA];
 
 export const components = [...dataComponents, ...formComponents];

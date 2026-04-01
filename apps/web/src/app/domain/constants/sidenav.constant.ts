@@ -26,6 +26,7 @@ export const formPaths: IComponent = {
     data: [
         { name: "Autocomplete", path: "/component/autocomplete", available: true },
         { name: "Checkbox", path: "/component/checkbox", available: true },
+        { name: "Datetime", path: "/component/datetime", available: true },
         { name: "Input", path: "/component/input", available: true },
         { name: "Radio", path: "/component/radio", available: true },
         { name: "Segmented", path: "/component/segmented", available: true },
@@ -47,6 +48,7 @@ export const componentsPath: IComponent = {
         { name: "Button Toggle", path: "/component/button-toggle", available: true },
         { name: "Card", path: "/component/card", available: true },
         { name: "Command", path: "/component/command", available: true },
+        { name: "Date Picker", path: "/component/date-picker", available: true },
         { name: "Dialog", path: "/component/dialog", available: true },
         { name: "Empty", path: "/component/empty", available: true },
         { name: "Icon", path: "/component/icon", available: true },

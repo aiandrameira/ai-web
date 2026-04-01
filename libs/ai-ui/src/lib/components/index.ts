@@ -7,6 +7,7 @@ export * from "./button";
 export * from "./button-toggle";
 export * from "./card";
 export * from "./command";
+export * from "./date-picker";
 export * from "./dialog";
 export * from "./empty";
 export * from "./float-button";
