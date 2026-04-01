@@ -1,0 +1,19 @@
+<div [class]="containerClasses()" role="radiogroup">
+    @for (item of items(); track item.value) {
+        <button
+            type="button"
+            role="radio"
+            [attr.aria-checked]="isActive(item.value)"
+            [attr.data-active]="isActive(item.value) ? '' : null"
+            [class]="itemClasses()"
+            [disabled]="disabled() || item.disabled"
+            (click)="onSelect(item)">
+            @if (item.icon) {
+                <ai-icon [icon]="item.icon" size="xs" />
+            }
+            @if (item.label) {
+                <span>{{ item.label }}</span>
+            }
+        </button>
+    }
+</div>
