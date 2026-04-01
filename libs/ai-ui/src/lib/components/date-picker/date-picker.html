@@ -1,0 +1,57 @@
+<button type="button" [class]="triggerClasses()" [disabled]="disabled()" (click)="toggle()">
+    <span class="truncate">
+        @if (displayValue()) {
+            {{ displayValue() }}
+        } @else {
+            <span class="text-muted-foreground">{{ placeholder() }}</span>
+        }
+    </span>
+    <ai-icon icon="calendar" size="default" class="text-muted-foreground" />
+</button>
+
+<ng-template #calendarTemplate>
+    <div [class]="calendarClasses()">
+        <div class="flex items-center justify-between mb-2">
+            <button type="button" class="inline-flex items-center justify-center size-7 rounded-md hover:bg-primary hover:text-primary-foreground" (click)="prevYear()">
+                <ai-icon icon="arrow-left-double" size="sm" />
+            </button>
+            <button type="button" class="inline-flex items-center justify-center size-7 rounded-md hover:bg-primary hover:text-primary-foreground" (click)="prevMonth()">
+                <ai-icon icon="arrow-left-s" size="sm" />
+            </button>
+            <span class="text-sm font-medium">{{ monthLabel() }}</span>
+            <button type="button" class="inline-flex items-center justify-center size-7 rounded-md hover:bg-primary hover:text-primary-foreground" (click)="nextMonth()">
+                <ai-icon icon="arrow-right-s" size="sm" />
+            </button>
+            <button type="button" class="inline-flex items-center justify-center size-7 rounded-md hover:bg-primary hover:text-primary-foreground" (click)="nextYear()">
+                <ai-icon icon="arrow-right-double" size="sm" />
+            </button>
+        </div>
+
+        <div class="grid grid-cols-7 gap-1 text-center mb-1">
+            @for (day of weekdays; track $index) {
+                <div class="text-xs font-medium text-muted-foreground py-1">{{ day }}</div>
+            }
+        </div>
+
+            @for (week of calendarMonth().weeks; track $index) {
+                <div class="grid grid-cols-7 gap-1">
+                @for (day of week; track day.date.getTime()) {
+                    <button
+                        type="button"
+                        [disabled]="day.isDisabled"
+                        [class]="[
+                            'inline-flex items-center justify-center size-8 rounded-md text-sm transition-colors',
+                            !day.isCurrentMonth ? 'text-muted-foreground/40' : '',
+                            day.isToday && !day.isSelected ? 'text-primary font-bold' : '', 
+                            day.isSelected ? 'bg-primary text-primary-foreground' : '', 
+                            day.isDisabled ? 'pointer-events-none opacity-50' : 'hover:bg-primary hover:text-primary-foreground',
+                            !day.isSelected && !day.isDisabled ? 'hover:bg-primary hover:text-primary-foreground' : '',
+                        ].join(' ')"
+                        (click)="selectDay(day.date)">
+                        {{ day.day }}
+                    </button>
+                }
+            </div>
+        }
+    </div>
+</ng-template>
