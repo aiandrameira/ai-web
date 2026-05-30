@@ -1,3 +1,3 @@
 ```bash title="Terminal" copyButton
-npm install @aiandra-team/ai-ui
+npm install @aiandrameira/ai-ui
 ```

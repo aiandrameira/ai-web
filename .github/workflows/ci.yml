@@ -29,7 +29,7 @@ jobs:
               with:
                   node-version: 24.x
                   registry-url: "https://npm.pkg.github.com"
-                  scope: "@aiandra-team"
+                  scope: "@aiandrameira"
                   always-auth: true
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

@@ -1,5 +1,5 @@
 ```css title="styles.css"  expandable="true" showLineNumbers copyButton
-@source "../node_modules/@aiandra-team/ai-ui";
+@source "../node_modules/@aiandrameira/ai-ui";
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));

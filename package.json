@@ -1,12 +1,12 @@
 {
-    "name": "@org/source",
+    "name": "@aiandrameira/ai-web",
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
         "dev": "npx nx run web:serve --configuration=local --port=4222",
         "build:ui": "npx nx run ai-ui:build",
         "build": "npx nx run web:build",
-        "build:cli": "cd ./projects/cli & npm run build & npm link",
+        "build:cli": "cd projects/cli && npm install && npm run build && npm link",
         "pub": "cp .npmrc dist/libs/ai-ui && cd dist/libs/ai-ui && npm publish",
         "lint": "eslint . --fix",
         "prepare": "husky",

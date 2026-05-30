@@ -1,5 +1,5 @@
 {
-    "name": "@aiandra-team/ai-ui",
+    "name": "@aiandrameira/ai-ui",
     "version": "1.0.8",
     "sideEffects": false,
     "peerDependencies": {
