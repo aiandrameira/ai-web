@@ -1,0 +1,70 @@
+<div class="relative w-full">
+    <input
+        [class]="inputClass()"
+        [attr.placeholder]="' '"
+        [attr.id]="id()"
+        [value]="searchText()"
+        (input)="onInput($event)"
+        (focus)="onFocus()"
+        (keydown)="onKeydown($event)"
+        [attr.disabled]="disabled() ? '' : null"
+        [attr.readonly]="readonly() ? '' : null"
+        autocomplete="off" />
+
+    <label [attr.for]="id()" [class]="labelClass()">
+        {{ label() }}
+        @if (required()) {
+            <span class="text-destructive">*</span>
+        }
+    </label>
+
+    <div class="absolute top-2/4 -translate-y-2/4 right-2 flex items-center gap-0.5">
+        @if (hasValue() && !disabled() && !readonly()) {
+            <button
+                type="button"
+                class="inline-flex items-center cursor-pointer justify-center rounded-full p-0.5 text-muted-foreground hover:text-foreground transition-colors"
+                (mousedown)="onClear($event)">
+                <ai-icon icon="close-circle" size="sm" />
+            </button>
+        }
+        <span class="inline-flex items-center justify-center py-0.5 pl-1 pr-2 text-muted-foreground">
+            <ai-icon icon="search" size="sm" [class]="hasError() ? 'text-destructive' : 'text-muted-foreground'" />
+        </span>
+    </div>
+</div>
+
+@if (hasError() && errorMessages().length > 0) {
+    <div class="flex flex-col gap-y-1 pt-1">
+        @for (msg of errorMessages(); track $index) {
+            <div class="flex items-center gap-x-1 text-xs text-destructive" role="alert">
+                <ai-icon icon="alert" size="xs" class="text-destructive" />
+                <span>{{ msg }}</span>
+            </div>
+        }
+    </div>
+}
+
+<ng-template #dropdownTemplate>
+    <div [class]="dropdownClass()" role="listbox" tabindex="-1">
+        <div class="p-1 max-h-60 overflow-y-auto scrollbar-hide">
+            @for (item of filteredItems(); track $index) {
+                <div
+                    role="option"
+                    tabindex="-1"
+                    [class]="itemClass($index)"
+                    [attr.data-selected]="isItemSelected(item) ? '' : null"
+                    [attr.aria-selected]="isItemSelected(item)"
+                    (mousedown)="selectItem(item)">
+                    <span class="truncate flex-1">{{ getDisplayLabel(item) }}</span>
+                    @if (isItemSelected(item)) {
+                        <ai-icon icon="check-double" size="xs" class="shrink-0 text-primary" />
+                    }
+                </div>
+            } @empty {
+                <div class="py-6 text-center text-sm text-muted-foreground">
+                    Nenhum resultado encontrado
+                </div>
+            }
+        </div>
+    </div>
+</ng-template>

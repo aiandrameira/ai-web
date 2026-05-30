@@ -7,26 +7,20 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { visit } from "unist-util-visit";
 
-import { Injectable, signal } from "@angular/core";
-import { rehypeCodeTabs, rehypeEnhancedCode } from "@core/helpers";
+import { Injectable } from "@angular/core";
+import { rehypeCodeTabs, rehypeComponentBadges, rehypeEnhancedCode } from "@core/helpers";
 
 @Injectable({
     providedIn: "root",
 })
 export class MarkdownService {
-    #processor: any;
-    #initialized = signal<boolean>(false);
-
-    async processMarkdown(markdown: string): Promise<string> {
-        await this.initializeProcessor();
-        const result = await this.#processor.process(markdown);
-        return result.toString();
-    }
+    private processor: any;
+    private initialized = false;
 
     async initializeProcessor() {
-        if (this.#initialized()) return;
+        if (this.initialized) return;
 
-        this.#processor = unified()
+        this.processor = unified()
             .use(remarkParse, { fragment: true })
             .use(remarkGfm)
             .use(remarkRehype)
@@ -38,12 +32,19 @@ export class MarkdownService {
                 },
                 keepBackground: false,
             })
-            .use(rehypeEnhancedCode)
             .use(rehypeCodeTabs)
+            .use(rehypeEnhancedCode)
             .use(this._rehypeTailwindClasses())
+            .use(rehypeComponentBadges)
             .use(rehypeStringify);
 
-        this.#initialized.set(true);
+        this.initialized = true;
+    }
+
+    async processMarkdown(markdown: string): Promise<string> {
+        await this.initializeProcessor();
+        const result = await this.processor.process(markdown);
+        return result.toString();
     }
 
     private _extractTextContent(node: any): string {
@@ -51,9 +52,7 @@ export class MarkdownService {
 
         if (node.type === "text") return node.value || "";
 
-        if (node.children && Array.isArray(node.children)) return node.children.map((child: any) => this._extractTextContent(child)).join("");
-
-        return "";
+        return node.children && Array.isArray(node.children) ? node.children.map((child: any) => this._extractTextContent(child)).join("") : "";
     }
 
     private _rehypeTailwindClasses() {
@@ -64,7 +63,7 @@ export class MarkdownService {
                         node.properties = {
                             ...node.properties,
                             style: [],
-                            class: ["text-4xl", "font-semibold", "scroll-m-20", "font-title", "tracking-tight", "sm:text-3xl", "text-primary", "xl:text-4xl", "mb-6"],
+                            class: ["text-4xl", "font-semibold", "font-title", "text-primary", "scroll-m-20", "tracking-tight", "sm:text-3xl", "xl:text-4xl"],
                         };
                     }
 
@@ -72,7 +71,7 @@ export class MarkdownService {
                         node.properties = {
                             ...node.properties,
                             style: [],
-                            class: ["w-full", "text-base", "text-muted-foreground", "font-title", "text-primary", "font-semibold", "mb-4"],
+                            class: ["scroll-m-28", "font-heading", "font-title", "text-xl", "font-medium", "tracking-tight", "[&:not(:first-child)]:mt-6"],
                         };
                     }
 
@@ -80,7 +79,7 @@ export class MarkdownService {
                         node.properties = {
                             ...node.properties,
                             style: [],
-                            class: ["w-full", "text-base", "text-muted-foreground", "font-title", "font-semibold", "mb-4"],
+                            class: ["w-full", "text-base", "my-4", "text-primary/75", "font-title", "font-semibold"],
                         };
                     }
 
@@ -88,7 +87,14 @@ export class MarkdownService {
                         node.properties = {
                             ...node.properties,
                             style: [],
-                            class: ["text-sm", "leading-7", "font-text", "text-muted-foreground", "mb-2", "[&:not(:first-child)]:mt-6", "text-justify"],
+                            class: ["text-base", "leading-7", "text-muted-foreground", "font-text", "[&:not(:first-child)]:mt-6"],
+                        };
+                    }
+
+                    if (node.tagName === "ul") {
+                        node.properties = {
+                            ...node.properties,
+                            class: ["list-disc", "font-text"],
                         };
                     }
 
@@ -98,16 +104,9 @@ export class MarkdownService {
                         if (!isInPre) {
                             node.properties = {
                                 ...node.properties,
-                                class: ["relative", "rounded", "font-code", "bg-muted", "px-[0.3rem]", "py-[0.2rem]", "text-sm", "font-bold"],
+                                class: ["relative", "rounded", "bg-muted", "px-[0.3rem]", "py-[0.2rem]", "font-code", "text-sm", "font-semibold"],
                             };
                         }
-                    }
-
-                    if (node.tagName === "hr") {
-                        node.properties = {
-                            ...node.properties,
-                            class: ["border-t", "border-border", "my-4"],
-                        };
                     }
 
                     if (node.tagName === "figcaption") {
@@ -138,21 +137,21 @@ export class MarkdownService {
                     if (node.tagName === "thead") {
                         node.properties = {
                             ...node.properties,
-                            class: ["[&_tr]:text-primary", "bg-default"],
+                            class: ["[&_tr]:text-primary", "dark:bg-[oklch(26.9%_0_0)]", "bg-[oklch(97%_0_0)]"],
                         };
                     }
 
                     if (node.tagName === "tbody") {
                         node.properties = {
                             ...node.properties,
-                            class: ["&_tr:last-child]:border-0", "bg-default/20"],
+                            class: ["&_tr:last-child]:border-0", "bg-pimary/20"],
                         };
                     }
 
                     if (node.tagName === "tfoot") {
                         node.properties = {
                             ...node.properties,
-                            class: ["border-t", "bg-muted/50", "font-medium", "font-text", "[&>tr]:last:border-b-0"],
+                            class: ["border-t", "border-border", "bg-muted/50", "font-medium", "[&>tr]:last:border-b-0"],
                         };
                     }
 
@@ -166,7 +165,7 @@ export class MarkdownService {
                     if (node.tagName === "th") {
                         node.properties = {
                             ...node.properties,
-                            class: ["h-12", "px-4", "text-left", "align-middle", "font-text", "font-semibold"],
+                            class: ["h-12", "px-4", "text-left", "align-middle", "font-medium;"],
                         };
                     }
 
@@ -179,16 +178,9 @@ export class MarkdownService {
                                 "text-left",
                                 "align-middle",
                                 "font-medium",
-                                "first:[&_code]:font-code",
-                                "first:[&_code]:bg-orange-600/10",
-                                "first:[&_code]:text-orange-500",
-                                "[&_a>strong]:text-orange-500",
-                                "[&_a>strong]:hover:underline",
-                                "[&_code]:bg-primary/10",
+                                "[&_code]:font-code",
                                 "[&_code]:rounded-sm",
                                 "[&_code]:border-none",
-                                "[&_code]:font-code",
-                                "[&_code]:font-medium",
                                 "[&_code]:whitespace-nowrap",
                                 "[&_code]:rounded",
                                 "[&_code]:border-ring",
@@ -212,7 +204,23 @@ export class MarkdownService {
                     if (node.tagName === "h5") {
                         node.properties = {
                             ...node.properties,
-                            class: ["text-xl", "font-semibold", "mt-4", "text-primary", "font-title"],
+                            class: ["text-xl", "font-semibold", "mt-4", "text-primary"],
+                        };
+                    }
+
+                    if (node.tagName === "blockquote") {
+                        node.properties = {
+                            ...node.properties,
+                            style: [],
+                            class: ["border-l-4", "border-primary", "pl-4", "py-2", "my-4", "rounded-md", "text-muted-foreground", "[&>p]:text-sm", "italic"],
+                        };
+                    }
+
+                    if (node.tagName === "a") {
+                        node.properties = {
+                            ...node.properties,
+                            style: [],
+                            class: ["text-primary", "hover:text-primary/80", "transition-colors", "font-medium"],
                         };
                     }
                 });

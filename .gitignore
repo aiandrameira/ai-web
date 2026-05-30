@@ -2,11 +2,14 @@
 
 # compiled output
 dist
+projects/cli/dist
 tmp
+projects/cli/tmp
 out-tsc
 
 # dependencies
 node_modules
+projects/cli/node_modules
 
 # IDEs and editors
 /.idea

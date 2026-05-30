@@ -1,5 +1,6 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
+
 import { AiButton } from "../../button";
 import { AiEmpty } from "../empty";
 
@@ -8,7 +9,7 @@ import { AiEmpty } from "../empty";
     template: `
         <div class="flex flex-col gap-y-4">
             <ai-empty
-                image="./img/avatar/01.png"
+                image="./img/avatar.png"
                 title="User invisible"
                 description="This user is currently offline. You can leave a message to notify them or try again later."
                 [actions]="[actionPrimary]"

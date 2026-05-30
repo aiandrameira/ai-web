@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from "@angular/core";
 import { ClassValue } from "clsx";
+
+import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from "@angular/core";
+
 import { mergeClasses } from "../../core";
 import { AiLoaderProgress } from "./loader-progess";
 import { AiLoaderService } from "./loader.service";
@@ -13,7 +15,7 @@ import { loaderVariants, LoaderVariants } from "./loader.variants";
     encapsulation: ViewEncapsulation.None,
     templateUrl: "./loader.html",
     host: {
-        "[class]": "overlay() ? 'relative' : classes()",
+        "[class]": "overlay() ? 'relative flex items-center justify-center' : classes()",
     },
     styles: `
         @layer utilities {

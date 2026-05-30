@@ -1,0 +1,99 @@
+<ai-content [navigationConfig]="navigations()" [activeSummary]="activeSummary" scrolling (changeScroll)="activeSummary = $event">
+    <ai-heading title="Tema" description="Como personalizar o tema do seu aplicativo." />
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="css-variables" id="css-variables">
+        <ai-heading title="Variáveis CSS" heading="h3" description="" />
+
+        <p>
+            Por padrão, o <strong>AiUI</strong> utiliza variáveis CSS para definir as cores e estilos do tema. Isso 
+            permite uma personalização fácil e flexível do visual do seu aplicativo. Você pode sobrescrever essas 
+            variáveis em seu arquivo de estilos global para criar um tema personalizado que se encaixe na identidade 
+            visual da sua marca.
+        </p>
+
+        <ai-markdown mode="viewer" markdownUrl="./docs/theming/css-variables.md" />
+
+        <h3>Tailwindcss v4 Configuração</h3>
+
+        <p>
+            Copia e cola a configuração abaixo no seu arquivo de estilos global <code>src/style.css</code>:
+        </p>
+
+        <ai-markdown mode="viewer" markdownUrl="./docs/setup/angular/config-style.md" />
+    </div>
+    
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="utility-classes" id="utility-classes">
+        <ai-heading title="Classes Utilitárias" heading="h3" description="" />
+
+        <p>
+            Você também pode usar as classes utilitárias do Tailwind CSS para personalizar o tema do seu aplicativo. 
+            O AiUI é compatível com as classes de cor do Tailwind, permitindo que você aplique estilos diretamente 
+            aos seus componentes usando as classes de utilitários.
+        </p>
+
+        <ai-markdown mode="viewer" markdownUrl="./docs/theming/utility-classes.md" />
+    </div> 
+    
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="conventions" id="conventions">
+        <ai-heading title="Convenções" heading="h3" description="" />
+
+        <p>
+            Usamos uma convenção simples de cores de fundo e primeiro plano. A variável <code>background</code> 
+            é usada para o fundo do componente e a variável <code>foreground</code> é usada para a cor do texto.
+        </p>
+
+        <ai-card class="py-4 max-w-full">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-x-4 w-full">
+                    <div class="bg-background border-border flex h-8 w-8 items-center justify-center rounded-md border sm:h-10 sm:w-10">
+                        <div class="bg-primary h-4 w-4 rounded sm:h-6 sm:w-6"></div>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold font-title text-primary">background</h4>
+                        <span class="text-xs">Para a cor de fundo do componente</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-4 w-full">
+                    <div class="bg-primary border-border flex h-8 w-8 items-center justify-center rounded-md border sm:h-10 sm:w-10">
+                        <div class="bg-primary-foreground h-4 w-4 rounded sm:h-6 sm:w-6"></div>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-semibold font-title text-primary">foreground</h4>
+                        <span class="text-xs">Para a cor do texto do componente</span>
+                    </div>
+                </div>
+            </div>
+        </ai-card>
+
+        <ai-markdown mode="viewer" markdownUrl="./docs/theming/convention.md" />
+    </div> 
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="add-new-colors" id="add-new-colors">
+        <ai-heading title="Adicionar novas cores" heading="h3" description="" />
+
+        <p>
+            Além das variáveis de tema padrão, você pode adicionar novas cores personalizadas ao seu tema. Para isso, 
+            basta definir novas variáveis CSS seguindo a convenção de nomenclatura do AiUI. Por exemplo, se você 
+            quiser adicionar uma nova cor chamada <code>accent</code>, você pode definir as seguintes variáveis:
+        </p>
+
+        <ai-markdown mode="viewer" markdownUrl="./docs/theming/add-new-colors.md" />
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="other-format" id="other-format">
+        <ai-heading title="Outros formatos" heading="h3" description="" />
+
+        <p>
+            O AiUI por padrão utiliza o formato OKLCH, mas é flexível e permite que você use outros formatos de cores. 
+            Você pode usar formatos como RGB, HSL ou HEX para definir suas cores personalizadas. Basta seguir a convenção 
+            de nomenclatura e definir as variáveis CSS com os valores de cor desejados.
+        </p>
+
+        <ai-markdown mode="viewer" markdownUrl="./docs/theming/other-format.md" />
+
+        <p class="mb-10">
+            Para mais informações sobre personalização de temas e dicas avançadas, confira a documentação do 
+            <a class="text-primary hover:underline" href="https://tailwindcss.com/docs/colors" target="_blank">Tailwind CSS</a>.
+        </p>
+    </div>
+</ai-content>

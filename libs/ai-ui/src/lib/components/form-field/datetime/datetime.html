@@ -1,0 +1,31 @@
+<div class="relative w-full">
+    <input
+        [class]="inputClasses()"
+        [attr.type]="type()"
+        [attr.id]="id()"
+        [attr.min]="minDate() || null"
+        [attr.max]="maxDate() || null"
+        [attr.disabled]="disabled() ? '' : null"
+        [attr.readonly]="readonly() ? '' : null"
+        [attr.placeholder]="' '"
+        [value]="value()"
+        (input)="onInput($event)"
+        (blur)="onBlur()" />
+    <label [attr.for]="id()" [class]="labelClasses()">
+        {{ label() }}
+        @if (required()) {
+            <span class="text-destructive">*</span>
+        }
+    </label>
+</div>
+
+@if (hasError() && errorMessages().length > 0) {
+    <div class="flex flex-col gap-y-1 pt-1">
+        @for (msg of errorMessages(); track $index) {
+            <div class="flex items-center gap-x-1 text-xs text-destructive" role="alert">
+                <ai-icon icon="alert" size="xs" class="text-destructive" />
+                <span>{{ msg }}</span>
+            </div>
+        }
+    </div>
+}

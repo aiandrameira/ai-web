@@ -1,6 +1,8 @@
 # API
 
-## `[ai-select]` - Component
+[AiSelect] - Component
+
+> O `[ai-select]` é um componente de seleção que oferece uma interface para escolher opções de uma lista, com suporte a seleção única ou múltipla, rótulos personalizados e placeholders.
 
 ### Propriedades
 
@@ -14,7 +16,9 @@
 | `[(value)]`     | define o valor selecionado                                          | `string \| string[]` | `"" \| []` |
 | `class`         | classes CSS adicionais                                              | `ClassValue`         | `""`       |
 
-## `[ai-select-item]` - Component
+[AiSelectItem] - Component
+
+> O `[ai-select-item]` é um componente filho do `[ai-select]` que representa uma opção individual na lista de seleção, com suporte a rótulos personalizados e desabilitação.
 
 | Property   | Description            | Type         | Default |
 | ---------- | ---------------------- | ------------ | ------- |

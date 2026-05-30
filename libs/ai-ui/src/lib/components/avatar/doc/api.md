@@ -1,6 +1,8 @@
 # API
 
-## `[ai-avatar]` - Component
+[AiAvatar] - Component
+
+> O `[ai-avatar]` é um componente de avatar que exibe uma imagem, texto ou ícone para representar um usuário ou entidade.
 
 ### Propriedades
 
@@ -15,7 +17,11 @@
 | `status`    | define o status do indicador do avatar | `"online" \| "invisible" \| "doNotDisturb" \| "away"` | `""`      |
 | `class`     | classes CSS adicionais                 | `ClassValue`                                          | `""`      |
 
-## `[ai-avatar-group]` - Component
+---
+
+[AiAvatarGroup] - Component
+
+> O `[ai-avatar-group]` é um componente de grupo de avatares que organiza múltiplos avatares em uma única linha, com suporte a limite de exibição e contagem de avatares adicionais.
 
 ### Propriedades
 

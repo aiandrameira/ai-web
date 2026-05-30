@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const cardVariants = cva("block cursor-pointer border border-border rounded-lg w-full max-w-sm transition-colors duration-500", {
+export const cardVariants = cva("block cursor-default border border-border rounded-lg w-full max-w-sm transition-colors duration-500", {
     variants: {
         disabled: {
             true: "cursor-not-allowed pointer-events-none opacity-50",
@@ -14,7 +14,7 @@ export const cardHeaderVariants = cva("w-full flex flex-col text-left pt-6 px-6"
 });
 export type CardHeaderVariants = VariantProps<typeof cardHeaderVariants>;
 
-export const cardBodyVariants = cva("block mt-6 px-6 pb-6", {
+export const cardBodyVariants = cva("px-6", {
     variants: {},
 });
 export type CardBodyVariants = VariantProps<typeof cardBodyVariants>;

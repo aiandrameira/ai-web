@@ -1,7 +1,9 @@
 ```angular-ts showLineNumbers copyButton
+import z from "zod";
+
 import { AfterViewInit, Component, inject, signal } from "@angular/core";
 import { form, FormField, validateStandardSchema } from "@angular/forms/signals";
-import z from "zod";
+
 import { AiButton } from "../../button";
 import { AiInput, AiSelectImports } from "../../form-field";
 import { AI_DIALOG_DATA, AiDialogService } from "../dialog.service";
@@ -17,7 +19,7 @@ export type UserDto = z.infer<typeof userSchema>;
 @Component({
     imports: [FormField, AiInput, AiSelectImports],
     template: `
-        <form class="w-full max-w-sm flex flex-col gap-y-4">
+        <form class="w-full flex flex-col gap-y-4">
             <ai-input class="w-full" label="Name" [formField]="userForm.name" />
             <ai-input class="w-full" type="email" label="E-mail" [formField]="userForm.email" />
 

@@ -1,6 +1,8 @@
 # API
 
-## `[ai-separator]` - Component
+[AiSeparator] - Component
+
+> O `[ai-separator]` é um componente visual que cria uma linha divisória horizontal ou vertical para separar conteúdo na interface.
 
 ### Propriedades
 

@@ -1,0 +1,41 @@
+@if (showNav() && total() > 1) {
+    <button
+        type="button"
+        [class]="navClasses"
+        [disabled]="!canPrev()"
+        (click)="prev()"
+        aria-label="Slide anterior">
+        <ai-icon icon="arrow-left-s" size="sm" />
+    </button>
+}
+
+<div [class]="viewportClasses()">
+    <div [class]="trackClasses()" [style.transform]="trackTransform()">
+        <ng-content select="ai-carousel-item" />
+    </div>
+
+    @if (showDots() && total() > 1) {
+        <div class="flex items-center justify-center gap-1.5 pt-3">
+            @for (dot of dots(); track dot) {
+                <button
+                    type="button"
+                    [class]="dotClasses(dot)"
+                    (click)="goTo(dot)"
+                    [attr.aria-label]="'Ir para slide ' + (dot + 1)"
+                    [attr.aria-current]="dot === current() ? 'true' : null">
+                </button>
+            }
+        </div>
+    }
+</div>
+
+@if (showNav() && total() > 1) {
+    <button
+        type="button"
+        [class]="navClasses"
+        [disabled]="!canNext()"
+        (click)="next()"
+        aria-label="Próximo slide">
+        <ai-icon icon="arrow-right-s" size="sm" />
+    </button>
+}

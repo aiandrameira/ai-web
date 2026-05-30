@@ -1,6 +1,8 @@
 # API
 
-## `[ai-loader]` - Component
+[AiLoader] - Component
+
+> O `[ai-loader]` é um componente de carregamento que exibe indicadores visuais de progresso com suporte a diferentes estilos e opção de overlay.
 
 ### Propriedades
 

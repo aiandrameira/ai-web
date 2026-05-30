@@ -1,0 +1,19 @@
+<label class="inline-flex items-center gap-2" [class]="disabled() ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'">
+    <button
+        type="button"
+        role="switch"
+        [attr.id]="id()"
+        [class]="classes()"
+        [attr.aria-checked]="checked()"
+        [attr.data-checked]="checked() ? '' : null"
+        [attr.data-disabled]="disabled() ? '' : null"
+        [disabled]="disabled()"
+        (click)="onToggle()"
+        (blur)="onBlur()"
+        (keydown.space.prevent)="onToggle()">
+        <span [class]="thumbClasses()" [attr.data-checked]="checked() ? '' : null"></span>
+    </button>
+    <span [class]="labelClasses()" class="text-muted-foreground">
+        <ng-content />
+    </span>
+</label>

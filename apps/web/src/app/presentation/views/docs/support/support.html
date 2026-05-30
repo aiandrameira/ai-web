@@ -1,0 +1,58 @@
+<ai-content [navigationConfig]="navigations()" [activeSummary]="activeSummary" scrolling (changeScroll)="activeSummary = $event">
+    <ai-heading title="Sobre AiUI" description="Informações sobre a biblioteca AiUI e suas funcionalidades." />
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="overview" id="overview">
+        <p>
+            O <strong>AiUI</strong> foi desenvolvida com os recursos modernos do Angular e Tailwind CSS, proporcionando 
+            uma experiência de desenvolvimento fluida. Atualizamos continuamente a biblioteca para garantir compatibilidade 
+            com as últimas versões do Angular, aproveitando novos recursos e melhorias de desempenho.
+        </p>
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="policy" id="policy">
+        <ai-heading title="Política" heading="h3" description="" />
+
+        <p>
+            O <strong>AiUI</strong> mantém compatibilidade com versões anteriores do Angular, 
+            incluindo o <strong>Angular 21</strong> e superiores . Quando uma nova versão principal do Angular é lançada, 
+            atualizamos o <strong>AiUI</strong> para oferecer suporte a ela, mantendo a compatibilidade com as versões recentes.
+        </p>
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="status" id="status">
+        <ai-heading title="Status" heading="h3" description="Acompanhe o status atual do AiUI e suas atualizações e compatibilidade." />
+
+        <ai-table [config]="config()">
+            <ng-template aiCellTemplate="status" let-item>
+                    <ai-badge class="gap-1" [variant]="(item.status | statusBadge).color" [icon]="(item.status | statusBadge).icon">
+                        {{ item.status }}
+                    </ai-badge>
+            </ng-template>
+        </ai-table>
+    </div>
+    
+    <div class="flex flex-col gap-y-4 w-full web-container mb-8" scrollingItem="upgrade" id="upgrade">
+        <ai-heading title="Atualizações" heading="h3" description="Quando uma nova versão do AiUI é lançada, seguimos os seguintes processos:" />
+
+        <ul class="flex flex-col gap-y-4">
+            <li class="flex items-start gap-x-2">
+                <ai-icon icon="check" class="text-green-500" size="xl" />
+                <div>
+                    <h3 class="text-primary font-semibold font-title text-sm">Nova versão do Angular lançada</h3>
+                    <span class="text-muted-foreground text-xs">
+                        Atualize para a versão mais recente do AiUI para aproveitar os novos recursos e melhorias.
+                    </span>
+                </div>
+            </li>
+            <li class="flex items-start gap-x-2">
+                <ai-icon icon="check" class="text-green-500" size="xl" />
+                <div>
+                    <h3 class="text-primary font-semibold font-title text-sm">Atualização de compatibilidade da interface do usuário</h3>
+                    <span class="text-muted-foreground text-xs">
+                        Atualizamos a interface do usuário do AiUI para oferecer suporte completo à nova versão do Angular, incluindo quaisquer alterações que possam causar incompatibilidade.
+                    </span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</ai-content>

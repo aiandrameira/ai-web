@@ -1,0 +1,90 @@
+<ng-template #textareaTemplate let.inputClass>
+    <textarea
+        [class]="inputClass()"
+        [attr.placeholder]="variant() === 'filled' ? placeholder() : ' '"
+        [attr.id]="id()"
+        [(ngModel)]="value"
+        (blur)="onBlur()"
+        [attr.maxlength]="maxlength()"
+        [attr.minlength]="minlength()"
+        [attr.rows]="rows()"
+        [attr.disabled]="disabled() ? '' : null"
+        [attr.readonly]="readonly() ? '' : null">
+    </textarea>
+</ng-template>
+
+<ng-template #errorMessagesTemplate>
+    @if (feedback().error && feedback().errorMessages.length > 0) {
+        <div class="flex flex-col gap-y-1 pt-1">
+            @for (error of feedback().errorMessages; track $index) {
+                @if (error.message) {
+                    <div class="flex items-center gap-x-1 text-xs text-destructive" role="alert">
+                        <ai-icon icon="alert" size="xs" class="text-destructive" />
+                        <span>{{ error.message }}</span>
+                    </div>
+                }
+            }
+        </div>
+    }
+</ng-template>
+
+@switch (variant()) {
+    @case ("filled") {
+        <div class="w-full">
+            <div class="relative">
+                <label [class]="filledLabelClass()" [attr.for]="id()">
+                    {{ label() }}
+                    @if (required()) {
+                        <span class="text-destructive">*</span>
+                    }
+                </label>
+
+                <ng-container [ngTemplateOutlet]="textareaTemplate" [ngTemplateOutletContext]="{ inputClass: filledClass }" />
+            </div>
+
+            <ng-container [ngTemplateOutlet]="errorMessagesTemplate" />
+
+            @if (maxlength()) {
+                <div class="text-xs text-muted-foreground text-right pt-1">{{ charCount() }}/{{ maxlength() }}</div>
+            }
+        </div>
+    }
+
+    @case ("outlined") {
+        <div class="relative w-full">
+            <ng-container [ngTemplateOutlet]="textareaTemplate" [ngTemplateOutletContext]="{ inputClass: inputClass }" />
+
+            <label [attr.for]="id()" [class]="labelClass()">
+                {{ label() }}
+                @if (required()) {
+                    <span class="text-destructive">*</span>
+                }
+            </label>
+        </div>
+
+        <ng-container [ngTemplateOutlet]="errorMessagesTemplate" />
+
+        @if (maxlength()) {
+            <div class="text-xs text-muted-foreground text-right pt-1">{{ charCount() }}/{{ maxlength() }}</div>
+        }
+    }
+
+    @case ("standard") {
+        <div class="relative w-full">
+            <ng-container [ngTemplateOutlet]="textareaTemplate" [ngTemplateOutletContext]="{ inputClass: inputClass }" />
+
+            <label [attr.for]="id()" [class]="standardLabelClass()">
+                {{ label() }}
+                @if (required()) {
+                    <span class="text-destructive">*</span>
+                }
+            </label>
+        </div>
+
+        <ng-container [ngTemplateOutlet]="errorMessagesTemplate" />
+
+        @if (maxlength()) {
+            <div class="text-xs text-muted-foreground text-right pt-1">{{ charCount() }}/{{ maxlength() }}</div>
+        }
+    }
+}

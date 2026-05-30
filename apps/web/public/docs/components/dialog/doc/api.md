@@ -1,6 +1,8 @@
 # API
 
-## `AiDialogService` - Service
+[AiDialogService] - Service
+
+> O `AiDialogService` é um serviço utilizado para criar e controlar diálogos de forma programática.
 
 ### Propriedades
 

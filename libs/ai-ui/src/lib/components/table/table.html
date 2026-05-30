@@ -1,0 +1,92 @@
+@let columns = config().columns;
+@let data = config().data;
+
+<div [class]="wrapperClass()">
+    <table class="w-full text-sm border-collapse">
+        <thead>
+            <tr [class]="headRowClass()">
+                @if (selectable()) {
+                    <th scope="col" [class]="checkboxCellClass()">
+                        <ai-checkbox [checked]="isAllSelected()" [indeterminate]="isIndeterminate()" (changeCheck)="toggleAll()" />
+                    </th>
+                }
+                @for (column of columns; track column.key) {
+                    <th
+                        scope="col"
+                        [attr.data-test]="'table-header-' + column.key"
+                        [style.width]="column.width"
+                        [class]="headCellClass(column.align)"
+                        [class.cursor-pointer]="column.sortable"
+                        [class.select-none]="column.sortable"
+                        (click)="toggleSort(column)"
+                    >
+                        <span class="inline-flex items-center gap-1">
+                            {{ column.label }}
+                            @if (column.sortable) {
+                                <ai-icon [icon]="sortIcon(column)" size="sm" />
+                            }
+                        </span>
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of data; track $index) {
+                <tr [class]="bodyRowClass()" (click)="rowClick.emit(row)">
+                    @if (selectable()) {
+                        <td [class]="checkboxCellClass()">
+                            <ai-checkbox [checked]="isSelected(row)" (changeCheck)="toggleRow(row)" />
+                        </td>
+                    }
+                    @for (column of columns; track column.key) {
+                        @let template = templateMap.get(column.key);
+                        @let value = getCellValue(row, column);
+                        <td
+                            [attr.data-test]="'table-cell-' + column.key"
+                            [style.width]="column.width"
+                            [class]="bodyCellClass(column.align)"
+                        >
+                            @if (template) {
+                                <ng-container
+                                    [ngTemplateOutlet]="template"
+                                    [ngTemplateOutletContext]="{ $implicit: row }"
+                                />
+                            } @else {
+                                @if (value !== null && value !== undefined && value !== "") {
+                                    {{ value }}
+                                } @else {
+                                    <ai-badge size="sm" shape="circle" variant="default" />
+                                }
+                            }
+                        </td>
+                    }
+                </tr>
+            } @empty {
+                <tr>
+                    <td [attr.colspan]="selectable() ? columns.length + 1 : columns.length">
+                        <ai-empty icon="menu-search" title="Nenhum registro encontrado" description="Tente ajustar sua consulta de pesquisa ou verifique a ortografia." />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (pagination(); as pag) {
+        <div class="w-full flex items-center justify-end py-2 px-1">
+            <ai-pagination class="flex justify-end w-max mx-0"
+                [pageIndex]="pag.pageIndex ?? 1"
+                [total]="Math.ceil((pag.totalItems ?? 0) / (pag.pageSize ?? 10))"
+                [totalItems]="pag.totalItems ?? 0"
+                [pageSize]="pag.pageSize ?? 10"
+                [pageSizeOptions]="pag.pageSizeOptions ?? [10, 20, 50, 100]"
+                [showInfo]="pag.showInfo ?? false"
+                [showPageSize]="pag.showPageSize ?? false"
+                [siblingCount]="pag.siblingCount ?? 1"
+                [size]="pag.size ?? 'sm'"
+                [disabled]="pag.disabled ?? false"
+                (pageIndexChange)="pageChange.emit($event)"
+                (pageSizeChange)="pageSizeChange.emit($event)"
+            />
+        </div>
+    }
+</div>

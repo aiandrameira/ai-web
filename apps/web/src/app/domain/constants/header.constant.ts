@@ -5,7 +5,7 @@ interface IHeader {
 }
 
 export const headerPaths: IHeader[] = [
-    { name: "Docs", path: "/docs", available: false },
-    { name: "Components", path: "/components", available: true },
+    { name: "Blocks", path: "/blocks", available: false },
+    { name: "Components", path: "/component", available: true },
     { name: "Themes", path: "/themes", available: false },
 ];

@@ -1,6 +1,8 @@
 # API
 
-## `[ai-input]` - Component
+[AiInput] - Component
+
+> O `[ai-input]` é um componente de campo de entrada versátil que suporta diferentes tipos de dados, variações de estilo, ícones e funcionalidades adicionais como máscaras e normalização.
 
 ### Propriedades
 
@@ -25,14 +27,51 @@
 
 ### Máscaras
 
+> Configurações para a funcionalidade de máscara do AiInput, baseada na biblioteca IMask.
+
 | Property     | Description                      | Type           | Default |
 | ------------ | -------------------------------- | -------------- | ------- |
 | `mask`       | define a máscara                 | `string`       | `""`    |
-| `maskConfig` | define a configuração da máscara | `IMaskOptions` | `null`  |
+| `maskConfig` | define a configuração da máscara | `AiMaskConfig` | `null`  |
+
+[AiMaskConfig] - Interface
+
+```ts
+interface AiMaskConfig {
+    thousands?: string;
+    decimal?: "." | "," | [".", ","];
+    prefix?: string;
+    align?: "left" | "right";
+    dropSpecialCharacters?: boolean | string[] | (string[] | null);
+    specialCharacters?: string[];
+    isCurrency?: boolean;
+    patterns?: any;
+}
+```
 
 ### Normalize
 
-| Property          | Description                           | Type              | Default |
-| ----------------- | ------------------------------------- | ----------------- | ------- |
-| `normalize`       | define a normalização                 | `NormalizeType`   | `null`  |
-| `normalizeConfig` | define a configuração da normalização | `NormalizeConfig` | `null`  |
+> Tipos de normalização suportados pelo AiInput, permitindo transformar o valor de entrada em formatos específicos como apenas letras, números ou letras maiúsculas.
+
+| Property          | Description                           | Type                | Default |
+| ----------------- | ------------------------------------- | ------------------- | ------- |
+| `normalize`       | define a normalização                 | `AiNormalizeType`   | `null`  |
+| `normalizeConfig` | define a configuração da normalização | `AiNormalizeConfig` | `null`  |
+
+[AiNormalizeConfig] - Interface
+
+```ts
+interface AiNormalizeConfig {
+    hyphen?: boolean;
+    underscore?: boolean;
+    dot?: boolean;
+}
+```
+
+---
+
+[AiNormalizeType] - Type
+
+```ts
+type AiNormalizeType = "alfa" | "alfanum" | "numeric" | "uppercase";
+```

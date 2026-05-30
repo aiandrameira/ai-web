@@ -1,0 +1,52 @@
+<ai-content [navigationConfig]="navigations()" [activeSummary]="activeSummary" scrolling (changeScroll)="activeSummary = $event">
+    <ai-heading title="Sobre AiUI" description="Informações sobre a biblioteca AiUI e suas funcionalidades." />
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="overview" id="overview">
+        <p>
+            O <strong>AiUI</strong> é uma biblioteca de componentes Angular de código aberto, contruída com Tailwind CSS, 
+            que tem como objetivo fornecer uma experiência de desenvolvimento rápida, fácil e agradável. 
+            A biblioteca é projetada para ser altamente personalizável, permitindo que os desenvolvedores criem 
+            interfaces de usuário modernas e responsivas com facilidade.
+        </p>
+    </div>
+    
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="founders" id="founders">
+        <ai-heading title="Fundadores" heading="h3" description="Informações sobre os fundadores da biblioteca AiUI." />
+
+        <a href="https://github.com/aiandralves" target="_blank" rel="noopener noreferrer" class="w-full flex items-center gap-4 p-4 rounded-lg border border-border bg-background hover:bg-muted transition-colors duration-200">
+            <ai-avatar image="https://avatars.githubusercontent.com/u/33138081?v=4" fallback="AI" size="xl" />
+            <div class="flex flex-col gap-1">
+                <h3 class="font-semibold font-title text-sm text-primary">Aiandra Alves</h3>
+                <p class="text-xs text-muted-foreground">Co-Fundadora e Desenvolvedora Front-end</p>
+                <div class="flex items-center gap-x-1">
+                    <ai-icon icon="github" size="xs" /> 
+                    <span class="text-xs font-code">aiandralves</span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container" scrollingItem="contributors" id="contributors">
+        <ai-heading title="Contribuidores" heading="h3" description="Informações sobre os contribuidores da biblioteca AiUI." />
+
+        @for (item of contributors(); track item) {
+            <ai-avatar [image]="item.avatarUrl" [fallback]="item.login" size="lg" shape="default" [aiTooltip]="item.login" />
+        }
+    </div>
+
+    <div class="flex flex-col gap-y-4 w-full web-container mb-8" scrollingItem="credits" id="credits">
+        <ai-heading title="Créditos" heading="h3" description="O AiUI não seria possível sem a contribuição de todos os projetos e comunidades." />
+
+        @for (item of credits(); track item.title) {
+            <a [href]="item.url" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-4 rounded-lg border border-border bg-background w-full hover:bg-muted transition-colors duration-200">
+                <div class="w-12 h-12 flex items-center justify-center p-2 rounded border border-border">
+                    <img [src]="item.img" alt="" />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h3 class="font-semibold font-title text-sm text-primary">{{ item.title }}</h3>
+                    <p class="text-xs text-muted-foreground">{{ item.description }}</p>
+                </div>
+            </a>
+        }
+    </div>
+</ai-content>

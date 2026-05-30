@@ -12,4 +12,9 @@ export const appRoutes: Route[] = [
         loadChildren: async () => (await import("./presentation/views/components/components.routes")).componentsRoutes,
         component: Sidenav,
     },
+    {
+        path: "docs",
+        loadChildren: () => import("./presentation/views/docs/docs.routes").then(m => m.docsRoutes),
+        component: Sidenav,
+    },
 ];

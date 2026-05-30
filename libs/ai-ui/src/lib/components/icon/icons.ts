@@ -963,6 +963,7 @@ const AI_ICON_BASE = {
     //"space-ship-2": "space-ship",
     spam: "spam",
     sparkling: "sparkling",
+    "space-ship-2": "space-ship",
     speak: "speak",
     speaker: "speaker",
     spectrum: "spectrum",

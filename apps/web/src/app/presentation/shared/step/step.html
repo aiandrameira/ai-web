@@ -1,0 +1,31 @@
+@let props = stepProps();
+@if (props && position()) {
+    <article class="relative">
+        <header class="border-background absolute flex h-9 w-9 items-center justify-center rounded-full border-[3px] select-none bg-default">
+            <span class="text-primary font-semibold mb-0 font-title">{{ position() }}</span>
+        </header>
+        <main class="ml-[1.1rem] border-l border-neutral-200 dark:border-neutral-900">
+            <section class="space-y-4 pt-1 pb-10 pl-8">
+                <h2 class="text-primary font-semibold text-base mb-0 font-title">{{ props.title }}</h2>
+                <p class="text-muted-foreground font-medium text-sm my-2 font-text">
+                    {{ props.subtitle }}
+
+                    @if (props.url && props.url.external) {
+                        <a ai-button variant="link" class="p-0" [href]="props.url.href" target="_blank">
+                            {{ props.url.text }}
+                        </a>
+                    }
+
+                    @if (props.url && !props.url.external) {
+                        <a ai-button variant="link" class="p-0" [routerLink]="props.url.href">
+                            {{ props.url.text }}
+                        </a>
+                    }
+                </p>
+                @if (props.file?.path) {
+                    <ai-markdown [markdownUrl]="props!.file!.path" />
+                }
+            </section>
+        </main>
+    </article>
+}

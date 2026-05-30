@@ -1,7 +1,8 @@
 ```angular-ts showLineNumbers copyButton
 import { Component, signal } from "@angular/core";
 import { form, FormField } from "@angular/forms/signals";
-import { PrettyPrintComponent } from "../../../../core";
+
+import { AiPrint } from "../../../../core";
 import { AiButton } from "../../../button";
 import { AiInput } from "../input";
 
@@ -22,7 +23,7 @@ function makeSchema(): Schema {
 }
 
 @Component({
-    imports: [AiInput, FormField, PrettyPrintComponent, AiButton],
+    imports: [AiInput, FormField, AiPrint, AiButton],
     template: `
         <div class="max-w-sm w-full flex flex-col gap-y-4">
             <div class="grid grid-cols-2 gap-y-4 gap-x-2">

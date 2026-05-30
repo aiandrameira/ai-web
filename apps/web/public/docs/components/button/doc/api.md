@@ -1,6 +1,8 @@
 # API
 
-## `[ai-button]` - Component
+[AiButton] - Component
+
+> O `[ai-button]` é um componente de botão versátil que oferece múltiplas variações de estilo, tamanho e comportamento para diferentes contextos da interface.
 
 ### Propriedades
 

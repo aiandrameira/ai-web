@@ -1,8 +1,8 @@
 # API
 
-## [ai-float-button] - Component/Directive
+[AiFloatButton] - Directive
 
-> `[ai-float-button]` é um componente/diretiva de botão flutuante personalizável, usado para ações rápidas na tela.
+> O `[ai-float-button]` é um componente ou diretiva de botão flutuante personalizável, usado para ações rápidas na tela.
 
 ### Propriedades
 
@@ -16,9 +16,13 @@
 | `position`  | define a posição              | `top-left \| top-right \| bottom-left \| bottom-right \| null` | `null`    |
 | `class`     | Classes **CSS** adicionais    | `string`                                                       | `""`      |
 
-## [ai-float-button-top] - Component
+---
+
+[AiFloatButtonTop] - Component
 
 > `[ai-float-button-top]` é uma variação fixa do botão flutuante, geralmente usado para atalhos de navegação.
+
+### Propriedades
 
 | Propriedade | Descrição                     | Tipo                                                   | Default        |
 | ----------- | ----------------------------- | ------------------------------------------------------ | -------------- |
@@ -30,9 +34,13 @@
 | `position`  | define a posição              | `top-left \| top-right \| bottom-left \| bottom-right` | `bottom-right` |
 | `class`     | Classes **CSS** adicionais    | `string`                                               | `""`           |
 
-## [ai-float-button-group] - Component
+---
 
-> `[ai-float-button-group]` organiza múltiplos botões flutuantes em grupo, com opções de expansão.
+[AiFloatButtonGroup] - Component
+
+> O `[ai-float-button-group]` organiza múltiplos botões flutuantes em grupo, com opções de expansão.
+
+### Propriedades
 
 | Propriedade        | Descrição                          | Tipo                                                                              | Default   |
 | ------------------ | ---------------------------------- | --------------------------------------------------------------------------------- | --------- |

@@ -1,6 +1,8 @@
 # API
 
-## [ai-alert] - Component
+[AiAlert] - Component
+
+> `[ai-alert]` é um componente que fornece um contêiner estruturado para exibição de conteúdo.
 
 ### Propriedades
 

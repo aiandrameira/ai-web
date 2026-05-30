@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, ViewEncapsulation } from "@angular/core";
+
 import { AiToastContent } from "./toast-content";
 import { AiToastConfig, AiToastPosition } from "./toast.config";
 import { AiToastService } from "./toast.service";
@@ -36,7 +37,7 @@ export class AiToast {
             "bottom-right": [],
         };
 
-        config().forEach(toast => positions[toast.position || "bottom-center"].push(toast));
+        config().forEach(toast => positions[toast.position || "top-right"].push(toast));
         return positions;
     });
 

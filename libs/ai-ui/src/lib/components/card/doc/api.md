@@ -1,6 +1,8 @@
 # API
 
-## `[ai-card]` - Component
+[AiCard] - Component
+
+> O `[ai-card]` é um componente de cartão versátil que organiza conteúdo em um container com suporte a títulos, descrições, ícones e navegação.
 
 ### Propriedades
 

@@ -1,3 +1,7 @@
+import { ClassValue } from "clsx";
+import { basicSetup } from "codemirror";
+import { tomorrow } from "thememirror";
+
 import { CommonModule, NgClass } from "@angular/common";
 import {
     ChangeDetectionStrategy,
@@ -24,9 +28,7 @@ import { markdown } from "@codemirror/lang-markdown";
 import { Compartment, EditorState, Extension } from "@codemirror/state";
 import { oneDark } from "@codemirror/theme-one-dark";
 import { EditorView } from "@codemirror/view";
-import { ClassValue } from "clsx";
-import { basicSetup } from "codemirror";
-import { tomorrow } from "thememirror";
+
 import { ClipboardUtil } from "../../core";
 import { AiButton } from "../button";
 import { AiSelectImports } from "../form-field";

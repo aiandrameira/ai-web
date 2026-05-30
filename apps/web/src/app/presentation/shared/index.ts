@@ -6,4 +6,5 @@ export * from "./input-search/input-search";
 export * from "./markdown/markdown";
 export * from "./mobile-menu/mobile-menu";
 export * from "./sidenav/sidenav";
+export * from "./step/step";
 export * from "./summary/summary";
