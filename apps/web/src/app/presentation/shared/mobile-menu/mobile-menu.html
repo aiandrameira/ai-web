@@ -1,8 +1,8 @@
 @if (openMenu()) {
-    <div class="fixed inset-0 z-50 lg:hidden">
-        <div class="fixed inset-0 bg-black/50 backdrop-blur-sm" (click)="close()"></div>
+    <div class="fixed inset-0 z-50 lg:hidden animate-in fade-in duration-200">
+        <button aria-label="Fechar" class="fixed inset-0 bg-black/50 backdrop-blur-sm" (click)="close()"></button>
         
-        <aside class="fixed top-14 left-0 bottom-0 w-[16rem] bg-background border-r border-r-border px-3 py-4 overflow-y-auto no-scrollbar">
+        <aside class="fixed top-14 right-0 bottom-0 w-[16rem] bg-background border-l border-l-border px-3 py-4 overflow-y-auto no-scrollbar animate-in slide-in-from-right duration-200">
             <nav class="flex min-h-0 flex-1 flex-col gap-2">
                 @for (path of sidenavPaths; track $index) {
                     <div class="relative flex w-full min-w-0 flex-col p-2">

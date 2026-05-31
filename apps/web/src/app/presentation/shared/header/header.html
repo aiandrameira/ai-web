@@ -1,15 +1,8 @@
-<div class="z-60 fixed top-0 flex items-center bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 w-full px-4 md:px-6">
-    <div class="relative flex justify-between h-14 mx-auto w-full lg:container lg:px-12">
+<div class="z-60 fixed top-0 flex items-center bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 w-full">
+    <div class="relative flex justify-between h-14 mx-auto w-full lg:max-w-(--breakpoint-2xl) px-4 sm:px-12">
         <div class="flex items-center gap-x-2">
-            <ai-button variant="ghost" 
-                size="sm" 
-                shape="circle" 
-                class="flex lg:hidden"
-                [icon]="openMenu() ? 'close' : 'menu'"
-                (click)="toggleMenu()" />
-
             <a routerLink="/" class="cursor-pointer">
-                <img src="./img/logo.svg" class="dark:invert" alt="logo" width="28" />
+                <img [src]="theme() === 'dark' ? './img/logo-dark.svg' : './img/logo.svg'" alt="logo" width="28" />
             </a>
 
             <div class="hidden md:flex items-center gap-x-2 ml-4">
@@ -34,7 +27,16 @@
 
             <ai-separator orientation="vertical" class="h-4 bg-border" />
 
-            <a ai-button icon="github" size="xs" variant="ghost" href="https://github.com/aiandralves/ai-web" target="_blank" aria-label=""></a>
+            <a ai-button icon="github" size="xs" variant="ghost" href="https://github.com/aiandrameira/ai-web" target="_blank" aria-label=""></a>
+
+            <ai-separator orientation="vertical" class="h-4 bg-border block lg:hidden" />
+
+            <ai-button variant="ghost" 
+                size="sm" 
+                shape="circle" 
+                class="flex lg:hidden"
+                [icon]="openMenu() ? 'close' : 'menu'"
+                (click)="toggleMenu()" />
         </div>
     </div>
 </div>
