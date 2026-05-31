@@ -1,0 +1,16 @@
+<ai-command class="min-w-80 md:min-w-125" (selectedCommand)="navigate($event.value)">
+    <ai-command-input placeholder="Pesquisar na documentação..." />
+    <ai-command-list>
+        <ai-command-empty />
+        @for (group of groups; track group.title) {
+            <ai-command-item-group [label]="group.title">
+                @for (item of group.data; track item.path) {
+                    <ai-command-item [label]="item.name" [value]="item.path" icon="file-text" />
+                }
+            </ai-command-item-group>
+            @if (!$last) {
+                <ai-command-separator />
+            }
+        }
+    </ai-command-list>
+</ai-command>
