@@ -1,4 +1,5 @@
 export * from "./code-preview/code-preview";
+export * from "./component-nav/component-nav";
 export * from "./content/content";
 export * from "./header/header";
 export * from "./heading/heading";

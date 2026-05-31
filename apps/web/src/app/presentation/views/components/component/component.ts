@@ -4,11 +4,11 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ScrollDirective, ScrollItemDirective } from "@core/directives";
 import { ComponentData, components } from "@domain/constants";
 import { NavigationConfigDto } from "@domain/dtos";
-import { CodePreview, Content, Markdown } from "@views/shared";
+import { CodePreview, ComponentNav, Content, Markdown } from "@views/shared";
 
 @Component({
     selector: "ai-component",
-    imports: [Content, CodePreview, ScrollDirective, ScrollItemDirective, Markdown],
+    imports: [Content, CodePreview, ScrollDirective, ScrollItemDirective, Markdown, ComponentNav],
     templateUrl: "./component.html",
 })
 export class AiComponent {
