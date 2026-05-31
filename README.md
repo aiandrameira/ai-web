@@ -1,7 +1,7 @@
 # 🚀 ai-ui
 
 <p align="center">
-    <img src="./apps/web/public/img/logo.svg" style="filter: invert(1);" width="80" alt="ai-ui logo" />
+    <img src="./apps/web/public/img/logo.svg" width="80" alt="ai-ui logo" />
 </p>
 
 <p align="center">
@@ -52,7 +52,7 @@ npm install @aiandralves/ai-ui
 
 A documentação completa do AiUI está disponível em:
 
-👉 http://aiandralves.com.br/component
+👉 https://ai-ui.aiandralves.com.br
 
 Você encontrará:
 
