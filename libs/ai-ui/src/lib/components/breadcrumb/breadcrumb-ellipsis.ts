@@ -5,12 +5,11 @@ import { ChangeDetectionStrategy, Component, computed, input, signal, ViewEncaps
 import { mergeClasses } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiBreadcrumbConfig } from "./breadcrumb.config";
-import { AiBreadcrumbImports } from "./breadcrumb.imports";
 
 @Component({
     selector: "ai-breadcrumb-ellipsis",
     exportAs: "aiBreadcrumbEllipsis",
-    imports: [AiIcon, AiBreadcrumbImports],
+    imports: [AiIcon],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     template: `

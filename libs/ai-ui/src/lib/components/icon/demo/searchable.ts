@@ -2,9 +2,9 @@ import { Component, computed, inject, signal } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { ClipboardUtil } from "../../../core";
-import { AiEmpty } from "../../empty";
-import { AiSelectImports } from "../../form-field";
-import { AiSeparator } from "../../separator";
+import { AiEmpty } from "../../empty/empty";
+import { AiSelectImports } from "../../form-field/select/select.imports";
+import { AiSeparator } from "../../separator/separator";
 import { AiToastService } from "../../toast/toast.service";
 import { ICON_CATEGORIES, ICON_CATEGORY_ORDER, IconCategory } from "../icon-categories";
 import { AiIcon } from "../icon.component";

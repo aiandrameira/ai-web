@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, effect, inject, signal, ViewEncapsulation } from "@angular/core";
+
 import { AiLoaderService } from "./loader.service";
 
 @Component({
