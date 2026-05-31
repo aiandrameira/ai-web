@@ -5,16 +5,25 @@ export const appRoutes: Route[] = [
     {
         path: "",
         pathMatch: "full",
-        redirectTo: "component",
+        redirectTo: "",
     },
     {
-        path: "component",
-        loadChildren: async () => (await import("./presentation/views/components/components.routes")).componentsRoutes,
-        component: Sidenav,
+        path: "",
+        loadChildren: () => import("./presentation/views/leading/leading.routes").then(r => r.leadingRoutes),
+        title: "AiUi",
     },
     {
-        path: "docs",
-        loadChildren: () => import("./presentation/views/docs/docs.routes").then(m => m.docsRoutes),
+        path: "",
         component: Sidenav,
+        children: [
+            {
+                path: "component",
+                loadChildren: async () => (await import("./presentation/views/components/components.routes")).componentsRoutes,
+            },
+            {
+                path: "docs",
+                loadChildren: () => import("./presentation/views/docs/docs.routes").then(r => r.docsRoutes),
+            },
+        ],
     },
 ];
