@@ -14,7 +14,7 @@ interface iCardInstallation {
     selector: "ai-card-installation",
     imports: [RouterLink, AiBadge, NgClass],
     template: `
-        <div class="flex items-center gap-x-4">
+        <div class="flex items-center flex-col md:flex-row gap-4 w-full">
             @for (card of cards(); track card.name) {
                 <div class="flex justify-center items-center w-full h-48 rounded-md border border-border relative">
                     <a
