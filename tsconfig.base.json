@@ -19,7 +19,7 @@
         "baseUrl": ".",
         "paths": {
             "@package": [
-                "./package.json"
+                "libs/ai-ui/package.json"
             ],
             "@ai-ui/*": [
                 "libs/ai-ui/src/lib/*"

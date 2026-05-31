@@ -1,9 +1,9 @@
 import { ClassValue } from "clsx";
 
 import { BooleanInput } from "@angular/cdk/coercion";
-import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, TemplateRef, ViewEncapsulation } from "@angular/core";
+import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, TemplateRef, viewChild, ViewEncapsulation } from "@angular/core";
 
-import { mergeClasses, StringTemplateRefDirective } from "../../core";
+import { GenerateIdDirective, mergeClasses, StringTemplateRefDirective } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiIconType } from "../icon/icons";
 import { cardBodyVariants, cardHeaderVariants, cardVariants } from "./card.variants";
@@ -11,7 +11,7 @@ import { cardBodyVariants, cardHeaderVariants, cardVariants } from "./card.varia
 @Component({
     selector: "ai-card",
     exportAs: "aiCard",
-    imports: [StringTemplateRefDirective, AiIcon],
+    imports: [StringTemplateRefDirective, AiIcon, GenerateIdDirective],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     templateUrl: "./card.html",
@@ -21,6 +21,8 @@ import { cardBodyVariants, cardHeaderVariants, cardVariants } from "./card.varia
     },
 })
 export class AiCard {
+    private readonly generatedId = viewChild<GenerateIdDirective>("aiId");
+
     readonly title = input<string | TemplateRef<void>>();
     readonly description = input<string | TemplateRef<void>>();
     readonly icon = input<AiIconType>();

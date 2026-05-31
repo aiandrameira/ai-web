@@ -1,6 +1,7 @@
 {
-    "name": "@aiandrameira/ai-ui",
-    "version": "1.0.8",
+    "name": "@aiandralves/ai-ui",
+    "version": "1.0.1",
+    "description": "A comprehensive Angular UI component library with Tailwind CSS",
     "sideEffects": false,
     "peerDependencies": {
         "@angular/common": "^21.0.0",
@@ -37,6 +38,7 @@
         "zod": "^4.3.6"
     },
     "publishConfig": {
-        "registry": "https://npm.pkg.github.com/"
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     }
 }
