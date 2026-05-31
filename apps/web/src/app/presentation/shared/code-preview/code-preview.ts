@@ -1,7 +1,7 @@
 import { AiCard } from "@ai-ui/components";
 import { ComponentType } from "@angular/cdk/overlay";
 import { NgComponentOutlet } from "@angular/common";
-import { Component, computed, input, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, input, signal } from "@angular/core";
 import { HyphenToSpacePipe } from "@core/pipes";
 
 import { Markdown } from "../markdown/markdown";
@@ -10,6 +10,7 @@ import { Markdown } from "../markdown/markdown";
     selector: "ai-code-preview",
     imports: [NgComponentOutlet, Markdown, HyphenToSpacePipe, AiCard],
     templateUrl: "./code-preview.html",
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CodePreview {
     component = input<string>();

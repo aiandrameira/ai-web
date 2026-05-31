@@ -54,7 +54,7 @@ export interface ComponentData {
     fullWidth?: boolean;
 }
 
-const dataComponents: ComponentData[] = [
+export const dataComponents: ComponentData[] = [
     ACCORDION,
     ALERT,
     ALERT_DIALOG,
@@ -85,6 +85,6 @@ const dataComponents: ComponentData[] = [
     TREE,
     UPLOAD,
 ];
-const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, DATETIME, INPUT, RADIO, SEGMENTED, SELECT, SWITCH, TEXTAREA];
+export const formComponents: ComponentData[] = [AUTOCOMPLETE, CHECKBOX, DATETIME, INPUT, RADIO, SEGMENTED, SELECT, SWITCH, TEXTAREA];
 
 export const components = [...dataComponents, ...formComponents];
