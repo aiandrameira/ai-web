@@ -27,6 +27,7 @@ import { DatePipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, model, signal } from "@angular/core";
 import { RouterLink } from "@angular/router";
 import { environment } from "@env/environment.development";
+import { Header, MobileMenu } from "@views/shared";
 
 @Component({
     selector: "leading",
@@ -55,6 +56,8 @@ import { environment } from "@env/environment.development";
         ...AiSelectImports,
         ...AiRadioImports,
         RouterLink,
+        Header,
+        MobileMenu,
     ],
     templateUrl: "./leading.html",
     changeDetection: ChangeDetectionStrategy.OnPush,
