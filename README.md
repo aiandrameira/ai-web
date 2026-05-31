@@ -5,12 +5,12 @@
 </p>
 
 <p align="center">
-    <strong>@ai-ui</strong> é uma biblioteca de componentes Angular moderna, acessível e personalizável, projetada para desenvolvedores que valorizam tanto a estética quanto a funcionalidade.
+    <strong>@aiandralves/ai-ui</strong> é uma biblioteca de componentes Angular moderna, acessível e personalizável, projetada para desenvolvedores que valorizam tanto a estética quanto a funcionalidade.
 </p>
 
 <p align="center">
     <img src="https://img.shields.io/badge/Angular-21-E90464" alt="Angular" />
-    <img src="https://img.shields.io/npm/v/@aiandrameira/ai-ui" alt="npm version" />
+    <img src="https://img.shields.io/npm/v/@aiandralves/ai-ui" alt="npm version" />
     <img src="https://img.shields.io/badge/TailwindCSS-4.1.18-00bcff" alt="Tailwind CSS" />
 </p>
 
@@ -33,7 +33,7 @@
 Adicione a biblioteca ao seu projeto Angular:
 
 ```bash
-npm install @aiandrameira/ai-ui
+npm install @aiandralves/ai-ui
 ```
 
 ---
@@ -52,7 +52,7 @@ npm install @aiandrameira/ai-ui
 
 A documentação completa do AiUI está disponível em:
 
-👉 https://aiandrameira.github.io/ai-web/
+👉 http://aiandralves.com.br/component
 
 Você encontrará:
 

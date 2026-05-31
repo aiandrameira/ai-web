@@ -3,5 +3,9 @@
     "dest": "../../dist/libs/ai-ui",
     "lib": {
         "entryFile": "src/index.ts"
-    }
+    },
+    "assets": [
+        "README.md",
+        "LICENSE"
+    ]
 }
