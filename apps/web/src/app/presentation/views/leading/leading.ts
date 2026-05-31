@@ -25,6 +25,7 @@ import {
 } from "@ai-ui/components";
 import { DatePipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, model, signal } from "@angular/core";
+import { RouterLink } from "@angular/router";
 import { environment } from "@env/environment.development";
 
 @Component({
@@ -53,6 +54,7 @@ import { environment } from "@env/environment.development";
         AiPaginationModule,
         ...AiSelectImports,
         ...AiRadioImports,
+        RouterLink,
     ],
     templateUrl: "./leading.html",
     changeDetection: ChangeDetectionStrategy.OnPush,

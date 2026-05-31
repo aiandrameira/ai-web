@@ -87,7 +87,7 @@ export class MarkdownService {
                         node.properties = {
                             ...node.properties,
                             style: [],
-                            class: ["text-base", "leading-7", "text-muted-foreground", "font-text", "[&:not(:first-child)]:mt-6"],
+                            class: ["text-base", "leading-7", "text-muted-foreground", "font-text", "text-justify", "[&:not(:first-child)]:mt-6"],
                         };
                     }
 
