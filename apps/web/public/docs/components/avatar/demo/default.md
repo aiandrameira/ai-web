@@ -9,7 +9,7 @@ import { AiAvatarGroup } from "../avatar-group";
     template: `
         <div class="flex justify-center items-center gap-x-4">
             <ai-avatar image="./img/avatar.png" fallback="AI" [size]="32" />
-            <ai-avatar image="error-image.png" fallback="AI" size="sm" />
+            <ai-avatar fallback="AI" size="sm" />
 
             <ai-avatar-group>
                 <ai-avatar image="https://raw.githubusercontent.com/aiandralves/smart-watch/refs/heads/main/assets/img/team/person2.jpg" fallback="AI" size="sm" />

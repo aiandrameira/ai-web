@@ -1,15 +1,17 @@
-import { Component, computed, inject, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, effect, inject } from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ScrollDirective, ScrollItemDirective } from "@core/directives";
 import { ComponentData, components } from "@domain/constants";
 import { NavigationConfigDto } from "@domain/dtos";
-import { CodePreview, Content, Markdown } from "@views/shared";
+import { CodePreview, ComponentNav, Content, Markdown } from "@views/shared";
 
 @Component({
     selector: "ai-component",
-    imports: [Content, CodePreview, ScrollDirective, ScrollItemDirective, Markdown],
+    imports: [Content, CodePreview, ScrollDirective, ScrollItemDirective, Markdown, ComponentNav],
     templateUrl: "./component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AiComponent {
     #activatedRoute = inject(ActivatedRoute);
@@ -17,52 +19,41 @@ export class AiComponent {
     #title = inject(Title);
 
     activeSummary?: string;
-    dataComponent = signal<ComponentData | null>(null);
 
-    example = computed(() => this.dataComponent()?.examples[0]);
+    private params = toSignal(this.#activatedRoute.params);
 
-    navigations = signal<NavigationConfigDto>({
-        items: [
-            { id: "overview", label: "Nesta página", type: "core" },
-            { id: "installation", label: "Instalação", type: "core" },
-            { id: "examples", label: "Exemplos", type: "core", children: [] },
-            { id: "api", label: "API", type: "core" },
-        ],
+    dataComponent = computed<ComponentData | null>(() => {
+        const componentName = this.params()?.["componentName"] as string | undefined;
+        if (!componentName) return null;
+        return components.find(item => item.componentName === componentName) ?? null;
+    });
+
+    navigations = computed<NavigationConfigDto>(() => {
+        const comp = this.dataComponent();
+        return {
+            items: [
+                { id: "overview", label: "Nesta página", type: "core" },
+                { id: "installation", label: "Instalação", type: "core" },
+                {
+                    id: "examples",
+                    label: "Exemplos",
+                    type: "core",
+                    children: comp?.examples.map(e => ({ id: e.name, label: e.name, type: "custom" })) ?? [],
+                },
+                { id: "api", label: "API", type: "core" },
+            ],
+        };
     });
 
     constructor() {
-        this.#activatedRoute.params.subscribe(() => this._load());
-        this._load();
-    }
-
-    setPageTitle() {
-        const componentName = this.dataComponent()?.componentName;
-        if (!componentName) return;
-        const capitalizedText = componentName[0].toUpperCase() + componentName.slice(1);
-        const pageTitle = `AI • ${capitalizedText}`;
-        this.#title.setTitle(pageTitle);
-    }
-
-    private _load() {
-        const componentName = this.#activatedRoute.snapshot.paramMap.get("componentName");
-        if (!componentName) {
-            this.#router.navigateByUrl("/");
-            return;
-        }
-
-        const component = components.find(item => item.componentName === componentName);
-        if (!componentName) {
-            this.#router.navigateByUrl("/");
-            return;
-        }
-
-        this.dataComponent.set(component || null);
-
-        const examples = this.navigations().items.find(item => item.id === "examples");
-
-        if (examples) {
-            examples.children = component?.examples.map(example => ({ id: example.name, label: example.name, type: "custom" }));
-        }
-        this.setPageTitle();
+        effect(() => {
+            const componentName = this.dataComponent()?.componentName;
+            if (!componentName) {
+                this.#router.navigateByUrl("/");
+                return;
+            }
+            const capitalized = componentName[0].toUpperCase() + componentName.slice(1);
+            this.#title.setTitle(`AI • ${capitalized}`);
+        });
     }
 }

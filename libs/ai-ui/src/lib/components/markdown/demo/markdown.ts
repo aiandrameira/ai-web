@@ -5,13 +5,7 @@ export const MARKDOWN = {
     componentName: "markdown",
     componentType: "markdown",
     examples: [
-        {
-            name: "editor",
-            component: DemoMarkdownEditorComponent,
-        },
-        {
-            name: "viewer",
-            component: DemoMarkdownViewerComponent,
-        },
+        { name: "editor", component: DemoMarkdownEditorComponent },
+        { name: "viewer", component: DemoMarkdownViewerComponent },
     ],
 };

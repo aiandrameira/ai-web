@@ -1,11 +1,12 @@
 import { Component } from "@angular/core";
+
 import { AiCommandItemConfig } from "../command.config";
 import { AiCommandImports } from "../command.imports";
 
 @Component({
     imports: [AiCommandImports],
     template: `
-        <ai-command class="md:min-w-125" (selectedCommand)="handleCommand($event)">
+        <ai-command class="min-w-xs sm:min-w-sm md:min-w-md" (selectedCommand)="handleCommand($event)">
             <ai-command-input placeholder="Search actions, files, and more..." />
 
             <ai-command-list>

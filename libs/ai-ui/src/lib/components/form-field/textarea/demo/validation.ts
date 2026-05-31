@@ -7,7 +7,7 @@ import { AiTextarea } from "../textarea";
 @Component({
     imports: [AiTextarea, FormField, AiButton],
     template: `
-        <div class="flex flex-col gap-y-6 max-w-lg">
+        <div class="flex flex-col gap-y-6 w-full max-w-lg">
             <ai-textarea label="Description" [formField]="schemaForm.description" [minlength]="10" [maxlength]="200" class="w-full" />
 
             <div class="flex gap-2">

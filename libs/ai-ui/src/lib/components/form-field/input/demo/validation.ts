@@ -28,12 +28,12 @@ function makeSchema(): Schema {
 @Component({
     imports: [AiInput, FormField, AiButton],
     template: `
-        <div class="flex flex-col gap-y-6 max-w-lg">
+        <div class="flex flex-col gap-y-4 max-w-lg w-full">
             <ai-input label="Name" [formField]="schemaForm.name" class="w-full" />
             <ai-input label="E-mail" type="email" [formField]="schemaForm.email" class="w-full" />
             <ai-input label="SG" [minlength]="2" [maxlength]="2" [formField]="schemaForm.sg" class="w-full" />
 
-            <div class="grid grid-cols-2 gap-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <ai-input label="Senha" [formField]="schemaForm.password" type="password" [strength]="true" class="w-full" />
                 <ai-input label="Confirme a Senha" [formField]="schemaForm.confirmPassword" type="password" class="w-full" />
             </div>

@@ -1,9 +1,23 @@
 @if (orientation() === 'horizontal') {
     <div [class]="headerClasses()">
         @for (step of steps(); track step; let i = $index; let last = $last) {
+            @let isActive = i === selectedIndex();
+            @let isAdjacent = i === selectedIndex() - 1 || i === selectedIndex() + 1;
+            @let isFirst = i === 0;
+            @let isLast = last;
+            @let showEllipsisBefore = i === selectedIndex() - 2 && selectedIndex() > 2;
+            @let showEllipsisAfter = i === selectedIndex() + 2 && selectedIndex() < steps().length - 3;
+            @let hiddenOnMobile = !isActive && !isAdjacent && !isFirst && !isLast;
+
+            @if (showEllipsisBefore) {
+                <span class="text-muted-foreground text-xs px-1 sm:hidden">…</span>
+            }
+
             <button
                 type="button"
                 class="flex items-center gap-2 cursor-pointer disabled:cursor-default disabled:opacity-50"
+                [class.hidden]="hiddenOnMobile"
+                [class.sm:flex]="hiddenOnMobile"
                 (click)="selectStep(i)"
                 [disabled]="isStepDisabled(i)">
                 <div [class]="circleClasses(i)">
@@ -13,15 +27,20 @@
                         {{ i + 1 }}
                     }
                 </div>
-                <div class="flex flex-col items-start">
+                <div class="flex flex-col items-start" [class.hidden]="!isActive" [class.sm:flex]="!isActive">
                     <span [class]="labelClasses(i)">{{ step.label() }}</span>
                     @if (step.optional()) {
                         <span class="text-xs text-muted-foreground">Opcional</span>
                     }
                 </div>
             </button>
+
+            @if (showEllipsisAfter) {
+                <span class="text-muted-foreground text-xs px-1 sm:hidden">…</span>
+            }
+
             @if (!last) {
-                <div [class]="connectorClasses(i)"></div>
+                <div [class]="connectorClasses(i)" [class.hidden]="hiddenOnMobile" [class.sm:block]="hiddenOnMobile"></div>
             }
         }
     </div>

@@ -6,7 +6,7 @@ import { AiTab, AiTabsGroup } from "../tabs";
 @Component({
     imports: [AiTabsGroup, AiTab, AiButton],
     template: `
-        <div class="flex flex-col gap-6 w-full max-w-xl">
+        <div class="flex flex-col gap-6 w-full max-w-xs sm:max-w-sm md:max-w-xl">
             <button ai-button variant="ghost" size="sm" (click)="arrows.set(!arrows())">{{ arrows() ? "Hide" : "Show" }} Arrows</button>
 
             <ai-tabs-group [showArrows]="arrows()">

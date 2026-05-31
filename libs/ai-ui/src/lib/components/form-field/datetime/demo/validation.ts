@@ -7,7 +7,7 @@ import { AiDatetime } from "../datetime";
 @Component({
     imports: [AiDatetime, FormField, AiButton],
     template: `
-        <div class="flex flex-col gap-4 w-100">
+        <div class="flex flex-col gap-4 w-full max-w-xs sm:max-w-sm md:max-w-md">
             <ai-datetime class="w-full" id="dtRequired" type="date" label="Data obrigatória" [formField]="schemaForm.date" />
 
             <div class="flex gap-2">

@@ -1,4 +1,5 @@
 import { Component, inject } from "@angular/core";
+
 import { AiButton } from "../../button";
 import { AiToastService } from "../toast.service";
 
@@ -7,15 +8,27 @@ import { AiToastService } from "../toast.service";
     template: `
         <div class="flex items-center flex-col gap-y-4">
             <div class="flex items-center gap-x-2">
-                <ai-button size="sm" (click)="showTopLeft()">top-left</ai-button>
-                <ai-button size="sm" (click)="showTopCenter()">top-center</ai-button>
-                <ai-button size="sm" (click)="showTopRight()">top-right</ai-button>
+                <ai-button size="sm" (click)="showTopLeft()">
+                    <span class="text-xs sm:text-sm">top-left</span>
+                </ai-button>
+                <ai-button size="sm" (click)="showTopCenter()">
+                    <span class="text-xs sm:text-sm">top-center</span>
+                </ai-button>
+                <ai-button size="sm" (click)="showTopRight()">
+                    <span class="text-xs sm:text-sm">top-right</span>
+                </ai-button>
             </div>
 
             <div class="flex items-center gap-x-2">
-                <ai-button size="sm" (click)="showBottomLeft()">bottom-left</ai-button>
-                <ai-button size="sm" (click)="showBottomCenter()">bottom-center</ai-button>
-                <ai-button size="sm" (click)="showBottomRight()">bottom-right</ai-button>
+                <ai-button size="sm" (click)="showBottomLeft()">
+                    <span class="text-xs sm:text-sm">bottom-left</span>
+                </ai-button>
+                <ai-button size="sm" (click)="showBottomCenter()">
+                    <span class="text-xs sm:text-sm">bottom-center</span>
+                </ai-button>
+                <ai-button size="sm" (click)="showBottomRight()">
+                    <span class="text-xs sm:text-sm">bottom-right</span>
+                </ai-button>
             </div>
         </div>
     `,

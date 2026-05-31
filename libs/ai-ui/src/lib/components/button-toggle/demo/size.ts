@@ -7,15 +7,15 @@ import { AiButtonToggle, AiButtonToggleItem } from "../button-toggle";
     imports: [AiButtonToggle],
     template: `
         <div class="flex flex-col gap-y-4 w-full">
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-2 sm:gap-4">
                 <span class="font-semibold text-sm">Small</span>
                 <ai-button-toggle mode="multiple" [defaultValue]="['italic']" variant="outline" [items]="items" size="sm" />
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-2 sm:gap-4">
                 <span class="font-semibold text-sm">Default</span>
                 <ai-button-toggle mode="multiple" [defaultValue]="['italic']" variant="outline" [items]="items" size="default" />
             </div>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-2 sm:gap-4">
                 <span class="font-semibold text-sm">Large</span>
                 <ai-button-toggle mode="multiple" [defaultValue]="['italic']" variant="outline" [items]="items" size="lg" />
             </div>

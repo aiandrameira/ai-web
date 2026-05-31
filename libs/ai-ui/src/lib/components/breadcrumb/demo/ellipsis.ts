@@ -1,19 +1,21 @@
 import { Component } from "@angular/core";
-import { RouterLink } from "@angular/router";
 
+import { AiBreadcrumbConfig } from "../breadcrumb.config";
 import { AiBreadcrumbImports } from "../breadcrumb.imports";
 
 @Component({
-    imports: [AiBreadcrumbImports, RouterLink],
+    imports: [AiBreadcrumbImports],
     template: `
         <ai-breadcrumb-content>
             <ai-breadcrumb-list>
                 <ai-breadcrumb-item>
-                    <a routerLink="/">Home</a>
+                    <ai-breadcrumb-link link="/">Home</ai-breadcrumb-link>
                 </ai-breadcrumb-item>
                 <ai-breadcrumb-separator />
+                <ai-breadcrumb-ellipsis [hiddenItems]="hiddenItems" />
+                <ai-breadcrumb-separator />
                 <ai-breadcrumb-item>
-                    <a routerLink="/components">Components</a>
+                    <ai-breadcrumb-link link="/components">Components</ai-breadcrumb-link>
                 </ai-breadcrumb-item>
                 <ai-breadcrumb-separator />
                 <ai-breadcrumb-item>
@@ -23,4 +25,9 @@ import { AiBreadcrumbImports } from "../breadcrumb.imports";
         </ai-breadcrumb-content>
     `,
 })
-export class DemoBreadcrumbRouterLinkComponent {}
+export class DemoBreadcrumbEllipsisComponent {
+    hiddenItems: AiBreadcrumbConfig[] = [
+        { path: "/docs", label: "Docs" },
+        { path: "/docs/installation", label: "Installation" },
+    ];
+}

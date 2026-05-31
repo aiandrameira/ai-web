@@ -6,7 +6,7 @@ import { AiMarkdown } from "../markdown";
 @Component({
     imports: [AiMarkdown],
     template: `
-        <div class="flex flex-col gap-y-4 max-w-md w-full">
+        <div class="flex flex-col gap-y-4 max-w-xs sm:max-w-sm md:max-w-md w-full">
             <ai-markdown mode="editor" [code]="code" [theme]="theme()" language="typescript" />
         </div>
     `,

@@ -1,7 +1,7 @@
-# 🚀 ai-ui
+# 🚀 @aiandralves/ai-ui
 
 <p align="center">
-    <img src="./apps/web/public/img/logo.svg" style="filter: invert(1);" width="80" alt="ai-ui logo" />
+    <img src="./apps/web/public/img/logo-dark.svg" width="80" alt="ai-ui logo" />
 </p>
 
 <p align="center">
@@ -12,6 +12,10 @@
     <img src="https://img.shields.io/badge/Angular-21-E90464" alt="Angular" />
     <img src="https://img.shields.io/npm/v/@aiandralves/ai-ui" alt="npm version" />
     <img src="https://img.shields.io/badge/TailwindCSS-4.1.18-00bcff" alt="Tailwind CSS" />
+</p>
+
+<p align="center">
+    <img src="./apps/web/public/img/preview.png" width="800" alt="preview" />
 </p>
 
 ---
@@ -52,7 +56,7 @@ npm install @aiandralves/ai-ui
 
 A documentação completa do AiUI está disponível em:
 
-👉 http://aiandralves.com.br/component
+👉 https://ai-ui.aiandralves.com.br
 
 Você encontrará:
 
@@ -65,20 +69,10 @@ Você encontrará:
 
 ---
 
-## 🚧 Status do projeto
-
-O <strong>@ai-ui</strong> está em desenvolvimento ativo e novas funcionalidades são adicionadas regularmente.
-
-A API dos componentes pode sofrer alterações até a primeira versão estável (`v1.0.0`).
-
----
-
 ## 📜 Licença
 
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo [LICENSE](./LICENSE.md) para mais informações.
 
 ---
 
-<p align="center">
-    Feito com ❤️ por <a href="https://github.com/aiandralves">Aiandra Meira</a>.
-</p>
+Feito com ❤️ por [Aiandra Meira](https://github.com/aiandralves).

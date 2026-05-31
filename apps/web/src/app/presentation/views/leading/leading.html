@@ -1,3 +1,6 @@
+<ai-header />
+<ai-mobile-menu />
+
 <div class="min-h-screen bg-background flex flex-col">
     <div class="relative flex flex-col items-center text-center px-4 pt-20 pb-10 overflow-hidden">
         <div class="inline-flex items-center gap-x-2 text-accent text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-accent">
@@ -5,7 +8,7 @@
             <span class="pr-1">nova versão disponível</span>
         </div>
 
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-4 max-w-3xl">
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold font-title text-primary leading-tight mb-4 max-w-3xl">
             O próximo nível para seus
             <span class="text-accent"> projetos Angular.</span>
         </h1>
@@ -15,8 +18,8 @@
         </p>
 
         <div class="flex items-center gap-3">
-            <button ai-button variant="primary" size="sm" icon="rocket-2">Começar agora</button>
-            <button ai-button variant="outline" size="sm" icon="eye">Ver componentes</button>
+            <button ai-button variant="primary" size="sm" icon="rocket-2" routerLink="/docs/installation">Começar agora</button>
+            <button ai-button variant="outline" size="sm" icon="eye" routerLink="/component">Ver componentes</button>
         </div>
     </div>
 

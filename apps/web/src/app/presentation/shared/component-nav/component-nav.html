@@ -1,0 +1,60 @@
+@if (mode() === 'header' || mode() === 'both') {
+    <div class="flex items-center gap-1">
+        <ai-button
+            variant="ghost"
+            size="xs"
+            shape="circle"
+            icon="arrow-left"
+            [routerLink]="prev()?.path"
+            [class.opacity-40]="!prev()"
+            [class.pointer-events-none]="!prev()"
+        />
+        <ai-button
+            variant="ghost"
+            size="xs"
+            shape="circle"
+            icon="arrow-right"
+            [routerLink]="next()?.path"
+            [class.opacity-40]="!next()"
+            [class.pointer-events-none]="!next()"
+        />
+    </div>
+}
+
+@if (mode() === 'footer' || mode() === 'both') {
+    <div class="hidden md:flex items-center justify-between gap-4 py-2">
+        @if (prev()) {
+            <a ai-button variant="outline" size="sm" [routerLink]="prev()!.path" class="flex items-center gap-2 min-w-0">
+                <ai-icon icon="arrow-left" size="sm" />
+                <span class="truncate">{{ formatName(prev()!.name) }}</span>
+            </a>
+        } @else {
+            <div></div>
+        }
+
+        @if (next()) {
+            <a ai-button variant="outline" size="sm" [routerLink]="next()!.path" class="flex items-center gap-2 min-w-0">
+                <span class="truncate">{{ formatName(next()!.name) }}</span>
+                <ai-icon icon="arrow-right" size="sm" />
+            </a>
+        }
+    </div>
+
+    <div class="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-background/95 backdrop-blur border-t border-border px-4 py-2 flex items-center justify-between gap-2">
+        @if (prev()) {
+            <a ai-button variant="ghost" size="sm" [routerLink]="prev()!.path" class="flex items-center gap-1.5 min-w-0 max-w-[45%]">
+                <ai-icon icon="arrow-left" size="sm" class="shrink-0" />
+                <span class="truncate text-xs">{{ formatName(prev()!.name) }}</span>
+            </a>
+        } @else {
+            <div></div>
+        }
+
+        @if (next()) {
+            <a ai-button variant="ghost" size="sm" [routerLink]="next()!.path" class="flex items-center gap-1.5 min-w-0 max-w-[45%]">
+                <span class="truncate text-xs">{{ formatName(next()!.name) }}</span>
+                <ai-icon icon="arrow-right" size="sm" class="shrink-0" />
+            </a>
+        }
+    </div>
+}
