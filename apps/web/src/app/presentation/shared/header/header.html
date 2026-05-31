@@ -8,7 +8,9 @@
                 [icon]="openMenu() ? 'close' : 'menu'"
                 (click)="toggleMenu()" />
 
-            <img src="./img/logo.svg" class="dark:invert" alt="logo" width="28" />
+            <a routerLink="/" class="cursor-pointer">
+                <img src="./img/logo.svg" class="dark:invert" alt="logo" width="28" />
+            </a>
 
             <div class="hidden md:flex items-center gap-x-2 ml-4">
                 @for (item of items; track item.name) {
@@ -32,7 +34,7 @@
 
             <ai-separator orientation="vertical" class="h-4 bg-border" />
 
-            <a ai-button icon="github" size="xs" variant="ghost" href="https://github.com/aiandrameira/ai-web" target="_blank" aria-label=""></a>
+            <a ai-button icon="github" size="xs" variant="ghost" href="https://github.com/aiandralves/ai-web" target="_blank" aria-label=""></a>
         </div>
     </div>
 </div>
