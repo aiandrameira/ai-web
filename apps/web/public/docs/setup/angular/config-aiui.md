@@ -1,5 +1,5 @@
 ```angular-ts title="app.ts" showLineNumbers copyButton
-import { AiBadge, AiButton, AiIcon } from "@aiandrameira/ai-ui";
+import { AiBadge, AiButton, AiIcon } from "@aiandralves/ai-ui";
 import { Component } from "@angular/core";
 
 @Component({
