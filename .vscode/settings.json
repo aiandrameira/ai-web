@@ -53,8 +53,8 @@
                     "description": "🔧 Alterações nos arquivos de scripts CI/CD"
                 },
                 {
-                    "label": "✏️ docs",
-                    "description": "✏️ Alterações apenas na documentação"
+                    "label": "📚 docs",
+                    "description": "📚 Alterações apenas na documentação"
                 },
                 {
                     "label": "🚀 perf",
