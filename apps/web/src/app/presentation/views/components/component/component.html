@@ -11,7 +11,7 @@
             <section class="flex flex-col gap-4">
                 <h2 class="text-2xl font-semibold font-title mb-5">Exemplos</h2>
 
-                @for (item of dataComponent()?.examples; track $index) {
+                @for (item of dataComponent()?.examples; track item.component) {
                     <ai-code-preview [scrollingItem]="item.name"
                         [attr.id]="item.name"
                         [component]="item.name"
