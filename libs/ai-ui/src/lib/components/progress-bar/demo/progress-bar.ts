@@ -5,6 +5,7 @@ import { DemoProgressBarVariantComponent } from "./variant";
 
 export const PROGRESS_BAR = {
     componentName: "progress-bar",
+    componentType: "progress-bar",
     examples: [
         { name: "variant", component: DemoProgressBarVariantComponent },
         { name: "size", component: DemoProgressBarSizeComponent },

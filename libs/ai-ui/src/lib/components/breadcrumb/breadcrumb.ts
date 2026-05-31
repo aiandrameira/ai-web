@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from "@angular/common";
-import { ChangeDetectionStrategy, Component, inject, input, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { AiIcon } from "../icon/icon.component";
@@ -22,7 +22,20 @@ export class AiBreadcrumb {
 
     readonly customSeparator = input<AiIconType>();
     readonly size = input<BreadcrumbVariants["size"]>("default");
+    readonly maxItems = input<number>(0);
 
     actions = this.#breadcrumbService.actions;
     breadcrumbs = this.#breadcrumbService.breadcrumbs;
+
+    protected visibleBreadcrumbs = computed(() => {
+        const all = this.breadcrumbs();
+        const max = this.maxItems();
+        if (!max || max <= 0 || all.length <= max) return { visible: all, hidden: [] };
+
+        const keepFirst = 1;
+        const keepLast = max - 1;
+        const hidden = all.slice(keepFirst, all.length - keepLast);
+        const visible = [...all.slice(0, keepFirst), ...all.slice(all.length - keepLast)];
+        return { visible, hidden };
+    });
 }

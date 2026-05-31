@@ -5,7 +5,7 @@ import { AiCarousel, AiCarouselItem } from "../carousel";
 @Component({
     imports: [AiCarousel, AiCarouselItem],
     template: `
-        <div class="w-full max-w-md mx-auto">
+        <div class="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
             <ai-carousel>
                 @for (slide of slides; track slide.id) {
                     <ai-carousel-item>

@@ -1,6 +1,11 @@
 <ai-breadcrumb-content [size]="size()">
     <ai-breadcrumb-list wrap="wrap" [align]="'start'">
-        @for (breadcrumb of breadcrumbs(); track breadcrumb.path; let last = $last) {
+        @let crumbs = visibleBreadcrumbs();
+        @let custom = customSeparator();
+        @for (breadcrumb of crumbs.visible; track breadcrumb.path; let i = $index; let last = $last) {
+            @let isFirstItem = i === 0;
+            @let hasEllipsis = crumbs.hidden.length > 0;
+
             <ai-breadcrumb-item>
                 @if (!last) {
                     <ai-breadcrumb-link [link]="breadcrumb.path">
@@ -18,9 +23,19 @@
                     </ai-breadcrumb-page>
                 }
             </ai-breadcrumb-item>
-      
+
             @if (!last) {
-                @let custom = customSeparator();
+                @if (custom) {
+                    <ai-breadcrumb-separator>
+                        <ai-icon [icon]="custom" />
+                    </ai-breadcrumb-separator>
+                } @else {
+                    <ai-breadcrumb-separator />
+                }
+            }
+
+            @if (isFirstItem && hasEllipsis) {
+                <ai-breadcrumb-ellipsis [hiddenItems]="crumbs.hidden" />
                 @if (custom) {
                     <ai-breadcrumb-separator>
                         <ai-icon [icon]="custom" />

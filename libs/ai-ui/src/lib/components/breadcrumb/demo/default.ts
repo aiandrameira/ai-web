@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+
 import { AiIcon } from "../../icon/icon.component";
 import { AiBreadcrumbImports } from "../breadcrumb.imports";
 

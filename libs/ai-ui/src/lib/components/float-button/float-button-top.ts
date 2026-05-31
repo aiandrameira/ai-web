@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input, OnDestroy, OnInit, signal, TemplateRef, ViewEncapsulation } from "@angular/core";
 import { ClassValue } from "clsx";
+
+import { ChangeDetectionStrategy, Component, computed, input, OnDestroy, OnInit, signal, TemplateRef, ViewEncapsulation } from "@angular/core";
+
 import { mergeClasses } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiIconType } from "../icon/icons";
@@ -38,8 +40,8 @@ export class AiFloatButtonTop implements OnInit, OnDestroy {
     private positionMap: Record<NonNullable<ReturnType<typeof this.position>>, string> = {
         "top-left": "top-4 left-4",
         "top-right": "top-4 right-4",
-        "bottom-left": "bottom-8 left-8",
-        "bottom-right": "bottom-8 right-8",
+        "bottom-left": "bottom-10 left-4",
+        "bottom-right": "bottom-10 right-4",
     };
 
     protected readonly containerPosition = computed(() => this.positionMap[this.position() as keyof typeof this.positionMap]);

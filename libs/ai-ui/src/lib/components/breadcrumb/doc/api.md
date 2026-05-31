@@ -6,11 +6,12 @@
 
 ### Propriedades
 
-| Propriedade       | Descrição                    | Tipo                                                  | Default   |
-| ----------------- | ---------------------------- | ----------------------------------------------------- | --------- |
-| `size`            | define o tamanho             | `sm \| default \| lg \| xl`                           | `default` |
-| `customSeparator` | customiza o ícone do divisor | `AiIconType` [**Remix Icon**](https://remixicon.com/) | `""`      |
-| `class`           | classes CSS adicionais       | `ClassValue`                                          | `""`      |
+| Propriedade       | Descrição                                                  | Tipo                                                  | Default          |
+| ----------------- | ---------------------------------------------------------- | ----------------------------------------------------- | ---------------- |
+| `size`            | define o tamanho                                           | `sm \| default \| lg \| xl`                           | `default`        |
+| `customSeparator` | customiza o ícone do divisor                               | `AiIconType` [**Remix Icon**](https://remixicon.com/) | `""`             |
+| `maxItems`        | define o número máximo de itens visíveis antes de colapsar | `number`                                              | `0` (sem limite) |
+| `class`           | classes CSS adicionais                                     | `ClassValue`                                          | `""`             |
 
 ---
 

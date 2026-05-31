@@ -7,8 +7,8 @@ import { TabActivePosition, TabPosition } from "../tabs.variants";
 @Component({
     imports: [AiTabsGroup, AiTab, AiButton],
     template: `
-        <div class="flex flex-col gap-6 w-full">
-            <ai-tabs-group [tabsPosition]="tabsPosition" [activePosition]="activePosition" class="h-[200px]">
+        <div class="flex flex-col gap-6 w-full max-w-xs sm:max-w-sm md:max-w-xl">
+            <ai-tabs-group [tabsPosition]="tabsPosition" [activePosition]="activePosition" class="h-50">
                 <ai-tab label="Tab 1">Content 1</ai-tab>
                 <ai-tab label="Tab 2">Content 2</ai-tab>
                 <ai-tab label="Tab 3">Content 3</ai-tab>

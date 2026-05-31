@@ -25,7 +25,7 @@ function makeSchema(): Schema {
     imports: [AiInput, FormField, AiPrint, AiButton],
     template: `
         <div class="max-w-sm w-full flex flex-col gap-y-4">
-            <div class="grid grid-cols-2 gap-y-4 gap-x-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <ai-input class="w-full" label="Alfa" [formField]="form.alfa" [normalize]="'alfa'" />
                 <ai-input class="w-full" label="Alfanum" [formField]="form.alfanum" [normalize]="'alfanum'" />
                 <ai-input class="w-full" label="Numeric" type="number" [formField]="form.numeric" [normalize]="'numeric'" />
