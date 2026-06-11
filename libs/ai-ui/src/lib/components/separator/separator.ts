@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
 import { ClassValue } from "clsx";
+
+import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
+
 import { mergeClasses } from "../../core";
 import { separatorVariants, SeparatorVariants } from "./separator.variants";
 
