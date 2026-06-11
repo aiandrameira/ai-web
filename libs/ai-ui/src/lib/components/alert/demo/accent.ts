@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { AiAlert } from "../alert";
 
 @Component({
+    selector: "ai-demo-alert-accent",
     imports: [AiAlert],
     template: `
         <div class="flex flex-col w-70 sm:w-100 lg:w-150 items-center gap-4">
