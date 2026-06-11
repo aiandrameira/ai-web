@@ -21,8 +21,8 @@ import {
 import { mergeClasses } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiDatePickerOverlayService } from "./date-picker-overlay.service";
-import { datePickerCalendarVariants, datePickerTriggerVariants } from "./date-picker.variants";
 import { buildCalendarMonth, formatDate, getMonthLabel, getWeekdayLabels, parseDate } from "./date-picker.util";
+import { datePickerCalendarVariants, datePickerTriggerVariants } from "./date-picker.variants";
 
 @Component({
     selector: "ai-date-picker",
@@ -65,8 +65,8 @@ export class AiDatePicker implements OnInit {
             this.viewYear(),
             this.viewMonth(),
             this.selectedDate(),
-            this.minDate() ? parseDate(this.minDate()) ?? undefined : undefined,
-            this.maxDate() ? parseDate(this.maxDate()) ?? undefined : undefined,
+            this.minDate() ? (parseDate(this.minDate()) ?? undefined) : undefined,
+            this.maxDate() ? (parseDate(this.maxDate()) ?? undefined) : undefined,
         ),
     );
 

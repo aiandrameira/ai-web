@@ -1,8 +1,9 @@
-import { Overlay, OverlayPositionBuilder, type OverlayRef } from "@angular/cdk/overlay";
+import { EMPTY, Observable } from "rxjs";
+
+import { Overlay, OverlayPositionBuilder, OverlayRef } from "@angular/cdk/overlay";
 import { TemplatePortal } from "@angular/cdk/portal";
 import { isPlatformBrowser } from "@angular/common";
 import { ElementRef, inject, Injectable, PLATFORM_ID, TemplateRef, ViewContainerRef } from "@angular/core";
-import { EMPTY, type Observable } from "rxjs";
 
 @Injectable()
 export class AiDatePickerOverlayService {
