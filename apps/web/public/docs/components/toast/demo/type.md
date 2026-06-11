@@ -1,12 +1,14 @@
 ```angular-ts showLineNumbers copyButton
 import { Component, inject } from "@angular/core";
+
 import { AiButton } from "../../button";
 import { AiToastService } from "../toast.service";
 
 @Component({
+    selector: "ai-demo-toast-type",
     imports: [AiButton],
     template: `
-        <div class="flex items-center gap-4 flex-wrap">
+        <div class="flex items-center justify-center gap-4 flex-wrap">
             <ai-button size="sm" (click)="showDefault()">default</ai-button>
             <ai-button size="sm" (click)="showSuccess()">success</ai-button>
             <ai-button size="sm" (click)="showDestructive()">destructive</ai-button>

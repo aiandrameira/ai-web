@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
 import { AiSkeleton } from "../skeleton";
 
 @Component({
+    selector: "ai-demo-skeleton-card",
     imports: [AiSkeleton],
     template: `
         <div class="max-w-sm w-full p-4 border border-border rounded-lg shadow-sm">

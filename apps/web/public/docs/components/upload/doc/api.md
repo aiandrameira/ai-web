@@ -2,28 +2,31 @@
 
 [AiUpload] - Component
 
-> O `<ai-upload>` permite selecionar arquivos via botão ou área de arrastar e soltar.
+> O `[ai-upload]` permite selecionar arquivos via botão ou área de arrastar e soltar.
 
 ### Propriedades
 
-| Propriedade | Descrição                | Tipo                         | Default    |
-| ----------- | ------------------------ | ---------------------------- | ---------- |
-| `type`      | modo do upload           | `"button" \| "dropzone"`     | `"button"` |
-| `accept`    | tipos de arquivo aceitos | `string`                     | `""`       |
-| `disabled`  | desabilita o upload      | `boolean, string \| boolean` | `false`    |
-| `class`     | classes CSS adicionais   | `ClassValue`                 | `""`       |
+| Propriedade | Descrição                             | Tipo                         | Default    |
+| ----------- | ------------------------------------- | ---------------------------- | ---------- |
+| `id`        | identificador do input                | `string`                     | `""`       |
+| `type`      | modo do upload                        | `"button" \| "dropzone"`     | `"button"` |
+| `accept`    | tipos de arquivo aceitos              | `string`                     | `""`       |
+| `multiple`  | permite selecionar múltiplos arquivos | `boolean, string \| boolean` | `false`    |
+| `disabled`  | desabilita o upload                   | `boolean, string \| boolean` | `false`    |
+| `class`     | classes CSS adicionais                | `ClassValue`                 | `""`       |
 
 ### Eventos
 
-| Evento       | Descrição                               | Tipo                     |
-| ------------ | --------------------------------------- | ------------------------ |
-| `changeFile` | emitido quando um arquivo é selecionado | `OutputEmitterRef<File>` |
+| Evento        | Descrição                                          | Tipo                       |
+| ------------- | -------------------------------------------------- | -------------------------- |
+| `changeFile`  | emitido quando um arquivo é selecionado            | `OutputEmitterRef<File>`   |
+| `changeFiles` | emitido quando múltiplos arquivos são selecionados | `OutputEmitterRef<File[]>` |
 
 ---
 
 [AiUploadSelected] - Component
 
-> O `<ai-upload-selected>` exibe o(s) arquivo(s) selecionado(s) com opção de remoção.
+> O `[ai-upload-selected]` exibe o(s) arquivo(s) selecionado(s) com opção de remoção.
 
 ### Propriedades
 
@@ -35,9 +38,9 @@
 
 ### Eventos
 
-| Evento   | Descrição                              | Tipo                     |
-| -------- | -------------------------------------- | ------------------------ |
-| `remove` | emitido quando o usuário remove o item | `OutputEmitterRef<void>` |
+| Evento   | Descrição                              | Tipo                             |
+| -------- | -------------------------------------- | -------------------------------- |
+| `remove` | emitido quando o usuário remove o item | `OutputEmitterRef<AiFileUpload>` |
 
 ---
 

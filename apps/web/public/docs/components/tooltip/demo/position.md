@@ -1,9 +1,11 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
+
 import { AiButton } from "../../button";
 import { AiTooltipImports } from "../tooltip.imports";
 
 @Component({
+    selector: "ai-demo-tooltip-position",
     imports: [AiButton, AiTooltipImports],
     template: `
         <div class="flex items-center flex-col gap-y-4">

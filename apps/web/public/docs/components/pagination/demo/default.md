@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
 import { AiPaginationImports } from "../pagination.imports";
 
 @Component({
-    selector: "demo-pagination-default",
+    selector: "ai-demo-pagination-default",
     imports: [AiPaginationImports],
     template: ` <ai-pagination [total]="5" [(pageIndex)]="currentPage" /> `,
 })

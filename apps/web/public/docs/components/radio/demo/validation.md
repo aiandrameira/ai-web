@@ -2,9 +2,11 @@
 import { Component, signal } from "@angular/core";
 import { form, FormField, required, submit } from "@angular/forms/signals";
 
+import { AiButton } from "../../../button";
 import { AiRadioImports } from "../radio.imports";
 
 @Component({
+    selector: "ai-demo-radio-validation",
     imports: [AiRadioImports, AiButton, FormField],
     template: `
         <div>

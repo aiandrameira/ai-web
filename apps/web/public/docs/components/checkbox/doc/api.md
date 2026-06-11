@@ -6,16 +6,17 @@
 
 ### Propriedades
 
-| Propriedade | Descrição                              | Tipo                         | Default   |
-| ----------- | -------------------------------------- | ---------------------------- | --------- |
-| `id`        | define o identificador                 | `string`                     | `""`      |
-| `disabled`  | define se o checkbox está desabilitado | `boolean`                    | `false`   |
-| `variant`   | define o estilo                        | `"primary" \| "destructive"` | `primary` |
-| `size`      | define o tamanho                       | `"default" \| "large"`       | `default` |
-| `shape`     | define o formato                       | `"default" \| "circle"`      | `default` |
-| `checked`   | define o estado do checkbox            | `boolean`                    | `false`   |
-| `touched`   | define se o checkbox foi tocado        | `boolean`                    | `false`   |
-| `class`     | classes CSS adicionais                 | `ClassValue`                 | `""`      |
+| Propriedade     | Descrição                                         | Tipo                         | Default   |
+| --------------- | ------------------------------------------------- | ---------------------------- | --------- |
+| `id`            | define o identificador                            | `string`                     | `""`      |
+| `disabled`      | define se o checkbox está desabilitado            | `boolean`                    | `false`   |
+| `variant`       | define o estilo                                   | `"primary" \| "destructive"` | `primary` |
+| `size`          | define o tamanho                                  | `"default" \| "lg"`          | `default` |
+| `shape`         | define o formato                                  | `"default" \| "circle"`      | `default` |
+| `checked`       | define o estado do checkbox                       | `boolean`                    | `false`   |
+| `touched`       | define se o checkbox foi tocado                   | `boolean`                    | `false`   |
+| `indeterminate` | define se o checkbox está em estado indeterminado | `boolean`                    | `false`   |
+| `class`         | classes CSS adicionais                            | `ClassValue`                 | `""`      |
 
 ### Eventos
 

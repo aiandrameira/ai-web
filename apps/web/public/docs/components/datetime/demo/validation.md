@@ -8,7 +8,7 @@ import { AiDatetime } from "../datetime";
 @Component({
     imports: [AiDatetime, FormField, AiButton],
     template: `
-        <div class="flex flex-col gap-4 w-[400px]">
+        <div class="flex flex-col gap-4 w-full max-w-xs sm:max-w-sm md:max-w-md">
             <ai-datetime class="w-full" id="dtRequired" type="date" label="Data obrigatória" [formField]="schemaForm.date" />
 
             <div class="flex gap-2">
@@ -19,7 +19,7 @@ import { AiDatetime } from "../datetime";
             <div class="text-sm">
                 <p>
                     <strong>Status:</strong>
-                    @let inv = schemaForm().invalid();
+                    @let inv = schemaForm().invalid || false;
                     <span [class]="!inv ? 'text-success' : 'text-destructive'">
                         {{ !inv ? " válido ✓" : " inválido ✗" }}
                     </span>
@@ -29,7 +29,7 @@ import { AiDatetime } from "../datetime";
     `,
 })
 export class DemoDatetimeValidationComponent {
-    schema = signal({ date: "" });
+    schema = signal<{ date: string }>({ date: "" });
 
     schemaForm = form(this.schema, schema => {
         required(schema.date, { message: "A data é obrigatória." });

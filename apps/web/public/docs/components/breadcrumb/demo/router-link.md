@@ -1,6 +1,7 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
 import { RouterLink } from "@angular/router";
+
 import { AiBreadcrumbImports } from "../breadcrumb.imports";
 
 @Component({

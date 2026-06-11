@@ -1,10 +1,11 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
 
-import { AiTab, AiTabsGroup } from "../tabs";
+import { AiTabsImports } from "../tabs.imports";
 
 @Component({
-    imports: [AiTabsGroup, AiTab],
+    selector: "ai-demo-tabs-default",
+    imports: [AiTabsImports],
     template: `
         <ai-tabs-group>
             <ai-tab label="Tab 1">Content 1</ai-tab>

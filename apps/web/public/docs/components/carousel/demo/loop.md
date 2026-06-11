@@ -1,12 +1,13 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
 
-import { AiCarousel, AiCarouselItem } from "../carousel";
+import { AiCarouselImports } from "../carousel.imports";
 
 @Component({
-    imports: [AiCarousel, AiCarouselItem],
+    selector: "ai-demo-carousel-loop",
+    imports: [AiCarouselImports],
     template: `
-        <div class="w-full max-w-md mx-auto">
+        <div class="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
             <ai-carousel loop>
                 @for (slide of slides; track slide.id) {
                     <ai-carousel-item>

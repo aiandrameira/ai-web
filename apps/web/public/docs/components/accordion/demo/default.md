@@ -1,10 +1,11 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
 
-import { AiAccordion, AiAccordionItem } from "../accordion";
+import { AiAccordionImports } from "../accordion.imports";
 
 @Component({
-    imports: [AiAccordion, AiAccordionItem],
+    selector: "ai-demo-accordion-default",
+    imports: [AiAccordionImports],
     template: `
         <div class="w-full max-w-xl">
             <ai-accordion multi>

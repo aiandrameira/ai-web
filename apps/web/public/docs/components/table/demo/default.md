@@ -8,7 +8,7 @@ import { AiTableColumn, AiTableConfig } from "../table.config";
 import { COLUMNS, iUser, USERS } from "./user";
 
 @Component({
-    selector: "ai-demo-table",
+    selector: "ai-demo-table-default",
     imports: [AiTable, AiBadge, AiCellTemplateDirective],
     template: `
         <div class="flex flex-col gap-8 w-full max-w-2xl">

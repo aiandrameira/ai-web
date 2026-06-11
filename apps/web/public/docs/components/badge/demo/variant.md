@@ -1,11 +1,12 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
+
 import { AiBadge } from "../badge";
 
 @Component({
     imports: [AiBadge],
     template: `
-        <div class="flex items-center gap-2 flex-wrap">
+        <div class="flex items-center justify-center gap-2 flex-wrap">
             <ai-badge variant="default">default</ai-badge>
             <ai-badge variant="primary">primary</ai-badge>
             <ai-badge variant="accent">accent</ai-badge>

@@ -1,9 +1,10 @@
 ```angular-ts showLineNumbers copyButton
-import { Component } from "@angular/core";
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { Component, signal } from "@angular/core";
+import { email, form, FormField, required } from "@angular/forms/signals";
 
 import { AiButton } from "../../button";
-import { AiStep, AiStepper } from "../stepper";
+import { AiInput } from "../../form-field/input";
+import { AiStepperImports } from "../stepper.imports";
 
 interface Schema {
     name: string;
@@ -15,7 +16,8 @@ function makeSchema(): Schema {
 }
 
 @Component({
-    imports: [AiStepper, AiStep, AiButton, AiInput, FormField],
+    selector: "ai-demo-stepper-validation",
+    imports: [AiStepperImports, AiButton, AiInput, FormField],
     template: `
         <div class="w-full max-w-xl">
             <ai-stepper #stepper="aiStepper" linear>

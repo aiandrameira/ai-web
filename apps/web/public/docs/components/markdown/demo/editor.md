@@ -5,17 +5,16 @@ import { ThemeStore } from "../../../infra";
 import { AiMarkdown } from "../markdown";
 
 @Component({
+    selector: "ai-demo-markdown-editor",
     imports: [AiMarkdown],
     template: `
-        <div class="flex flex-col gap-y-4 max-w-md w-full">
+        <div class="flex flex-col gap-y-4 max-w-xs sm:max-w-sm md:max-w-md w-full">
             <ai-markdown mode="editor" [code]="code" [theme]="theme()" language="typescript" />
         </div>
     `,
 })
 export class DemoMarkdownEditorComponent {
-    #theme = inject(ThemeStore);
-
-    theme = this.#theme.theme;
+    protected theme = inject(ThemeStore).theme;
 
     code = `export function makeTest () {
     return {

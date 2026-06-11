@@ -1,8 +1,10 @@
 ```angular-ts showLineNumbers copyButton
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
+
 import { AiIcon } from "../icon.component";
 
 @Component({
+    selector: "ai-demo-icon-size",
     imports: [AiIcon],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,

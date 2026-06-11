@@ -5,6 +5,7 @@ import { AiIconType } from "../../icon/icons";
 import { AiButtonToggle, AiButtonToggleItem } from "../button-toggle";
 
 @Component({
+    selector: "ai-demo-button-toggle-disabled",
     imports: [AiButtonToggle],
     template: `
         <div class="flex flex-col gap-y-4 w-full max-w-sm">

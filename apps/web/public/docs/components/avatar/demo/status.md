@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
 import { AiAvatar } from "../avatar";
 
 @Component({
+    selector: "ai-demo-avatar-status",
     imports: [AiAvatar],
     template: `
         <div class="flex justify-center items-center gap-x-4">
