@@ -5,6 +5,7 @@ import { AiTree } from "../tree";
 import { AiTreeNode } from "../tree.interface";
 
 @Component({
+    selector: "ai-demo-tree-selection",
     imports: [AiTree],
     template: `
         <div class="flex flex-col gap-4 w-full max-w-xs">
