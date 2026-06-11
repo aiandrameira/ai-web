@@ -1,9 +1,11 @@
 import { Component } from "@angular/core";
+
 import { AiButton } from "../../button";
 import { AiIcon } from "../../icon";
 import { AiEmpty } from "../empty";
 
 @Component({
+    selector: "ai-demo-empty-default",
     imports: [AiEmpty, AiButton, AiIcon],
     template: `
         <div class="flex flex-col gap-y-4">

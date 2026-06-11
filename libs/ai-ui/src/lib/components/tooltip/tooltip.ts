@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, signal, viewChild, ViewEncapsulation } from "@angular/core";
+
 import { GenerateIdDirective, mergeClasses, StringTemplateRefDirective } from "../../core";
 import { AiTooltipType } from "./tooltip.config";
 import { TooltipPositionVariants, tooltipPositionVariants, tooltipVariants } from "./tooltip.variants";

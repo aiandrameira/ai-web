@@ -35,6 +35,7 @@ const CATEGORY_ICONS: Record<IconCategory | "All", keyof typeof AI_ICONS> = {
 };
 
 @Component({
+    selector: "ai-demo-icon-searchable",
     imports: [AiIcon, AiEmpty, ReactiveFormsModule, AiSelectImports, AiSeparator],
     template: `
         <div class="flex max-w-xs sm:max-w-sm md:max-w-full flex-col gap-y-6">

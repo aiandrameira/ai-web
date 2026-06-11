@@ -6,18 +6,21 @@
 
 ### Propriedades
 
-| Propriedade | Descrição                | Tipo                         | Default    |
-| ----------- | ------------------------ | ---------------------------- | ---------- |
-| `type`      | modo do upload           | `"button" \| "dropzone"`     | `"button"` |
-| `accept`    | tipos de arquivo aceitos | `string`                     | `""`       |
-| `disabled`  | desabilita o upload      | `boolean, string \| boolean` | `false`    |
-| `class`     | classes CSS adicionais   | `ClassValue`                 | `""`       |
+| Propriedade | Descrição                             | Tipo                         | Default    |
+| ----------- | ------------------------------------- | ---------------------------- | ---------- |
+| `id`        | identificador do input                | `string`                     | `""`       |
+| `type`      | modo do upload                        | `"button" \| "dropzone"`     | `"button"` |
+| `accept`    | tipos de arquivo aceitos              | `string`                     | `""`       |
+| `multiple`  | permite selecionar múltiplos arquivos | `boolean, string \| boolean` | `false`    |
+| `disabled`  | desabilita o upload                   | `boolean, string \| boolean` | `false`    |
+| `class`     | classes CSS adicionais                | `ClassValue`                 | `""`       |
 
 ### Eventos
 
-| Evento       | Descrição                               | Tipo                     |
-| ------------ | --------------------------------------- | ------------------------ |
-| `changeFile` | emitido quando um arquivo é selecionado | `OutputEmitterRef<File>` |
+| Evento        | Descrição                                          | Tipo                       |
+| ------------- | -------------------------------------------------- | -------------------------- |
+| `changeFile`  | emitido quando um arquivo é selecionado            | `OutputEmitterRef<File>`   |
+| `changeFiles` | emitido quando múltiplos arquivos são selecionados | `OutputEmitterRef<File[]>` |
 
 ---
 
@@ -35,9 +38,9 @@
 
 ### Eventos
 
-| Evento   | Descrição                              | Tipo                     |
-| -------- | -------------------------------------- | ------------------------ |
-| `remove` | emitido quando o usuário remove o item | `OutputEmitterRef<void>` |
+| Evento   | Descrição                              | Tipo                             |
+| -------- | -------------------------------------- | -------------------------------- |
+| `remove` | emitido quando o usuário remove o item | `OutputEmitterRef<AiFileUpload>` |
 
 ---
 

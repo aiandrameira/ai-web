@@ -3,7 +3,7 @@ import { Component, signal } from "@angular/core";
 import { AiPaginationImports } from "../pagination.imports";
 
 @Component({
-    selector: "demo-pagination-custom",
+    selector: "ai-demo-pagination-custom",
     imports: [AiPaginationImports],
     template: `
         <ai-pagination [total]="total" [pageIndex]="currentPage()" (pageIndexChange)="goToPage($event)" [content]="content" />

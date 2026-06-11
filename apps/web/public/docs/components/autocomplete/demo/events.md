@@ -30,7 +30,8 @@ const USERS: User[] = [
                 [config]="autoCompleteConfig"
                 [formField]="schemaForm.userId"
                 (changeSelected)="onUserSelected($event)"
-                (changeValue)="onValueChanged($event)" />
+                (changeValue)="onValueChanged($event)"
+            />
         </div>
     `,
 })

@@ -1,8 +1,10 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
+
 import { AiLoader } from "../loader";
 
 @Component({
+    selector: "ai-demo-loader-size",
     imports: [AiLoader],
     template: `
         <div class="w-full h-full flex flex-col justify-center items-center">

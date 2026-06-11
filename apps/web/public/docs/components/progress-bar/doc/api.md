@@ -6,16 +6,16 @@
 
 ### Propriedades
 
-| Propriedade     | Descrição                        | Tipo                       | Default     |
-| --------------- | -------------------------------- | -------------------------- | ----------- |
-| `variant`       | cor da barra de progresso        | `"primary" \| "accent"`    | `"primary"` |
-| `size`          | tamanho do componente            | `"sm" \| "normal" \| "lg"` | `"normal"`  |
-| `shape`         | formato da barra                 | `"normal" \| "circle"`     | `"normal"`  |
-| `indeterminate` | modo indeterminado               | `boolean`                  | `false`     |
-| `showLabel`     | exibe o percentual               | `boolean`                  | `false`     |
-| `progress`      | valor do progresso (0 a 100)     | `number`                   | `0`         |
-| `class`         | classes CSS adicionais           | `ClassValue`               | `""`        |
-| `barClass`      | classes CSS para a barra interna | `ClassValue`               | `""`        |
+| Propriedade     | Descrição                        | Tipo                        | Default     |
+| --------------- | -------------------------------- | --------------------------- | ----------- |
+| `variant`       | cor da barra de progresso        | `"primary" \| "accent"`     | `"primary"` |
+| `size`          | tamanho do componente            | `"sm" \| "default" \| "lg"` | `"default"` |
+| `shape`         | formato da barra                 | `"default" \| "circle"`     | `"default"` |
+| `indeterminate` | modo indeterminado               | `boolean`                   | `false`     |
+| `showLabel`     | exibe o percentual               | `boolean`                   | `false`     |
+| `progress`      | valor do progresso (0 a 100)     | `number`                    | `0`         |
+| `class`         | classes CSS adicionais           | `ClassValue`                | `""`        |
+| `barClass`      | classes CSS para a barra interna | `ClassValue`                | `""`        |
 
 ### Acessibilidade
 

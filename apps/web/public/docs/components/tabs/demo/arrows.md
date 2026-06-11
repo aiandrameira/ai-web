@@ -2,26 +2,33 @@
 import { Component, signal } from "@angular/core";
 
 import { AiButton } from "../../button";
-import { AiTab, AiTabsGroup } from "../tabs";
+import { AiTabsImports } from "../tabs.imports";
 
 @Component({
-    imports: [AiTabsGroup, AiTab, AiButton],
+    selector: "ai-demo-tabs-arrows",
+    imports: [AiTabsImports, AiButton],
     template: `
-        <div class="flex flex-col gap-6 w-full max-w-xl">
+        <div class="flex flex-col gap-6 w-full max-w-xs sm:max-w-sm md:max-w-xl">
             <button ai-button variant="ghost" size="sm" (click)="arrows.set(!arrows())">{{ arrows() ? "Hide" : "Show" }} Arrows</button>
 
             <ai-tabs-group [showArrows]="arrows()">
-                <ai-tab label="Tab 1">Content 1</ai-tab>
-                <ai-tab label="Tab 2">Content 2</ai-tab>
-                <ai-tab label="Tab 3">Content 3</ai-tab>
-                <ai-tab label="Tab 4">Content 4</ai-tab>
-                <ai-tab label="Tab 5">Content 5</ai-tab>
-                <ai-tab label="Tab 6">Content 6</ai-tab>
+                @for (item of tabs(); track $index) {
+                    <ai-tab [label]="item.label">{{ item.content }}</ai-tab>
+                }
             </ai-tabs-group>
         </div>
     `,
 })
 export class DemoTabsArrowsComponent {
     arrows = signal(true);
+
+    tabs = signal([
+        { label: "Tab 1", content: "Content 1" },
+        { label: "Tab 2", content: "Content 2" },
+        { label: "Tab 3", content: "Content 3" },
+        { label: "Tab 4", content: "Content 4" },
+        { label: "Tab 5", content: "Content 5" },
+        { label: "Tab 6", content: "Content 6" },
+    ]);
 }
 ```

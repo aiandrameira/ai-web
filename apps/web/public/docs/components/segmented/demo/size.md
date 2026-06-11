@@ -1,6 +1,7 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
 
+import { AiIconType } from "../../../icon";
 import { AiSegmented } from "../segmented";
 import { AiSegmentedItem } from "../segmented.interface";
 
@@ -27,10 +28,10 @@ import { AiSegmentedItem } from "../segmented.interface";
 })
 export class DemoSegmentedSizeComponent {
     items: AiSegmentedItem[] = [
-        { value: "left", icon: "align-left" },
-        { value: "center", icon: "align-center" },
-        { value: "right", icon: "align-right" },
-        { value: "justify", icon: "align-justify" },
+        { value: "left", icon: "align-left" as AiIconType },
+        { value: "center", icon: "align-center" as AiIconType },
+        { value: "right", icon: "align-right" as AiIconType },
+        { value: "justify", icon: "align-justify" as AiIconType },
     ];
 }
 ```

@@ -4,6 +4,7 @@ import { AiIcon } from "../../icon/icon.component";
 import { AiBreadcrumbImports } from "../breadcrumb.imports";
 
 @Component({
+    selector: "ai-demo-breadcrumb-default",
     imports: [AiBreadcrumbImports, AiIcon],
     template: `
         <ai-breadcrumb-content>

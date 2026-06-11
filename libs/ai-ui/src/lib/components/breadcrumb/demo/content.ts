@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
+
 import { AiBreadcrumbImports } from "../breadcrumb.imports";
 
 @Component({
+    selector: "ai-demo-breadcrumb-content",
     imports: [AiBreadcrumbImports],
     template: `
         <ai-breadcrumb-content>

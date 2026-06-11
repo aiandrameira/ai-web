@@ -6,17 +6,8 @@ export const TOAST = {
     componentName: "toast",
     componentType: "toast",
     examples: [
-        {
-            name: "default",
-            component: DemoToastDefaultComponent,
-        },
-        {
-            name: "position",
-            component: DemoToastPositionComponent,
-        },
-        {
-            name: "type",
-            component: DemoToastTypeComponent,
-        },
+        { name: "default", component: DemoToastDefaultComponent },
+        { name: "position", component: DemoToastPositionComponent },
+        { name: "type", component: DemoToastTypeComponent },
     ],
 };

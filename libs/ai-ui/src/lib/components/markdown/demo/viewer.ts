@@ -4,6 +4,7 @@ import { ThemeStore } from "../../../infra";
 import { AiMarkdown } from "../markdown";
 
 @Component({
+    selector: "ai-demo-markdown-viewer",
     imports: [AiMarkdown],
     template: `
         <div class="flex flex-col gap-y-4 w-full max-w-xs sm:max-w-sm md:max-w-2xl">
@@ -12,9 +13,7 @@ import { AiMarkdown } from "../markdown";
     `,
 })
 export class DemoMarkdownViewerComponent {
-    #theme = inject(ThemeStore);
-
-    theme = this.#theme.theme;
+    protected theme = inject(ThemeStore).theme;
 
     code = `export function makeTest () {
     return {

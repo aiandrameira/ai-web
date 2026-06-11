@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
+
 import { AiFloatButtonTop } from "../float-button-top";
 
 @Component({
+    selector: "ai-demo-float-button-top",
     imports: [AiFloatButtonTop],
     template: `
         <div class="flex items-center gap-x-4">

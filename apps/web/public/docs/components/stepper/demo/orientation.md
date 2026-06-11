@@ -2,10 +2,11 @@
 import { Component } from "@angular/core";
 
 import { AiButton } from "../../button";
-import { AiStep, AiStepper } from "../stepper";
+import { AiStepperImports } from "../stepper.imports";
 
 @Component({
-    imports: [AiStepper, AiStep, AiButton],
+    selector: "ai-demo-stepper-orientation",
+    imports: [AiStepperImports, AiButton],
     template: `
         <div class="w-full max-w-xl">
             <ai-stepper #stepper="aiStepper" orientation="vertical" linear>

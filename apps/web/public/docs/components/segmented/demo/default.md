@@ -2,6 +2,7 @@
 import { Component, signal } from "@angular/core";
 import { form, FormField } from "@angular/forms/signals";
 
+import { AiIconType } from "../../../icon";
 import { AiSegmented } from "../segmented";
 import { AiSegmentedItem } from "../segmented.interface";
 
@@ -23,9 +24,9 @@ export class DemoSegmentedDefaultComponent {
     schemaForm = form(this.schema);
 
     items: AiSegmentedItem[] = [
-        { value: "list", icon: "list-unordered", label: "Lista" },
-        { value: "grid", icon: "grid", label: "Grade" },
-        { value: "table", icon: "table", label: "Tabela" },
+        { value: "list", icon: "list-unordered" as AiIconType, label: "Lista" },
+        { value: "grid", icon: "grid" as AiIconType, label: "Grade" },
+        { value: "table", icon: "table" as AiIconType, label: "Tabela" },
     ];
 }
 ```

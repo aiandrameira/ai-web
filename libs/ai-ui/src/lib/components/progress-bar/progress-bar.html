@@ -1,0 +1,34 @@
+@if (shape() === "circle") {
+    <svg class="transform -rotate-90" [attr.viewBox]="'0 0 ' + svgSize() + ' ' + svgSize()">
+        <circle
+            class="text-muted"
+            [attr.cx]="svgCenter()"
+            [attr.cy]="svgCenter()"
+            [attr.r]="svgRadius()"
+            fill="none"
+            [attr.stroke-width]="strokeWidth()"
+            stroke="currentColor"
+        />
+        <circle
+            [class]="fillStrokeClass()"
+            [attr.cx]="svgCenter()"
+            [attr.cy]="svgCenter()"
+            [attr.r]="svgRadius()"
+            fill="none"
+            [attr.stroke-width]="strokeWidth()"
+            stroke="currentColor"
+            stroke-linecap="round"
+            [attr.stroke-dasharray]="circumference()"
+            [attr.stroke-dashoffset]="dashOffset()"
+            [class.ai-circle-indeterminate]="indeterminate()"
+        />
+    </svg>
+    @if (showLabel()) {
+        <span class="absolute text-sm font-medium">{{ normalizedProgress() }}%</span>
+    }
+} @else {
+    <div [class]="fillClasses()" [style.width.%]="indeterminate() ? null : normalizedProgress()"></div>
+    @if (showLabel() && !indeterminate()) {
+        <span class="absolute inset-0 flex items-center justify-center text-xs font-medium">{{ normalizedProgress() }}%</span>
+    }
+}

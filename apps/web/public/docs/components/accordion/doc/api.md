@@ -6,10 +6,10 @@
 
 ### Propriedades
 
-| Propriedade | Descrição                                                        | Tipo         | Default |
-| ----------- | ---------------------------------------------------------------- | ------------ | ------- |
-| `multi`     | se verdadeiro, permite múltiplos painéis abertos simultaneamente | `boolean`    | `false` |
-| `class`     | classes CSS adicionais                                           | `ClassValue` | `""`    |
+| Propriedade | Descrição                                                           | Tipo         | Default |
+| ----------- | ------------------------------------------------------------------- | ------------ | ------- |
+| `multi`     | se verdadeiro, permite múltiplos painéis abertos simultaneamente    | `boolean`    | `false` |
+| `class`     | classes CSS adicionais                                              | `ClassValue` | `""`    |
 
 ---
 
@@ -19,24 +19,24 @@
 
 ### Propriedades
 
-| Propriedade   | Descrição                                 | Tipo         | Default     |
-| ------------- | ----------------------------------------- | ------------ | ----------- |
-| `title`       | título exibido no cabeçalho (obrigatório) | `string`     | -           |
-| `description` | descrição opcional exibida no cabeçalho   | `string`     | `""`        |
-| `icon`        | ícone exibido ao lado do título           | `AiIconType` | `undefined` |
-| `expanded`    | estado inicial de expansão do painel      | `boolean`    | `false`     |
-| `disabled`    | desabilita a interação com o painel       | `boolean`    | `false`     |
-| `hideToggle`  | oculta o indicador de expansão            | `boolean`    | `false`     |
+| Propriedade  | Descrição                                    | Tipo         | Default     |
+| ------------ | -------------------------------------------- | ------------ | ----------- |
+| `title`      | título exibido no cabeçalho (obrigatório)    | `string`     | -           |
+| `description`| descrição opcional exibida no cabeçalho      | `string`     | `""`        |
+| `icon`       | ícone exibido ao lado do título              | `AiIconType` | `undefined` |
+| `expanded`   | estado inicial de expansão do painel         | `boolean`    | `false`     |
+| `disabled`   | desabilita a interação com o painel          | `boolean`    | `false`     |
+| `hideToggle` | oculta o indicador de expansão               | `boolean`    | `false`     |
 
 ### Eventos
 
-| Evento   | Descrição                           | Tipo   |
-| -------- | ----------------------------------- | ------ |
-| `opened` | emitido quando o painel é expandido | `void` |
-| `closed` | emitido quando o painel é colapsado | `void` |
+| Evento   | Descrição                                    | Tipo   |
+| -------- | -------------------------------------------- | ------ |
+| `opened` | emitido quando o painel é expandido          | `void` |
+| `closed` | emitido quando o painel é colapsado          | `void` |
 
 ### Métodos
 
-| Método     | Descrição                           | Parâmetros |
-| ---------- | ----------------------------------- | ---------- |
-| `toggle()` | alterna entre expandido e colapsado | -          |
+| Método     | Descrição                                 | Parâmetros |
+| ---------- | ----------------------------------------- | ---------- |
+| `toggle()` | alterna entre expandido e colapsado       | -          |

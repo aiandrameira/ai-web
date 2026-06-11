@@ -109,40 +109,46 @@
 
 [AiCommandItemConfig] - Interface
 
-```ts
-interface AiCommandItemConfig {
-    value: string | unknown;
-    label: string;
-    disabled?: boolean;
-    command?: string;
-    shortcut?: string;
-    icon?: AiIconType;
-    action?: () => void;
-    key?: string;
-}
-```
+> A interface `AiCommandItemConfig` define a estrutura de configuração para um item de comando, incluindo propriedades como valor, rótulo, ícone, atalho e ação associada.
+
+### Propriedades
+
+| Propriedade | Descrição                         | Tipo                                                  | Default |
+| ----------- | --------------------------------- | ----------------------------------------------------- | ------- |
+| `value`     | valor único do item (obrigatório) | `string \| unknown`                                   | —       |
+| `label`     | rótulo exibido (obrigatório)      | `string`                                              | —       |
+| `disabled`  | desabilita o item                 | `boolean`                                             | `false` |
+| `command`   | nome do comando para filtro       | `string`                                              | `""`    |
+| `shortcut`  | exibição de atalho de teclado     | `string`                                              | `""`    |
+| `icon`      | ícone do Remix Icon               | `AiIconType` [**Remix Icon**](https://remixicon.com/) | —       |
+| `action`    | função a ser executada no clique  | `() => void`                                          | —       |
+| `key`       | chave única para identificação    | `string`                                              | `""`    |
 
 ---
 
 [AiCommandGroup] - Interface
 
-```ts
-interface AiCommandGroup {
-    label: string;
-    items: AiCommandItemConfig[];
-}
-```
+> A interface `AiCommandGroup` define a estrutura de configuração para um grupo de comandos, incluindo um rótulo e uma lista de itens de comando associados.
+
+### Propriedades
+
+| Propriedade | Descrição                     | Tipo                    | Default |
+| ----------- | ----------------------------- | ----------------------- | ------- |
+| `label`     | rótulo do grupo (obrigatório) | `string`                | —       |
+| `items`     | lista de itens de comando     | `AiCommandItemConfig[]` | —       |
 
 ---
 
 [AiCommandConfig] - Interface
 
-```ts
-interface AiCommandConfig {
-    placeholder?: string;
-    emptyText?: string;
-    groups: AiCommandGroup[];
-    dividers?: boolean;
-    onSelect?: (item: AiCommandItemConfig) => void;
-}
-```
+> A interface `AiCommandConfig` define as opções de configuração para o componente de `command`.
+
+### Propriedades
+
+| Propriedade   | Descrição                                        | Tipo                                  | Default |
+| ------------- | ------------------------------------------------ | ------------------------------------- | ------- |
+| `placeholder` | texto exibido quando nenhum valor é inserido     | `string`                              | `""`    |
+| `emptyText`   | texto exibido quando nenhum comando é encontrado | `string`                              | `""`    |
+| `groups`      | lista de grupos de comandos                      | `AiCommandGroup[]`                    | —       |
+| `dividers`    | exibe divisores entre grupos                     | `boolean`                             | `false` |
+| `onSelect`    | função chamada ao selecionar um item             | `(item: AiCommandItemConfig) => void` | —       |

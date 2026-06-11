@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input, linkedSignal, output, TemplateRef, ViewEncapsulation } from "@angular/core";
 import { ClassValue } from "clsx";
+
+import { ChangeDetectionStrategy, Component, computed, input, linkedSignal, output, TemplateRef, ViewEncapsulation } from "@angular/core";
+
 import { mergeClasses } from "../../core";
 import { AiIcon } from "../icon/icon.component";
 import { AiIconType } from "../icon/icons";

@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
 import { AiProgressBar } from "../progress-bar";
 
 @Component({
+    selector: "ai-demo-progress-bar-indeterminate",
     imports: [AiProgressBar],
     template: `
         <div class="flex flex-col gap-y-4 w-full max-w-lg">

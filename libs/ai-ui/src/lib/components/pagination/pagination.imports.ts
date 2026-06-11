@@ -8,7 +8,7 @@ import { AiPaginationItem } from "./pagination-item";
 import { AiPaginationNext } from "./pagination-next";
 import { AiPaginationPrev } from "./pagination-prev";
 
-const components = [AiPagination, AiPaginationContent, AiPaginationItem, AiPaginationButton, AiPaginationPrev, AiPaginationNext, AiPaginationEllipsis];
+const components = [AiPaginationButton, AiPaginationContent, AiPaginationEllipsis, AiPaginationItem, AiPaginationNext, AiPaginationPrev, AiPagination] as const;
 export const AiPaginationImports = [...components] as const;
 
 @NgModule({

@@ -23,12 +23,7 @@ const USERS: User[] = [
     imports: [AiAutocomplete, FormField],
     template: `
         <div class="max-w-sm w-full">
-            <ai-autocomplete
-                class="w-full"
-                label="Usuário"
-                placeholder="Buscar usuário..."
-                [config]="autoCompleteConfig"
-                [formField]="schemaForm.userId" />
+            <ai-autocomplete class="w-full" label="Usuário" placeholder="Buscar usuário..." [config]="autoCompleteConfig" [formField]="schemaForm.userId" />
         </div>
     `,
 })

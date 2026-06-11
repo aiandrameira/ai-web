@@ -1,0 +1,59 @@
+@if (content()) {
+    <ng-container *ngTemplateOutlet="content()" />
+} @else {
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
+        @if (showInfo() && totalItems()) {
+            <span class="text-sm text-muted-foreground whitespace-nowrap">
+                <span class="text-primary font-semibold">{{ totalItems() }}</span>
+                {{ intl.totalItems }} | {{ total() }} {{ intl.pages }}
+            </span>
+        }
+
+        @if (showPageSize()) {
+            <div class="flex items-center gap-2 whitespace-nowrap">
+                <ai-select [value]="pageSize()" size="sm" (selectedValueChange)="onPageSizeChange($event)">
+                    @for (opt of pageSizeOptions(); track opt) {
+                        <ai-select-item [value]="opt"> {{ opt }} {{ intl.perPage }} </ai-select-item>
+                    }
+                </ai-select>
+            </div>
+        }
+
+        <ul ai-pagination-content>
+            <li ai-pagination-item>
+                @let prev = Math.max(1, pageIndex() - 1);
+                <ai-pagination-prev [size]="size()" [disabled]="disabled() || pageIndex() === 1" (click)="onPageChange(prev)" />
+            </li>
+
+            @for (item of visiblePages(); track item) {
+                @if (item === "ellipsis") {
+                    <li ai-pagination-item>
+                        <ai-pagination-ellipsis />
+                    </li>
+                } @else {
+                    <li ai-pagination-item>
+                        <button
+                            ai-pagination-button
+                            type="button"
+                            class="focus-visible:rounded-md"
+                            [attr.aria-current]="item === pageIndex() ? 'page' : null"
+                            [attr.aria-disabled]="disabled() || null"
+                            [active]="item === pageIndex()"
+                            [disabled]="disabled()"
+                            [size]="size()"
+                            (click)="onPageChange(item)"
+                        >
+                            <span class="sr-only">{{ item === total() ? "To last page, page" : "To page" }}</span>
+                            {{ item }}
+                        </button>
+                    </li>
+                }
+            }
+
+            <li ai-pagination-item>
+                @let next = Math.min(pageIndex() + 1, total());
+                <ai-pagination-next [size]="size()" [disabled]="disabled() || pageIndex() === total()" (click)="onPageChange(next)" />
+            </li>
+        </ul>
+    </div>
+}

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
-import type { ClassValue } from "clsx";
+
 import { mergeClasses } from "../../core";
 import { commandListVariants } from "./command.variants";
 
+import type { ClassValue } from "clsx";
 @Component({
     selector: "ai-command-list",
     exportAs: "aiCommandList",

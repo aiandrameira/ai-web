@@ -11,13 +11,13 @@ export const switchVariants = cva(
             },
             size: {
                 sm: "h-4 w-8",
-                normal: "h-5 w-10",
+                default: "h-5 w-10",
                 lg: "h-6 w-12",
             },
         },
         defaultVariants: {
             variant: "primary",
-            size: "normal",
+            size: "default",
         },
     },
 );
@@ -26,12 +26,12 @@ export const switchThumbVariants = cva("pointer-events-none block rounded-full b
     variants: {
         size: {
             sm: "size-3 data-checked:translate-x-4",
-            normal: "size-4 data-checked:translate-x-5",
+            default: "size-4 data-checked:translate-x-5",
             lg: "size-5 data-checked:translate-x-6",
         },
     },
     defaultVariants: {
-        size: "normal",
+        size: "default",
     },
 });
 
@@ -39,12 +39,12 @@ export const switchLabelVariants = cva("cursor-pointer select-none empty:hidden"
     variants: {
         size: {
             sm: "text-xs",
-            normal: "text-sm",
+            default: "text-sm",
             lg: "text-base",
         },
     },
     defaultVariants: {
-        size: "normal",
+        size: "default",
     },
 });
 

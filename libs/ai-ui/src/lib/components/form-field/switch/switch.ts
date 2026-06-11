@@ -16,7 +16,7 @@ import { switchLabelVariants, switchThumbVariants, switchVariants, SwitchVariant
 export class AiSwitch implements FormCheckboxControl {
     readonly id = input<string>("");
     readonly variant = input<SwitchVariants["variant"]>("primary");
-    readonly size = input<SwitchVariants["size"]>("normal");
+    readonly size = input<SwitchVariants["size"]>("default");
     readonly class = input<ClassValue>("");
     readonly disabled = input<boolean>(false);
 

@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { AiSwitch } from "../switch";
 
 @Component({
+    selector: "ai-demo-switch-default",
     imports: [AiSwitch],
     template: `
         <div class="flex flex-col gap-4">

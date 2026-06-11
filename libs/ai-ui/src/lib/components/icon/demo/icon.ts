@@ -6,17 +6,8 @@ export const ICON = {
     componentName: "icon",
     componentType: "icon",
     examples: [
-        {
-            name: "searchable",
-            component: DemoIconSearchableComponent,
-        },
-        {
-            name: "size",
-            component: DemoIconSizeComponent,
-        },
-        {
-            name: "type",
-            component: DemoIconTypeComponent,
-        },
+        { name: "searchable", component: DemoIconSearchableComponent },
+        { name: "size", component: DemoIconSizeComponent },
+        { name: "type", component: DemoIconTypeComponent },
     ],
 };

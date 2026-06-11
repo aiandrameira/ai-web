@@ -3,10 +3,8 @@ import { ClassValue } from "clsx";
 import { ChangeDetectionStrategy, Component, computed, ElementRef, input, output, viewChild, ViewEncapsulation } from "@angular/core";
 
 import { mergeClasses, transform } from "../../core";
-import { AiEmpty } from "../empty";
 import { AiIcon } from "../icon";
-import { AiFileUpload } from "./upload.interface";
-import { uploadSelectedVariants, UploadSelectedVariants, uploadVariants, UploadVariants } from "./upload.variants";
+import { uploadVariants, UploadVariants } from "./upload.variants";
 
 @Component({
     selector: "ai-upload",
@@ -80,82 +78,5 @@ export class AiUpload {
             this.changeFile.emit(files[0]);
             this.changeFiles.emit(files);
         }
-    }
-}
-
-@Component({
-    selector: "ai-upload-selected",
-    exportAs: "aiUploadSelected",
-    imports: [AiIcon, AiEmpty],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    template: `
-        @if (configArray().length > 0) {
-            @if (type() === "card") {
-                <div class="flex flex-col gap-3 w-full">
-                    @for (item of configArray(); track item.name) {
-                        <div [class]="classes()">
-                            @if (isImage(item)) {
-                                <img [src]="item.base64" [alt]="item.name" class="w-full h-40 object-cover" />
-                            } @else {
-                                <div class="flex items-center justify-center h-40 bg-transparent">
-                                    <ai-empty icon="file-text" [title]="item.name" description="Arquivo sem visualização" />
-                                </div>
-                            }
-                            <div class="flex items-center justify-between gap-3 px-4 py-3 w-full">
-                                <div class="flex items-center gap-2 min-w-0">
-                                    <span class="text-sm font-semibold truncate max-w-[12em]">{{ item.name }}</span>
-                                    @if (item.size) {
-                                        <span class="text-xs text-muted-foreground shrink-0">{{ item.size }}</span>
-                                    }
-                                </div>
-                                <button type="button" class="shrink-0 cursor-pointer text-muted-foreground hover:text-destructive transition-colors" (click)="remove.emit(item)">
-                                    <ai-icon icon="delete-bin" size="sm" />
-                                </button>
-                            </div>
-                        </div>
-                    }
-                </div>
-            } @else {
-                <div class="flex flex-col gap-2 w-full">
-                    @for (item of configArray(); track item.name) {
-                        <div [class]="classes()">
-                            <ai-icon icon="file-text" class="shrink-0 text-muted-foreground" />
-                            <div class="flex flex-col flex-1 min-w-0">
-                                <span class="text-sm font-semibold truncate max-w-[12em]">{{ item.name }}</span>
-                            </div>
-                            @if (item.size) {
-                                <span class="text-xs text-muted-foreground shrink-0">{{ item.size }}</span>
-                            }
-                            <button type="button" class="shrink-0 cursor-pointer text-muted-foreground hover:text-destructive transition-colors" (click)="remove.emit(item)">
-                                <ai-icon icon="delete-bin" size="sm" />
-                            </button>
-                        </div>
-                    }
-                </div>
-            }
-        }
-    `,
-    host: {
-        class: "block",
-    },
-})
-export class AiUploadSelected {
-    readonly config = input<AiFileUpload | AiFileUpload[] | null>(null);
-    readonly type = input<UploadSelectedVariants["type"]>("list");
-    readonly class = input<ClassValue>("");
-
-    readonly remove = output<AiFileUpload>();
-
-    protected readonly configArray = computed<AiFileUpload[]>(() => {
-        const c = this.config();
-        if (!c) return [];
-        return Array.isArray(c) ? c : [c];
-    });
-
-    protected readonly classes = computed(() => mergeClasses(uploadSelectedVariants({ type: this.type() }), this.class()));
-
-    protected isImage(item: AiFileUpload): boolean {
-        return item.base64?.startsWith("data:image/") ?? false;
     }
 }

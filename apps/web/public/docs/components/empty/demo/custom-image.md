@@ -5,6 +5,7 @@ import { AiButton } from "../../button";
 import { AiEmpty } from "../empty";
 
 @Component({
+    selector: "ai-demo-empty-custom-image",
     imports: [AiEmpty, AiButton],
     template: `
         <div class="flex flex-col gap-y-4">

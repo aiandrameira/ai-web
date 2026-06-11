@@ -1,7 +1,9 @@
+import { filter, fromEvent, Subject, takeUntil } from "rxjs";
+
 import { OverlayRef } from "@angular/cdk/overlay";
 import { isPlatformBrowser } from "@angular/common";
 import { EventEmitter, Inject, PLATFORM_ID, signal } from "@angular/core";
-import { filter, fromEvent, Subject, takeUntil } from "rxjs";
+
 import { AiDialog } from "./dialog";
 import { AiDialogConfig } from "./dialog.config";
 

@@ -1,4 +1,13 @@
+import { NgModule } from "@angular/core";
+
 import { AiRadio } from "./radio";
 import { AiRadioGroup } from "./radio-group";
 
-export const AiRadioImports = [AiRadioGroup, AiRadio] as const;
+const components = [AiRadioGroup, AiRadio] as const;
+export const AiRadioImports = [...components];
+
+@NgModule({
+    imports: [...components],
+    exports: [...components],
+})
+export class AiRadioModule {}

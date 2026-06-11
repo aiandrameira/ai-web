@@ -5,6 +5,7 @@ import { DemoTabsPositionComponent } from "./position";
 
 export const TABS = {
     componentName: "tabs",
+    componentType: "tabs",
     examples: [
         { name: "default", component: DemoTabsDefaultComponent },
         { name: "align", component: DemoTabsAlignComponent },

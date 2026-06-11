@@ -5,7 +5,7 @@ import { AI_PAGINATION_INTL, AI_PAGINATION_INTL_PT_BR } from "../pagination-intl
 import { AiPaginationImports } from "../pagination.imports";
 
 @Component({
-    selector: "demo-pagination-intl",
+    selector: "ai-demo-pagination-intl",
     imports: [AiPaginationImports],
     providers: [{ provide: AI_PAGINATION_INTL, useValue: AI_PAGINATION_INTL_PT_BR }],
     template: `

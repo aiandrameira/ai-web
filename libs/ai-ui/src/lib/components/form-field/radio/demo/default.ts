@@ -4,6 +4,7 @@ import { form, FormField } from "@angular/forms/signals";
 import { AiRadioImports } from "../radio.imports";
 
 @Component({
+    selector: "ai-demo-radio-default",
     imports: [AiRadioImports, FormField],
     template: `
         <ai-radio-group [formField]="schemaForm.selected" class="flex flex-col gap-2">

@@ -1,12 +1,13 @@
 ```angular-ts showLineNumbers copyButton
 import { Component, inject, signal } from "@angular/core";
 
-import { AiUpload, AiUploadSelected } from "../upload";
+import { AiUploadImports } from "../upload.imports";
 import { AiFileUpload } from "../upload.interface";
 import { AiFileUploadService } from "../upload.service";
 
 @Component({
-    imports: [AiUpload, AiUploadSelected],
+    selector: "ai-demo-upload-dropzone",
+    imports: [AiUploadImports],
     template: `
         <div class="flex flex-col gap-4 w-full max-w-lg">
             <ai-upload class="w-full" type="dropzone" [accept]="accept" (changeFile)="onChangeFile($event)" />

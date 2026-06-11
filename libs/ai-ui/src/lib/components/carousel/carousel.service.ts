@@ -3,7 +3,9 @@ import { fromEvent, merge } from "rxjs";
 import { DestroyRef, ElementRef, inject, Injectable, signal } from "@angular/core";
 import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
-@Injectable()
+@Injectable({
+    providedIn: "root",
+})
 export class AiCarouselService {
     readonly #destroyRef = inject(DestroyRef);
 

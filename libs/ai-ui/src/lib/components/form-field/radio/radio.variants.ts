@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from "class-variance-authority";
+import { cva, VariantProps } from "class-variance-authority";
 
 export const radioVariants = cva(
     "appearance-none rounded-full border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer",
@@ -10,13 +10,13 @@ export const radioVariants = cva(
                 destructive: "border-input data-checked:border-destructive data-checked:bg-destructive",
             },
             size: {
-                normal: "size-4",
+                default: "size-4",
                 lg: "size-5",
             },
         },
         defaultVariants: {
             variant: "primary",
-            size: "normal",
+            size: "default",
         },
     },
 );
@@ -24,12 +24,12 @@ export const radioVariants = cva(
 export const radioLabelVariants = cva("cursor-pointer select-none text-muted-foreground empty:hidden", {
     variants: {
         size: {
-            normal: "text-sm",
+            default: "text-sm",
             lg: "text-base",
         },
     },
     defaultVariants: {
-        size: "normal",
+        size: "default",
     },
 });
 

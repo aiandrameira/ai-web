@@ -1,65 +1,13 @@
 import { ClassValue } from "clsx";
 
 import { NgTemplateOutlet } from "@angular/common";
-import {
-    AfterContentInit,
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    contentChildren,
-    forwardRef,
-    inject,
-    input,
-    output,
-    signal,
-    TemplateRef,
-    viewChild,
-    ViewEncapsulation,
-} from "@angular/core";
+import { AfterContentInit, ChangeDetectionStrategy, Component, computed, contentChildren, inject, input, output, ViewEncapsulation } from "@angular/core";
 
 import { mergeClasses, transform } from "../../core";
 import { AiIcon } from "../icon";
+import { AiStep } from "./step";
 import { AiStepperService } from "./stepper.service";
 import { stepCircleVariants, stepConnectorVariants, stepLabelVariants, stepperHeaderVariants, stepperVariants, StepperVariants } from "./stepper.variants";
-
-@Component({
-    selector: "ai-step",
-    exportAs: "aiStep",
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    template: `
-        <ng-template>
-            <ng-content />
-        </ng-template>
-    `,
-    host: {
-        style: "display: none",
-    },
-})
-export class AiStep {
-    readonly #stepper = inject(forwardRef(() => AiStepper));
-
-    readonly label = input.required<string>();
-    readonly optional = input<boolean, string | boolean>(false, { transform });
-    readonly completed = input<boolean, string | boolean>(false, { transform });
-    readonly editable = input<boolean, string | boolean>(true, { transform });
-
-    readonly content = viewChild.required(TemplateRef);
-
-    readonly #completed = signal(false);
-    readonly isCompleted = computed(() => this.completed() || this.#completed());
-
-    readonly index = computed(() => {
-        const steps = this.#stepper.steps();
-        return steps ? steps.indexOf(this) : -1;
-    });
-
-    readonly active = computed(() => this.index() === this.#stepper.selectedIndex());
-
-    markCompleted() {
-        this.#completed.set(true);
-    }
-}
 
 @Component({
     selector: "ai-stepper",
@@ -76,11 +24,11 @@ export class AiStep {
 export class AiStepper implements AfterContentInit {
     readonly #service = inject(AiStepperService);
 
-    readonly steps = contentChildren(AiStep);
-
     readonly orientation = input<StepperVariants["orientation"]>("horizontal");
     readonly linear = input<boolean, string | boolean>(false, { transform });
     readonly class = input<ClassValue>("");
+
+    readonly steps = contentChildren(AiStep);
 
     readonly selectionChange = output<number>();
 

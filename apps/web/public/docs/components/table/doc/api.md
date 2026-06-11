@@ -36,8 +36,6 @@ interface AiTableConfig<T> {
 }
 ```
 
----
-
 [AiTableColumn<T>] - Interface
 
 ```ts
@@ -51,8 +49,6 @@ interface AiTableColumn<T> {
 }
 ```
 
----
-
 [AiTableSort] - Interface
 
 ```ts
@@ -61,8 +57,6 @@ interface AiTableSort {
     direction: "asc" | "desc";
 }
 ```
-
----
 
 [AiTablePagination] - Interface
 

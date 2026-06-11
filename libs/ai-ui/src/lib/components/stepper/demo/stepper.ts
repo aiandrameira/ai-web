@@ -4,18 +4,10 @@ import { DemoStepperValidationComponent } from "./validation";
 
 export const STEPPER = {
     componentName: "stepper",
+    componentType: "stepper",
     examples: [
-        {
-            name: "default",
-            component: DemoStepperDefaultComponent,
-        },
-        {
-            name: "orientation",
-            component: DemoStepperOrientationComponent,
-        },
-        {
-            name: "validation",
-            component: DemoStepperValidationComponent,
-        },
+        { name: "default", component: DemoStepperDefaultComponent },
+        { name: "orientation", component: DemoStepperOrientationComponent },
+        { name: "validation", component: DemoStepperValidationComponent },
     ],
 };

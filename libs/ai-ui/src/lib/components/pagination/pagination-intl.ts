@@ -1,19 +1,12 @@
 import { InjectionToken } from "@angular/core";
 
 export interface AiPaginationIntl {
-    /** e.g. "Items per page:" */
     itemsPerPage: string;
-    /** e.g. "/ page" — used for the page size select suffix */
     perPage: string;
-    /** e.g. "of" — used in "1 – 10 of 100" */
     of: string;
-    /** e.g. "total items" */
     totalItems: string;
-    /** e.g. "pages" */
     pages: string;
-    /** e.g. "Previous" */
     previous: string;
-    /** e.g. "Next" */
     next: string;
 }
 

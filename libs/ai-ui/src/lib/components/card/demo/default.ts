@@ -4,6 +4,7 @@ import { AiButton } from "../../button";
 import { AiCard } from "../card";
 
 @Component({
+    selector: "ai-demo-card-default",
     imports: [AiCard, AiButton],
     template: `
         <ai-card title="Componente Card" variant="default" description="Um card padrão com borda cinza e layout organizado" icon="function">

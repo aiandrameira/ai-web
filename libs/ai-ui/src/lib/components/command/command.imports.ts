@@ -1,3 +1,5 @@
+import { NgModule } from "@angular/core";
+
 import { AiCommand } from "./command";
 import { AiCommandEmpty } from "./command-empty";
 import { AiCommandInput } from "./command-input";
@@ -6,4 +8,11 @@ import { AiCommandItemGroup } from "./command-item-group";
 import { AiCommandList } from "./command-list";
 import { AiCommandSeparator } from "./command-separator";
 
-export const AiCommandImports = [AiCommand, AiCommandInput, AiCommandList, AiCommandItem, AiCommandItemGroup, AiCommandSeparator, AiCommandEmpty] as const;
+const components = [AiCommand, AiCommandInput, AiCommandList, AiCommandItem, AiCommandItemGroup, AiCommandSeparator, AiCommandEmpty] as const;
+export const AiCommandImports = [...components];
+
+@NgModule({
+    imports: [...components],
+    exports: [...components],
+})
+export class AiCommandModule {}

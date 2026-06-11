@@ -1,5 +1,7 @@
-import { EventEmitter, TemplateRef, Type, ViewContainerRef } from "@angular/core";
 import { ClassValue } from "clsx";
+
+import { EventEmitter, TemplateRef, Type, ViewContainerRef } from "@angular/core";
+
 import { noopFn } from "../../core";
 import { AiIconType } from "../icon/icons";
 

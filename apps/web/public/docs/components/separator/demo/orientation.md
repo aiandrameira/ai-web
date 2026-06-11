@@ -1,8 +1,10 @@
 ```angular-ts showLineNumbers copyButton
 import { Component } from "@angular/core";
+
 import { AiSeparator } from "../separator";
 
 @Component({
+    selector: "ai-demo-separator-orientation",
     imports: [AiSeparator],
     template: `
         <div class="flex flex-col gap-4">

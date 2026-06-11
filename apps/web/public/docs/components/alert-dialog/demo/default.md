@@ -1,9 +1,11 @@
 ```angular-ts showLineNumbers copyButton
 import { Component, inject } from "@angular/core";
+
 import { AiButton } from "../../button";
 import { AiAlertDialogService } from "../alert-dialog.service";
 
 @Component({
+    selector: "ai-demo-alert-dialog-default",
     imports: [AiButton],
     template: `
         <div class="w-150 flex items-center justify-center">

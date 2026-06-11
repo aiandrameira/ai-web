@@ -11,37 +11,13 @@ export const BUTTON = {
     componentName: "button",
     componentType: "button",
     examples: [
-        {
-            name: "variant",
-            component: DemoButtonVariantComponent,
-        },
-        {
-            name: "fill",
-            component: DemoButtonFillComponent,
-        },
-        {
-            name: "size",
-            component: DemoButtonSizeComponent,
-        },
-        {
-            name: "shape",
-            component: DemoButtonShapeComponent,
-        },
-        {
-            name: "icon",
-            component: DemoButtonIconComponent,
-        },
-        {
-            name: "loading",
-            component: DemoButtonLoadingComponent,
-        },
-        {
-            name: "disabled",
-            component: DemoButtonDisabledComponent,
-        },
-        {
-            name: "full",
-            component: DemoButtonFullComponent,
-        },
+        { name: "variant", component: DemoButtonVariantComponent },
+        { name: "fill", component: DemoButtonFillComponent },
+        { name: "size", component: DemoButtonSizeComponent },
+        { name: "shape", component: DemoButtonShapeComponent },
+        { name: "icon", component: DemoButtonIconComponent },
+        { name: "loading", component: DemoButtonLoadingComponent },
+        { name: "disabled", component: DemoButtonDisabledComponent },
+        { name: "full", component: DemoButtonFullComponent },
     ],
 };

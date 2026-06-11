@@ -4,6 +4,7 @@ import { AiIconType } from "../../icon/icons";
 import { AiButtonToggle, AiButtonToggleItem } from "../button-toggle";
 
 @Component({
+    selector: "ai-demo-button-toggle-size",
     imports: [AiButtonToggle],
     template: `
         <div class="flex flex-col gap-y-4 w-full">

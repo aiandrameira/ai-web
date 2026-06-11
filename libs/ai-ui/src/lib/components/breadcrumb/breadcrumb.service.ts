@@ -1,6 +1,8 @@
+import { filter } from "rxjs";
+
 import { computed, inject, Injectable, signal, TemplateRef } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { filter } from "rxjs";
+
 import { AiBreadcrumbConfig } from "./breadcrumb.config";
 
 @Injectable({

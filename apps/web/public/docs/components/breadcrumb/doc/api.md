@@ -112,10 +112,12 @@
 
 [AiBreadcrumbConfig] - Interface
 
-```ts
-export interface AiBreadcrumbConfig {
-    path: string;
-    label: string;
-    icon?: AiIconType;
-}
-```
+> A interface `AiBreadcrumbConfig` define as opções de configuração para o componente de breadcrumb, permitindo personalização global.
+
+### Propriedades
+
+| Propriedade | Descrição                      | Tipo                                                  | Default   |
+| ----------- | ------------------------------ | ----------------------------------------------------- | --------- |
+| `path`      | define o caminho do breadcrumb | `string`                                              | `default` |
+| `icon`      | define o ícone do breadcrumb   | `AiIconType` [**Remix Icon**](https://remixicon.com/) | `""`      |
+| `label`     | define o rótulo do breadcrumb  | `string`                                              | `""`      |

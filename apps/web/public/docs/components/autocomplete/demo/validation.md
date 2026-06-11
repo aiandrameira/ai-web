@@ -24,12 +24,7 @@ const USERS: User[] = [
     imports: [AiAutocomplete, FormField, AiButton],
     template: `
         <div class="flex flex-col gap-y-4 max-w-sm w-full">
-            <ai-autocomplete
-                class="w-full"
-                label="Usuário"
-                placeholder="Buscar usuário..."
-                [config]="autoCompleteConfig"
-                [formField]="schemaForm.userId" />
+            <ai-autocomplete class="w-full" label="Usuário" placeholder="Buscar usuário..." [config]="autoCompleteConfig" [formField]="schemaForm.userId" />
 
             <div class="flex gap-2">
                 <ai-button size="sm" variant="primary" (click)="onConfirm()">Validar</ai-button>

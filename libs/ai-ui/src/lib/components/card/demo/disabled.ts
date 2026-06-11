@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { AiCard } from "../card";
 
 @Component({
+    selector: "ai-demo-card-disabled",
     imports: [AiCard],
     template: `
         <ai-card title="Componente Card" disabled description="Um card padrão com borda cinza e layout organizado" icon="function">

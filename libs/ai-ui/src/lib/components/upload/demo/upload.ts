@@ -5,6 +5,7 @@ import { DemoUploadSelectedComponent } from "./selected";
 
 export const UPLOAD = {
     componentName: "upload",
+    componentType: "upload",
     examples: [
         { name: "default", component: DemoUploadDefaultComponent },
         { name: "dropzone", component: DemoUploadDropzoneComponent },

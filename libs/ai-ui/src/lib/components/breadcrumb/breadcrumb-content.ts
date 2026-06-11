@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
 import { ClassValue } from "class-variance-authority/types";
+
+import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
+
 import { mergeClasses } from "../../core";
 import { breadcrumbVariants, BreadcrumbVariants } from "./breadcrumb.variants";
 

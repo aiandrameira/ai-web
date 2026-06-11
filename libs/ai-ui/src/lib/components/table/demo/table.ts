@@ -9,29 +9,11 @@ export const TABLE = {
     componentName: "table",
     componentType: "table",
     examples: [
-        {
-            name: "default",
-            component: DemoTableDefaultComponent,
-        },
-        {
-            name: "size",
-            component: DemoTableSizeComponent,
-        },
-        {
-            name: "border",
-            component: DemoTableBorderComponent,
-        },
-        {
-            name: "selected",
-            component: DemoTableSelectedComponent,
-        },
-        {
-            name: "pagination",
-            component: DemoTablePaginationComponent,
-        },
-        {
-            name: "sort",
-            component: DemoTableSortComponent,
-        },
+        { name: "default", component: DemoTableDefaultComponent },
+        { name: "size", component: DemoTableSizeComponent },
+        { name: "border", component: DemoTableBorderComponent },
+        { name: "selected", component: DemoTableSelectedComponent },
+        { name: "pagination", component: DemoTablePaginationComponent },
+        { name: "sort", component: DemoTableSortComponent },
     ],
 };

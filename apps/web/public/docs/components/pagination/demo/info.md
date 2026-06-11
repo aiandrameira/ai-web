@@ -4,7 +4,7 @@ import { Component, computed, signal } from "@angular/core";
 import { AiPaginationImports } from "../pagination.imports";
 
 @Component({
-    selector: "demo-pagination-info",
+    selector: "ai-demo-pagination-info",
     imports: [AiPaginationImports],
     template: `
         <div class="w-full max-w-150">

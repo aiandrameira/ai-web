@@ -1,10 +1,11 @@
 import { Component, signal } from "@angular/core";
 
 import { AiButton } from "../../button";
-import { AiTab, AiTabsGroup } from "../tabs";
+import { AiTabsImports } from "../tabs.imports";
 
 @Component({
-    imports: [AiTabsGroup, AiTab, AiButton],
+    selector: "ai-demo-tabs-arrows",
+    imports: [AiTabsImports, AiButton],
     template: `
         <div class="flex flex-col gap-6 w-full max-w-xs sm:max-w-sm md:max-w-xl">
             <button ai-button variant="ghost" size="sm" (click)="arrows.set(!arrows())">{{ arrows() ? "Hide" : "Show" }} Arrows</button>

@@ -4,6 +4,7 @@ import { DemoSkeletonDefaultComponent } from "./default";
 
 export const SKELETON = {
     componentName: "skeleton",
+    componentType: "skeleton",
     examples: [
         { name: "default", component: DemoSkeletonDefaultComponent },
         { name: "chart", component: DemoSkeletonChartComponent },
