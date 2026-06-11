@@ -6,17 +6,8 @@ export const BUTTON_TOGGLE = {
     componentName: "button-toggle",
     componentType: "button-toggle",
     examples: [
-        {
-            name: "default",
-            component: DemoButtonToggleDefaultComponent,
-        },
-        {
-            name: "size",
-            component: DemoButtonToggleSizeComponent,
-        },
-        {
-            name: "disabled",
-            component: DemoButtonToggleDisabledComponent,
-        },
+        { name: "default", component: DemoButtonToggleDefaultComponent },
+        { name: "size", component: DemoButtonToggleSizeComponent },
+        { name: "disabled", component: DemoButtonToggleDisabledComponent },
     ],
 };
