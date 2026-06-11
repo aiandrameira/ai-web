@@ -17,6 +17,7 @@ export * from "./form-field";
 export * from "./icon";
 export * from "./loader";
 export * from "./markdown";
+export * from "./menu";
 export * from "./pagination";
 export * from "./progress-bar";
 export * from "./separator";

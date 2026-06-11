@@ -57,6 +57,7 @@ export const componentsPath: IComponent = {
         { name: "Float Button", path: "/component/float-button", available: true },
         { name: "Loader", path: "/component/loader", available: true },
         { name: "Markdown", path: "/component/markdown", available: true },
+        { name: "Menu", path: "/component/menu", available: true },
         { name: "Pagination", path: "/component/pagination", available: true },
         { name: "Progress Bar", path: "/component/progress-bar", available: true },
         { name: "Separator", path: "/component/separator", available: true },
