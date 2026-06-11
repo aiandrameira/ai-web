@@ -5,13 +5,7 @@ export const CARD = {
     componentName: "card",
     componentType: "card",
     examples: [
-        {
-            name: "default",
-            component: DemoCardDefaultComponent,
-        },
-        {
-            name: "disabled",
-            component: DemoCardDisabledComponent,
-        },
+        { name: "default", component: DemoCardDefaultComponent },
+        { name: "disabled", component: DemoCardDisabledComponent },
     ],
 };
