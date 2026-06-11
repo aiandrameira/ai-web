@@ -2,7 +2,7 @@
 
 [AiTabsGroup] - Component
 
-> Container principal que gerencia um conjunto de abas.
+> O <ai-tabs-group> é um componente que possui um contâiner principal que gerencia um conjunto de abas.
 
 ### Propriedades
 
@@ -23,7 +23,7 @@
 
 [AiTab] - Component
 
-> Representa uma aba individual.
+> O <ai-tab> é um componente que representa uma aba individual.
 
 ### Propriedades
 

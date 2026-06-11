@@ -1,0 +1,39 @@
+<div #outerContainer class="flex items-center w-full relative">
+    @if (arrowsVisible()) {
+        <button
+            type="button"
+            class="shrink-0 flex items-center justify-center size-8 cursor-pointer text-muted-foreground hover:text-foreground transition-colors disabled:opacity-30 disabled:pointer-events-none"
+            [disabled]="!canScrollLeft()"
+            (click)="scrollLeft()"
+        >
+            <ai-icon icon="arrow-left-s" size="sm" />
+        </button>
+    }
+    <div #scrollContainer [class]="headerClasses()" (scroll)="updateScrollState()">
+        @for (tab of tabs(); track $index) {
+            <button type="button" [class]="tabClasses($index)" [disabled]="tab.disabled()" (click)="selectTab($index)">
+                {{ tab.label() }}
+                @if ($index === selectedIndex()) {
+                    <span [class]="indicatorClasses()"></span>
+                }
+            </button>
+        }
+    </div>
+    @if (arrowsVisible()) {
+        <button
+            type="button"
+            class="shrink-0 flex items-center justify-center size-8 cursor-pointer text-muted-foreground hover:text-foreground transition-colors disabled:opacity-30 disabled:pointer-events-none"
+            [disabled]="!canScrollRight()"
+            (click)="scrollRight()"
+        >
+            <ai-icon icon="arrow-right-s" size="sm" />
+        </button>
+    }
+</div>
+<div class="flex-1 min-h-0">
+    @for (tab of tabs(); track $index) {
+        <div [style.display]="$index === selectedIndex() ? 'block' : 'none'" class="p-4">
+            <ng-container [ngTemplateOutlet]="tab.content()" />
+        </div>
+    }
+</div>
