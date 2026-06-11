@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
+
 import { AiIcon } from "../icon.component";
 
 @Component({
+    selector: "ai-demo-icon-type",
     imports: [AiIcon],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
