@@ -683,6 +683,39 @@ export class DemoMarkdownViewerComponent {
 
 ---
 
+### Menu
+
+Seletor: `<ai-content>`, `<ai-menu-item>`, `<ai-menu-label>`, `<ai-menu-shortcut>`, `<ai-dropdown-menu>`
+Service: `AiMenuService`
+Imports: `AiMenuImports`
+
+```ts
+@Component({
+    selector: "ai-demo-menu",
+    imports: [AiButton, AiMenuImports, AiSeparator],
+    template: `
+        <button ai-button variant="ghost" ai-menu [menu]="menu">Abrir menu</button>
+
+        <ai-menu-content #menu="aiMenuContent">
+            <ai-menu-label>Conta</ai-menu-label>
+
+            <ai-menu-item>
+                Billing
+                <ai-menu-shortcut>⌘B</ai-menu-shortcut>
+            </ai-menu-item>
+            <ai-separator />
+            <ai-menu-item>
+                Keyboard shortcuts
+                <ai-menu-shortcut>⌘K</ai-menu-shortcut>
+            </ai-menu-item>
+        </ai-menu-content>
+    `,
+})
+export class DemoMenu {}
+```
+
+---
+
 ### Pagination
 
 Seletor: `<button[ai-pagination-button] | a[ai-pagination-button]>`, `<ul[ai-pagination-content]>`, `<ai-pagination-ellipsis>`, `<li[ai-pagination-item]>`, `<ai-pagination-next>`, `<ai-pagination-prev>`, `<ai-pagination>`
