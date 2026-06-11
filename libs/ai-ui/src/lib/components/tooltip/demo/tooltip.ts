@@ -7,21 +7,9 @@ export const TOOLTIP = {
     componentName: "tooltip",
     componentType: "tooltip",
     examples: [
-        {
-            name: "hover",
-            component: DemoTooltipHoverComponent,
-        },
-        {
-            name: "click",
-            component: DemoTooltipClickComponent,
-        },
-        {
-            name: "position",
-            component: DemoTooltipPositionComponent,
-        },
-        {
-            name: "events",
-            component: DemoTooltipEventsComponent,
-        },
+        { name: "hover", component: DemoTooltipHoverComponent },
+        { name: "click", component: DemoTooltipClickComponent },
+        { name: "position", component: DemoTooltipPositionComponent },
+        { name: "events", component: DemoTooltipEventsComponent },
     ],
 };
