@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 
-import { AiCarousel, AiCarouselItem } from "../carousel";
+import { AiCarouselImports } from "../carousel.imports";
 
 @Component({
-    imports: [AiCarousel, AiCarouselItem],
+    selector: "ai-demo-carousel-default",
+    imports: [AiCarouselImports],
     template: `
         <div class="w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto">
             <ai-carousel>

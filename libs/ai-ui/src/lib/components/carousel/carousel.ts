@@ -4,25 +4,9 @@ import { AfterContentInit, ChangeDetectionStrategy, Component, computed, content
 
 import { mergeClasses, transform } from "../../core";
 import { AiIcon } from "../icon";
+import { AiCarouselItem } from "./carousel-item";
 import { AiCarouselService } from "./carousel.service";
-import { carouselDotVariants, carouselItemVariants, carouselNavVariants, carouselTrackVariants, carouselVariants, CarouselVariants } from "./carousel.variants";
-
-@Component({
-    selector: "ai-carousel-item",
-    exportAs: "aiCarouselItem",
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    encapsulation: ViewEncapsulation.None,
-    template: `<ng-content />`,
-    host: {
-        "[class]": "classes()",
-    },
-})
-export class AiCarouselItem {
-    readonly orientation = input<CarouselVariants["orientation"]>("horizontal");
-    readonly class = input<ClassValue>("");
-
-    protected readonly classes = computed(() => mergeClasses(carouselItemVariants({ orientation: this.orientation() }), "px-2", this.class()));
-}
+import { carouselDotVariants, carouselNavVariants, carouselTrackVariants, carouselVariants, CarouselVariants } from "./carousel.variants";
 
 @Component({
     selector: "ai-carousel",
