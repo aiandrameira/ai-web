@@ -1,6 +1,8 @@
+import { ClassValue } from "clsx";
+
 import { ChangeDetectionStrategy, Component, computed, contentChild, contentChildren, forwardRef, input, output, signal, ViewEncapsulation } from "@angular/core";
 import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { ClassValue } from "clsx";
+
 import { ChangeFn, mergeClasses, noopFn, TouchFn } from "../../core";
 import { AiCommandInput } from "./command-input";
 import { AiCommandItem } from "./command-item";

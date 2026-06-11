@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from "@angular/core";
 import { ClassValue } from "clsx";
+
+import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from "@angular/core";
+
 import { mergeClasses } from "../../core";
 import { AiCommand } from "./command";
 import { commandSeparatorVariants } from "./command.variants";

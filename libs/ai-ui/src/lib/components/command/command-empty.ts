@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, ViewEncapsulation } from "@angular/core";
-import type { ClassValue } from "clsx";
+
 import { AiEmpty } from "../empty";
 import { AiIconType } from "../icon/icons";
 import { AiCommand } from "./command";
 
+import type { ClassValue } from "clsx";
 @Component({
     selector: "ai-command-empty",
     exportAs: "aiCommandEmpty",

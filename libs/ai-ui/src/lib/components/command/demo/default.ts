@@ -4,6 +4,7 @@ import { AiCommandItemConfig } from "../command.config";
 import { AiCommandImports } from "../command.imports";
 
 @Component({
+    selector: "ai-demo-command-default",
     imports: [AiCommandImports],
     template: `
         <ai-command class="min-w-xs sm:min-w-sm md:min-w-md" (selectedCommand)="handleCommand($event)">
