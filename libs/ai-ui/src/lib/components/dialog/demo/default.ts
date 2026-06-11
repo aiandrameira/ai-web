@@ -16,6 +16,7 @@ export const userSchema = z.object({
 export type UserDto = z.infer<typeof userSchema>;
 
 @Component({
+    selector: "ai-demo-dialog-default-form",
     imports: [FormField, AiInput, AiSelectImports],
     template: `
         <form class="w-full flex flex-col gap-y-4">
@@ -57,6 +58,7 @@ export class DemoDialogDefaultFormComponent implements AfterViewInit {
 }
 
 @Component({
+    selector: "ai-demo-dialog-default",
     imports: [AiButton],
     template: `
         <div class="w-150 flex items-center justify-center">
