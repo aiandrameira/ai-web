@@ -1,0 +1,26 @@
+@keyframes ai-progress-indeterminate {
+    0% {
+        left: -50%;
+        width: 50%;
+    }
+    100% {
+        left: 100%;
+        width: 50%;
+    }
+}
+@keyframes ai-progress-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+ai-progress-bar .ai-bar-indeterminate {
+    animation: ai-progress-indeterminate 1.5s ease-in-out infinite;
+}
+ai-progress-bar .ai-circle-indeterminate {
+    animation: ai-progress-spin 1.5s linear infinite;
+    transform-origin: center;
+}

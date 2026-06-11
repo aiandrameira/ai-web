@@ -11,33 +11,8 @@ import { progressBarCircleVariants, progressBarFillVariants, ProgressBarShape, P
     exportAs: "aiProgressBar",
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    styles: `
-        @keyframes ai-progress-indeterminate {
-            0% {
-                left: -50%;
-                width: 50%;
-            }
-            100% {
-                left: 100%;
-                width: 50%;
-            }
-        }
-        @keyframes ai-progress-spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        ai-progress-bar .ai-bar-indeterminate {
-            animation: ai-progress-indeterminate 1.5s ease-in-out infinite;
-        }
-        ai-progress-bar .ai-circle-indeterminate {
-            animation: ai-progress-spin 1.5s linear infinite;
-            transform-origin: center;
-        }
-    `,
+    templateUrl: "./progress-bar.html",
+    styleUrl: "./progress-bar.scss",
     host: {
         role: "progressbar",
         "[attr.aria-valuenow]": "normalizedProgress()",
@@ -45,47 +20,11 @@ import { progressBarCircleVariants, progressBarFillVariants, ProgressBarShape, P
         "[attr.aria-valuemax]": "100",
         "[class]": "hostClasses()",
     },
-    template: `
-        @if (shape() === "circle") {
-            <svg class="transform -rotate-90" [attr.viewBox]="'0 0 ' + svgSize() + ' ' + svgSize()">
-                <circle
-                    class="text-muted"
-                    [attr.cx]="svgCenter()"
-                    [attr.cy]="svgCenter()"
-                    [attr.r]="svgRadius()"
-                    fill="none"
-                    [attr.stroke-width]="strokeWidth()"
-                    stroke="currentColor"
-                />
-                <circle
-                    [class]="fillStrokeClass()"
-                    [attr.cx]="svgCenter()"
-                    [attr.cy]="svgCenter()"
-                    [attr.r]="svgRadius()"
-                    fill="none"
-                    [attr.stroke-width]="strokeWidth()"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    [attr.stroke-dasharray]="circumference()"
-                    [attr.stroke-dashoffset]="dashOffset()"
-                    [class.ai-circle-indeterminate]="indeterminate()"
-                />
-            </svg>
-            @if (showLabel()) {
-                <span class="absolute text-sm font-medium">{{ normalizedProgress() }}%</span>
-            }
-        } @else {
-            <div [class]="fillClasses()" [style.width.%]="indeterminate() ? null : normalizedProgress()"></div>
-            @if (showLabel() && !indeterminate()) {
-                <span class="absolute inset-0 flex items-center justify-center text-xs font-medium">{{ normalizedProgress() }}%</span>
-            }
-        }
-    `,
 })
 export class AiProgressBar {
     readonly variant = input<ProgressBarVariant>("primary");
-    readonly size = input<ProgressBarSize>("normal");
-    readonly shape = input<ProgressBarShape>("normal");
+    readonly size = input<ProgressBarSize>("default");
+    readonly shape = input<ProgressBarShape>("default");
     readonly indeterminate = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
     readonly showLabel = input<boolean, BooleanInput>(false, { transform: booleanAttribute });
     readonly progress = input<number>(0);
@@ -112,13 +51,13 @@ export class AiProgressBar {
     });
 
     protected readonly svgSize = computed(() => {
-        const sizes = { sm: 64, normal: 96, lg: 128 };
-        return sizes[this.size()!] ?? 96;
+        const sizes = { sm: 64, default: 96, lg: 128 };
+        return sizes[this.size()] ?? 96;
     });
 
     protected readonly strokeWidth = computed(() => {
-        const widths = { sm: 4, normal: 6, lg: 8 };
-        return widths[this.size()!] ?? 6;
+        const widths = { sm: 4, default: 6, lg: 8 };
+        return widths[this.size()] ?? 6;
     });
 
     protected readonly svgCenter = computed(() => this.svgSize() / 2);
@@ -132,6 +71,6 @@ export class AiProgressBar {
 
     protected readonly fillStrokeClass = computed(() => {
         const variantMap = { primary: "text-primary", accent: "text-accent" };
-        return variantMap[this.variant()!] ?? "text-primary";
+        return variantMap[this.variant()] ?? "text-primary";
     });
 }

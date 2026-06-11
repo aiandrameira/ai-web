@@ -4,12 +4,12 @@ export const progressBarVariants = cva("relative w-full overflow-hidden rounded-
     variants: {
         size: {
             sm: "h-1.5",
-            normal: "h-3",
+            default: "h-3",
             lg: "h-5",
         },
     },
     defaultVariants: {
-        size: "normal",
+        size: "default",
     },
 });
 
@@ -34,12 +34,12 @@ export const progressBarCircleVariants = cva("relative inline-flex items-center 
     variants: {
         size: {
             sm: "h-16 w-16",
-            normal: "h-24 w-24",
+            default: "h-24 w-24",
             lg: "h-32 w-32",
         },
     },
     defaultVariants: {
-        size: "normal",
+        size: "default",
     },
 });
 
@@ -48,5 +48,5 @@ export type ProgressBarFillVariants = VariantProps<typeof progressBarFillVariant
 export type ProgressBarCircleVariants = VariantProps<typeof progressBarCircleVariants>;
 
 export type ProgressBarSize = NonNullable<ProgressBarVariants["size"]>;
-export type ProgressBarShape = "normal" | "circle";
+export type ProgressBarShape = "default" | "circle";
 export type ProgressBarVariant = NonNullable<ProgressBarFillVariants["variant"]>;
