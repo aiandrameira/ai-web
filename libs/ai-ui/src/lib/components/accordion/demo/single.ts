@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
 
-import { AiAccordion, AiAccordionItem } from "../accordion";
+import { AiAccordionImports } from "../accordion.imports";
 
 @Component({
-    imports: [AiAccordion, AiAccordionItem],
+    selector: "ai-demo-accordion-single",
+    imports: [AiAccordionImports],
     template: `
         <div class="w-full max-w-xl">
             <ai-accordion>
