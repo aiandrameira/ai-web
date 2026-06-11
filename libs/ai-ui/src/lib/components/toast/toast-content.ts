@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output, ViewEncapsulation } from "@angular/core";
+
 import { AiIcon } from "../icon/icon.component";
 import { AiToastConfig } from "./toast.config";
 import { AiToastPipe } from "./toast.pipe";

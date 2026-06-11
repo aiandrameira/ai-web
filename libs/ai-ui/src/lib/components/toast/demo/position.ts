@@ -4,6 +4,7 @@ import { AiButton } from "../../button";
 import { AiToastService } from "../toast.service";
 
 @Component({
+    selector: "ai-demo-toast-position",
     imports: [AiButton],
     template: `
         <div class="flex items-center flex-col gap-y-4">
