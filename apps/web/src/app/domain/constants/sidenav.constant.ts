@@ -59,6 +59,7 @@ export const componentsPath: IComponent = {
         { name: "Markdown", path: "/component/markdown", available: true },
         { name: "Menu", path: "/component/menu", available: true },
         { name: "Pagination", path: "/component/pagination", available: true },
+        { name: "Popover", path: "/component/popover", available: true },
         { name: "Progress Bar", path: "/component/progress-bar", available: true },
         { name: "Separator", path: "/component/separator", available: true },
         { name: "Skeleton", path: "/component/skeleton", available: true },

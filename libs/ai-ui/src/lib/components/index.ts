@@ -19,6 +19,7 @@ export * from "./loader";
 export * from "./markdown";
 export * from "./menu";
 export * from "./pagination";
+export * from "./popover";
 export * from "./progress-bar";
 export * from "./separator";
 export * from "./skeleton";
