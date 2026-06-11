@@ -1,6 +1,8 @@
+import { ClassValue } from "class-variance-authority/types";
+
 import { ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
 import { RouterLink } from "@angular/router";
-import { ClassValue } from "class-variance-authority/types";
+
 import { mergeClasses } from "../../core";
 import { breadcrumbLinkVariants, BreadcrumbLinkVariants } from "./breadcrumb.variants";
 
