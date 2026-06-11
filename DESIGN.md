@@ -687,6 +687,7 @@ export class DemoMarkdownViewerComponent {
 
 Seletor: `<ai-content>`, `<ai-menu-item>`, `<ai-menu-label>`, `<ai-menu-shortcut>`, `<ai-dropdown-menu>`
 Service: `AiMenuService`
+Directive: `AiMenuDirective`
 Imports: `AiMenuImports`
 
 ```ts
@@ -712,6 +713,33 @@ Imports: `AiMenuImports`
     `,
 })
 export class DemoMenu {}
+```
+
+---
+
+### Popover
+
+Seletor: `<ai-popover>`
+Directive: `AiPopoverDirective`
+
+```ts
+@Component({
+    selector: "ai-demo-popover",
+    imports: [AiPopoverImports, AiButton],
+    template: `
+        <button ai-button variant="ghost" aiPopover [content]="popoverContent">Abrir popover</button>
+
+        <ng-template #popoverContent>
+            <ai-popover>
+                <div class="space-y-2">
+                    <h4 class="font-medium font-title text-primary leading-none">Dimensions</h4>
+                    <p class="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
+                </div>
+            </ai-popover>
+        </ng-template>
+    `,
+})
+export class DemoPopover {}
 ```
 
 ---
