@@ -5,22 +5,11 @@ import { DemoRadioValidationComponent } from "./validation";
 
 export const RADIO = {
     componentName: "radio",
+    componentType: "radio",
     examples: [
-        {
-            name: "default",
-            component: DemoRadioDefaultComponent,
-        },
-        {
-            name: "size",
-            component: DemoRadioSizeComponent,
-        },
-        {
-            name: "disabled",
-            component: DemoRadioDisabledComponent,
-        },
-        {
-            name: "validation",
-            component: DemoRadioValidationComponent,
-        },
+        { name: "default", component: DemoRadioDefaultComponent },
+        { name: "size", component: DemoRadioSizeComponent },
+        { name: "disabled", component: DemoRadioDisabledComponent },
+        { name: "validation", component: DemoRadioValidationComponent },
     ],
 };

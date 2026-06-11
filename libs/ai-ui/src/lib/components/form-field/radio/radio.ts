@@ -38,7 +38,7 @@ export class AiRadio<T = unknown> {
 
     readonly value = input.required<T>();
     readonly variant = input<RadioVariants["variant"]>("primary");
-    readonly size = input<RadioVariants["size"]>("normal");
+    readonly size = input<RadioVariants["size"]>("default");
     readonly disabled = input<boolean>(false);
     readonly class = input<ClassValue>("");
 

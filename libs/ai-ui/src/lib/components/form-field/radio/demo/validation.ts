@@ -5,6 +5,7 @@ import { AiButton } from "../../../button";
 import { AiRadioImports } from "../radio.imports";
 
 @Component({
+    selector: "ai-demo-radio-validation",
     imports: [AiRadioImports, AiButton, FormField],
     template: `
         <div>

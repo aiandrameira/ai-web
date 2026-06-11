@@ -4,10 +4,11 @@ import { form, FormField } from "@angular/forms/signals";
 import { AiRadioImports } from "../radio.imports";
 
 @Component({
+    selector: "ai-demo-radio-size",
     imports: [AiRadioImports, FormField],
     template: `
         <ai-radio-group [formField]="schemaForm.selected">
-            <ai-radio size="normal" [value]="1">Opção normal</ai-radio>
+            <ai-radio size="default" [value]="1">Opção default</ai-radio>
             <ai-radio size="lg" [value]="2">Opção large</ai-radio>
         </ai-radio-group>
     `,
