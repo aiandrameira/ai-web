@@ -1,6 +1,7 @@
 import { NgOptimizedImage } from "@angular/common";
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, effect, input, signal, ViewEncapsulation } from "@angular/core";
 import { SafeUrl } from "@angular/platform-browser";
+
 import { mergeClasses } from "../../core";
 import { avatarVariants, AvatarVariants, imageVariants } from "./avatar.variants";
 

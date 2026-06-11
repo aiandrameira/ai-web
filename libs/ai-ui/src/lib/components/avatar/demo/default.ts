@@ -4,6 +4,7 @@ import { AiAvatar } from "../avatar";
 import { AiAvatarGroup } from "../avatar-group";
 
 @Component({
+    selector: "ai-demo-avatar-default",
     imports: [AiAvatar, AiAvatarGroup],
     template: `
         <div class="flex justify-center items-center gap-x-4">

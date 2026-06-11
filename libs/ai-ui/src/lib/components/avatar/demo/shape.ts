@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { AiAvatar } from "../avatar";
 
 @Component({
+    selector: "ai-demo-avatar-shape",
     imports: [AiAvatar],
     template: `
         <div class="flex items-center gap-x-4">
