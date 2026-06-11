@@ -1,9 +1,11 @@
 import { Component, inject } from "@angular/core";
+
 import { AiButton } from "../../button/button";
 import { AiLoader } from "../loader";
 import { AiLoaderService } from "../loader.service";
 
 @Component({
+    selector: "ai-demo-loader-type",
     imports: [AiLoader, AiButton],
     template: `
         <div class="flex flex-col gap-y-4">
