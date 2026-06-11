@@ -3,6 +3,7 @@ import { Component } from "@angular/core";
 import { AiSkeleton } from "../skeleton";
 
 @Component({
+    selector: "ai-demo-skeleton-default",
     imports: [AiSkeleton],
     template: `
         <div class="flex items-center gap-x-4">

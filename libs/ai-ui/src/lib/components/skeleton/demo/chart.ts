@@ -3,7 +3,7 @@ import { Component } from "@angular/core";
 import { AiSkeleton } from "../skeleton";
 
 @Component({
-    selector: "demo-skeleton-chart",
+    selector: "ai-demo-skeleton-chart",
     imports: [AiSkeleton],
     template: `
         <div class="max-w-sm w-full p-4 border border-border rounded-sm shadow-sm md:p-6">
