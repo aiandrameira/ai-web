@@ -6,6 +6,32 @@
 
 ### Propriedades
 
+| Propriedade | Descrição                           |
+| ----------- | ----------------------------------- |
+| `create`    | abre um Alert Dialog genérico       |
+| `confirm`   | abre um Alert Dialog de confirmação |
+
+---
+
+[AiAlertDialogRef] - Classe
+
+> O `AiAlertDialogRef` é uma classe utilizada para criar e controlar diálogos de alerta.
+
+### Propriedades
+
+| Propriedade   | Descrição                                                       |
+| ------------- | --------------------------------------------------------------- |
+| `close`       | fecha o Alert Dialog                                            |
+| `afterClosed` | retorna um Observable que emite quando o Alert Dialog é fechado |
+
+---
+
+[AiAlertDialogConfig] - Interface
+
+> A `AiAlertDialogConfig` é uma interface que define as opções de configuração para um Alert Dialog.
+
+### Propriedades
+
 | Propriedade          | Descrição                                           | Tipo                                                                    | Default     |
 | -------------------- | --------------------------------------------------- | ----------------------------------------------------------------------- | ----------- |
 | `icon`               | define o ícone                                      | `{ name: AiIconType, color?: "primary" \| "warning" \| "destructive" }` | `""`        |
