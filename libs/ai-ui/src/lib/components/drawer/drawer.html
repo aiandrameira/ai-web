@@ -1,0 +1,33 @@
+<div [class]="classes()">
+    <header class=" relative flex flex-col space-y-1.5 text-center border-b border-b-border pb-2.5 sm:text-left">
+        @if (config.closable || config.closable === undefined) {
+            <ai-button variant="ghost" size="xs" icon="close" class="absolute right-0 top-0" (click)="onClose()" />
+        }
+
+        @if (config.title) {
+            <div class="flex items-center gap-x-2">
+                @if (config.icon) {
+                    <ai-icon size="lg" [icon]="config.icon" />
+                }
+                <h4 class="text-lg font-bold font-text leading-none tracking-tight text-primary">
+                    {{ config.title }}
+                </h4>
+            </div>
+        }
+    </header>
+
+    @if (config.hideActions !== false) {
+        <div class="flex items-center gap-x-2 justify-end pt-4">
+            <ai-button variant="default" [icon]="config.cancelIcon ?? 'close-circle'" [aiTooltip]="config.cancelText ?? 'Cancelar'" (click)="onCancel()" />
+            <ai-button variant="primary" [icon]="config.confirmIcon ?? 'check-double'" [aiTooltip]="config.confirmText ?? 'Confirmar'" (click)="onConfirm()" />
+        </div>
+    }
+
+    <main class="flex flex-col overflow-y-auto space-y-4 p-4 h-screen no-scrollbar">
+        <ng-template #viewContainerRef />
+
+        @if (hasStringComponent) {
+            <div [innerHTML]="config.component"></div>
+        }
+    </main>
+</div>

@@ -31,6 +31,9 @@
     &-directive {
         @apply bg-purple-500/10 text-purple-600 dark:text-purple-400;
     }
+    &-class {
+        @apply bg-teal-500/10 text-teal-600 dark:text-teal-400;
+    }
     &-interface,
     &-type {
         @apply bg-rose-500/10 text-rose-600 dark:text-rose-400;
@@ -49,6 +52,9 @@ table.api-table {
     }
     &-directive tbody td:first-child code {
         @apply border-purple-500/20! bg-purple-500/10! text-purple-600! dark:text-purple-400!;
+    }
+    &-class tbody td:first-child code {
+        @apply border-teal-500/20! bg-teal-500/10! text-teal-600! dark:text-teal-400!;
     }
     &-interface tbody td:first-child code,
     &-type tbody td:first-child code {

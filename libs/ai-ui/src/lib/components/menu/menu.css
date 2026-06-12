@@ -1,0 +1,98 @@
+ai-dropdown-menu {
+    position: relative;
+    display: inline-block;
+}
+
+ai-dropdown-menu[data-state="closed"] {
+    position: relative;
+    display: inline-block;
+}
+
+ai-dropdown-menu[data-state="open"] {
+    position: relative;
+    display: inline-block;
+}
+
+ai-dropdown-menu .trigger-container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.cdk-overlay-backdrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0;
+}
+
+.cdk-overlay-pane.ai-menu-overlay-panel {
+    z-index: 9999 !important;
+}
+
+.ai-menu-overlay-panel {
+    z-index: 9999 !important;
+    position: relative;
+}
+
+.ai-menu-overlay-panel .cdk-overlay-pane {
+    z-index: 9999 !important;
+}
+
+.ai-menu-overlay-panel [role="menu"] {
+    background: var(--background, #ffffff);
+    color: var(--foreground, #000000);
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: 0.375rem;
+    padding: 0.25rem;
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    min-width: 200px;
+    max-width: 500px;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 9999;
+    position: relative;
+}
+
+.ai-menu-overlay-panel [menu-item],
+.ai-menu-overlay-panel menu-item {
+    color: var(--foreground, #000000) !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
+.ai-menu-overlay-panel [menu-item]:hover,
+.ai-menu-overlay-panel menu-item:hover {
+    background-color: var(--accent, #f1f5f9);
+    color: var(--accent-foreground, #000000) !important;
+}
+
+.ai-menu-overlay-panel [menu-item]:focus,
+.ai-menu-overlay-panel menu-item:focus {
+    background-color: var(--accent, #f1f5f9);
+    color: var(--accent-foreground, #000000) !important;
+    outline: none;
+}
+
+.ai-menu-overlay-panel [menu-item][data-highlighted],
+.ai-menu-overlay-panel menu-item[data-highlighted] {
+    background-color: var(--accent, #f1f5f9);
+    color: var(--accent-foreground, #000000) !important;
+}
+
+.ai-menu-overlay-panel [menu-item][data-disabled],
+.ai-menu-overlay-panel menu-item[data-disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}

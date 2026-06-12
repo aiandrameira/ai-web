@@ -555,6 +555,43 @@ export class DemoDialog {
 
 ---
 
+### Drawer
+
+Service: `AiDrawerService`
+Interfaces: `AiDrawerConfig<T>` · `AiDrawerRef<T>`
+Token: `AI_DRAWER_DATA`
+
+```ts
+@Component({
+    selector: "ai-demo-drawer",
+    imports: [AiButton],
+    template: ` <ai-button variant="primary" icon="filter" (click)="openDrawer()">Abrir drawer</ai-button> `,
+})
+export class DemoDrawer {
+    #drawerService = inject(AiDrawerService);
+
+    openDrawer() {
+        const drawerRef = this.#drawerService.open({
+            component: DrawerFormComponent,
+            title: "Filtros",
+            icon: "filter_alt",
+            position: "right",
+            data: { username: "John Doe" },
+            confirmText: "Aplicar",
+            cancelText: "Limpar",
+            onConfirm: child => child?.onConfirm(),
+            onCancel: child => child?.onCancel(),
+        });
+
+        drawerRef.afterClosed().subscribe(result => {
+            if (result) console.log(result);
+        });
+    }
+}
+```
+
+---
+
 ### Empty
 
 Seletor: `<ai-empty>`
@@ -679,6 +716,67 @@ export class DemoMarkdownViewerComponent {
     protected theme = inject(ThemeStore).theme;
     readonly code = `console.log("Hello, Markdown!");`;
 }
+```
+
+---
+
+### Menu
+
+Seletor: `<ai-content>`, `<ai-menu-item>`, `<ai-menu-label>`, `<ai-menu-shortcut>`, `<ai-dropdown-menu>`
+Service: `AiMenuService`
+Directive: `AiMenuDirective`
+Imports: `AiMenuImports`
+
+```ts
+@Component({
+    selector: "ai-demo-menu",
+    imports: [AiButton, AiMenuImports, AiSeparator],
+    template: `
+        <button ai-button variant="ghost" ai-menu [menu]="menu">Abrir menu</button>
+
+        <ai-menu-content #menu="aiMenuContent">
+            <ai-menu-label>Conta</ai-menu-label>
+
+            <ai-menu-item>
+                Billing
+                <ai-menu-shortcut>⌘B</ai-menu-shortcut>
+            </ai-menu-item>
+            <ai-separator />
+            <ai-menu-item>
+                Keyboard shortcuts
+                <ai-menu-shortcut>⌘K</ai-menu-shortcut>
+            </ai-menu-item>
+        </ai-menu-content>
+    `,
+})
+export class DemoMenu {}
+```
+
+---
+
+### Popover
+
+Seletor: `<ai-popover>`
+Directive: `AiPopoverDirective`
+
+```ts
+@Component({
+    selector: "ai-demo-popover",
+    imports: [AiPopoverImports, AiButton],
+    template: `
+        <button ai-button variant="ghost" aiPopover [content]="popoverContent">Abrir popover</button>
+
+        <ng-template #popoverContent>
+            <ai-popover>
+                <div class="space-y-2">
+                    <h4 class="font-medium font-title text-primary leading-none">Dimensions</h4>
+                    <p class="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
+                </div>
+            </ai-popover>
+        </ng-template>
+    `,
+})
+export class DemoPopover {}
 ```
 
 ---
