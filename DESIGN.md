@@ -555,6 +555,41 @@ export class DemoDialog {
 
 ---
 
+### Drawer
+
+Service: `AiDrawerService`
+Interfaces: `AiDrawerConfig<T>` · `AiDrawerRef<T>`
+Token: `AI_DRAWER_DATA`
+
+```ts
+@Component({
+    selector: "ai-demo-drawer",
+    imports: [AiButton],
+    template: ` <ai-button variant="primary" icon="filter" (click)="openDrawer()">Abrir drawer</ai-button> `,
+})
+export class DemoDrawer {
+    #drawerService = inject(AiDrawerService);
+
+    openDrawer() {
+        const drawerRef = this.#drawerService.open({
+            component: DrawerFormComponent,
+            title: "Filtros",
+            icon: "filter_alt",
+            position: "right",
+            data: { username: "John Doe" },
+            onClear: child => child?.clear(),
+            onSearch: child => child?.onSearch(),
+        });
+
+        drawerRef.afterClosed().subscribe(result => {
+            if (result) console.log(result);
+        });
+    }
+}
+```
+
+---
+
 ### Empty
 
 Seletor: `<ai-empty>`
