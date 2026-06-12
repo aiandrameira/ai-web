@@ -1,13 +1,15 @@
 import { ComponentType, OverlayRef } from "@angular/cdk/overlay";
 import { EventEmitter, InjectionToken, TemplateRef } from "@angular/core";
 
+import { AiIconType } from "../icon";
+
 const noopFun = () => void 0;
 
 export type OnClickCallback<T> = (instance: T) => false | void | object;
 
 export class AiDrawerConfig<T = unknown> {
     title?: string | TemplateRef<T>;
-    icon?: string;
+    icon?: AiIconType;
     width?: string;
     height?: string;
     customClasses?: string;
@@ -16,9 +18,15 @@ export class AiDrawerConfig<T = unknown> {
     component?: ComponentType<T>;
     overlayRef?: OverlayRef;
 
-    onSearch?: EventEmitter<T> | OnClickCallback<T> = noopFun;
-    onClear?: EventEmitter<T> | OnClickCallback<T> = noopFun;
-    showActions?: boolean = true;
+    cancelIcon?: AiIconType;
+    cancelText?: string | null;
+    confirmIcon?: AiIconType;
+    confirmText?: string | null;
+    confirmDisabled?: boolean;
+
+    onConfirm?: EventEmitter<T> | OnClickCallback<T> = noopFun;
+    onCancel?: EventEmitter<T> | OnClickCallback<T> = noopFun;
+    hideActions?: boolean = false;
 
     closable?: boolean = true;
     disableClose?: boolean = false;

@@ -3,7 +3,8 @@ import { ChangeDetectionStrategy, Component, computed, inject, Injector, Type, V
 
 import { mergeClasses } from "../../core";
 import { AiButton } from "../button";
-import { AiTooltip } from "../tooltip";
+import { AiIcon } from "../icon";
+import { AiTooltipDirective } from "../tooltip";
 import { AI_DRAWER_CONFIG, AiDrawerConfig } from "./drawer-config";
 import { AiDrawerRef } from "./drawer-ref";
 import { drawerVariants } from "./drawer.variants";
@@ -13,7 +14,7 @@ import { drawerVariants } from "./drawer.variants";
     exportAs: "aiDrawer",
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    imports: [AiButton, AiTooltip],
+    imports: [AiButton, AiTooltipDirective, AiIcon],
     templateUrl: "./drawer.html",
     host: {
         "[class]": "config?.position === 'top' || config?.position === 'bottom' ? 'w-screen' : 'w-full'",
@@ -41,43 +42,43 @@ export class AiDrawer {
         this.#drawerRef.close();
     }
 
-    onSearch() {
-        const cfg = this.config as AiDrawerConfig & { onSearch?: any };
+    onConfirm() {
+        const cfg = this.config as AiDrawerConfig & { onConfirm?: any };
 
-        if (cfg?.onSearch) {
-            if (typeof cfg.onSearch?.emit === "function") {
-                cfg.onSearch.emit(this._childInstance);
+        if (cfg?.onConfirm) {
+            if (typeof cfg.onConfirm?.emit === "function") {
+                cfg.onConfirm.emit(this._childInstance);
                 return;
             }
 
-            if (typeof cfg.onSearch === "function") {
-                cfg.onSearch(this._childInstance);
+            if (typeof cfg.onConfirm === "function") {
+                cfg.onConfirm(this._childInstance);
                 return;
             }
         }
 
-        if (this._childInstance && typeof this._childInstance.onSearch === "function") {
-            this._childInstance.onSearch();
+        if (this._childInstance && typeof this._childInstance.onConfirm === "function") {
+            this._childInstance.onConfirm();
         }
     }
 
-    onClear() {
-        const cfg = this.config as AiDrawerConfig & { onClear?: any };
+    onCancel() {
+        const cfg = this.config as AiDrawerConfig & { onCancel?: any };
 
-        if (cfg?.onClear) {
-            if (typeof cfg.onClear?.emit === "function") {
-                cfg.onClear.emit(this._childInstance);
+        if (cfg?.onCancel) {
+            if (typeof cfg.onCancel?.emit === "function") {
+                cfg.onCancel.emit(this._childInstance);
                 return;
             }
 
-            if (typeof cfg.onClear === "function") {
-                cfg.onClear(this._childInstance);
+            if (typeof cfg.onCancel === "function") {
+                cfg.onCancel(this._childInstance);
                 return;
             }
         }
 
-        if (this._childInstance && typeof this._childInstance.onClear === "function") {
-            this._childInstance.onClear();
+        if (this._childInstance && typeof this._childInstance.onCancel === "function") {
+            this._childInstance.onCancel();
         }
     }
 }
