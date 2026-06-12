@@ -1,22 +1,13 @@
-/* eslint-disable @angular-eslint/prefer-inject */
 import { Overlay, OverlayPositionBuilder, OverlayRef } from "@angular/cdk/overlay";
 import { TemplatePortal } from "@angular/cdk/portal";
-import { ElementRef, Injectable, TemplateRef, ViewContainerRef } from "@angular/core";
+import { ElementRef, inject, Injectable, TemplateRef, ViewContainerRef } from "@angular/core";
 
 @Injectable({
     providedIn: "root",
 })
 export class OverlayService {
-    #overlay: Overlay;
-    #positionBuilder: OverlayPositionBuilder;
-
-    constructor(
-        public overlay: Overlay,
-        public positionBuilder: OverlayPositionBuilder,
-    ) {
-        this.#overlay = overlay;
-        this.#positionBuilder = positionBuilder;
-    }
+    #overlay = inject(Overlay);
+    #positionBuilder = inject(OverlayPositionBuilder);
 
     create(element: ElementRef): OverlayRef {
         const positionStrategy = this.#positionBuilder
