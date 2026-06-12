@@ -9,7 +9,7 @@ export function rehypeComponentBadges() {
 
             if (isParagraphOrHeading && node.children?.length > 0) {
                 const text = node.children.map((c: any) => c.value || (c.children && c.children.map((cc: any) => cc.value).join("")) || "").join("");
-                const match = text.match(/^\[(`?)([^[\]]+)\1\]\s*-?\s*(Component|Directive|Service|Pipe|Interface|Type)$/);
+                const match = text.match(/^\[(`?)([^[\]]+)\1\]\s*-?\s*(Component|Directive|Service|Pipe|Interface|Type|Class)$/);
 
                 if (match) {
                     const [, , selectorClean, typeName] = match;

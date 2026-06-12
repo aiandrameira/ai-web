@@ -52,6 +52,7 @@ export const componentsPath: IComponent = {
         { name: "Command", path: "/component/command", available: true },
         { name: "Date Picker", path: "/component/date-picker", available: true },
         { name: "Dialog", path: "/component/dialog", available: true },
+        { name: "Drawer", path: "/component/drawer", available: true },
         { name: "Empty", path: "/component/empty", available: true },
         { name: "Icon", path: "/component/icon", available: true },
         { name: "Float Button", path: "/component/float-button", available: true },

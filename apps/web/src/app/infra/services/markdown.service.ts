@@ -98,6 +98,13 @@ export class MarkdownService {
                         };
                     }
 
+                    if (node.tagName === "hr") {
+                        node.properties = {
+                            ...node.properties,
+                            class: ["border-t-border"],
+                        };
+                    }
+
                     if (node.tagName === "code") {
                         const isInPre = parent && parent.tagName === "pre";
 
