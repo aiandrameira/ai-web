@@ -23,21 +23,26 @@ drawerRef.afterClosed().subscribe(result => console.log(result));
 
 ### Propriedades
 
-| Propriedade     | Descrição                                               | Tipo                                    | Default |
-| --------------- | ------------------------------------------------------- | --------------------------------------- | ------- |
-| `component`     | componente renderizado dentro do drawer                 | `ComponentType<T>`                      | —       |
-| `title`         | título exibido no cabeçalho                             | `string \| TemplateRef<T>`              | —       |
-| `icon`          | ícone exibido ao lado do título                         | `AiIconType`                            | —       |
-| `position`      | lado da tela onde o drawer aparece                      | `left \| top \| right \| bottom`        | `right` |
-| `width`         | largura do painel (CSS)                                 | `string`                                | `400px` |
-| `height`        | altura do painel (CSS)                                  | `string`                                | `100%`  |
-| `data`          | dados passados ao componente via `AI_DRAWER_DATA`       | `object`                                | —       |
-| `customClasses` | classes CSS adicionais aplicadas ao painel              | `string`                                | —       |
-| `showActions`   | exibe a barra de ações com os botões de busca e limpar  | `boolean`                               | `true`  |
-| `closable`      | exibe o botão de fechar no cabeçalho                    | `boolean`                               | `true`  |
-| `disableClose`  | impede o fechamento ao clicar no backdrop               | `boolean`                               | `false` |
-| `onSearch`      | callback ou `EventEmitter` acionado ao clicar em buscar | `EventEmitter<T> \| OnClickCallback<T>` | —       |
-| `onClear`       | callback ou `EventEmitter` acionado ao clicar em limpar | `EventEmitter<T> \| OnClickCallback<T>` | —       |
+| Propriedade       | Descrição                                                   | Tipo                                    | Default |
+| ----------------- | ----------------------------------------------------------- | --------------------------------------- | ------- |
+| `component`       | componente renderizado dentro do drawer                     | `ComponentType<T>`                      | —       |
+| `title`           | título exibido no cabeçalho                                 | `string \| TemplateRef<T>`              | —       |
+| `icon`            | ícone exibido ao lado do título                             | `AiIconType`                            | —       |
+| `position`        | lado da tela onde o drawer aparece                          | `left \| top \| right \| bottom`        | `right` |
+| `width`           | largura do painel (CSS)                                     | `string`                                | `400px` |
+| `height`          | altura do painel (CSS)                                      | `string`                                | `100%`  |
+| `data`            | dados passados ao componente via `AI_DRAWER_DATA`           | `object`                                | —       |
+| `customClasses`   | classes CSS adicionais aplicadas ao painel                  | `string`                                | —       |
+| `hideActions`     | oculta a barra de ações com os botões de confirmar/cancelar | `boolean`                               | `false` |
+| `closable`        | exibe o botão de fechar no cabeçalho                        | `boolean`                               | `true`  |
+| `disableClose`    | impede o fechamento ao clicar no backdrop                   | `boolean`                               | `false` |
+| `confirmText`     | rótulo do botão de confirmação                              | `string \| null`                        | —       |
+| `confirmIcon`     | ícone do botão de confirmação                               | `AiIconType`                            | —       |
+| `confirmDisabled` | desabilita o botão de confirmação                           | `boolean`                               | `false` |
+| `cancelText`      | rótulo do botão de cancelamento                             | `string \| null`                        | —       |
+| `cancelIcon`      | ícone do botão de cancelamento                              | `AiIconType`                            | —       |
+| `onConfirm`       | callback ou `EventEmitter` acionado ao confirmar            | `EventEmitter<T> \| OnClickCallback<T>` | —       |
+| `onCancel`        | callback ou `EventEmitter` acionado ao cancelar             | `EventEmitter<T> \| OnClickCallback<T>` | —       |
 
 ---
 
@@ -56,7 +61,7 @@ drawerRef.afterClosed().subscribe(result => console.log(result));
 
 ### InjectionToken
 
-> `AI_DRAWER_DATA` é o Token de injeção que disponibiliza os dados passados via `AiDrawerConfig.data` dentro do componente renderizado no drawer.
+> `AI_DRAWER_DATA` - Token de injeção que disponibiliza os dados passados via `AiDrawerConfig.data` dentro do componente renderizado no drawer.
 
 ```ts
 @Component({ ... })

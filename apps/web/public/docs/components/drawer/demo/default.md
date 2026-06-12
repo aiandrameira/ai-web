@@ -69,16 +69,20 @@ export class DemoDrawerDefaultComponent {
         const drawerRef = this.#drawerService.open({
             component: DemoDrawerChildComponent,
             title: "Example filter",
-            icon: "filter_alt",
+            icon: "filter",
             position: "right",
+            confirmIcon: "search",
+            confirmText: "Pesquisar",
+            cancelIcon: "brush-3",
+            cancelText: "Limpar",
             data: {
                 username: "John Doe",
                 email: "johndoe@example.com",
             },
-            onClear: child => {
+            onCancel: child => {
                 if (child) child.clear();
             },
-            onSearch: child => {
+            onConfirm: child => {
                 if (child) child.onSearch();
             },
         });

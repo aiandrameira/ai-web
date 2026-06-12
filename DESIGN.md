@@ -577,8 +577,10 @@ export class DemoDrawer {
             icon: "filter_alt",
             position: "right",
             data: { username: "John Doe" },
-            onClear: child => child?.clear(),
-            onSearch: child => child?.onSearch(),
+            confirmText: "Aplicar",
+            cancelText: "Limpar",
+            onConfirm: child => child?.onConfirm(),
+            onCancel: child => child?.onCancel(),
         });
 
         drawerRef.afterClosed().subscribe(result => {
