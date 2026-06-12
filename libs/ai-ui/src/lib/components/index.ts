@@ -11,6 +11,7 @@ export * from "./carousel";
 export * from "./command";
 export * from "./date-picker";
 export * from "./dialog";
+export * from "./drawer";
 export * from "./empty";
 export * from "./float-button";
 export * from "./form-field";
