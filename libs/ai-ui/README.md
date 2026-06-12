@@ -1,7 +1,7 @@
 # 🚀 @aiandralves/ai-ui
 
 <p align="center">
-    <img src="https://github.com/aiandrameira/ai-web/raw/main/apps/web/public/img/logo-dark.svg" width="80" alt="ai-ui logo" />
+    <img src="https://raw.githubusercontent.com/aiandrameira/ai-web/e76bc1aff28cf1565beed390f579d720f285f8a1/apps/web/public/img/logo.svg" width="80" alt="ai-ui logo" />
 </p>
 
 <p align="center">
