@@ -1,7 +1,7 @@
 # 🚀 @aiandralves/ai-ui
 
 <p align="center">
-    <img src="../../apps/web/public/img/logo-dark.svg" width="80" alt="ai-ui logo" />
+    <img src="https://github.com/aiandrameira/ai-web/raw/main/apps/web/public/img/logo-dark.svg" width="80" alt="ai-ui logo" />
 </p>
 
 <p align="center">
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-    <img src="../../apps/web/public/img/preview.png" width="800" alt="preview" />
+    <img src="https://github.com/aiandrameira/ai-web/raw/main/apps/web/public/img/preview.png" width="800" alt="preview" />
 </p>
 
 ---
