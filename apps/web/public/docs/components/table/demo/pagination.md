@@ -10,7 +10,7 @@ import { COLUMNS, iUser, USERS, userTypeEnum } from "./user";
     imports: [AiTable],
     template: `
         <div class="flex flex-col gap-4 w-full">
-            <ai-table [config]="config()" [pagination]="paginationConfig()" (pageChange)="onPageChange($event)" (pageSizeChange)="onPageSizeChange($event)" />
+            <ai-table [config]="config()" [pagination]="paginationConfig()" (pageChange)="onPageChange($event)" (changePageSize)="onPageSizeChange($event)" />
         </div>
     `,
 })
@@ -54,6 +54,7 @@ export class DemoTablePaginationComponent {
         totalItems: this.data.length,
         showInfo: true,
         showPageSize: true,
+        showFirstLast: true,
         pageSizeOptions: [5, 10, 20],
     }));
 

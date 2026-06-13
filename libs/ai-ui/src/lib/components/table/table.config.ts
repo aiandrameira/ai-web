@@ -27,7 +27,9 @@ export interface AiTablePagination {
     pageSizeOptions?: number[];
     showInfo?: boolean;
     showPageSize?: boolean;
+    showFirstLast?: boolean;
     siblingCount?: number;
+    pageWindowSize?: number;
     size?: "default" | "lg" | "sm" | "xs";
     disabled?: boolean;
 }

@@ -22,7 +22,7 @@
 | `selectionChange` | emitido quando ha mudanca na selecao de linhas | `T[]`         |
 | `rowClick`        | emitido quando uma linha da tabela e clicada   | `T`           |
 | `pageChange`      | emitido quando a pagina e alterada             | `number`      |
-| `pageSizeChange`  | emitido quando o tamanho da pagina e alterado  | `number`      |
+| `changePageSize`  | emitido quando o tamanho da pagina e alterado  | `number`      |
 | `sortChange`      | emitido quando uma coluna ordenavel e clicada  | `AiTableSort` |
 
 ---
@@ -68,7 +68,9 @@ interface AiTablePagination {
     pageSizeOptions?: number[];
     showInfo?: boolean;
     showPageSize?: boolean;
+    showFirstLast?: boolean;
     siblingCount?: number;
+    pageWindowSize?: number;
     size?: "default" | "lg" | "sm" | "xs";
     disabled?: boolean;
 }

@@ -6,10 +6,14 @@ import { AiPaginationImports } from "../pagination.imports";
     selector: "ai-demo-pagination-custom",
     imports: [AiPaginationImports],
     template: `
-        <ai-pagination [total]="total" [pageIndex]="currentPage()" (pageIndexChange)="goToPage($event)" [content]="content" />
+        <ai-pagination [total]="total" [pageIndex]="currentPage()" (changePageIndex)="goToPage($event)" [content]="content" />
 
         <ng-template #content>
             <ul ai-pagination-content>
+                <li ai-pagination-item>
+                    <ai-pagination-first (click)="goToPage(1)" [disabled]="currentPage() === 1" />
+                </li>
+
                 <li ai-pagination-item>
                     <ai-pagination-prev (click)="goToPrevious()" [disabled]="currentPage() === 1" />
                 </li>
@@ -29,6 +33,10 @@ import { AiPaginationImports } from "../pagination.imports";
 
                 <li ai-pagination-item>
                     <ai-pagination-next (click)="goToNext()" [disabled]="currentPage() === total" />
+                </li>
+
+                <li ai-pagination-item>
+                    <ai-pagination-last (click)="goToPage(total)" [disabled]="currentPage() === total" />
                 </li>
             </ul>
         </ng-template>

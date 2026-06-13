@@ -6,8 +6,10 @@ export interface AiPaginationIntl {
     of: string;
     totalItems: string;
     pages: string;
+    first: string;
     previous: string;
     next: string;
+    last: string;
 }
 
 export const AI_PAGINATION_INTL = new InjectionToken<AiPaginationIntl>("AiPaginationIntl");
@@ -18,8 +20,10 @@ export const AI_PAGINATION_INTL_DEFAULT: AiPaginationIntl = {
     of: "of",
     totalItems: "total items",
     pages: "pages",
+    first: "First page",
     previous: "Previous",
     next: "Next",
+    last: "Last page",
 };
 
 export const AI_PAGINATION_INTL_PT_BR: AiPaginationIntl = {
@@ -28,6 +32,8 @@ export const AI_PAGINATION_INTL_PT_BR: AiPaginationIntl = {
     of: "de",
     totalItems: "itens no total",
     pages: "páginas",
+    first: "Primeira página",
     previous: "Anterior",
     next: "Próximo",
+    last: "Última página",
 };

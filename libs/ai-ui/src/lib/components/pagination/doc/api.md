@@ -14,8 +14,10 @@
 | `pageSize`        | itens por página (model)                      | `number`                         | `10`                |
 | `pageSizeOptions` | opções disponíveis para itens por página      | `number[]`                       | `[10, 20, 50, 100]` |
 | `siblingCount`    | número de páginas antes/depois da atual       | `number`                         | `1`                 |
-| `showInfo`        | exibe informações de total de itens e páginas | `boolean`                        | `false`             |
+| `pageWindowSize`  | total de slots antes de ativar ellipsis       | `number`                         | `5`                 |
+| `showInfo`        | exibe o intervalo atual (ex: 1 – 10 of 100)  | `boolean`                        | `false`             |
 | `showPageSize`    | exibe select para alterar itens por página    | `boolean`                        | `false`             |
+| `showFirstLast`   | exibe botões para ir à primeira/última página | `boolean`                        | `false`             |
 | `size`            | tamanho dos botões de paginação               | `default \| lg \| sm \| xs`      | `default`           |
 | `disabled`        | desabilita a paginação                        | `boolean`                        | `false`             |
 | `content`         | template customizado para conteúdo            | `TemplateRef<void> \| undefined` | `undefined`         |
@@ -26,5 +28,5 @@
 
 | Evento            | Descrição                                     | Tipo     |
 | ----------------- | --------------------------------------------- | -------- |
-| `pageIndexChange` | emitido quando a página é alterada            | `number` |
-| `pageSizeChange`  | emitido quando o tamanho da página é alterado | `number` |
+| `changePageIndex` | emitido quando a página é alterada            | `number` |
+| `changePageSize`  | emitido quando o tamanho da página é alterado | `number` |
