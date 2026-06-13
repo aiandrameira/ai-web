@@ -81,11 +81,13 @@
                 [pageSizeOptions]="pag.pageSizeOptions ?? [10, 20, 50, 100]"
                 [showInfo]="pag.showInfo ?? false"
                 [showPageSize]="pag.showPageSize ?? false"
-                [siblingCount]="pag.siblingCount ?? 1"
+                [showFirstLast]="pag.showFirstLast ?? true"
+                [siblingCount]="pag.siblingCount ?? 0"
+                [pageWindowSize]="pag.pageWindowSize ?? 3"
                 [size]="pag.size ?? 'sm'"
                 [disabled]="pag.disabled ?? false"
-                (pageIndexChange)="pageChange.emit($event)"
-                (pageSizeChange)="pageSizeChange.emit($event)"
+                (changePageIndex)="pageChange.emit($event)"
+                (changePageSize)="pageSizeChange.emit($event)"
             />
         </div>
     }

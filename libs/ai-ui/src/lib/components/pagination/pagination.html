@@ -4,8 +4,7 @@
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
         @if (showInfo() && totalItems()) {
             <span class="text-sm text-muted-foreground whitespace-nowrap">
-                <span class="text-primary font-semibold">{{ totalItems() }}</span>
-                {{ intl.totalItems }} | {{ total() }} {{ intl.pages }}
+                {{ infoStart() }} – {{ infoEnd() }} {{ intl.of }} {{ totalItems() }}
             </span>
         }
 
@@ -20,6 +19,12 @@
         }
 
         <ul ai-pagination-content>
+            @if (showFirstLast()) {
+                <li ai-pagination-item>
+                    <ai-pagination-first [size]="size()" [disabled]="disabled() || pageIndex() === 1" (click)="onPageChange(1)" />
+                </li>
+            }
+
             <li ai-pagination-item>
                 @let prev = Math.max(1, pageIndex() - 1);
                 <ai-pagination-prev [size]="size()" [disabled]="disabled() || pageIndex() === 1" (click)="onPageChange(prev)" />
@@ -54,6 +59,12 @@
                 @let next = Math.min(pageIndex() + 1, total());
                 <ai-pagination-next [size]="size()" [disabled]="disabled() || pageIndex() === total()" (click)="onPageChange(next)" />
             </li>
+
+            @if (showFirstLast()) {
+                <li ai-pagination-item>
+                    <ai-pagination-last [size]="size()" [disabled]="disabled() || pageIndex() === total()" (click)="onPageChange(total())" />
+                </li>
+            }
         </ul>
     </div>
 }

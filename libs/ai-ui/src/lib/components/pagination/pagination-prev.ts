@@ -19,7 +19,9 @@ import { paginationPreviousVariants } from "./pagination.variants";
         <button type="button" ai-pagination-button [attr.disabled]="disabled() ? '' : null" [class]="classes()" [size]="size()" [disabled]="disabled()">
             <span class="sr-only">To previous page</span>
             <ai-icon icon="arrow-left-s" aria-hidden="true" />
-            <span class="hidden sm:block" aria-hidden="true">{{ intl.previous }}</span>
+            @if (showLabel()) {
+                <span class="hidden sm:block" aria-hidden="true">{{ intl.previous }}</span>
+            }
         </button>
     `,
 })
@@ -28,7 +30,8 @@ export class AiPaginationPrev {
 
     readonly class = input<ClassValue>("");
     readonly disabled = input(false, { transform: booleanAttribute });
-    readonly size = input<ButtonVariants["size"]>("default");
+    readonly showLabel = input(false, { transform: booleanAttribute });
+    readonly size = input<ButtonVariants["size"]>("sm");
 
     protected readonly classes = computed(() => mergeClasses(paginationPreviousVariants(), this.class()));
 }
