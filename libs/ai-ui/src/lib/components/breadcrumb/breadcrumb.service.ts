@@ -23,12 +23,21 @@ export class AiBreadcrumbService {
             const newBreadcrumbs = this._createBreadcrumbs(this.#activatedRoute.root);
             const filteredBreadcrumbs = this._filterBreadcrumbs(newBreadcrumbs);
             this.#breadcrumbs.set(filteredBreadcrumbs);
-            this.#actions.update(() => null);
         });
     }
 
     update(template: TemplateRef<unknown>) {
         this.#actions.update(() => template);
+    }
+
+    /**
+     * Só limpa se o template ainda for o dono atual das actions. Evita apagar
+     * actions de uma página nova quando o componente antigo é destruído depois.
+     */
+    clear(template: TemplateRef<unknown>) {
+        if (this.#actions() === template) {
+            this.#actions.update(() => null);
+        }
     }
 
     private _createBreadcrumbs(route: ActivatedRoute, pathUrl = "", breadcrumbs: AiBreadcrumbConfig[] = []): AiBreadcrumbConfig[] {

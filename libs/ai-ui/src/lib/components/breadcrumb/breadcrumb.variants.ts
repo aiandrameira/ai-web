@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const breadcrumbVariants = cva("w-full flex items-center justify-between", {
+export const breadcrumbVariants = cva("w-full flex flex-wrap items-center justify-between gap-y-2 gap-x-4", {
     variants: {
         size: {
             sm: "text-sm",
@@ -16,7 +16,7 @@ export const breadcrumbVariants = cva("w-full flex items-center justify-between"
 
 export type BreadcrumbVariants = VariantProps<typeof breadcrumbVariants>;
 
-export const breadcrumbListVariants = cva("text-muted-foreground flex flex-wrap items-center gap-1.5 break-words sm:gap-2", {
+export const breadcrumbListVariants = cva("text-muted-foreground flex flex-wrap items-center gap-1.5 break-words sm:gap-2 min-w-0", {
     variants: {
         align: {
             start: "justify-start",
