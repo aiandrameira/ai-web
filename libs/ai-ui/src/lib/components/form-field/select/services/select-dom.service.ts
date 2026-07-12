@@ -9,17 +9,8 @@ export class AiSelectDomService {
     }
 
     updateItemFocus(items: HTMLElement[], focusedIndex: number) {
-        for (let index = 0; index < items.length; index++) {
-            const item = items[index];
-            if (index === focusedIndex) {
-                item.focus();
-                item.setAttribute("aria-selected", "true");
-                item.setAttribute("data-selected", "true");
-            } else {
-                item.removeAttribute("aria-selected");
-                item.removeAttribute("data-selected");
-            }
-        }
+        const item = items[focusedIndex];
+        item?.focus();
     }
 
     focusDropdown(overlayElement: HTMLElement | undefined) {

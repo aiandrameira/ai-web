@@ -7,14 +7,6 @@ import { AiSelectImports } from "../select.imports";
     imports: [AiSelectImports, AiBadge],
     template: `
         <div class="flex flex-col gap-y-4">
-            <div class="flex items-center gap-x-2">
-                @for (item of selectedItems(); track $index) {
-                    <ai-badge variant="primary" class="w-max">
-                        {{ item }}
-                    </ai-badge>
-                }
-            </div>
-
             <ai-select class="w-75" placeholder="selected options" [multiple]="true" [maxLabelCount]="4" [(value)]="selectedItems">
                 <ai-select-item value="option1">Option 1</ai-select-item>
                 <ai-select-item value="option2">Option 2</ai-select-item>
@@ -23,6 +15,14 @@ import { AiSelectImports } from "../select.imports";
                 <ai-select-item value="option5">Option 5</ai-select-item>
                 <ai-select-item value="option6">Option 6</ai-select-item>
             </ai-select>
+
+            <div class="flex items-center gap-x-2">
+                @for (item of selectedItems(); track $index) {
+                    <ai-badge variant="primary" class="w-max">
+                        {{ item }}
+                    </ai-badge>
+                }
+            </div>
         </div>
     `,
 })
