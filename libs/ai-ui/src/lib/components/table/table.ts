@@ -41,7 +41,7 @@ export class AiTable<T = unknown> {
     readonly pageSizeChange = output<number>();
     readonly sortChange = output<AiTableSort>();
 
-    protected readonly cellTemplates = contentChildren<AiCellTemplateDirective<T>>(AiCellTemplateDirective);
+    protected readonly cellTemplates = contentChildren<AiCellTemplateDirective<T>>(AiCellTemplateDirective, { descendants: true });
     readonly templateMap = new Map<string, TemplateRef<{ $implicit: T }>>();
 
     private readonly _sortField = signal<string | null>(null);
