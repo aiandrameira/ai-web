@@ -7,11 +7,11 @@ import { AiIconType } from "../icon";
 export type onClickCallback<T> = (instance: T) => false | void | object;
 
 export class AiDialogConfig<T, U> {
+    btnShape?: ButtonVariants["shape"];
+    btnSize?: ButtonVariants["size"];
     cancelIcon?: AiIconType;
-    cancelShape?: ButtonVariants["shape"];
     cancelText?: string | null;
     confirmIcon?: AiIconType;
-    confirmShape?: ButtonVariants["shape"];
     confirmText?: string | null;
     closable?: boolean;
     component?: string | TemplateRef<T> | Type<T>;
@@ -21,6 +21,7 @@ export class AiDialogConfig<T, U> {
     title?: string | TemplateRef<T>;
     description?: string;
     hideFooter?: boolean;
+    hideCancelButton?: boolean;
     maskClosable?: boolean;
     confirmDestructive?: boolean;
     confirmDisabled?: boolean;
