@@ -41,7 +41,7 @@ export class AiTable<T = unknown> {
     readonly pageSizeChange = output<number>();
     readonly sortChange = output<AiTableSort>();
 
-    protected readonly cellTemplates = contentChildren<AiCellTemplateDirective<T>>(AiCellTemplateDirective);
+    protected readonly cellTemplates = contentChildren<AiCellTemplateDirective<T>>(AiCellTemplateDirective, { descendants: true });
     readonly templateMap = new Map<string, TemplateRef<{ $implicit: T }>>();
 
     private readonly _sortField = signal<string | null>(null);
@@ -109,7 +109,12 @@ export class AiTable<T = unknown> {
 
     toggleAll(): void {
         const data = this.config().data;
-        const next = this.isAllSelected() ? new Set<T>() : new Set<T>(data);
+        const next = new Set(this._selection());
+        if (this.isAllSelected()) {
+            data.forEach(row => next.delete(row));
+        } else {
+            data.forEach(row => next.add(row));
+        }
         this._selection.set(next);
         this.selectionChange.emit([...next]);
     }

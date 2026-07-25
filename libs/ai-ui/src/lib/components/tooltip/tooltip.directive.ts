@@ -33,7 +33,8 @@ import { TooltipPositionVariants } from "./tooltip.variants";
     selector: "[aiTooltip]",
     exportAs: "aiTooltip",
     host: {
-        style: "cursor: pointer",
+        "[style.cursor]": '"pointer"',
+        "[style.pointer-events]": '"auto"',
     },
 })
 export class AiTooltipDirective implements OnInit, OnDestroy {

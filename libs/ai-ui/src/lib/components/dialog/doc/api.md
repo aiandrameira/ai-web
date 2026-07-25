@@ -8,6 +8,8 @@
 
 | Propriedade          | Descrição                                           | Tipo                                    | Default     |
 | -------------------- | --------------------------------------------------- | --------------------------------------- | ----------- |
+| `btnShape`           | define o formato dos botões de cancelar e confirmar | `"default" \| "circle"`                 | `"default"` |
+| `btnSize`            | define o tamanho dos botões de cancelar e confirmar | `"default" \| "lg" \| "sm" \| "xs"`     | `"default"` |
 | `cancelIcon`         | define o ícone do botão de cancelar                 | `AiIconType`                            | `-`         |
 | `cancelText`         | define o rótulo do botão de cancelar                | `string \| null`                        | `Cancelar`  |
 | `confirmIcon`        | define o ícone do botão de confirmar                | `AiIconType`                            | `-`         |
@@ -19,6 +21,7 @@
 | `title`              | define o título                                     | `string \| TemplateRef<T>`              | `""`        |
 | `description`        | define a descrição                                  | `string`                                | `""`        |
 | `hideFooter`         | define se o rodapé do diálogo está oculto           | `boolean`                               | `false`     |
+| `hideCancelButton`   | define se o botão de cancelar está oculto           | `boolean`                               | `false`     |
 | `maskClosable`       | define se o diálogo pode ser fechado ao clicar fora | `boolean`                               | `false`     |
 | `confirmDestructive` | define se o botão de confirmar é destrutivo         | `boolean`                               | `false`     |
 | `confirmDisabled`    | define se o botão de confirmar está desabilitado    | `boolean`                               | `false`     |

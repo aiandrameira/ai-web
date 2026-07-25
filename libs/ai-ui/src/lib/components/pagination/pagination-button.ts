@@ -1,8 +1,8 @@
 import { ClassValue } from "clsx";
 
-import { mergeClasses } from "@ai-ui/core";
 import { booleanAttribute, ChangeDetectionStrategy, Component, computed, input, ViewEncapsulation } from "@angular/core";
 
+import { mergeClasses } from "../../core";
 import { AiButton } from "../button";
 import { ButtonVariants } from "../button/button.variants";
 

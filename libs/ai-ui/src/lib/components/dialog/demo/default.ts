@@ -74,6 +74,7 @@ export class DemoDialogDefaultComponent {
             component: DemoDialogDefaultFormComponent,
             title: "Update User",
             description: "Update user information",
+            icon: "user-add",
             data: {
                 name: "John Doe",
                 email: "johndoe@example.com",
