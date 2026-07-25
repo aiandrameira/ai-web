@@ -60,6 +60,13 @@ export class AiPagination {
     readonly content = input<TemplateRef<void> | undefined>();
     readonly ariaLabel = input("Pagination");
 
+    /** "pages" renders numbered page buttons; "cursor" renders only first/prev/next/last controls. */
+    readonly mode = input<"pages" | "cursor">("pages");
+    /** When set, overrides the `total`-based disabled state for the previous/first controls (for cursor APIs with unknown total). */
+    readonly hasPrevious = input<boolean | undefined>(undefined);
+    /** When set, overrides the `total`-based disabled state for the next/last controls (for cursor APIs with unknown total). */
+    readonly hasNext = input<boolean | undefined>(undefined);
+
     readonly class = input<ClassValue>("");
 
     readonly changePageIndex = output<number>();
@@ -99,10 +106,26 @@ export class AiPagination {
         return [1, "ellipsis", ...Array.from({ length: rightSibling - leftSibling + 1 }, (_, i) => leftSibling + i), "ellipsis", total];
     });
 
+    protected readonly isPrevDisabled = computed(() => this.disabled() || (this.hasPrevious() !== undefined ? !this.hasPrevious() : this.pageIndex() <= 1));
+    protected readonly isNextDisabled = computed(() => this.disabled() || (this.hasNext() !== undefined ? !this.hasNext() : this.pageIndex() >= this.total()));
+
     onPageChange(page: number): void {
         if (!this.disabled() && page !== this.pageIndex()) {
             this.pageIndex.set(page);
             this.changePageIndex.emit(page);
+        }
+    }
+
+    onPrevious(): void {
+        if (!this.isPrevDisabled()) {
+            this.onPageChange(Math.max(1, this.pageIndex() - 1));
+        }
+    }
+
+    onNext(): void {
+        if (!this.isNextDisabled()) {
+            const total = this.total();
+            this.onPageChange(total > 0 ? Math.min(this.pageIndex() + 1, total) : this.pageIndex() + 1);
         }
     }
 

@@ -75,6 +75,7 @@
 @if (pagination(); as pag) {
     <div class="w-full flex items-center justify-end pt-4 pb-2 px-1">
         <ai-pagination class="sm:w-max sm:mx-0"
+            [mode]="pag.mode ?? 'pages'"
             [pageIndex]="pag.pageIndex ?? 1"
             [total]="Math.ceil((pag.totalItems ?? 0) / (pag.pageSize ?? 10))"
             [totalItems]="pag.totalItems ?? 0"
@@ -87,6 +88,8 @@
             [pageWindowSize]="pag.pageWindowSize ?? 3"
             [size]="pag.size ?? 'sm'"
             [disabled]="pag.disabled ?? false"
+            [hasPrevious]="pag.hasPrevious"
+            [hasNext]="pag.hasNext"
             (changePageIndex)="pageChange.emit($event)"
             (changePageSize)="pageSizeChange.emit($event)"
         />

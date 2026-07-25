@@ -109,7 +109,12 @@ export class AiTable<T = unknown> {
 
     toggleAll(): void {
         const data = this.config().data;
-        const next = this.isAllSelected() ? new Set<T>() : new Set<T>(data);
+        const next = new Set(this._selection());
+        if (this.isAllSelected()) {
+            data.forEach(row => next.delete(row));
+        } else {
+            data.forEach(row => next.add(row));
+        }
         this._selection.set(next);
         this.selectionChange.emit([...next]);
     }

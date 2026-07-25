@@ -21,6 +21,7 @@ export interface AiTableSort {
 }
 
 export interface AiTablePagination {
+    mode?: "pages" | "cursor";
     pageIndex?: number;
     pageSize?: number;
     totalItems?: number;
@@ -32,4 +33,6 @@ export interface AiTablePagination {
     pageWindowSize?: number;
     size?: "default" | "lg" | "sm" | "xs";
     disabled?: boolean;
+    hasPrevious?: boolean;
+    hasNext?: boolean;
 }
