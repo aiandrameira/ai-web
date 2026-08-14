@@ -3,7 +3,7 @@
         [class]="inputClass()"
         [attr.placeholder]="variant() === 'filled' ? placeholder() : ' '"
         [attr.id]="id()"
-        [(ngModel)]="value"
+        [ngModel]="displayText()"
         (blur)="onBlur()"
         (input)="onChange($event)"
         [attr.maxlength]="maxlength()"

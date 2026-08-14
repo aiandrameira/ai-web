@@ -72,6 +72,9 @@ export class AiInput implements FormValueControl<string | number | null> {
 
     protected hide = signal<boolean>(false);
     protected labelVariant = signal<InputVariants["variant"]>("outlined");
+    protected currencyDisplay = signal<string>("");
+
+    protected readonly displayText = computed(() => (this.maskConfig()?.isCurrency ? this.currencyDisplay() : (this.value() ?? "")));
 
     protected readonly inputClass = computed(() => {
         const paddingClass = this.icon() || this.type() === "password" ? "pr-12" : "";
@@ -98,9 +101,10 @@ export class AiInput implements FormValueControl<string | number | null> {
     writeValue(value: string | number | null) {
         const config = this.maskConfig();
 
-        if (config?.isCurrency && value !== null) {
-            const formatted = this.#currencyMaskService.format(value as string, config);
-            this.value.set(formatted);
+        if (config?.isCurrency) {
+            const numeric = typeof value === "number" ? value : value === null || value === "" ? null : Number(value);
+            const display = numeric === null || Number.isNaN(numeric) ? "" : this.#currencyMaskService.formatAmount(numeric, config);
+            this.currencyDisplay.set(display);
         } else {
             this.value.set(value);
         }
@@ -108,14 +112,19 @@ export class AiInput implements FormValueControl<string | number | null> {
 
     onChange(event: Event) {
         const config = this.maskConfig();
-        const rawValue = (event.target as HTMLInputElement).value;
+        const target = event.target as HTMLInputElement;
+        const rawValue = target.value;
 
         if (config?.isCurrency) {
-            const cleanedValue = this.#currencyMaskService.clean(rawValue, config);
-            this.value.set(cleanedValue);
+            const formattedValue = this.#currencyMaskService.format(rawValue, config);
 
-            const formattedValue = this.#currencyMaskService.format(cleanedValue, config);
-            this.value.set(formattedValue);
+            this.currencyDisplay.set(formattedValue);
+            this.value.set(this.#currencyMaskService.toNumber(rawValue));
+
+            queueMicrotask(() => {
+                const end = formattedValue.length;
+                target.setSelectionRange(end, end);
+            });
         } else {
             this.value.set(rawValue);
         }

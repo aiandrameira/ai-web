@@ -2,7 +2,6 @@ import { ClassValue } from "clsx";
 
 import { NgTemplateOutlet } from "@angular/common";
 import {
-    AfterContentInit,
     afterNextRender,
     ChangeDetectionStrategy,
     Component,
@@ -48,7 +47,7 @@ const COMPACT_MODE_WIDTH_THRESHOLD = 100;
         "(keydown.{enter,space,arrowdown,arrowup,escape}.prevent)": "onTriggerKeydown($event)",
     },
 })
-export class AiSelect<T> implements FormValueControl<T | T[]>, AfterContentInit, OnDestroy {
+export class AiSelect<T> implements FormValueControl<T | T[]>, OnDestroy {
     #elementRef = inject(ElementRef<HTMLElement>);
     #injector = inject(Injector);
     #viewContainerRef = inject(ViewContainerRef);
@@ -109,25 +108,25 @@ export class AiSelect<T> implements FormValueControl<T | T[]>, AfterContentInit,
         effect(() => {
             this.writeValue(this.value());
         });
-    }
 
-    ngAfterContentInit() {
-        const hostWidth = this.#elementRef.nativeElement.offsetWidth || 0;
-        let i = 0;
-        for (const item of this.selectItems()) {
-            item.setSelectHost({
-                selectedValue: () => (this.multiple() ? (this.value() as T[]) : [this.value() as T]),
-                selectItem: (value: T, label: string) => this.selectItem(value, label),
-                navigateTo: () => this._navigateTo(item, i),
+        effect(() => {
+            const items = this.selectItems();
+            const hostWidth = this.#elementRef.nativeElement.offsetWidth || 0;
+
+            items.forEach((item, i) => {
+                item.setSelectHost({
+                    selectedValue: () => (this.multiple() ? (this.value() as T[]) : [this.value() as T]),
+                    selectItem: (value: T, label: string) => this.selectItem(value, label),
+                    navigateTo: () => this._navigateTo(item, i),
+                });
+                item.size.set(this.size());
+
+                if (hostWidth <= COMPACT_MODE_WIDTH_THRESHOLD) {
+                    this.isCompact.set(true);
+                    item.mode.set("compact");
+                }
             });
-            item.size.set(this.size());
-            i++;
-
-            if (hostWidth <= COMPACT_MODE_WIDTH_THRESHOLD) {
-                this.isCompact.set(true);
-                item.mode.set("compact");
-            }
-        }
+        });
     }
 
     writeValue(value: T | T[]) {

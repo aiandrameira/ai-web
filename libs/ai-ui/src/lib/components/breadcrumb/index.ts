@@ -6,6 +6,8 @@ export * from "./breadcrumb-link";
 export * from "./breadcrumb-list";
 export * from "./breadcrumb-page";
 export * from "./breadcrumb-separator";
+export * from "./breadcrumb.config";
 export * from "./breadcrumb.directive";
 export * from "./breadcrumb.imports";
+export * from "./breadcrumb.service";
 export * from "./demo/breadcrumb";
