@@ -1,0 +1,71 @@
+name: 📦 Publish @aiandralves/ai-ui
+run-name: 📦 Publicando ai-ui (${{ inputs.bump }})
+
+on:
+    workflow_dispatch:
+        inputs:
+            bump:
+                description: "Tipo de versão"
+                required: true
+                type: choice
+                options:
+                    - patch
+                    - minor
+                    - major
+                default: patch
+
+jobs:
+    publish:
+        name: 🚀 Bump, build e publicar no npm
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - name: 🔄 Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+                  token: ${{ secrets.GITHUB_TOKEN }}
+
+            - name: ⚙️ Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24.x
+                  registry-url: "https://registry.npmjs.org"
+
+            - name: ⚒️ Install dependencies
+              run: npm install
+
+            - name: 🔢 Bump version
+              id: bump
+              working-directory: libs/ai-ui
+              run: |
+                  npm version ${{ inputs.bump }} --no-git-tag-version
+                  echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+            - name: 📦 Build ai-ui
+              run: npx nx run ai-ui:build
+
+            - name: 🚀 Publish to npm
+              working-directory: dist/libs/ai-ui
+              run: npm publish
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: 💾 Commit e tag da versão
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git add libs/ai-ui/package.json
+                  git commit -m "🔖 chore(ai-ui): release v${{ steps.bump.outputs.version }}"
+                  git tag "ai-ui-v${{ steps.bump.outputs.version }}"
+                  git push origin HEAD:main
+                  git push origin "ai-ui-v${{ steps.bump.outputs.version }}"
+
+            - name: 🎉 Criar release no GitHub
+              uses: softprops/action-gh-release@v2
+              with:
+                  tag_name: "ai-ui-v${{ steps.bump.outputs.version }}"
+                  name: "ai-ui v${{ steps.bump.outputs.version }}"
+                  generate_release_notes: true

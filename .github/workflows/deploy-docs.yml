@@ -1,0 +1,33 @@
+name: 🚀 Deploy docs (ai-ui.aiandralves.com.br)
+
+on:
+    workflow_dispatch: {}
+
+jobs:
+    deploy:
+        name: 🌐 Build e publicar via FTP na Hostinger
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 🔄 Checkout code
+              uses: actions/checkout@v4
+
+            - name: ⚙️ Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24.x
+
+            - name: ⚒️ Install dependencies
+              run: npm install
+
+            - name: 📦 Build docs
+              run: npx nx run web:build --configuration=production
+
+            - name: 🚀 Deploy via FTP
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+              with:
+                  server: ${{ secrets.HOSTINGER_FTP_SERVER }}
+                  username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+                  password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+                  local-dir: ./dist/apps/web/browser/
+                  server-dir: /public_html/

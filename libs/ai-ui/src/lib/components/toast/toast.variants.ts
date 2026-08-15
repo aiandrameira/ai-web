@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority";
 
-export const toastVariants = cva("fixed flex flex-col gap-2 w-full max-w-sm z-50", {
+export const toastVariants = cva("fixed flex flex-col gap-2 w-full max-w-sm z-[1050]", {
     variants: {
         position: {
             "top-left": "top-5 left-5 items-start",

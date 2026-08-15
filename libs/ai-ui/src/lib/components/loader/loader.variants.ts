@@ -14,7 +14,7 @@ export const loaderVariants = cva("", {
             lg: "size-16",
         },
         overlay: {
-            true: "bg-black/30 fixed top-0 left-0 h-screen w-screen flex items-center justify-center z-999",
+            true: "bg-black/30 fixed top-0 left-0 h-screen w-screen flex items-center justify-center z-[1100]",
         },
     },
     defaultVariants: {
