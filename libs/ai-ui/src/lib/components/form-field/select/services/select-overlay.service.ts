@@ -35,7 +35,7 @@ export class AiSelectOverlayService {
                     offsetY: -4,
                 },
             ])
-            .withPush(false);
+            .withPush(true);
 
         this.#overlayRef = this.#overlay.create({
             positionStrategy,

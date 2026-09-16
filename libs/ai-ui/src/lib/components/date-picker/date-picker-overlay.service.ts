@@ -24,7 +24,7 @@ export class AiDatePickerOverlayService {
                 { originX: "start", originY: "bottom", overlayX: "start", overlayY: "top", offsetY: 4 },
                 { originX: "start", originY: "top", overlayX: "start", overlayY: "bottom", offsetY: -4 },
             ])
-            .withPush(false);
+            .withPush(true);
 
         this.#overlayRef = this.#overlay.create({
             positionStrategy,

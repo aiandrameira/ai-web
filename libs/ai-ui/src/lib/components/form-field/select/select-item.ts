@@ -52,6 +52,15 @@ export class AiSelectItem<T = unknown> {
         return (element.textContent ?? element.innerText)?.trim() ?? "";
     });
 
+    // Captured alongside `label` so the trigger can show the exact projected markup (e.g. a
+    // colored `ai-badge-tp-*`) instead of the scraped-to-plain-text `label` above — consumers
+    // project rich content via `<ng-content>` for the dropdown item, and this lets the closed
+    // trigger reuse that same rendered HTML instead of requiring a second, duplicated template.
+    readonly contentHtml = linkedSignal<string>(() => {
+        const contentElement = this.elementRef.nativeElement.querySelector(":scope > span.truncate") as HTMLElement | null;
+        return contentElement?.innerHTML.trim() ?? "";
+    });
+
     readonly mode = signal<SelectItemModeVariants>("normal");
     readonly size = signal<SelectSizeVariants>("default");
 

@@ -12,10 +12,14 @@
     (focus)="onFocus()"
 >
     <span class="flex flex-1 flex-wrap items-center gap-2">
+        @if (!multiple() && selectedContent(); as content) {
+        <span class="contents" [innerHTML]="content"></span>
+        } @else {
         @let labels = selectedLabels(); @for (label of labels; track index; let index = $index) {
         <ng-container *ngTemplateOutlet="labelsTemplate; context: { $implicit: label }" />
         } @empty {
         <span class="text-muted-foreground truncate">{{ placeholder() }}</span>
+        }
         }
     </span>
     <ai-icon icon="arrow-down-s" size="default" [class]="isOpen() ? 'rotate-180' : ''" />

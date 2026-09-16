@@ -21,6 +21,7 @@ import {
     ViewContainerRef,
 } from "@angular/core";
 import { FormValueControl } from "@angular/forms/signals";
+import { DomSanitizer, type SafeHtml } from "@angular/platform-browser";
 
 import { mergeClasses } from "../../../core";
 import { AiBadge } from "../../badge";
@@ -55,6 +56,7 @@ export class AiSelect<T> implements FormValueControl<T | T[]>, OnDestroy {
     #facade = inject(AiSelectFacade);
     #dom = inject(AiSelectDomService);
     #labels = inject(AiSelectLabelsService);
+    #sanitizer = inject(DomSanitizer);
 
     readonly maxLabelCount = input<number>(1);
     readonly multiple = input<boolean>(false);
@@ -98,6 +100,18 @@ export class AiSelect<T> implements FormValueControl<T | T[]>, OnDestroy {
             manualLabel: this.label(),
             items: this.selectItems(),
         });
+    });
+
+    // Single-select only: reuses the matched item's own projected markup (e.g. a colored
+    // `ai-badge-tp-*`) in the closed trigger instead of the plain-text `selectedLabels()` above.
+    // Multi-select keeps the plain-text + generic badge rendering untouched (see select.html).
+    readonly selectedContent = computed<SafeHtml | null>(() => {
+        if (this.multiple() || this.label()) return null;
+
+        const value = this.value();
+        const html = this.selectItems().find(item => item.value() === value)?.contentHtml();
+
+        return html ? this.#sanitizer.bypassSecurityTrustHtml(html) : null;
     });
 
     protected readonly classes = computed(() => mergeClasses(selectVariants(), this.class()));
