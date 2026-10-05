@@ -48,6 +48,7 @@ export class AiAutocomplete<T, Key = unknown> implements FormValueControl<Key | 
     #outsideSub?: Subscription;
 
     readonly config = input<AiAutocompleteConfig<T, Key> | null>(null);
+    readonly allowCustom = input<boolean>(false);
 
     readonly id = input<string>("");
     readonly label = input.required<string>();
@@ -76,6 +77,7 @@ export class AiAutocomplete<T, Key = unknown> implements FormValueControl<Key | 
         if (value != null && value !== ("" as unknown) && config) {
             const item = config.findByValue(value);
             if (item) return config.getLabel(item);
+            if (this.allowCustom() && typeof value === "string") return value;
         }
         return "";
     });
@@ -135,7 +137,11 @@ export class AiAutocomplete<T, Key = unknown> implements FormValueControl<Key | 
         const inputValue = (event.target as HTMLInputElement).value;
         this.searchText.set(inputValue);
 
-        if (this.hasValue()) {
+        if (this.allowCustom()) {
+            const next = (inputValue === "" ? null : inputValue) as unknown as Key | null;
+            this.value.set(next);
+            this.changeValue.emit(next);
+        } else if (this.hasValue()) {
             const config = this.config();
             if (config) {
                 const selectedItem = config.findByValue(this.value()!);
